@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/widgets/custom_app_bar.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class BlogScreen extends StatelessWidget {
+  const BlogScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: CustomAppBar(
-        activeTab: 'Начало',
+        activeTab: 'Блог',
       ),
       body: Center(
-        child: Text('Home'),
+        child: Text('Blog'),
       ),
     );
   }

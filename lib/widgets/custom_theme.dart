@@ -11,7 +11,7 @@ class CustomTheme {
       ),
       colorScheme: ColorScheme.fromSwatch().copyWith(
         primary: ColorUtils.lightGray, // Primary color for buttons and controls
-        secondary: ColorUtils.lightGray, // Secondary color for contrast (if needed)
+        secondary: ColorUtils.limeGreen, // Secondary color for contrast (if needed)
         onPrimary: Colors.white, // Text color on primary surfaces
         onSecondary: Colors.black, // Text color on secondary surfaces
       ),
