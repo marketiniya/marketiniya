@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1083783475549",
+    "project_id": "marketinya-a4876",
+    "storage_bucket": "marketinya-a4876.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083783475549:android:41ced3639f94e9abcbf8b4",
+        "android_client_info": {
+          "package_name": "com.marketinya.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMkqVmAmRUZkQD5rZluyOHOJbbnJkQbG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
