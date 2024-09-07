@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/widgets/custom_app_bar.dart';
+import 'package:marketinya/widgets/footer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,8 +11,13 @@ class HomeScreen extends StatelessWidget {
       appBar: CustomAppBar(
         activeTab: 'Начало',
       ),
-      body: Center(
-        child: Text('Home'),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(child: Text('Home')),
+            Footer()
+          ],
+        ),
       ),
     );
   }

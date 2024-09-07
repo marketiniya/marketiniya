@@ -64,6 +64,10 @@ flutter:
   assets:
     - assets/marketinya-logo.svg
     - assets/marketinya-label.svg
+    - assets/facebook-logo.svg
+    - assets/instagram-logo.svg
+    - assets/linkedin-logo.svg
+    - assets/x-logo.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
