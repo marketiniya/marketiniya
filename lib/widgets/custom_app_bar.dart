@@ -22,6 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: Container(),
       toolbarHeight: _toolbarHeight,
       title: _title(context),
+      scrolledUnderElevation: 0.0,
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1),
         child: _customDividerAndLabelSvgAndText(context),
