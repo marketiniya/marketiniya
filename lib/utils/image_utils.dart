@@ -5,4 +5,5 @@ class ImageUtils {
   static const instagramLogo = 'assets/instagram-logo.svg';
   static const linkedinLogo = 'assets/linkedin-logo.svg';
   static const xLogo = 'assets/x-logo.svg';
+  static const socialMediaBackgroundPath = 'assets/home-background-image.png';
 }
