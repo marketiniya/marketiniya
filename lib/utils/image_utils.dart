@@ -6,4 +6,6 @@ class ImageUtils {
   static const linkedinLogo = 'assets/linkedin-logo.svg';
   static const xLogo = 'assets/x-logo.svg';
   static const socialMediaBackgroundPath = 'assets/home-background-image.png';
+  static const previousImagePath = 'assets/carousel/previous-image.svg';
+  static const nextImagePath = 'assets/carousel/next-image.svg';
 }

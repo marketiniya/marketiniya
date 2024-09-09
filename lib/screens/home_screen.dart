@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marketinya/widgets/custom_app_bar.dart';
 import 'package:marketinya/widgets/footer.dart';
 import 'package:marketinya/widgets/home/business_overview_section.dart';
+import 'package:marketinya/widgets/home/carousel_section.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,6 +15,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             BusinessOverviewSection(),
+            CarouselSection(),
             Footer(),
           ],
         ),
