@@ -8,4 +8,5 @@ class ImageUtils {
   static const socialMediaBackgroundPath = 'assets/home-background-image.png';
   static const previousImagePath = 'assets/carousel/previous-image.svg';
   static const nextImagePath = 'assets/carousel/next-image.svg';
+  static const businessManImagePath = 'assets/businessman-image.png';
 }
