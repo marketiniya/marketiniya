@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   firebase_core: ^3.4.0
   flutter_svg: ^2.0.10+1
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,11 @@ flutter:
     - assets/desktop-image.png
     - assets/home-background-image.png
     - assets/pc-image.png
+    - assets/carousel/image0.png
+    - assets/carousel/image1.png
+    - assets/carousel/image2.png
+    - assets/carousel/next-image.svg
+    - assets/carousel/previous-image.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

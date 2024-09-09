@@ -104,6 +104,11 @@ class BusinessOverviewSection extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(height: 163),
+        const Text(
+          'Какво можем да предложим?',
+          style: TextStyle(fontSize: 36, fontWeight: FontWeight.w400),
+        ),
       ],
     );
   }
