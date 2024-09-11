@@ -78,6 +78,10 @@ flutter:
     - assets/carousel/next-image.svg
     - assets/carousel/previous-image.svg
     - assets/businessman-image.png
+    - assets/chart-image.png
+    - assets/hands-image.png
+    - assets/map-image.png
+    - assets/people-table-image.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
