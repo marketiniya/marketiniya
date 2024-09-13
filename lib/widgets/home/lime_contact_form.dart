@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/models/contact_model.dart';
+import '../../services/firestore_service.dart';
 import '../../utils/color_utils.dart';
 
 class LimeContactForm extends StatelessWidget {
- LimeContactForm({super.key});
+  LimeContactForm({super.key});
 
   final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _telephoneController = TextEditingController();
+  final TextEditingController _firmNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _questionController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +33,7 @@ class LimeContactForm extends StatelessWidget {
                 borderRadius: BorderRadius.circular(32),
               ),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 40, horizontal: 96),
+                padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 96),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -62,7 +70,7 @@ class LimeContactForm extends StatelessWidget {
     );
   }
 
-  Widget _buildFormField(String labelText, String placeholderText) {
+  Widget _buildFormField(String labelText, String placeholderText, TextEditingController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -72,12 +80,12 @@ class LimeContactForm extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         TextFormField(
+          controller: controller, // Bind controller to the TextFormField
           style: const TextStyle(color: Colors.black),
           decoration: InputDecoration(
             filled: true,
             fillColor: ColorUtils.lightGray,
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+            contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
             labelText: placeholderText,
             labelStyle: const TextStyle(color: Colors.black),
             border: OutlineInputBorder(
@@ -101,11 +109,11 @@ class LimeContactForm extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: _buildFormField('Име и фамилия', 'Име, Фамилия'),
+          child: _buildFormField('Име и фамилия', 'Име, Фамилия', _nameController),
         ),
         const SizedBox(width: 24),
         Expanded(
-          child: _buildFormField('Телефон за връзка', 'Телефон'),
+          child: _buildFormField('Телефон за връзка', 'Телефон', _telephoneController),
         ),
       ],
     );
@@ -118,11 +126,11 @@ class LimeContactForm extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: _buildFormField('Име на фирма', 'Фирма'),
+            child: _buildFormField('Име на фирма', 'Фирма', _firmNameController),
           ),
           const SizedBox(width: 24),
           Expanded(
-            child: _buildFormField('Имейл адрес', 'Имейл'),
+            child: _buildFormField('Имейл адрес', 'Имейл', _emailController),
           ),
         ],
       ),
@@ -142,6 +150,7 @@ class LimeContactForm extends StatelessWidget {
         SizedBox(
           height: 155,
           child: TextFormField(
+            controller: _questionController,
             expands: true,
             maxLines: null,
             minLines: null,
@@ -177,8 +186,20 @@ class LimeContactForm extends StatelessWidget {
           SizedBox(
             width: 196,
             child: ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState!.validate()) {
+                  final contactModel = ContactModel(
+                    _nameController.text,
+                    _telephoneController.text,
+                    _firmNameController.text,
+                    _emailController.text,
+                    _questionController.text,
+                    DateTime.now().toString(),
+                  );
+
+                  await FirestoreService.instance.sendQuestionToFirestore(contactModel);
+
+                  print('success');
                   ScaffoldMessenger.of(context)
                     ..clearSnackBars()
                     ..showSnackBar(
