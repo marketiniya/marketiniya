@@ -13,12 +13,15 @@ class BusinessOverviewSection extends StatelessWidget {
           top: 110,
           child: Image.asset(ImageUtils.socialMediaBackgroundPath),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _businessPromotionColumn(),
-            _pcImageStack(),
-          ],
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _businessPromotionColumn(),
+              _pcImageStack(),
+            ],
+          ),
         ),
       ],
     );
