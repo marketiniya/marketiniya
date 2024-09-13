@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../../utils/color_utils.dart';
 
 class LimeContactForm extends StatelessWidget {
-  const LimeContactForm({super.key});
+ LimeContactForm({super.key});
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class LimeContactForm extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 40, horizontal: 96),
                 child: Form(
+                  key: _formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -37,7 +40,7 @@ class LimeContactForm extends StatelessWidget {
                       _inputFieldsFirstRow(),
                       _inputFieldsSecondRow(),
                       _bigInputField(),
-                      _sendButton(),
+                      _sendButton(context),
                     ],
                   ),
                 ),
@@ -76,6 +79,7 @@ class LimeContactForm extends StatelessWidget {
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
             labelText: placeholderText,
+            labelStyle: const TextStyle(color: Colors.black),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
             ),
@@ -164,7 +168,7 @@ class LimeContactForm extends StatelessWidget {
   }
 
   // Button for submitting the form
-  Widget _sendButton() {
+  Widget _sendButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 40),
       child: Row(
@@ -174,7 +178,20 @@ class LimeContactForm extends StatelessWidget {
             width: 196,
             child: ElevatedButton(
               onPressed: () {
-                // Add form submission logic here
+                if (_formKey.currentState!.validate()) {
+                  ScaffoldMessenger.of(context)
+                    ..clearSnackBars()
+                    ..showSnackBar(
+                      const SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        backgroundColor: ColorUtils.limeGreen,
+                        content: Text(
+                          'Въпросът Ви е изпратен успешно.',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    );
+                }
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(

@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             const BusinessInfoSection(),
             const FeaturesWithImagesSection(),
             Container(width: double.infinity, height: 70, color: Colors.white),
-            const LimeContactForm(),
+            LimeContactForm(),
             const Footer(),
           ],
         ),
