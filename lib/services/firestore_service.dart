@@ -5,27 +5,58 @@ import 'package:intl/intl.dart';
 import '../models/contact_model.dart';
 
 class FirestoreService {
-  // Private constructor
+  // Private constructor for singleton pattern
   FirestoreService._();
 
   // Singleton instance
   static final FirestoreService instance = FirestoreService._();
 
-  static final FirebaseFirestore _firestore =  FirebaseFirestore.instance;
+  // Firestore instance
+  static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  static const String _dateFormat = 'yyyy-MM-dd HH:mm:ss';
+
+  // Firestore collection names
   static const String _questions = 'questions';
+  static const String _subscriptions = 'subscriptions';
 
-  Future<void> sendQuestionToFirestore(ContactModel contactModel) async {
+  Future<void> sendQuestion(ContactModel contactModel) async {
     try {
-      // Generate a human-readable document ID
-      String formattedDate = DateFormat('yyyyMMdd:HH:mm:ss').format(DateTime.now());
-      String docId = '$formattedDate-${contactModel.name}';
-
+      String docId = _generateDocId(contactModel.name);
       await _firestore.collection(_questions).doc(docId).set(contactModel.toJson());
-
-      debugPrint('Question added successfully with ID: $docId');
     } catch (e) {
-      debugPrint('Failed to add question: $e');
+      debugPrint('Error sending question to Firestore: $e');
+      rethrow;
     }
+  }
+
+  Future<void> subscribe(String email) async {
+    try {
+      var querySnapshot = await _firestore
+          .collection(_subscriptions)
+          .where('email', isEqualTo: email)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        throw Exception('email-exists');
+      }
+
+      Map<String, dynamic> data = {
+        'email': email,
+        'subscribedAt': DateFormat(_dateFormat).format(DateTime.now()),
+      };
+
+      String docId = _generateDocId(email);
+      await _firestore.collection(_subscriptions).doc(docId).set(data);
+      debugPrint('User subscribed successfully.');
+    } catch (e) {
+      debugPrint('Error subscribing user: $e');
+      rethrow;
+    }
+  }
+
+  String _generateDocId(String identifier) {
+    String formattedDate = DateFormat(_dateFormat).format(DateTime.now());
+    return '$formattedDate-$identifier';
   }
 }
