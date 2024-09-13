@@ -4,9 +4,9 @@ import 'package:marketinya/widgets/footer.dart';
 import 'package:marketinya/widgets/home/business_info_section.dart';
 import 'package:marketinya/widgets/home/business_overview_section.dart';
 import 'package:marketinya/widgets/home/carousel_section.dart';
-
 import '../widgets/home/features_with_images_section.dart';
 import '../widgets/home/lime_contact_form.dart';
+import '../widgets/home/subscription_form.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,7 +24,8 @@ class HomeScreen extends StatelessWidget {
             const BusinessInfoSection(),
             const FeaturesWithImagesSection(),
             Container(width: double.infinity, height: 70, color: Colors.white),
-            LimeContactForm(),
+            const LimeContactForm(),
+            const SubscriptionForm(),
             const Footer(),
           ],
         ),

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/extensions/context_extension.dart';
 import 'package:marketinya/models/contact_model.dart';
 import '../../services/firestore_service.dart';
 import '../../utils/color_utils.dart';
 
-class LimeContactForm extends StatelessWidget {
-  LimeContactForm({super.key});
+class LimeContactForm extends StatefulWidget {
+  const LimeContactForm({super.key});
 
+  @override
+  State<LimeContactForm> createState() => _LimeContactFormState();
+}
+
+class _LimeContactFormState extends State<LimeContactForm> {
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _nameController = TextEditingController();
@@ -14,6 +20,15 @@ class LimeContactForm extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _questionController = TextEditingController();
 
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _telephoneController.dispose();
+    _firmNameController.dispose();
+    _emailController.dispose();
+    _questionController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +95,7 @@ class LimeContactForm extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         TextFormField(
-          controller: controller, // Bind controller to the TextFormField
+          controller: controller,
           style: const TextStyle(color: Colors.black),
           decoration: InputDecoration(
             filled: true,
@@ -197,21 +212,12 @@ class LimeContactForm extends StatelessWidget {
                     DateTime.now().toString(),
                   );
 
-                  await FirestoreService.instance.sendQuestionToFirestore(contactModel);
-
-                  print('success');
-                  ScaffoldMessenger.of(context)
-                    ..clearSnackBars()
-                    ..showSnackBar(
-                      const SnackBar(
-                        behavior: SnackBarBehavior.floating,
-                        backgroundColor: ColorUtils.limeGreen,
-                        content: Text(
-                          'Въпросът Ви е изпратен успешно.',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    );
+                  try {
+                    await FirestoreService.instance.sendQuestion(contactModel);
+                    context.showSuccessSnackBar('Въпросът Ви е изпратен успешно.');
+                  } catch (e) {
+                    context.showFailureSnackBar('Възникна проблем с изпращането на въпроса');
+                  }
                 }
               },
               style: ElevatedButton.styleFrom(
