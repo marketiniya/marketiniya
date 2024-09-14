@@ -9,4 +9,10 @@ class ImageUtils {
   static const previousImagePath = 'assets/carousel/previous-image.svg';
   static const nextImagePath = 'assets/carousel/next-image.svg';
   static const businessManImagePath = 'assets/businessman-image.png';
+  static const carouselImage0 = 'assets/carousel/image0.png';
+  static const carouselImage1 = 'assets/carousel/image1.png';
+  static const carouselImage2 = 'assets/carousel/image2.png';
+  static const carouselImage0noText = 'assets/carousel/image0-notext.png';
+  static const carouselImage1noText = 'assets/carousel/image1-notext.png';
+  static const carouselImage2noText = 'assets/carousel/image2-notext.png';
 }

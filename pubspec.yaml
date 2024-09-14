@@ -65,25 +65,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/marketinya-logo.svg
-    - assets/marketinya-label.svg
-    - assets/facebook-logo.svg
-    - assets/instagram-logo.svg
-    - assets/linkedin-logo.svg
-    - assets/x-logo.svg
-    - assets/desktop-image.png
-    - assets/home-background-image.png
-    - assets/pc-image.png
-    - assets/carousel/image0.png
-    - assets/carousel/image1.png
-    - assets/carousel/image2.png
-    - assets/carousel/next-image.svg
-    - assets/carousel/previous-image.svg
-    - assets/businessman-image.png
-    - assets/chart-image.png
-    - assets/hands-image.png
-    - assets/map-image.png
-    - assets/people-table-image.png
+    - assets/
+    - assets/carousel/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
