@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/widgets/services/free_consultation_section.dart';
+import 'package:marketinya/widgets/services/text_section.dart';
 import '../widgets/custom_app_bar.dart';
 
 class ServiceScreen extends StatelessWidget {
@@ -10,8 +12,13 @@ class ServiceScreen extends StatelessWidget {
       appBar: CustomAppBar(
         activeTab: 'Услуги',
       ),
-      body: Center(
-        child: Text('Services'),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            TextSection(),
+            FreeConsultationSection()
+          ],
+        ),
       ),
     );
   }
