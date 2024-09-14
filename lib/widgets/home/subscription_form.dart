@@ -110,7 +110,7 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
     );
   }
 
-  Widget _buildSubscribeButton(BuildContext context) {
+  ElevatedButton _buildSubscribeButton(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
         if (_formKey.currentState!.validate()) {
