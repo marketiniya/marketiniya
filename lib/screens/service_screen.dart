@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/widgets/home/features_with_images_section.dart';
+import 'package:marketinya/widgets/home/subscription_form.dart';
 import 'package:marketinya/widgets/services/free_consultation_section.dart';
 import 'package:marketinya/widgets/services/text_section.dart';
 import '../widgets/custom_app_bar.dart';
+import '../widgets/footer.dart';
 import '../widgets/services/services_list.dart';
 
 class ServiceScreen extends StatelessWidget {
@@ -9,17 +12,34 @@ class ServiceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(
+    return  Scaffold(
+      appBar: const CustomAppBar(
         activeTab: 'Услуги',
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TextSection(),
-            FreeConsultationSection(),
-            ServicesList(),
+            const TextSection(),
+            const FreeConsultationSection(),
+            const ServicesList(),
+            _headerWhyAreWeDifferent(),
+            const FeaturesWithImagesSection(),
+            const SubscriptionForm(),
+            const Footer(),
           ],
+        ),
+      ),
+    );
+  }
+
+  Padding _headerWhyAreWeDifferent() {
+    return const Padding(
+      padding: EdgeInsets.only(top: 72, bottom: 72),
+      child: Text(
+        'Какво ни различава от останалите?',
+        style: TextStyle(
+          fontSize: 52,
+          fontWeight: FontWeight.w500,
         ),
       ),
     );
