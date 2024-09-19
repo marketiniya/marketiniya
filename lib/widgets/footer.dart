@@ -9,22 +9,48 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    final isSmallScreen = width < 600;
 
     return Padding(
       padding: const EdgeInsets.only(top: 60),
       child: SizedBox(
-        height: height * 0.3,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        height: isSmallScreen ? null : MediaQuery.of(context).size.height * 0.37,
+        child: Column(
           children: [
-            _imagesColumn(),
-            _contactColumn(),
-            _redirectTextButtons(context),
-            _socialMediaColumn()
+            isSmallScreen ? _buildSmallScreenLayout(context) : _buildLargeScreenLayout(context),
+            const SizedBox(height: 50),
+            _buildFooterBottom(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildSmallScreenLayout(BuildContext context) {
+    return Column(
+      children: [
+        _imagesColumn(),
+        const SizedBox(height: 20),
+        _contactColumn(),
+        const SizedBox(height: 20),
+        _socialMediaColumn(),
+        const SizedBox(height: 20),
+        _redirectTextButtons(context),
+      ],
+    );
+  }
+
+  Widget _buildLargeScreenLayout(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(child: _imagesColumn()),
+        Expanded(child: _contactColumn()),
+        Expanded(child: _redirectTextButtons(context)),
+        Expanded(child: _socialMediaColumn())
+      ],
     );
   }
 
@@ -40,89 +66,37 @@ class Footer extends StatelessWidget {
           padding: const EdgeInsets.only(top: 8),
           child: SvgPicture.asset(ImageUtils.marketinyaLabelPath),
         ),
-        const Spacer(),
-        const Padding(
-          padding: EdgeInsets.only(bottom: 24),
-          child: Text(
-            '© 2024 All Rights Reserved',
-            style: TextStyle(fontSize: 14),
-          ),
-        )
       ],
     );
   }
 
   Widget _contactColumn() {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Свържи се с нас',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
-          ),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
         ),
-        Padding(
-          padding: EdgeInsets.only(top: 14.5),
-          child: Row(
-            children: [
-              Icon(Icons.location_on_outlined, color: ColorUtils.lightGray),
-              SizedBox(width: 13),
-              Text(
-                'България',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 16),
-          child: Row(
-            children: [
-              Icon(Icons.mail_outline_outlined, color: ColorUtils.lightGray),
-              SizedBox(width: 14),
-              Text(
-                'rumen.katincharov@marketiniya.bg',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 16),
-          child: Row(
-            children: [
-              Icon(Icons.phone_in_talk_outlined, color: ColorUtils.lightGray),
-              SizedBox(width: 14),
-              Text(
-                '+359 896 867 024',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-              ),
-            ],
-          ),
-        ),
-        Spacer(),
-        Padding(
-          padding: EdgeInsets.only(bottom: 24),
-          child: Row(
-            children: [
-              Text(
-                "Политика за поверителност",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              SizedBox(width: 12),
-              Text(
-                "Условия за ползване",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                ),
-              )
-            ],
+        const SizedBox(height: 14.5),
+        _contactInfo(Icons.location_on_outlined, 'България'),
+        const SizedBox(height: 16),
+        _contactInfo(Icons.mail_outline_outlined, 'rumen.katincharov@marketiniya.bg'),
+        const SizedBox(height: 16),
+        _contactInfo(Icons.phone_in_talk_outlined, '+359 896 867 024'),
+      ],
+    );
+  }
+
+  Widget _contactInfo(IconData icon, String text) {
+    return Row(
+      children: [
+        Icon(icon, color: ColorUtils.lightGray),
+        const SizedBox(width: 13),
+        Flexible(
+          child: Text(
+            text,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
           ),
         )
       ],
@@ -132,34 +106,24 @@ class Footer extends StatelessWidget {
   Widget _redirectTextButtons(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 16),
-          child: TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.services);
-            },
-            child: const Text(
-              "Услуги",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-        ),
-        TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, Routes.blog);
-          },
-          child: const Text(
-            "Блог",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        )
+        _footerTextButton(context, 'Услуги', Routes.services),
+        _footerTextButton(context, 'Блог', Routes.blog),
       ],
+    );
+  }
+
+  Widget _footerTextButton(BuildContext context, String text, String route) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: TextButton(
+        onPressed: () {
+          Navigator.pushNamed(context, route);
+        },
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+        ),
+      ),
     );
   }
 
@@ -168,40 +132,63 @@ class Footer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-            "Последвай ни",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-            )
+          "Последвай ни",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
+          ),
         ),
         const SizedBox(height: 28),
-        Row(
+        Wrap(
+          spacing: 24,
           children: [
-            GestureDetector(
-              onTap: () {},
-              child: SvgPicture.asset(ImageUtils.facebookLogo),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 24,right: 24),
-              child: GestureDetector(
-                onTap: () {},
-                child: SvgPicture.asset(ImageUtils.instagramLogo),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 24),
-              child: GestureDetector(
-                onTap: () {},
-                child: SvgPicture.asset(ImageUtils.linkedinLogo),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: SvgPicture.asset(ImageUtils.xLogo),
-            ),
+            _socialIcon(ImageUtils.facebookLogo),
+            _socialIcon(ImageUtils.instagramLogo),
+            _socialIcon(ImageUtils.linkedinLogo),
+            _socialIcon(ImageUtils.xLogo),
           ],
-        )
+        ),
       ],
+    );
+  }
+
+  Widget _socialIcon(String assetPath) {
+    return GestureDetector(
+      onTap: () {},
+      child: SvgPicture.asset(assetPath),
+    );
+  }
+
+  Widget _buildFooterBottom() {
+    return const Padding(
+      padding: EdgeInsets.only(top: 24, bottom: 24),
+      child: Row(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 156),
+            child: Text(
+              '© 2024 All Rights Reserved',
+              style: TextStyle(fontSize: 14),
+            ),
+          ),
+          Flexible(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Политика за поверителност',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                ),
+                SizedBox(width: 12),
+                Text(
+                  'Условия за ползване',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -22,18 +22,24 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 600;
+
     return Container(
+      width: double.infinity,
       color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
       child: Form(
         key: _formKey,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 16,
+          runSpacing: 16,
           children: [
-            _buildHeaderText(),
-            const SizedBox(width: 85),
+            _buildHeaderText(isSmallScreen),
+            const SizedBox(width: 48),
             _buildEmailField(),
-            const SizedBox(width: 25),
+            const SizedBox(width: 24),
             _buildSubscribeButton(context),
           ],
         ),
@@ -41,19 +47,18 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
     );
   }
 
-  // Build header text
-  Widget _buildHeaderText() {
-    return const Text(
+  Text _buildHeaderText(bool isSmallScreen) {
+    return Text(
       'Бъдете в крак с новостите за\nдостигане на нови клиенти.',
       style: TextStyle(
         color: Colors.black,
-        fontSize: 26,
+        fontSize: isSmallScreen ? 20 : 26,
         fontWeight: FontWeight.w600,
       ),
     );
   }
 
-  Widget _buildEmailField() {
+  SizedBox _buildEmailField() {
     return SizedBox(
       width: 260,
       child: TextFormField(
