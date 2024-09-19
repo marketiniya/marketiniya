@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/utils/routes.dart';
 
-import '../../utils/color_utils.dart';
-
-class FreeConsultationSection extends StatelessWidget {
-  const FreeConsultationSection({super.key});
+class CheckOurServicesSection extends StatelessWidget {
+  const CheckOurServicesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,27 +11,26 @@ class FreeConsultationSection extends StatelessWidget {
       height: 108,
       color: Colors.white,
       child: Center(
-        child: SizedBox(
-          width: 315,
-          height: 55,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 16, bottom: 16),
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, Routes.connectWithUs);
+              Navigator.pushNamed(context, Routes.services);
             },
             style: ElevatedButton.styleFrom(
-              overlayColor: ColorUtils.lightGray.withOpacity(0.3),
-              shadowColor: Colors.black.withOpacity(0.2),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               splashFactory: InkRipple.splashFactory,
+              shadowColor: Colors.black.withOpacity(0.2),
               backgroundColor: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
             ),
             child: const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Безплатна консултация',
+                  'Разгледайте услугите ни',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
@@ -41,10 +38,7 @@ class FreeConsultationSection extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 12),
-                Icon(
-                  Icons.arrow_forward_outlined,
-                  color: Colors.white,
-                ),
+                Icon(Icons.arrow_forward, color: Colors.white),
               ],
             ),
           ),

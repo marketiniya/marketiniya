@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/extensions/context_extension.dart';
 import 'package:marketinya/models/contact_model.dart';
-import '../../services/firestore_service.dart';
-import '../../utils/color_utils.dart';
+import '../services/firestore_service.dart';
+import '../utils/color_utils.dart';
 
 class LimeContactForm extends StatefulWidget {
-  const LimeContactForm({super.key});
+  const LimeContactForm({super.key, this.hasLimeBackground = true});
+
+  final bool hasLimeBackground;
 
   @override
   State<LimeContactForm> createState() => _LimeContactFormState();
@@ -36,7 +38,7 @@ class _LimeContactFormState extends State<LimeContactForm> {
       children: [
         Container(
           height: 1100,
-          color: ColorUtils.limeGreen,
+          color: widget.hasLimeBackground ? ColorUtils.limeGreen : null,
         ),
         Center(
           child: Padding(

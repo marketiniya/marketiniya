@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:marketinya/config/firebase_options.dart';
 import 'package:marketinya/screens/blog_screen.dart';
+import 'package:marketinya/screens/connect_with_us_screen.dart';
 import 'package:marketinya/screens/home_screen.dart';
 import 'package:marketinya/screens/service_screen.dart';
 import 'package:marketinya/utils/routes.dart';
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
       routes: {
         Routes.home: (context) => const HomeScreen(),
         Routes.blog: (context) => const BlogScreen(),
-        Routes.services: (context) => const ServiceScreen()
+        Routes.services: (context) => const ServiceScreen(),
+        Routes.connectWithUs: (context) => const ConnectWithUsScreen()
       },
       home:  const HomeScreen(),
     );
