@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/extensions/context_extension.dart';
-import '../../services/firestore_service.dart';
-import '../../utils/color_utils.dart';
+import '../services/firestore_service.dart';
+import '../utils/color_utils.dart';
 
 class SubscriptionForm extends StatefulWidget {
   const SubscriptionForm({super.key});

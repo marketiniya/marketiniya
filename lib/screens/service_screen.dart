@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/widgets/home/features_with_images_section.dart';
-import 'package:marketinya/widgets/home/subscription_form.dart';
+import 'package:marketinya/widgets/features_with_images_section.dart';
+import 'package:marketinya/widgets/subscription_form.dart';
 import 'package:marketinya/widgets/services/free_consultation_section.dart';
 import 'package:marketinya/widgets/services/text_section.dart';
 import '../widgets/custom_app_bar.dart';
