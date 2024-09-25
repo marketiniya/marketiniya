@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/utils/color_utils.dart';
 
-class ServiceCard extends StatelessWidget {
+class ServiceCard extends StatefulWidget {
   final String imagePath;
   final String title;
   final double fontSize;
@@ -14,104 +14,253 @@ class ServiceCard extends StatelessWidget {
   });
 
   @override
+  State createState() => _ServiceCardState();
+}
+
+class _ServiceCardState extends State<ServiceCard> {
+  bool _isImageClicked = false;
+
+  @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = screenWidth < 600;
 
-    return Center(
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 16),
-        decoration: BoxDecoration(
-          color: ColorUtils.limeGreen,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Container(
-          width: screenWidth,
-          height: 265,
+    return Padding(
+      padding: const EdgeInsets.only(top: 72),
+      child: Center(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          margin: const EdgeInsets.symmetric(vertical: 16),
           decoration: BoxDecoration(
-            color: ColorUtils.charcoal,
+            color: ColorUtils.limeGreen,
             borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                offset: const Offset(0, 2),
-                blurRadius: 8,
-              ),
-            ],
           ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: isSmallScreen ? 20 : 120, // Adjust padding based on screen size
+          height: _isImageClicked ? 2200 : 265,
+          width: screenWidth,
+          child: Container(
+            decoration: BoxDecoration(
+              color: ColorUtils.charcoal,
+              borderRadius: BorderRadius.circular(32),
             ),
-            child: Row(
-              children: [
-                Flexible(
-                  flex: 1, // Make the image take up 1/3 of the available space
-                  child: ClipRRect(
-                    child: Image.asset(
-                      imagePath,
-                      height: 265,
-                      fit: BoxFit.cover,
+            child: _isImageClicked
+                ? _buildExpandedBackground()
+                : _buildInitialCard(screenWidth, isSmallScreen),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInitialCard(double screenWidth, bool isSmallScreen) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: isSmallScreen ? 20 : 120,
+      ),
+      child: Row(
+        children: [
+          Flexible(
+            flex: 1,
+            child: ClipRRect(
+              child: Image.asset(
+                widget.imagePath,
+                height: 265,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(width: 120),
+          Flexible(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Title
+                  Text(
+                    widget.title,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: widget.fontSize,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
-                ),
-                const SizedBox(width: 16),
-                Flexible(
-                  flex: 2, // Make the text and button take up 2/3 of the available space
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Title
-                        Text(
-                          title,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: fontSize,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.lightGreen,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 35, vertical: 20),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _isImageClicked = true;
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightGreen,
+                      padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _isImageClicked = true;
+                        });
+                      },
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Научи повече',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
-                          child: const Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                'Научи повече',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(width: 12),
-                              Icon(
-                                Icons.arrow_forward_outlined,
-                                color: Colors.black,
-                                size: 18,
-                              ),
-                            ],
+                          SizedBox(width: 12),
+                          Icon(
+                            Icons.arrow_forward_outlined,
+                            color: Colors.black,
+                            size: 18,
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildExpandedBackground() {
+    return Stack(
+      children: [
+        Image.asset(
+          'assets/service-background-1.png',
+          fit: BoxFit.fill,
+          width: double.infinity,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 72, horizontal: 132.0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Main Header
+                const Text(
+                  'Преобразете своя бизнес с Маркетинг в\nСоциалните Мрежи',
+                  style: TextStyle(
+                    fontSize: 44,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 32),
+                // Body Text
+                const Text(
+                  'В днешната дигитална ера, маркетингът в социалните мрежи\nне е просто опция – той е необходимост. Възползвайте се от\nмногобройните потребители в интернет пространството, за\nда достигнете до милиони потенциални клиенти,\nангажирайте вашата аудитория и развийте неразрушима\nвръзка с вашата общност.',
+                  style: TextStyle(
+                    fontSize: 38,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 64),
+                // Section Header
+                const Text(
+                  'Какво предлагаме:',
+                  style: TextStyle(
+                    fontSize: 44,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 64),
+                _buildListItem(
+                  title: '• Създаване на съдържание:',
+                  description:
+                  'Завладяващи визуализации, ангажиращи постове и\nинтересни истории, които привличат внимание и стимулират\nангажираността на вашата аудитория.',
+                ),
+                const SizedBox(height: 64),
+                _buildListItem(
+                  title: '• Управление на рекламни кампании:',
+                  description:
+                  'От стратегия до изпълнение, ние управляваме вашите\nрекламни кампании, за да осигурим максимално\nвъздействие и възвръщаемост на инвестицията ви.',
+                ),
+                const SizedBox(height: 64),
+                _buildListItem(
+                  title: '• Управление на общността:',
+                  description:
+                  'Отдайте се на важните елементи от вашият бизнес, ние ще се\nпогрижим за развитието и поддържането на вашата общност\nот лоялни клиенти и последователи.',
+                ),
+                const SizedBox(height: 64),
+                _buildListItem(
+                  title: '• Анализ и отчетност:',
+                  description:
+                  'Комплексни отчети, които предоставят подробна\nинформация за вашето представяне в социалните мрежи и\nпоследващи стратегически стъпки.',
+                ),
+                const SizedBox(height: 40),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        // Button action here
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.lightGreen,
+                        padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      child: const Text(
+                        'Получете безплатна консултация',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
         ),
+      ],
+    );
+  }
+
+  Widget _buildListItem({required String title, required String description}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 44,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(height: 32),
+          Text(
+            description,
+            style: const TextStyle(
+              fontSize: 38,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
     );
   }
