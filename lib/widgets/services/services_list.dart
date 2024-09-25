@@ -11,27 +11,24 @@ class ServicesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: ColorUtils.limeGreen,
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 72),
       child: const Column(
         children: [
-          SizedBox(height: 50),
           ServiceCard(
             imagePath: ImageUtils.carouselImage1noText,
-            title: 'Маркетинг в Социалните Мрежи',
+            title: 'Маркетинг в Социалните\nМрежи',
             fontSize: 38,
           ),
-          SizedBox(height: 50),
           ServiceCard(
             imagePath: ImageUtils.carouselImage0noText,
-            title: 'Разработка на Уебсайт и Мобилни Приложения',
+            title: 'Разработка на Уебсайт и \nМобилни Приложения',
             fontSize: 38,
           ),
-          SizedBox(height: 50),
           ServiceCard(
             imagePath: ImageUtils.carouselImage2noText,
             title: 'SEO',
             fontSize: 44,
           ),
+          SizedBox(height: 72),
         ],
       ),
     );
