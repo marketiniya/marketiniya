@@ -16,12 +16,14 @@ class Footer extends StatelessWidget {
       padding: const EdgeInsets.only(top: 60),
       child: SizedBox(
         height: isSmallScreen ? null : MediaQuery.of(context).size.height * 0.37,
-        child: Column(
-          children: [
-            isSmallScreen ? _buildSmallScreenLayout(context) : _buildLargeScreenLayout(context),
-            const SizedBox(height: 50),
-            _buildFooterBottom(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              isSmallScreen ? _buildSmallScreenLayout(context) : _buildLargeScreenLayout(context),
+              const SizedBox(height: 50),
+              _buildFooterBottom(),
+            ],
+          ),
         ),
       ),
     );
