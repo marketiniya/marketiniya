@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/utils/color_utils.dart';
 
-class ServiceCard extends StatefulWidget {
+import '../../utils/routes.dart';
+
+class ServiceCard3 extends StatefulWidget {
   final String imagePath;
   final String title;
   final double fontSize;
 
-  const ServiceCard({
+  const ServiceCard3({
     super.key,
     required this.imagePath,
     required this.title,
@@ -14,10 +16,10 @@ class ServiceCard extends StatefulWidget {
   });
 
   @override
-  State createState() => _ServiceCardState();
+  State createState() => _ServiceCard1State();
 }
 
-class _ServiceCardState extends State<ServiceCard> {
+class _ServiceCard1State extends State<ServiceCard3> {
   bool _isImageClicked = false;
 
   @override
@@ -31,16 +33,12 @@ class _ServiceCardState extends State<ServiceCard> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           margin: const EdgeInsets.symmetric(vertical: 16),
-          decoration: BoxDecoration(
-            color: ColorUtils.limeGreen,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          height: _isImageClicked ? 2200 : 265,
+          height: _isImageClicked ? 1100 : 265,
           width: screenWidth,
           child: Container(
             decoration: BoxDecoration(
               color: ColorUtils.charcoal,
-              borderRadius: BorderRadius.circular(32),
+              borderRadius: BorderRadius.circular(_isImageClicked ? 0 : 32),
             ),
             child: _isImageClicked
                 ? _buildExpandedBackground()
@@ -140,7 +138,7 @@ class _ServiceCardState extends State<ServiceCard> {
     return Stack(
       children: [
         Image.asset(
-          'assets/service-background-1.png',
+          'assets/service-background-3.png',
           fit: BoxFit.fill,
           width: double.infinity,
         ),
@@ -150,9 +148,8 @@ class _ServiceCardState extends State<ServiceCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Main Header
                 const Text(
-                  'Преобразете своя бизнес с Маркетинг в\nСоциалните Мрежи',
+                  'Разширете Вашият Онлайн Отпечатъĸ с Еĸспертна\nSEO Оптимизация',
                   style: TextStyle(
                     fontSize: 44,
                     fontWeight: FontWeight.w600,
@@ -160,9 +157,8 @@ class _ServiceCardState extends State<ServiceCard> {
                   ),
                 ),
                 const SizedBox(height: 32),
-                // Body Text
                 const Text(
-                  'В днешната дигитална ера, маркетингът в социалните мрежи\nне е просто опция – той е необходимост. Възползвайте се от\nмногобройните потребители в интернет пространството, за\nда достигнете до милиони потенциални клиенти,\nангажирайте вашата аудитория и развийте неразрушима\nвръзка с вашата общност.',
+                  'В дигиталния свят, видимостта е всичĸо. Да сте в горните\nрезултати на интернет търсачĸите гарантират оставането ви\nстъпĸа напред пред ĸонĸуренцията.',
                   style: TextStyle(
                     fontSize: 38,
                     fontWeight: FontWeight.w500,
@@ -172,44 +168,19 @@ class _ServiceCardState extends State<ServiceCard> {
                 const SizedBox(height: 64),
                 // Section Header
                 const Text(
-                  'Какво предлагаме:',
+                  'С прецизно проучване на ĸлючови думи и безупречната\nинтеграция на съдържание, подсигурявате онлайн\nприсъствието на вашият бранд и достъп до по-голяма\nаудитория от потенциални ĸлиенти.\nПревърнете ĸлиĸванията в ĸонверсии и зрителите в лоялни\nĸлиенти. Маĸсимизирайте дигиталния си отпечатъĸ с\nправилна SEO оптимизация, ĸоято носи резултати. Бъдете\nлидер в своята индустрия.',
                   style: TextStyle(
                     fontSize: 44,
                     fontWeight: FontWeight.w600,
                     color: Colors.black,
                   ),
                 ),
-                const SizedBox(height: 64),
-                _buildListItem(
-                  title: '• Създаване на съдържание:',
-                  description:
-                  'Завладяващи визуализации, ангажиращи постове и\nинтересни истории, които привличат внимание и стимулират\nангажираността на вашата аудитория.',
-                ),
-                const SizedBox(height: 64),
-                _buildListItem(
-                  title: '• Управление на рекламни кампании:',
-                  description:
-                  'От стратегия до изпълнение, ние управляваме вашите\nрекламни кампании, за да осигурим максимално\nвъздействие и възвръщаемост на инвестицията ви.',
-                ),
-                const SizedBox(height: 64),
-                _buildListItem(
-                  title: '• Управление на общността:',
-                  description:
-                  'Отдайте се на важните елементи от вашият бизнес, ние ще се\nпогрижим за развитието и поддържането на вашата общност\nот лоялни клиенти и последователи.',
-                ),
-                const SizedBox(height: 64),
-                _buildListItem(
-                  title: '• Анализ и отчетност:',
-                  description:
-                  'Комплексни отчети, които предоставят подробна\nинформация за вашето представяне в социалните мрежи и\nпоследващи стратегически стъпки.',
-                ),
-                const SizedBox(height: 40),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        // Button action here
+                        Navigator.pushNamed(context, Routes.connectWithUs);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.lightGreen,
@@ -234,34 +205,6 @@ class _ServiceCardState extends State<ServiceCard> {
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildListItem({required String title, required String description}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 44,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-          ),
-          const SizedBox(height: 32),
-          Text(
-            description,
-            style: const TextStyle(
-              fontSize: 38,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
