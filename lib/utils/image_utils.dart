@@ -15,4 +15,7 @@ class ImageUtils {
   static const carouselImage0noText = 'assets/carousel/image0-notext.png';
   static const carouselImage1noText = 'assets/carousel/image1-notext.png';
   static const carouselImage2noText = 'assets/carousel/image2-notext.png';
+  static const laptopImage = 'assets/laptop-image.png';
+  static const laptopShadowImage = 'assets/laptop-shadow.png';
+  static const desktopImage = 'assets/desktop-image.png';
 }

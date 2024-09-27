@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:marketinya/utils/color_utils.dart';
 import 'package:marketinya/utils/image_utils.dart';
 
+import '../../utils/routes.dart';
+
 class BusinessOverviewSection extends StatelessWidget {
   const BusinessOverviewSection({super.key});
 
@@ -18,7 +20,7 @@ class BusinessOverviewSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _businessPromotionColumn(),
+              _businessPromotionColumn(context),
               _pcImageStack(),
             ],
           ),
@@ -27,7 +29,7 @@ class BusinessOverviewSection extends StatelessWidget {
     );
   }
 
-  Column _businessPromotionColumn() {
+  Column _businessPromotionColumn(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -44,7 +46,7 @@ class BusinessOverviewSection extends StatelessWidget {
           height: 60,
           child: ElevatedButton(
             onPressed: () {
-              // Add your onPressed logic here
+              Navigator.pushNamed(context, Routes.services);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorUtils.charcoal,
@@ -57,11 +59,9 @@ class BusinessOverviewSection extends StatelessWidget {
               ),
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               splashFactory: InkRipple.splashFactory,
-              // Ripple effect when clicked
               overlayColor: ColorUtils.lightGray.withOpacity(0.3),
-              // Ripple color
               shadowColor:
-              Colors.black.withOpacity(0.2), // Shadow effect on press
+              Colors.black.withOpacity(0.2),
             ),
             child: const Row(
               children: [
@@ -83,7 +83,9 @@ class BusinessOverviewSection extends StatelessWidget {
         SizedBox(
           height: 60,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.connectWithUs);
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorUtils.lightGray,
               shape: RoundedRectangleBorder(
@@ -135,15 +137,17 @@ class BusinessOverviewSection extends StatelessWidget {
   Stack _pcImageStack() {
     return Stack(
       children: [
-        Image.asset(
-          'assets/pc-image.png',
-          fit: BoxFit.cover,
+        Positioned(
+          top: 380,
+          left: 50,
+          child: Image.asset(ImageUtils.laptopShadowImage),
         ),
+        Image.asset(ImageUtils.laptopImage, fit: BoxFit.cover),
         Positioned(
           top: 96,
           left: 243,
           child: Image.asset(
-            'assets/desktop-image.png',
+            ImageUtils.desktopImage,
             width: 457,
             fit: BoxFit.cover,
           ),
