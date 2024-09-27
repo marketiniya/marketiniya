@@ -11,7 +11,7 @@ class BlogScreen extends StatelessWidget {
         activeTab: 'Блог',
       ),
       body: Center(
-        child: Text('Blog'),
+        child: Text('Blog TEST2'),
       ),
     );
   }
