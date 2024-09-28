@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         Routes.services: (context) => const ServiceScreen(),
         Routes.connectWithUs: (context) => const ConnectWithUsScreen()
       },
-      home:  const HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
