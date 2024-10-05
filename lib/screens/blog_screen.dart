@@ -8,37 +8,45 @@ class BlogScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(
+    return  Scaffold(
+      appBar: const CustomAppBar(
         activeTab: 'Блог',
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.only(left: 156, top: 100, bottom: 32),
-              child: Text(
-                'НОВОСТИ В МАРКЕТИНГА',
-                style: TextStyle(
-                  fontSize: 44,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 156, bottom: 124),
-              child: Text(
-                'Каĸво е необходимо да знаем, за да имаме успешни\nреĸламни ĸампании.',
-                style: TextStyle(
-                  fontSize: 38,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            CheckServicesAndFreeConsultationSection(),
-            Footer()
+            _header1(),
+            _header2(),
+            const CheckServicesAndFreeConsultationSection(),
+            const Footer()
           ],
+        ),
+      ),
+    );
+  }
+
+  Padding _header1() {
+    return const Padding(
+      padding: EdgeInsets.only(left: 156, top: 100, bottom: 32),
+      child: Text(
+        'НОВОСТИ В МАРКЕТИНГА',
+        style: TextStyle(
+          fontSize: 44,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+  }
+
+  Padding _header2() {
+    return const Padding(
+      padding: EdgeInsets.only(left: 156, bottom: 124),
+      child: Text(
+        'Каĸво е необходимо да знаем, за да имаме успешни\nреĸламни ĸампании.',
+        style: TextStyle(
+          fontSize: 38,
+          fontWeight: FontWeight.w400,
         ),
       ),
     );
