@@ -19,10 +19,11 @@ class _BlogScreenState extends State<BlogScreen> {
     BlogModel(
       headerValue: 'Защо е важно да имаме ТОП ниво на клиентско обслужване?',
       expandedValue:
-          '''Adobe разработва модел за генериране на видео за Firefly, който ще добави нови инструменти към платформата Premiere Pro. Те ще позволят на потребителите да разширяват кадри, както и да добавят или премахват обекти чрез текстови команди – аналогично на функцията Generative Fill във Photoshop...''',
+      '''Adobe разработва модел за генериране на видео за Firefly, който ще добави нови инструменти към платформата Premiere Pro. Те ще позволят на потребителите да разширяват кадри, както и да добавят или премахват обекти чрез текстови команди – аналогично на функцията Generative Fill във Photoshop...''',
       imageAsset: ImageUtils.whyTopLevelServicesImage,
       views: 0,
       date: '18.04.2024',
+      isExpanded: false,
     ),
   ];
 
@@ -46,6 +47,12 @@ class _BlogScreenState extends State<BlogScreen> {
     setState(() {
       post.views++;
       prefs.setInt(post.headerValue, post.views);
+    });
+  }
+
+  void _toggleExpansion(BlogModel post) {
+    setState(() {
+      post.isExpanded = !post.isExpanded;
     });
   }
 
@@ -164,9 +171,7 @@ class _BlogScreenState extends State<BlogScreen> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 8.0),
+                  Padding(padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -178,22 +183,46 @@ class _BlogScreenState extends State<BlogScreen> {
                           style: TextButton.styleFrom(
                             foregroundColor: Colors.green,
                           ),
-                          child: const Text(
-                            'Виж още',
-                            style: TextStyle(fontSize: 16),
+                          child: Text(
+                            post.isExpanded ? 'Скрий' : 'Виж още',
+                            style: const TextStyle(fontSize: 16),
                           ),
                           onPressed: () {
+                            _toggleExpansion(post);
                             _incrementViews(post);
                           },
                         ),
                       ],
                     ),
                   ),
+                  if (post.isExpanded) _buildExpandedContent(post),
                 ],
               ),
             ),
           );
         }).toList(),
+      ),
+    );
+  }
+
+  Widget _buildExpandedContent(BlogModel post) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: Text(
+          post.expandedValue,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+            height: 1.5, // Line height for better readability
+          ),
+        ),
       ),
     );
   }
