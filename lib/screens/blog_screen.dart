@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/utils/image_utils.dart';
 import 'package:marketinya/widgets/custom_app_bar.dart';
 import 'package:marketinya/widgets/footer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../data/blog_data.dart';
 import '../models/blog_model.dart';
 import '../widgets/blog/check_services_and_free_consultation_section.dart';
 import 'package:marketinya/utils/color_utils.dart';
@@ -15,17 +15,6 @@ class BlogScreen extends StatefulWidget {
 }
 
 class _BlogScreenState extends State<BlogScreen> {
-  final List<BlogModel> _data = [
-    BlogModel(
-      headerValue: 'Защо е важно да имаме ТОП ниво на клиентско обслужване?',
-      expandedValue:
-      '''Adobe разработва модел за генериране на видео за Firefly, който ще добави нови инструменти към платформата Premiere Pro. Те ще позволят на потребителите да разширяват кадри, както и да добавят или премахват обекти чрез текстови команди – аналогично на функцията Generative Fill във Photoshop...''',
-      imageAsset: ImageUtils.whyTopLevelServicesImage,
-      views: 0,
-      date: '18.04.2024',
-      isExpanded: false,
-    ),
-  ];
 
   @override
   void initState() {
@@ -36,7 +25,7 @@ class _BlogScreenState extends State<BlogScreen> {
   Future<void> _loadViews() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      for (var post in _data) {
+      for (var post in blogData) {
         post.views = prefs.getInt(post.headerValue) ?? post.views;
       }
     });
@@ -106,7 +95,7 @@ class _BlogScreenState extends State<BlogScreen> {
   Center _buildBlogCards() {
     return Center(
       child: Column(
-        children: _data.map<Widget>((BlogModel post) {
+        children: blogData.map<Widget>((BlogModel post) {
           return SizedBox(
             width: 552,
             child: Card(
@@ -206,23 +195,39 @@ class _BlogScreenState extends State<BlogScreen> {
   }
 
   Widget _buildExpandedContent(BlogModel post) {
-    return Padding(
+    return Container(
+      color: Colors.white,
+      width: double.infinity,
       padding: const EdgeInsets.all(16.0),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(16.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        child: Text(
-          post.expandedValue,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-            height: 1.5, // Line height for better readability
-          ),
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: post.sections.map((section) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  section.header,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 8.0),
+                Text(
+                  section.content,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    height: 1.5, // Line height for better readability
+                  ),
+                ),
+              ],
+            ),
+          );
+        }).toList(),
       ),
     );
   }
