@@ -22,9 +22,8 @@ class _BlogCardsState extends State<BlogCards> {
   Future<void> _loadViews() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      for (var post in blogData) {
-        post.views = prefs.getInt(post.headerValue) ?? post.views;
-      }
+      blogData1.views = prefs.getInt(blogData1.headerValue) ?? blogData1.views;
+      blogData2.views = prefs.getInt(blogData2.headerValue) ?? blogData2.views;
     });
   }
 
@@ -44,105 +43,149 @@ class _BlogCardsState extends State<BlogCards> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Container(
+      color: ColorUtils.limeGreen,
+      padding: const EdgeInsets.only(top: 100, bottom: 100, left: 80, right: 80),
       child: Column(
-        children: blogData.map<Widget>((BlogModel post) {
-          return SizedBox(
-            width: 552,
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.0),
+        children: [
+          if (blogData1.isExpanded) ...[
+            // First card is expanded, so it takes up its own row
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData1)),
+              ],
+            ),
+            const SizedBox(height: 16),
+            // Second card below
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData2)),
+              ],
+            ),
+          ] else if (blogData2.isExpanded) ...[
+            // First card stays in the first row with a spacer if the second card is expanded
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData1)),
+                const Spacer(), // Use spacer to maintain space on the right
+              ],
+            ),
+            const SizedBox(height: 16),
+            // Second card gets its own row, expanded
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData2)),
+              ],
+            ),
+          ] else ...[
+            // Default state: both cards are in the same row
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData1)),
+                const SizedBox(width: 16),
+                Expanded(child: buildCard(blogData2)),
+              ],
+            ),
+          ]
+        ],
+      ),
+    );
+  }
+
+  Widget buildCard(BlogModel post) {
+    return SizedBox(
+      width: 552,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        color: ColorUtils.charcoal,
+        margin: const EdgeInsets.only(bottom: 24.0),
+        elevation: 4.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, // Align the content to the start
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16.0),
+                topRight: Radius.circular(16.0),
               ),
-              color: ColorUtils.charcoal,
-              margin: const EdgeInsets.only(bottom: 24.0),
-              elevation: 4.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: SizedBox(
+                width: double.infinity,
+                height: 265,
+                child: Image.asset(post.imageAsset, fit: BoxFit.cover),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                post.headerValue,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.start,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
                 children: [
-                  ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(16.0),
-                      topRight: Radius.circular(16.0),
-                    ),
-                    child: SizedBox(
-                      width: 552,
-                      height: 265,
-                      child: Image.asset(post.imageAsset, fit: BoxFit.cover),
+                  const Icon(
+                    Icons.visibility,
+                    size: 16,
+                    color: Colors.grey,
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    '${post.views}',
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                  const SizedBox(width: 16),
+                  const Icon(
+                    Icons.access_time,
+                    size: 16,
+                    color: Colors.grey,
+                  ),
+                  const SizedBox(width: 4),
+                  const Text(
+                    'Време за прочит: 5 м.',
+                    style: TextStyle(
+                      color: Colors.grey,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      post.headerValue,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.visibility,
-                          size: 16,
-                          color: Colors.grey,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          '${post.views}',
-                          style: const TextStyle(color: Colors.grey),
-                        ),
-                        const SizedBox(width: 16),
-                        const Icon(
-                          Icons.access_time,
-                          size: 16,
-                          color: Colors.grey,
-                        ),
-                        const SizedBox(width: 4),
-                        const Text(
-                          'Време за прочит: 5 м.',
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          post.date,
-                          style: const TextStyle(color: Colors.grey),
-                        ),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            foregroundColor: Colors.green,
-                          ),
-                          child: Text(
-                            post.isExpanded ? 'Скрий' : 'Виж още',
-                            style: const TextStyle(fontSize: 16),
-                          ),
-                          onPressed: () {
-                            _toggleExpansion(post);
-                            _incrementViews(post);
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                  if (post.isExpanded) _buildExpandedContent(post),
                 ],
               ),
             ),
-          );
-        }).toList(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    post.date,
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.green,
+                    ),
+                    child: Text(
+                      post.isExpanded ? 'Скрий' : 'Виж още',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    onPressed: () {
+                      _toggleExpansion(post);
+                      _incrementViews(post);
+                    },
+                  ),
+                ],
+              ),
+            ),
+            if (post.isExpanded) _buildExpandedContent(post),
+          ],
+        ),
       ),
     );
   }

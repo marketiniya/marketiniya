@@ -19,4 +19,5 @@ class ImageUtils {
   static const laptopShadowImage = 'assets/laptop-shadow.png';
   static const desktopImage = 'assets/desktop-image.png';
   static const whyTopLevelServicesImage = 'assets/why-top-level-service.jpg';
+  static const marketingAutomationImage = 'assets/marketing-automation.png';
 }
