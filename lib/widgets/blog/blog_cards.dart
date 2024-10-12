@@ -24,6 +24,8 @@ class _BlogCardsState extends State<BlogCards> {
     setState(() {
       blogData1.views = prefs.getInt(blogData1.headerValue) ?? blogData1.views;
       blogData2.views = prefs.getInt(blogData2.headerValue) ?? blogData2.views;
+      blogData3.views = prefs.getInt(blogData3.headerValue) ?? blogData3.views;
+      blogData4.views = prefs.getInt(blogData4.headerValue) ?? blogData4.views;
     });
   }
 
@@ -48,45 +50,82 @@ class _BlogCardsState extends State<BlogCards> {
       padding: const EdgeInsets.only(top: 100, bottom: 100, left: 80, right: 80),
       child: Column(
         children: [
-          if (blogData1.isExpanded) ...[
-            // First card is expanded, so it takes up its own row
-            Row(
-              children: [
-                Expanded(child: buildCard(blogData1)),
-              ],
-            ),
-            const SizedBox(height: 16),
-            // Second card below
-            Row(
-              children: [
-                Expanded(child: buildCard(blogData2)),
-              ],
-            ),
-          ] else if (blogData2.isExpanded) ...[
-            // First card stays in the first row with a spacer if the second card is expanded
-            Row(
-              children: [
-                Expanded(child: buildCard(blogData1)),
-                const Spacer(), // Use spacer to maintain space on the right
-              ],
-            ),
-            const SizedBox(height: 16),
-            // Second card gets its own row, expanded
-            Row(
-              children: [
-                Expanded(child: buildCard(blogData2)),
-              ],
-            ),
-          ] else ...[
-            // Default state: both cards are in the same row
+          if (!blogData1.isExpanded && !blogData2.isExpanded)
             Row(
               children: [
                 Expanded(child: buildCard(blogData1)),
                 const SizedBox(width: 16),
                 Expanded(child: buildCard(blogData2)),
               ],
+            )
+          else if (blogData1.isExpanded) ...[
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData1)),
+              ],
             ),
-          ]
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData2)),
+                const Spacer(),
+              ],
+            ),
+          ] else if (blogData2.isExpanded) ...[
+            // If blogData2 is expanded, keep blogData2 expanded and push blogData1 to a new row
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData1)),
+                const Spacer(),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData2)),
+              ],
+            ),
+          ],
+
+          // Second row: blogData3 and blogData4
+          const SizedBox(height: 16),
+          if (!blogData3.isExpanded && !blogData4.isExpanded)
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData3)),
+                const SizedBox(width: 16),
+                Expanded(child: buildCard(blogData4)),
+              ],
+            )
+          else if (blogData3.isExpanded) ...[
+            // If blogData3 is expanded, keep blogData3 expanded and push blogData4 to a new row
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData3)),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData4)),
+                const Spacer(),
+              ],
+            ),
+          ] else if (blogData4.isExpanded) ...[
+            // If blogData4 is expanded, keep blogData4 expanded and push blogData3 to a new row
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData3)), // Card 3 stays small
+                const Spacer(),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(child: buildCard(blogData4)), // Expanded Card 4
+              ],
+            ),
+          ],
         ],
       ),
     );
@@ -144,10 +183,9 @@ class _BlogCardsState extends State<BlogCards> {
                   ),
                   const SizedBox(width: 16),
                   const Icon(
-                    Icons.access_time,
-                    size: 16,
-                    color: Colors.grey,
-                  ),
+                      Icons.access_time,
+                      size: 16,
+                      color: Colors.grey),
                   const SizedBox(width: 4),
                   const Text(
                     'Време за прочит: 5 м.',

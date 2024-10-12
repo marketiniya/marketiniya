@@ -20,4 +20,6 @@ class ImageUtils {
   static const desktopImage = 'assets/desktop-image.png';
   static const whyTopLevelServicesImage = 'assets/why-top-level-service.jpg';
   static const marketingAutomationImage = 'assets/marketing-automation.png';
+  static const paidMarketingImage = 'assets/paid-marketing.png';
+  static const contentKingImage = 'assets/content-king.png';
 }
