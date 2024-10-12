@@ -19,8 +19,8 @@ class BlogScreen extends StatelessWidget {
           children: [
             _header1(),
             _header2(),
-            const BlogCards(),
             const CheckServicesAndFreeConsultationSection(),
+            const BlogCards(),
             const Footer(),
           ],
         ),
