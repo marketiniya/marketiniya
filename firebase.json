@@ -31,13 +31,6 @@
     ],
     "frameworksBackend": {
       "region": "europe-west1"
-    },
-    "redirects": [
-      {
-        "source": "/",
-        "destination": "https://marketiniya.com",
-        "type": 301
-      }
-    ]
+    }
   }
 }
