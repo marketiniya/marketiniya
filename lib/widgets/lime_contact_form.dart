@@ -236,7 +236,7 @@ class _LimeContactFormState extends State<LimeContactForm> {
                       'Изпрати',
                       style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                     SizedBox(width: 12),
