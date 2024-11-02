@@ -4,7 +4,9 @@ import 'package:marketinya/widgets/footer.dart';
 import 'package:marketinya/widgets/home/business_info_section.dart';
 import 'package:marketinya/widgets/home/business_overview_section.dart';
 import 'package:marketinya/widgets/home/carousel_section.dart';
+import 'package:marketinya/widgets/space_box.dart';
 import '../widgets/features_with_images_section.dart';
+import '../widgets/home/explore_services_section.dart';
 import '../widgets/lime_contact_form.dart';
 import '../widgets/subscription_form.dart';
 
@@ -13,20 +15,20 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(activeTab: 'Начало'),
+    return const Scaffold(
+      appBar: CustomAppBar(activeTab: 'Начало'),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const BusinessOverviewSection(),
-            const CarouselSection(),
-            Container(width: double.infinity, height: 70, color: Colors.white),
-            const BusinessInfoSection(),
-            const FeaturesWithImagesSection(),
-            Container(width: double.infinity, height: 70, color: Colors.white),
-            const LimeContactForm(),
-            const SubscriptionForm(),
-            const Footer(),
+            BusinessOverviewSection(),
+            CarouselSection(),
+            SpaceBox(height: 70, color: Colors.white),
+            BusinessInfoSection(),
+            FeaturesWithImagesSection(),
+            ExploreServicesSection(),
+            LimeContactForm(),
+            SubscriptionForm(),
+            Footer(),
           ],
         ),
       ),
