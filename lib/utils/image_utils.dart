@@ -22,4 +22,7 @@ class ImageUtils {
   static const marketingAutomationImage = 'assets/marketing-automation.png';
   static const paidMarketingImage = 'assets/paid-marketing.png';
   static const contentKingImage = 'assets/content-king.png';
+  static const carouselItemImage0 = 'assets/carousel/image0.png';
+  static const carouselItemImage1 = 'assets/carousel/image1.png';
+  static const carouselItemImage2 = 'assets/carousel/image2.png';
 }
