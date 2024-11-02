@@ -25,4 +25,8 @@ class ImageUtils {
   static const carouselItemImage0 = 'assets/carousel/image0.png';
   static const carouselItemImage1 = 'assets/carousel/image1.png';
   static const carouselItemImage2 = 'assets/carousel/image2.png';
+  static const handsImage = 'assets/hands-image.png';
+  static const chartImage = 'assets/chart-image.png';
+  static const mapImage = 'assets/map-image.png';
+  static const peopleTableImage = 'assets/people-table-image.png';
 }

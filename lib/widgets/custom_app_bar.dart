@@ -7,12 +7,9 @@ import '../utils/routes.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key, required this.activeTab});
-
   final String activeTab;
-
   static const double _fontSize = 20;
   static const double _toolbarHeight = 180;
-
   @override
   Size get preferredSize => const Size.fromHeight(_toolbarHeight);
 
@@ -44,7 +41,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             'Начало',
             style: TextStyle(
               fontSize: _fontSize,
-              fontWeight: activeTab == 'Начало' ? FontWeight.bold : FontWeight.normal,
               color: activeTab == 'Начало' ? colorScheme.secondary : colorScheme.primary,
             ),
           ),
@@ -57,7 +53,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             'Блог',
             style: TextStyle(
               fontSize: _fontSize,
-              fontWeight: activeTab == 'Блог' ? FontWeight.bold : FontWeight.normal,
               color: activeTab == 'Блог' ? colorScheme.secondary : colorScheme.primary,
             ),
           ),
@@ -71,29 +66,51 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             'Услуги',
             style: TextStyle(
               fontSize: _fontSize,
-              fontWeight: activeTab == 'Услуги' ? FontWeight.bold : FontWeight.normal,
               color: activeTab == 'Услуги' ? ColorUtils.limeGreen : ColorUtils.lightGray,
             ),
           ),
         ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, Routes.connectWithUs);
-          },
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-          child: const Text(
-            'Свържи се с нас',
-            style: TextStyle(
-              fontSize: _fontSize,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
+        SizedBox(
+          width: 220,
+          child: activeTab == 'Свържи се с нас'
+              ? TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.connectWithUs);
+                  },
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 24),
+                    backgroundColor: ColorUtils.charcoal,
+                    foregroundColor: ColorUtils.limeGreen,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  child: const Text(
+                    'Свържи се с нас',
+                    style: TextStyle(fontSize: _fontSize),
+                  ),
+                )
+              : ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.connectWithUs);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 24),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  child: const Text(
+                    'Свържи се с нас',
+                    style: TextStyle(
+                      fontSize: _fontSize,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+        )
       ],
     );
   }
@@ -143,7 +160,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               fontWeight: FontWeight.w500,
               fontFamily: 'GothamPro',
             ),
-          )
+          ),
         ),
       ],
     );

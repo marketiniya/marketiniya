@@ -30,6 +30,9 @@ class BusinessOverviewSection extends StatelessWidget {
   }
 
   Column _businessPromotionColumn(BuildContext context) {
+    const buttonWidth = 318.0;
+    const buttonHeight = 60.0;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -43,7 +46,8 @@ class BusinessOverviewSection extends StatelessWidget {
         ),
         const SizedBox(height: 100),
         SizedBox(
-          height: 60,
+          height: buttonHeight,
+          width: buttonWidth,
           child: ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, Routes.services);
@@ -81,7 +85,8 @@ class BusinessOverviewSection extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         SizedBox(
-          height: 60,
+          height: buttonHeight,
+          width: buttonWidth,
           child: ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, Routes.connectWithUs);
@@ -99,7 +104,7 @@ class BusinessOverviewSection extends StatelessWidget {
                   'Безплатна консултация',
                   style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w600,
                     color: ColorUtils.charcoal,
                   ),
                 ),
