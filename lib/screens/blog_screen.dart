@@ -5,6 +5,7 @@ import 'package:marketinya/widgets/lime_contact_form.dart';
 import 'package:marketinya/widgets/subscription_form.dart';
 import '../widgets/blog/blog_cards.dart';
 import '../widgets/blog/check_services_and_free_consultation_section.dart';
+import '../widgets/space_box.dart';
 
 class BlogScreen extends StatelessWidget {
   const BlogScreen({super.key});
@@ -21,7 +22,7 @@ class BlogScreen extends StatelessWidget {
           children: [
             _header1(),
             _header2(),
-            Container(width: double.infinity, height: 70, color: Colors.white),
+            const SpaceBox(height: 70, color: Colors.white),
             const BlogCards(),
             const CheckServicesAndFreeConsultationSection(),
             const LimeContactForm(),

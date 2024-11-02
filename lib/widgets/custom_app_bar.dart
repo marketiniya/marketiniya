@@ -141,8 +141,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             style: TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.w500,
+              fontFamily: 'GothamPro',
             ),
-          ),
+          )
         ),
       ],
     );

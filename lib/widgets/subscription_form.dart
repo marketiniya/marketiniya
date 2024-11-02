@@ -33,13 +33,11 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
         key: _formKey,
         child: Wrap(
           alignment: WrapAlignment.center,
-          spacing: 16,
-          runSpacing: 16,
+          spacing: 46,
           children: [
             _buildHeaderText(isSmallScreen),
-            const SizedBox(width: 48),
+            const SizedBox(width: 150),
             _buildEmailField(),
-            const SizedBox(width: 24),
             _buildSubscribeButton(context),
           ],
         ),
@@ -58,8 +56,9 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
     );
   }
 
-  SizedBox _buildEmailField() {
-    return SizedBox(
+  Container _buildEmailField() {
+    return Container(
+      margin: const EdgeInsets.only(top: 14.0),
       width: 260,
       child: TextFormField(
         controller: _emailController,
@@ -115,37 +114,41 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
     );
   }
 
-  ElevatedButton _buildSubscribeButton(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () async {
-        if (_formKey.currentState!.validate()) {
-          try {
-            await FirestoreService.instance.subscribe(_emailController.text);
-            context.showSuccessSnackBar('Успешно се абонирахте');
-          } catch (e) {
-            if (e.toString().contains('email-exists')) {
-              context.showFailureSnackBar('Вече сте абонирани');
-            } else {
-              context.showFailureSnackBar('Възникна грешка с абонирането');
+  Container _buildSubscribeButton(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 14.0),
+      height: 49,
+      child: ElevatedButton(
+        onPressed: () async {
+          if (_formKey.currentState!.validate()) {
+            try {
+              await FirestoreService.instance.subscribe(_emailController.text);
+              context.showSuccessSnackBar('Успешно се абонирахте');
+            } catch (e) {
+              if (e.toString().contains('email-exists')) {
+                context.showFailureSnackBar('Вече сте абонирани');
+              } else {
+                context.showFailureSnackBar('Възникна грешка с абонирането');
+              }
             }
           }
-        }
-      },
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        splashFactory: InkRipple.splashFactory,
-        shadowColor: Colors.black.withOpacity(0.2),
-        backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+        },
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          splashFactory: InkRipple.splashFactory,
+          shadowColor: Colors.black.withOpacity(0.2),
+          backgroundColor: ColorUtils.charcoal,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
         ),
-      ),
-      child: const Text(
-        'Абониране',
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w400,
-          color: Colors.white,
+        child: const Text(
+          'Абониране',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
+            color: Colors.white,
+          ),
         ),
       ),
     );
