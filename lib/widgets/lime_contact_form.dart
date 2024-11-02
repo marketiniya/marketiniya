@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/extensions/context_extension.dart';
 import 'package:marketinya/models/contact_model.dart';
+import 'package:marketinya/utils/constants.dart';
 import '../services/firestore_service.dart';
 import '../utils/color_utils.dart';
 
@@ -44,7 +45,7 @@ class _LimeContactFormState extends State<LimeContactForm> {
           child: Padding(
             padding: const EdgeInsets.only(top: 72),
             child: Container(
-              width: 1000,
+              width: Constants.kContentMaxWidth,
               decoration: BoxDecoration(
                 color: ColorUtils.charcoal,
                 borderRadius: BorderRadius.circular(32),

@@ -23,8 +23,6 @@ class _CarouselSectionState extends State<CarouselSection> {
 
   @override
   Widget build(BuildContext context) {
-    double maxCarouselWidth = 1500.0;
-
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
@@ -39,7 +37,7 @@ class _CarouselSectionState extends State<CarouselSection> {
       ),
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: maxCarouselWidth),
+          constraints: const BoxConstraints(maxWidth: 1500.0),
           child: Stack(
             alignment: Alignment.center,
             children: [
@@ -75,11 +73,7 @@ class _CarouselSectionState extends State<CarouselSection> {
                       curve: Curves.easeInOut,
                     );
                   },
-                  child: SvgPicture.asset(
-                    ImageUtils.previousImagePath,
-                    width: 40,
-                    height: 72,
-                  ),
+                  child: SvgPicture.asset(ImageUtils.previousImagePath),
                 ),
               ),
               Positioned(
@@ -91,10 +85,7 @@ class _CarouselSectionState extends State<CarouselSection> {
                       curve: Curves.easeInOut,
                     );
                   },
-                  child: SvgPicture.asset(ImageUtils.nextImagePath,
-                    width: 40,
-                    height: 72,
-                  ),
+                  child: SvgPicture.asset(ImageUtils.nextImagePath),
                 ),
               ),
             ],

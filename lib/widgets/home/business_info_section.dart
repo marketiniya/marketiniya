@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/utils/color_utils.dart';
+import 'package:marketinya/utils/constants.dart';
 import 'package:marketinya/utils/image_utils.dart';
 
 class BusinessInfoSection extends StatelessWidget {
@@ -16,7 +17,7 @@ class BusinessInfoSection extends StatelessWidget {
             vertical: 220,
           ),
           child: Container(
-            width: double.infinity,
+            width: Constants.kContentMaxWidth,
             decoration: BoxDecoration(
               color: ColorUtils.lightGray.withOpacity(0.6),
               borderRadius: BorderRadius.circular(32),
