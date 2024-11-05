@@ -2,158 +2,155 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marketinya/utils/color_utils.dart';
 import 'package:marketinya/utils/image_utils.dart';
-
 import '../utils/routes.dart';
+import 'nav_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key, required this.activeTab});
   final String activeTab;
   static const double _fontSize = 20;
   static const double _toolbarHeight = 180;
+  static const double _logoHeight = 100;
+  static const double _logoWidth = 126;
+  static const double _dividerHeight = 2;
+
   @override
   Size get preferredSize => const Size.fromHeight(_toolbarHeight);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: Container(),
+      leading: const SizedBox.shrink(),
       toolbarHeight: _toolbarHeight,
-      title: _title(context),
+      title: _buildTitle(context),
       scrolledUnderElevation: 0.0,
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1),
-        child: _customDividerAndLabelSvgAndText(context),
+        child: _buildBottomDividerAndLabel(context),
       ),
     );
   }
 
-  Widget _title(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+  Widget _buildTitle(BuildContext context) {
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 16.0,
+      runSpacing: 8.0,
       children: [
-        TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, Routes.home);
-          },
-          child: Text(
-            'Начало',
-            style: TextStyle(
-              fontSize: _fontSize,
-              color: activeTab == 'Начало' ? colorScheme.secondary : colorScheme.primary,
-            ),
-          ),
+        NavButton(
+          label: 'Начало',
+          activeTab: activeTab,
+          onPressed: () => Navigator.pushNamed(context, Routes.home),
+          fontSize: _fontSize,
         ),
-        TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, Routes.blog);
-          },
-          child: Text(
-            'Блог',
-            style: TextStyle(
-              fontSize: _fontSize,
-              color: activeTab == 'Блог' ? colorScheme.secondary : colorScheme.primary,
-            ),
-          ),
+        NavButton(
+          label: 'Блог',
+          activeTab: activeTab,
+          onPressed: () => Navigator.pushNamed(context, Routes.blog),
+          fontSize: _fontSize,
         ),
-        _svgLogo(),
-        TextButton(
-          onPressed: () {
-            Navigator.pushNamed(context, Routes.services);
-          },
-          child: Text(
-            'Услуги',
-            style: TextStyle(
-              fontSize: _fontSize,
-              color: activeTab == 'Услуги' ? ColorUtils.limeGreen : ColorUtils.lightGray,
-            ),
-          ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: _buildLogo(),
         ),
-        SizedBox(
-          width: 220,
-          child: activeTab == 'Свържи се с нас'
-              ? TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, Routes.connectWithUs);
-                  },
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 24),
-                    backgroundColor: ColorUtils.charcoal,
-                    foregroundColor: ColorUtils.limeGreen,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                  child: const Text(
-                    'Свържи се с нас',
-                    style: TextStyle(fontSize: _fontSize),
-                  ),
-                )
-              : ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, Routes.connectWithUs);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 24),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                  child: const Text(
-                    'Свържи се с нас',
-                    style: TextStyle(
-                      fontSize: _fontSize,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-        )
+        NavButton(
+          label: 'Услуги',
+          activeTab: activeTab,
+          onPressed: () => Navigator.pushNamed(context, Routes.services),
+          fontSize: _fontSize,
+        ),
+        _buildContactButton(context),
       ],
     );
   }
 
-  Widget _svgLogo() {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: SvgPicture.asset(
-        height: 100,
-        width: 126,
-        ImageUtils.marketinyaLogoPath,
+  Widget _buildContactButton(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final screenWidth = constraints.maxWidth;
+
+        final padding = screenWidth < 800
+            ? const EdgeInsets.symmetric(horizontal: 8, vertical: 16)
+            : screenWidth < 1300
+                ? const EdgeInsets.symmetric(horizontal: 12, vertical: 24)
+                : const EdgeInsets.symmetric(horizontal: 16, vertical: 24);
+
+        return SizedBox(
+          width: screenWidth < 800 ? 180 : 220,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 25),
+            child: activeTab == 'Свържи се с нас'
+                ? _buildTextButton(context, padding)
+                : _buildElevatedButton(context, padding),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildTextButton(BuildContext context, EdgeInsets padding) {
+    return TextButton(
+      onPressed: () => Navigator.pushNamed(context, Routes.connectWithUs),
+      style: TextButton.styleFrom(
+        padding: padding,
+        backgroundColor: ColorUtils.charcoal,
+        foregroundColor: ColorUtils.limeGreen,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      ),
+      child: const Text(
+        'Свържи се с нас',
+        style: TextStyle(fontSize: _fontSize),
+        semanticsLabel: 'Contact us button',
       ),
     );
   }
 
-  Widget _customDividerAndLabelSvgAndText(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double dynamicWidth = screenWidth / 2 - 135;
+  Widget _buildElevatedButton(BuildContext context, EdgeInsets padding) {
+    return ElevatedButton(
+      onPressed: () => Navigator.pushNamed(context, Routes.connectWithUs),
+      style: ElevatedButton.styleFrom(
+        padding: padding,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      ),
+      child: const Text(
+        'Свържи се с нас',
+        style: TextStyle(fontSize: _fontSize, fontWeight: FontWeight.w600),
+        semanticsLabel: 'Contact us button',
+      ),
+    );
+  }
+
+  Widget _buildLogo() {
+    return SvgPicture.asset(
+      ImageUtils.marketinyaLogoPath,
+      height: _logoHeight,
+      width: _logoWidth,
+      semanticsLabel: 'Marketinya logo',
+    );
+  }
+
+  Widget _buildBottomDividerAndLabel(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final dividerWidth =
+        screenWidth <= 1300 ? screenWidth / 2 - 190 : screenWidth / 2 - 92;
 
     return Column(
       children: [
         Row(
           children: [
-            Container(
-              width: dynamicWidth,
-              height: 2,
-              color: ColorUtils.limeGreen,
-            ),
+            _buildDividerLine(dividerWidth, context),
             Padding(
-              padding: const EdgeInsets.only(left: 24, right: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: SvgPicture.asset(ImageUtils.marketinyaLabelPath),
             ),
             Expanded(
-              child: Container(
-                height: 2,
-                color: ColorUtils.limeGreen,
-              ),
+              child: _buildDividerLine(dividerWidth, context),
             ),
           ],
         ),
-        const Padding(
-          padding: EdgeInsets.only(top: 12, right: 50),
-          child: Text(
+        Padding(
+          padding: _getResponsiveLabelPadding(screenWidth),
+          child: const Text(
             'По-добър маркетинг – по-добри резултати!',
             style: TextStyle(
               fontSize: 28,
@@ -164,5 +161,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ],
     );
+  }
+
+  Widget _buildDividerLine(double width, BuildContext context) {
+    return Container(
+      width: width,
+      height: _dividerHeight,
+      color: Theme.of(context).colorScheme.secondary,
+    );
+  }
+
+  EdgeInsets _getResponsiveLabelPadding(double screenWidth) {
+    return screenWidth <= 1300
+        ? const EdgeInsets.only(top: 12, right: 130)
+        : const EdgeInsets.only(top: 12, left: 90);
   }
 }
