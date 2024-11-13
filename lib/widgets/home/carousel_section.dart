@@ -53,7 +53,7 @@ class _CarouselSectionState extends State<CarouselSection> {
                 CarouselSlider.builder(
                   carouselController: _carouselController,
                   options: CarouselOptions(
-                    height: 600,
+                    height: MediaQuery.of(context).size.height * 0.6,
                     autoPlay: false,
                     enableInfiniteScroll: true,
                     initialPage: 1,

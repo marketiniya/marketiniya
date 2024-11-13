@@ -9,23 +9,26 @@ class BusinessOverviewSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          top: 110,
-          child: Image.asset(ImageUtils.socialMediaBackgroundPath),
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _businessPromotionColumn(context),
-              _pcImageStack(),
-            ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 60),
+      child: Stack(
+        children: [
+          Positioned.fill(
+            top: 110,
+            child: Image.asset(ImageUtils.socialMediaBackgroundPath),
           ),
-        ),
-      ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _businessPromotionColumn(context),
+                _pcImageStack(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
