@@ -32,35 +32,37 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget _buildTitle(BuildContext context) {
-    return Wrap(
-      alignment: WrapAlignment.center,
-      spacing: 16.0,
-      runSpacing: 8.0,
-      children: [
-        NavButton(
-          label: 'Начало',
-          activeTab: activeTab,
-          onPressed: () => Navigator.pushNamed(context, Routes.home),
-          fontSize: _fontSize,
-        ),
-        NavButton(
-          label: 'Блог',
-          activeTab: activeTab,
-          onPressed: () => Navigator.pushNamed(context, Routes.blog),
-          fontSize: _fontSize,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: _buildLogo(),
-        ),
-        NavButton(
-          label: 'Услуги',
-          activeTab: activeTab,
-          onPressed: () => Navigator.pushNamed(context, Routes.services),
-          fontSize: _fontSize,
-        ),
-        _buildContactButton(context),
-      ],
+    return Center(
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        spacing: 16.0,
+        runSpacing: 8.0,
+        children: [
+          NavButton(
+            label: 'Начало',
+            activeTab: activeTab,
+            onPressed: () => Navigator.pushNamed(context, Routes.home),
+            fontSize: _fontSize,
+          ),
+          NavButton(
+            label: 'Блог',
+            activeTab: activeTab,
+            onPressed: () => Navigator.pushNamed(context, Routes.blog),
+            fontSize: _fontSize,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: _buildLogo(),
+          ),
+          NavButton(
+            label: 'Услуги',
+            activeTab: activeTab,
+            onPressed: () => Navigator.pushNamed(context, Routes.services),
+            fontSize: _fontSize,
+          ),
+          _buildContactButton(context),
+        ],
+      ),
     );
   }
 
@@ -132,7 +134,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget _buildBottomDividerAndLabel(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final dividerWidth =
-        screenWidth <= 1300 ? screenWidth / 2 - 190 : screenWidth / 2 - 92;
+        screenWidth <= 1300 ? screenWidth / 2 - 160 : screenWidth / 2 - 64;
 
     return Column(
       children: [
