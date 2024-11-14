@@ -138,17 +138,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return Column(
       children: [
-        Row(
-          children: [
-            _buildDividerLine(dividerWidth, context),
-            Padding(
-              padding: const EdgeInsets.only(left: 25, right: 25, top: 8),
-              child: SvgPicture.asset(ImageUtils.marketinyaLabelPath),
-            ),
-            Expanded(
-              child: _buildDividerLine(dividerWidth, context),
-            ),
-          ],
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Row(
+            children: [
+              _buildDividerLine(dividerWidth, context),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: SvgPicture.asset(ImageUtils.marketinyaLabelPath),
+              ),
+              Expanded(
+                child: _buildDividerLine(dividerWidth, context),
+              ),
+            ],
+          ),
         ),
         Padding(
           padding: _getResponsiveLabelPadding(screenWidth),
@@ -175,7 +178,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   EdgeInsets _getResponsiveLabelPadding(double screenWidth) {
     return screenWidth <= 1300
-        ? const EdgeInsets.only(top: 12, right: 130)
-        : const EdgeInsets.only(top: 12, left: 90);
+        ? const EdgeInsets.only(top: 6, right: 130)
+        : const EdgeInsets.only(top: 6, left: 90);
   }
 }
