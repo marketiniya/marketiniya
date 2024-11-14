@@ -142,7 +142,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             _buildDividerLine(dividerWidth, context),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.only(left: 25, right: 25, top: 8),
               child: SvgPicture.asset(ImageUtils.marketinyaLabelPath),
             ),
             Expanded(
