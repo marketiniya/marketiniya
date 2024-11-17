@@ -9,49 +9,31 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final isSmallScreen = width < 600;
-
-    return Padding(
-      padding: const EdgeInsets.only(top: 60),
-      child: SizedBox(
-        height: isSmallScreen ? null : MediaQuery.of(context).size.height * 0.37,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              isSmallScreen ? _buildSmallScreenLayout(context) : _buildLargeScreenLayout(context),
-              const SizedBox(height: 50),
-              _buildFooterBottom(),
-            ],
-          ),
+    return SizedBox(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildScreenLayout(context),
+            _buildFooterBottom(),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildSmallScreenLayout(BuildContext context) {
-    return Column(
+  Widget _buildScreenLayout(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _imagesColumn(),
-        const SizedBox(height: 20),
+        const SizedBox(width: 140),
         _contactColumn(),
-        const SizedBox(height: 20),
-        _socialMediaColumn(),
-        const SizedBox(height: 20),
+        const SizedBox(width: 86),
         _redirectTextButtons(context),
-      ],
-    );
-  }
-
-  Widget _buildLargeScreenLayout(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(child: _imagesColumn()),
-        Expanded(child: _contactColumn()),
-        Expanded(child: _redirectTextButtons(context)),
-        Expanded(child: _socialMediaColumn())
+        const SizedBox(width: 184),
+        _socialMediaColumn()
       ],
     );
   }
@@ -59,11 +41,7 @@ class Footer extends StatelessWidget {
   Widget _imagesColumn() {
     return Column(
       children: [
-        SvgPicture.asset(
-          height: 100,
-          width: 126,
-          ImageUtils.marketinyaLogoPath,
-        ),
+        SvgPicture.asset(ImageUtils.marketinyaLogoPath),
         Padding(
           padding: const EdgeInsets.only(top: 8),
           child: SvgPicture.asset(ImageUtils.marketinyaLabelPath),
@@ -80,7 +58,7 @@ class Footer extends StatelessWidget {
           'Свържи се с нас',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
         ),
-        const SizedBox(height: 14.5),
+        const SizedBox(height: 28),
         _contactInfo(Icons.location_on_outlined, 'България'),
         const SizedBox(height: 16),
         _contactInfo(Icons.mail_outline_outlined, 'rumen.katincharov@marketiniya.bg'),
@@ -95,22 +73,27 @@ class Footer extends StatelessWidget {
       children: [
         Icon(icon, color: ColorUtils.lightGray),
         const SizedBox(width: 13),
-        Flexible(
-          child: Text(
-            text,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-          ),
-        )
+        Text(
+          text,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+        ),
       ],
     );
   }
 
   Widget _redirectTextButtons(BuildContext context) {
-    return Column(
-      children: [
-        _footerTextButton(context, 'Услуги', Routes.services),
-        _footerTextButton(context, 'Блог', Routes.blog),
-      ],
+    return Transform.translate(
+      offset: const Offset(0, 35), // Move the entire column 35 pixels downwards
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _footerTextButton(context, 'За нас', '/'),
+          _footerTextButton(context, 'Услуги', Routes.services),
+          _footerTextButton(context, 'Цени', '/'),
+          _footerTextButton(context, 'Блог', Routes.blog),
+          _footerTextButton(context, 'Екип', '/'),
+        ],
+      ),
     );
   }
 
@@ -130,27 +113,35 @@ class Footer extends StatelessWidget {
   }
 
   Widget _socialMediaColumn() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          "Последвай ни",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w400,
+    return Transform.translate(
+      offset: const Offset(0, -35), // Move the entire column 35 pixels upward
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Последвай ни',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
+            ),
           ),
-        ),
-        const SizedBox(height: 28),
-        Wrap(
-          spacing: 24,
-          children: [
-            _socialIcon(ImageUtils.facebookLogo),
-            _socialIcon(ImageUtils.instagramLogo),
-            _socialIcon(ImageUtils.linkedinLogo),
-            _socialIcon(ImageUtils.xLogo),
-          ],
-        ),
-      ],
+          const SizedBox(height: 28),
+          Row(
+            children: [
+              _socialIcon(ImageUtils.facebookLogo),
+              Padding(
+                padding: const EdgeInsets.only(left: 24, right: 24),
+                child: _socialIcon(ImageUtils.instagramLogo),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 24),
+                child: _socialIcon(ImageUtils.linkedinLogo),
+              ),
+              _socialIcon(ImageUtils.xLogo),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -163,31 +154,19 @@ class Footer extends StatelessWidget {
 
   Widget _buildFooterBottom() {
     return const Padding(
-      padding: EdgeInsets.only(top: 24, bottom: 24),
+      padding: EdgeInsets.only(top: 44, bottom: 24),
       child: Row(
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: 156),
-            child: Text(
-              '© 2024 All Rights Reserved',
-              style: TextStyle(fontSize: 14),
-            ),
+          Text('© 2024 All Rights Reserved',
+            style: TextStyle(fontSize: 14),
           ),
-          Flexible(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Политика за поверителност',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-                ),
-                SizedBox(width: 12),
-                Text(
-                  'Условия за ползване',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-                ),
-              ],
-            ),
+          SizedBox(width: 150),
+          Text('Политика за поверителност',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          ),
+          SizedBox(width: 50),
+          Text('Условия за ползване',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
           ),
         ],
       ),
