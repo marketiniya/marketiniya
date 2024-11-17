@@ -154,17 +154,17 @@ class Footer extends StatelessWidget {
 
   Widget _buildFooterBottom() {
     return const Padding(
-      padding: EdgeInsets.only(top: 44, bottom: 24),
+      padding: EdgeInsets.only(top: 90, bottom: 24),
       child: Row(
         children: [
           Text('© 2024 All Rights Reserved',
             style: TextStyle(fontSize: 14),
           ),
-          SizedBox(width: 150),
+          SizedBox(width: 250),
           Text('Политика за поверителност',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
           ),
-          SizedBox(width: 50),
+          SizedBox(width: 30),
           Text('Условия за ползване',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
           ),
