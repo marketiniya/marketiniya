@@ -134,7 +134,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget _buildBottomDividerAndLabel(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final dividerWidth =
-        screenWidth <= 1300 ? screenWidth / 2 - 160 : screenWidth / 2 - 64;
+        screenWidth <= 1200 ? screenWidth / 2 - 160 : screenWidth / 2 - 64;
 
     return Column(
       children: [
