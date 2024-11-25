@@ -25,43 +25,22 @@ class _NavButtonState extends State<NavButton> {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final isActive = widget.activeTab == widget.label;
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isSmallScreen = screenWidth < 1300;
 
-    return Padding(
-      padding: EdgeInsets.only(top: isSmallScreen ? 45 : 15),
-      child: MouseRegion(
-        onEnter: (_) {
-          if (!isSmallScreen) {
-            setState(() => isHovered = true);
-          }
-        },
-        onExit: (_) {
-          if (!isSmallScreen) {
-            setState(() => isHovered = false);
-          }
-        },
-        child: isSmallScreen
-            ? _buildSmallScreenButton(isActive, colorScheme)
-            : _buildLargeScreenButton(isActive, colorScheme),
+    return MouseRegion(
+      onEnter: (_) {
+        setState(() => isHovered = true);
+      },
+      onExit: (_) {
+        setState(() => isHovered = false);
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 23, right: 20),
+        child: _buildLargeScreenButton(context, isActive, colorScheme),
       ),
     );
   }
 
-  Widget _buildSmallScreenButton(bool isActive, ColorScheme colorScheme) {
-    return TextButton(
-      onPressed: widget.onPressed,
-      child: Text(
-        widget.label,
-        style: TextStyle(
-          fontSize: widget.fontSize,
-          color: _getButtonColor(isActive, colorScheme),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLargeScreenButton(bool isActive, ColorScheme colorScheme) {
+  Widget _buildLargeScreenButton(BuildContext context, bool isActive, ColorScheme colorScheme) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
