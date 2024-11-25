@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marketinya/utils/image_utils.dart';
-import '../utils/routes.dart';
-import 'nav_button.dart';
+import 'package:marketinya/utils/routes.dart';
+import 'package:marketinya/widgets/appBar/marketiniya_logo.dart';
+import 'package:marketinya/widgets/nav_button.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.activeTab});
+class CustomAppBarDesktop extends StatelessWidget
+    implements PreferredSizeWidget {
+  const CustomAppBarDesktop({super.key, required this.activeTab});
 
   final String activeTab;
   static const double _fontSize = 20;
@@ -46,9 +48,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () => Navigator.pushNamed(context, Routes.blog),
           fontSize: _fontSize,
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: _buildLogo(),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: MarketiniyaLogo(width: _logoWidth, height: _logoHeight),
         ),
         NavButton(
           label: 'Услуги',
@@ -90,19 +92,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _buildLogo() {
-    return SvgPicture.asset(
-      ImageUtils.marketinyaLogoPath,
-      height: _logoHeight,
-      width: _logoWidth,
-      semanticsLabel: 'Marketinya logo',
-    );
-  }
-
   Widget _buildBottomDividerAndLabel(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double adjustedWidth =
-        screenWidth > 1400 ? screenWidth / 2.22 : screenWidth / 2.33;
+        screenWidth > 1500 ? screenWidth / 2.22 : screenWidth / 2.27;
 
     return Column(
       children: [

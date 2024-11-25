@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/widgets/custom_app_bar.dart';
+import 'package:marketinya/widgets/appBar/custom_app_bar_desktop.dart';
 import 'package:marketinya/widgets/footer.dart';
 import 'package:marketinya/widgets/home/business_info_section.dart';
 import 'package:marketinya/widgets/home/business_overview_section.dart';
 import 'package:marketinya/widgets/home/carousel_section.dart';
 import 'package:marketinya/widgets/space_box.dart';
-import '../widgets/features_with_images_section.dart';
-import '../widgets/home/explore_services_section.dart';
-import '../widgets/lime_contact_form.dart';
-import '../widgets/subscription_form.dart';
+import 'package:marketinya/widgets/features_with_images_section.dart';
+import 'package:marketinya/widgets/home/explore_services_section.dart';
+import 'package:marketinya/widgets/lime_contact_form.dart';
+import 'package:marketinya/widgets/subscription_form.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class DesktopLayout extends StatelessWidget {
+  const DesktopLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBar(activeTab: 'Начало'),
+      appBar: CustomAppBarDesktop(activeTab: 'Начало'),
       body: SingleChildScrollView(
         child: Column(
           children: [

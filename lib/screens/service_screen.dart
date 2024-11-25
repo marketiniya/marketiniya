@@ -3,9 +3,9 @@ import 'package:marketinya/widgets/features_with_images_section.dart';
 import 'package:marketinya/widgets/subscription_form.dart';
 import 'package:marketinya/widgets/services/free_consultation_section.dart';
 import 'package:marketinya/widgets/services/text_section.dart';
-import '../widgets/custom_app_bar.dart';
-import '../widgets/footer.dart';
-import '../widgets/services/services_list.dart';
+import 'package:marketinya/widgets/appBar/custom_app_bar_desktop.dart';
+import 'package:marketinya/widgets/footer.dart';
+import 'package:marketinya/widgets/services/services_list.dart';
 
 class ServiceScreen extends StatelessWidget {
   const ServiceScreen({super.key});
@@ -13,7 +13,7 @@ class ServiceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: const CustomAppBar(
+      appBar: const CustomAppBarDesktop(
         activeTab: 'Услуги',
       ),
       body: SingleChildScrollView(

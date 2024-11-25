@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:marketinya/config/firebase_options.dart';
 import 'package:marketinya/screens/blog_screen.dart';
 import 'package:marketinya/screens/connect_with_us_screen.dart';
-import 'package:marketinya/screens/home_screen.dart';
+import 'package:marketinya/screens/home/home_screen.dart';
 import 'package:marketinya/screens/service_screen.dart';
 import 'package:marketinya/utils/routes.dart';
 import 'package:marketinya/widgets/custom_theme.dart';
