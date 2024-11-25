@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/widgets/custom_app_bar.dart';
+import 'package:marketinya/widgets/appBar/custom_app_bar_desktop.dart';
 import 'package:marketinya/widgets/footer.dart';
 import 'package:marketinya/widgets/lime_contact_form.dart';
 import 'package:marketinya/widgets/subscription_form.dart';
-import '../widgets/blog/blog_cards.dart';
-import '../widgets/blog/check_services_and_free_consultation_section.dart';
-import '../widgets/space_box.dart';
+import 'package:marketinya/widgets/blog/blog_cards.dart';
+import 'package:marketinya/widgets/blog/check_services_and_free_consultation_section.dart';
+import 'package:marketinya/widgets/space_box.dart';
 
 class BlogScreen extends StatelessWidget {
   const BlogScreen({super.key});
@@ -13,7 +13,7 @@ class BlogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: const CustomAppBarDesktop(
         activeTab: 'Блог',
       ),
       body: SingleChildScrollView(
