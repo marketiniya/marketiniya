@@ -4,7 +4,7 @@ import 'package:marketinya/widgets/subscription_form.dart';
 import 'package:marketinya/widgets/services/free_consultation_section.dart';
 import 'package:marketinya/widgets/services/text_section.dart';
 import 'package:marketinya/widgets/appBar/custom_app_bar_desktop.dart';
-import 'package:marketinya/widgets/footer.dart';
+import 'package:marketinya/widgets/footer/footer.dart';
 import 'package:marketinya/widgets/services/services_list.dart';
 
 class ServiceScreen extends StatelessWidget {

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marketinya/utils/image_utils.dart';
-import 'package:marketinya/widgets/appBar/marketiniya_logo.dart';
+import 'package:marketinya/widgets/appBar/widgets/custom_dialog.dart';
+import 'package:marketinya/widgets/appBar/widgets/marketiniya_logo.dart';
 
 class CustomAppBarMobile extends StatelessWidget {
-  const CustomAppBarMobile({super.key});
+  const CustomAppBarMobile({super.key, required this.activeTab});
+
+  final String activeTab;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class CustomAppBarMobile extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.menu),
                 color: Colors.white,
-                onPressed: () => _onPressed(context),
+                onPressed: () => _showFallingDialog(context),
               ),
             ],
           ),
@@ -34,17 +37,25 @@ class CustomAppBarMobile extends StatelessWidget {
     );
   }
 
-  void _onPressed(BuildContext context) {
-    showDialog(
+  void _showFallingDialog(BuildContext context) {
+    showGeneralDialog(
       context: context,
-      builder: (BuildContext context) {
-        return const Dialog(
-          //shape: ,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [],
-          ),
+      barrierColor: Colors.transparent,
+      barrierDismissible: true,
+      barrierLabel: 'Dismiss',
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        final slideAnimation = Tween<Offset>(
+          begin: const Offset(0, -1),
+          end: Offset.zero,
+        ).animate(animation);
+        return SlideTransition(
+          position: slideAnimation,
+          child: child,
         );
+      },
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return CustomDialog(activeTab: activeTab);
       },
     );
   }
