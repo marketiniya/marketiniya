@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/widgets/appBar/custom_app_bar_desktop.dart';
 import 'package:marketinya/widgets/footer/footer.dart';
-import 'package:marketinya/widgets/home/business_info_section.dart';
-import 'package:marketinya/widgets/home/business_overview_section.dart';
-import 'package:marketinya/widgets/home/carousel_section.dart';
+import 'package:marketinya/widgets/home/desktop/business_info_section.dart';
+import 'package:marketinya/widgets/home/desktop/business_overview_section.dart';
+import 'package:marketinya/widgets/home/desktop/carousel_section.dart';
+import 'package:marketinya/widgets/home/desktop/explore_services_section.dart';
 import 'package:marketinya/widgets/space_box.dart';
 import 'package:marketinya/widgets/features_with_images_section.dart';
-import 'package:marketinya/widgets/home/explore_services_section.dart';
 import 'package:marketinya/widgets/lime_contact_form.dart';
 import 'package:marketinya/widgets/subscription_form.dart';
 

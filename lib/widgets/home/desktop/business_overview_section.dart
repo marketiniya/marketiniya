@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/utils/color_utils.dart';
 import 'package:marketinya/utils/image_utils.dart';
-
-import '../../utils/routes.dart';
+import 'package:marketinya/utils/routes.dart';
 
 class BusinessOverviewSection extends StatelessWidget {
   const BusinessOverviewSection({super.key});

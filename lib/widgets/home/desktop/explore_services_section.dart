@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/utils/routes.dart';
 
-import '../../utils/color_utils.dart';
+import 'package:marketinya/utils/color_utils.dart';
 
 class ExploreServicesSection extends StatelessWidget {
   const ExploreServicesSection({super.key});

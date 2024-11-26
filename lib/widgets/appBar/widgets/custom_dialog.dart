@@ -11,11 +11,10 @@ class CustomDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: Colors.transparent,
       insetPadding: EdgeInsets.zero,
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 556,
+        height: MediaQuery.of(context).size.height / 1.15,
         color: Theme.of(context).primaryColor,
         child: Column(
           children: [
@@ -44,7 +43,7 @@ class CustomDialog extends StatelessWidget {
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(ColorUtils.charcoal),
           foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
-            if (states.contains(WidgetState.hovered)) {
+            if (states.contains(WidgetState.hovered) || states.contains(WidgetState.pressed)) {
               return Colors.grey;
             }
             if (activeTab == label) {
@@ -56,7 +55,7 @@ class CustomDialog extends StatelessWidget {
             return RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
               side: BorderSide(
-                color: states.contains(WidgetState.hovered)
+                color: states.contains(WidgetState.hovered) || states.contains(WidgetState.pressed)
                     ? Colors.grey
                     : activeTab == label
                         ? ColorUtils.limeGreen

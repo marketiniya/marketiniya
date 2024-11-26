@@ -4,10 +4,12 @@ import 'package:marketinya/utils/image_utils.dart';
 import 'package:marketinya/widgets/appBar/widgets/custom_dialog.dart';
 import 'package:marketinya/widgets/appBar/widgets/marketiniya_logo.dart';
 
-class CustomAppBarMobile extends StatelessWidget {
+class CustomAppBarMobile extends StatelessWidget implements PreferredSizeWidget{
   const CustomAppBarMobile({super.key, required this.activeTab});
 
   final String activeTab;
+  @override
+  Size get preferredSize => const Size.fromHeight(65);
 
   @override
   Widget build(BuildContext context) {
