@@ -2,9 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../utils/color_utils.dart';
-import '../../utils/image_utils.dart';
+import 'package:marketinya/utils/color_utils.dart';
+import 'package:marketinya/utils/image_utils.dart';
 
 class CarouselSection extends StatefulWidget {
   const CarouselSection({super.key});
