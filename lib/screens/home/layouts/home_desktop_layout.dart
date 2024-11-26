@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/widgets/appBar/custom_app_bar_desktop.dart';
-import 'package:marketinya/widgets/footer.dart';
+import 'package:marketinya/widgets/footer/footer.dart';
 import 'package:marketinya/widgets/home/business_info_section.dart';
 import 'package:marketinya/widgets/home/business_overview_section.dart';
 import 'package:marketinya/widgets/home/carousel_section.dart';
@@ -10,8 +10,8 @@ import 'package:marketinya/widgets/home/explore_services_section.dart';
 import 'package:marketinya/widgets/lime_contact_form.dart';
 import 'package:marketinya/widgets/subscription_form.dart';
 
-class DesktopLayout extends StatelessWidget {
-  const DesktopLayout({super.key});
+class HomeDesktopLayout extends StatelessWidget {
+  const HomeDesktopLayout({super.key});
 
   @override
   Widget build(BuildContext context) {

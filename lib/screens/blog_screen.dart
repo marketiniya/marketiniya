@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/widgets/appBar/custom_app_bar_desktop.dart';
-import 'package:marketinya/widgets/footer.dart';
+import 'package:marketinya/widgets/footer/footer.dart';
 import 'package:marketinya/widgets/lime_contact_form.dart';
 import 'package:marketinya/widgets/subscription_form.dart';
 import 'package:marketinya/widgets/blog/blog_cards.dart';

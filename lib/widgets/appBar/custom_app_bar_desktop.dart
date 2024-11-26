@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marketinya/utils/image_utils.dart';
 import 'package:marketinya/utils/routes.dart';
-import 'package:marketinya/widgets/appBar/marketiniya_logo.dart';
-import 'package:marketinya/widgets/nav_button.dart';
+import 'package:marketinya/widgets/appBar/widgets/marketiniya_logo.dart';
+import 'package:marketinya/widgets/appBar/widgets/nav_button.dart';
 
-class CustomAppBarDesktop extends StatelessWidget
-    implements PreferredSizeWidget {
+class CustomAppBarDesktop extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBarDesktop({super.key, required this.activeTab});
 
   final String activeTab;
