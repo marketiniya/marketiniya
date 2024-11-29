@@ -5,18 +5,14 @@ import 'package:intl/intl.dart';
 import '../models/contact_model.dart';
 
 class FirestoreService {
-  // Private constructor for singleton pattern
   FirestoreService._();
 
-  // Singleton instance
   static final FirestoreService instance = FirestoreService._();
 
-  // Firestore instance
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   static const String _dateFormat = 'yyyy-MM-dd HH:mm:ss';
 
-  // Firestore collection names
   static const String _questions = 'questions';
   static const String _subscriptions = 'subscriptions';
 
