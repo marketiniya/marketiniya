@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:marketinya/widgets/appBar/custom_app_bar_mobile.dart';
 import 'package:marketinya/widgets/home/mobile/business_overview_section_mobile.dart';
 import 'package:marketinya/widgets/home/mobile/carousel_section_mobile.dart';
-
 import 'package:marketinya/widgets/home/mobile/business_info_section.dart';
-
+import 'package:marketinya/widgets/lime_contact_form_mobile.dart';
+import 'package:marketinya/widgets/subscription_form_mobile.dart';
+import 'package:marketinya/widgets/home/mobile/explore_services_section_mobile.dart';
 
 class HomeMobileLayout extends StatelessWidget {
   const HomeMobileLayout({super.key});
@@ -18,11 +19,13 @@ class HomeMobileLayout extends StatelessWidget {
           children: [
             BusinessOverviewSectionMobile(),
             CarouselSectionMobile(),
-            BusinessInfoSectionMobile()
+            BusinessInfoSectionMobile(),
+            ExploreServicesSectionMobile(),
+            LimeContactFormMobile(),
+            SubscriptionFormMobile(),
           ],
         ),
       ),
     );
   }
-
 }
