@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/widgets/appBar/custom_app_bar_mobile.dart';
+import 'package:marketinya/widgets/blog/blog_cards_mobile.dart';
 import 'package:marketinya/widgets/home/mobile/business_overview_section_mobile.dart';
 
 class BlogMobileLayout extends StatelessWidget {
@@ -22,7 +23,8 @@ class BlogMobileLayout extends StatelessWidget {
               height: 8,
               width: double.infinity,
               color: Colors.white,
-            )
+            ),
+            const BlogCardsMobile(),
           ],
         ),
       ),
