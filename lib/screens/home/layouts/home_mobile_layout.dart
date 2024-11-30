@@ -18,7 +18,10 @@ class HomeMobileLayout extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            BusinessOverviewSectionMobile(),
+            BusinessOverviewSectionMobile(
+              text1: 'Трансформирайте\nвашия бизнес.',
+              text2: 'Увеличете продажбите\nс помощта на\nправилно позиционирани\nреĸламни ĸампании.',
+            ),
             CarouselSectionMobile(),
             BusinessInfoSectionMobile(),
             ExploreServicesSectionMobile(),
