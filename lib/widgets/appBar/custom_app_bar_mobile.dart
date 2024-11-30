@@ -31,7 +31,7 @@ class CustomAppBarMobile extends StatelessWidget implements PreferredSizeWidget{
           ),
         ),
         Transform.translate(
-          offset: const Offset(0, -5), // Move 3 pixels up
+          offset: const Offset(0, -4), // Move 4 pixels up
           child: Container(
             width: double.infinity,
             height: 1,

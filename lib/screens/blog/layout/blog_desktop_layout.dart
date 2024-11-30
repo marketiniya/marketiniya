@@ -7,8 +7,8 @@ import 'package:marketinya/widgets/blog/blog_cards.dart';
 import 'package:marketinya/widgets/blog/check_services_and_free_consultation_section.dart';
 import 'package:marketinya/widgets/space_box.dart';
 
-class BlogScreen extends StatelessWidget {
-  const BlogScreen({super.key});
+class BlogDesktopLayout extends StatelessWidget {
+  const BlogDesktopLayout({super.key});
 
   @override
   Widget build(BuildContext context) {

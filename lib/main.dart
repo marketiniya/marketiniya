@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:marketinya/config/firebase_options.dart';
-import 'package:marketinya/screens/blog_screen.dart';
+import 'package:marketinya/screens/blog/blog_screen.dart';
 import 'package:marketinya/screens/connect_with_us_screen.dart';
 import 'package:marketinya/screens/home/home_screen.dart';
 import 'package:marketinya/screens/service_screen.dart';
