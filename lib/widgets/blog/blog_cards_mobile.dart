@@ -1,10 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/utils/color_utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:marketinya/data/blog_data.dart';
 import 'package:marketinya/models/blog_model.dart';
+import 'package:marketinya/utils/color_utils.dart';
 
-class BlogCardsMobile extends StatelessWidget {
+class BlogCardsMobile extends StatefulWidget {
   const BlogCardsMobile({super.key});
+
+  @override
+  State<BlogCardsMobile> createState() => _BlogCardsMobileState();
+}
+
+class _BlogCardsMobileState extends State<BlogCardsMobile> {
+  @override
+  void initState() {
+    super.initState();
+    _loadViews();
+  }
+
+  Future<void> _loadViews() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      blogData1.views = prefs.getInt(blogData1.headerValue) ?? blogData1.views;
+      blogData2.views = prefs.getInt(blogData2.headerValue) ?? blogData2.views;
+      blogData3.views = prefs.getInt(blogData3.headerValue) ?? blogData3.views;
+      blogData4.views = prefs.getInt(blogData4.headerValue) ?? blogData4.views;
+    });
+  }
+
+  Future<void> _incrementViews(BlogModel post) async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      post.views++;
+      prefs.setInt(post.headerValue, post.views);
+    });
+  }
+
+  void _toggleExpansion(BlogModel post) {
+    setState(() {
+      post.isExpanded = !post.isExpanded;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +49,13 @@ class BlogCardsMobile extends StatelessWidget {
       child: Container(
         width: double.infinity,
         color: ColorUtils.limeGreen,
-        child:  Column(
+        child: Column(
           children: [
             buildCard(blogData1),
             buildCard(blogData2),
             buildCard(blogData3),
             buildCard(blogData4),
-          ]
+          ],
         ),
       ),
     );
@@ -37,7 +73,6 @@ class BlogCardsMobile extends StatelessWidget {
         elevation: 4.0,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          // Align the content to the start
           children: [
             ClipRRect(
               borderRadius: const BorderRadius.only(
@@ -90,7 +125,7 @@ class BlogCardsMobile extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -106,13 +141,55 @@ class BlogCardsMobile extends StatelessWidget {
                       post.isExpanded ? 'Скрий' : 'Виж още',
                       style: const TextStyle(fontSize: 16),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _toggleExpansion(post);
+                      _incrementViews(post);
+                    },
                   ),
                 ],
               ),
             ),
+            if (post.isExpanded) _buildExpandedContent(post),
           ],
         ),
+      ),
+    );
+  }
+
+  Container _buildExpandedContent(BlogModel post) {
+    return Container(
+      color: Colors.white,
+      width: double.infinity,
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: post.sections.map((section) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  section.header,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 8.0),
+                Text(
+                  section.content,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    height: 1.5,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }).toList(),
       ),
     );
   }
