@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/widgets/appBar/custom_app_bar_mobile.dart';
+import 'package:marketinya/widgets/footer/footer_mobile.dart';
 import 'package:marketinya/widgets/home/mobile/business_overview_section_mobile.dart';
 import 'package:marketinya/widgets/home/mobile/carousel_section_mobile.dart';
 import 'package:marketinya/widgets/home/mobile/business_info_section.dart';
@@ -23,6 +24,7 @@ class HomeMobileLayout extends StatelessWidget {
             ExploreServicesSectionMobile(),
             LimeContactFormMobile(),
             SubscriptionFormMobile(),
+            FooterMobile()
           ],
         ),
       ),
