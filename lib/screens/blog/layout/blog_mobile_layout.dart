@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:marketinya/widgets/appBar/custom_app_bar_mobile.dart';
 import 'package:marketinya/widgets/blog/blog_cards_mobile.dart';
 import 'package:marketinya/widgets/home/mobile/business_overview_section_mobile.dart';
+import 'package:marketinya/widgets/home/mobile/explore_services_section_mobile.dart';
+import 'package:marketinya/widgets/footer/footer_mobile.dart';
+import 'package:marketinya/widgets/lime_contact_form_mobile.dart';
+import 'package:marketinya/widgets/subscription_form_mobile.dart';
 
 class BlogMobileLayout extends StatelessWidget {
   const BlogMobileLayout({super.key});
@@ -25,6 +29,10 @@ class BlogMobileLayout extends StatelessWidget {
               color: Colors.white,
             ),
             const BlogCardsMobile(),
+            const ExploreServicesSectionMobile(),
+            const LimeContactFormMobile(),
+            const SubscriptionFormMobile(),
+            const FooterMobile()
           ],
         ),
       ),
