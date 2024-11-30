@@ -30,11 +30,14 @@ class CustomAppBarMobile extends StatelessWidget implements PreferredSizeWidget{
             ],
           ),
         ),
-        Container(
-          width: double.infinity,
-          height: 1,
-          color: Theme.of(context).colorScheme.secondary,
-        )
+        Transform.translate(
+          offset: const Offset(0, -5), // Move 3 pixels up
+          child: Container(
+            width: double.infinity,
+            height: 1,
+            color: Theme.of(context).colorScheme.secondary,
+          ),
+        ),
       ],
     );
   }
