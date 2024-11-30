@@ -14,7 +14,7 @@ class CustomDialog extends StatelessWidget {
       insetPadding: EdgeInsets.zero,
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height / 1.15,
+        height: MediaQuery.of(context).size.height,
         color: Theme.of(context).primaryColor,
         child: Column(
           children: [
