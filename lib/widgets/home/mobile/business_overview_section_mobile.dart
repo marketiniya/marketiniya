@@ -4,8 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/utils/color_utils.dart';
 import 'package:marketinya/utils/image_utils.dart';
 import 'package:marketinya/utils/routes.dart';
-
-import '../../custom_elevated_button.dart';
+import 'package:marketinya/widgets/custom_elevated_button.dart';
 
 class BusinessOverviewSectionMobile extends StatelessWidget {
   const BusinessOverviewSectionMobile({
@@ -21,7 +20,6 @@ class BusinessOverviewSectionMobile extends StatelessWidget {
   final bool isBlog;
 
   static const double _horizontalPadding = 16.0;
-  static const double _buttonHeight = 55.0;
 
   @override
   Widget build(BuildContext context) {
