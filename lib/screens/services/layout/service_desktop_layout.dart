@@ -7,8 +7,8 @@ import 'package:marketinya/widgets/appBar/custom_app_bar_desktop.dart';
 import 'package:marketinya/widgets/footer/footer.dart';
 import 'package:marketinya/widgets/services/services_list.dart';
 
-class ServiceScreen extends StatelessWidget {
-  const ServiceScreen({super.key});
+class ServiceDesktopLayout extends StatelessWidget {
+  const ServiceDesktopLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
