@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/config/responsive_layout.dart';
-import 'package:marketinya/screens/services/layout/service_desktop_layout.dart';
-import 'package:marketinya/screens/services/layout/service_mobile_layout.dart';
+import 'package:marketinya/screens/services/layouts/service_desktop_layout.dart';
+import 'package:marketinya/screens/services/layouts/service_mobile_layout.dart';
 
 
 class ServiceScreen extends StatelessWidget {

@@ -6,8 +6,8 @@ import 'package:marketinya/widgets/lime_contact_form.dart';
 import 'package:marketinya/widgets/subscription_form.dart';
 import 'package:marketinya/widgets/appBar/custom_app_bar_desktop.dart';
 
-class ConnectWithUsScreen extends StatelessWidget {
-  const ConnectWithUsScreen({super.key});
+class ConnectWithUsDesktopLayout extends StatelessWidget {
+  const ConnectWithUsDesktopLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
