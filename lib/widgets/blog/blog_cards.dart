@@ -215,7 +215,10 @@ class _BlogCardsState extends State<BlogCards> {
                     ),
                     onPressed: () {
                       _toggleExpansion(post);
-                      _incrementViews(post);
+
+                      if(post.isExpanded) {
+                        _incrementViews(post);
+                      }
                     },
                   ),
                 ],

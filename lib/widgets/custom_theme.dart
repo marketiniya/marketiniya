@@ -7,6 +7,7 @@ class CustomTheme {
       primaryColor: ColorUtils.charcoal,
       scaffoldBackgroundColor: ColorUtils.charcoal,
       appBarTheme: const AppBarTheme(
+        surfaceTintColor: Colors.transparent,
         backgroundColor: ColorUtils.charcoal, // App bar color
       ),
       colorScheme: ColorScheme.fromSwatch().copyWith(
