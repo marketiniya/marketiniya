@@ -95,26 +95,6 @@ class CarouselSectionMobile extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            bottom: 16,
-            right: 16,
-            child: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: ColorUtils.limeGreen,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: IconButton(
-                icon: const Icon(
-                  Icons.arrow_forward,
-                  color: Colors.black,
-                  size: 24,
-                ),
-                onPressed: () {},
-              ),
-            ),
-          ),
         ],
       ),
     );
