@@ -1,0 +1,103 @@
+import 'package:flutter/material.dart';
+import '../../../core/utils/color_utils.dart';
+import '../../data/blog_data.dart';
+import '../../models/blog_model.dart';
+import '../../widgets/blog/blog_cards.dart';
+
+class BlogDetailPage extends StatelessWidget {
+  final BlogModel blog;
+
+  const BlogDetailPage({super.key, required this.blog});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: double.infinity,
+              height: 400,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(blog.imageAsset),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    blog.headerValue,
+                    style: const TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      const Icon(Icons.calendar_today, size: 16),
+                      const SizedBox(width: 8),
+                      Text(blog.date),
+                      const SizedBox(width: 24),
+                      const Icon(Icons.visibility, size: 16),
+                      const SizedBox(width: 8),
+                      Text('${blog.views} views'),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+                  ...blog.sections
+                      .map((section) => Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                section.header,
+                                style: const TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                section.content,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  height: 1.6,
+                                ),
+                              ),
+                              const SizedBox(height: 32),
+                            ],
+                          ))
+                      .toList(),
+                ],
+              ),
+            ),
+            Container(
+              color: ColorUtils.limeGreen,
+              padding: const EdgeInsets.all(32.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Related Articles',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  const BlogCards(),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
