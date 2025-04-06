@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:marketinya/core/models/user.dart';
 import 'package:marketinya/website/models/contact_model.dart';
 
 
@@ -57,5 +58,9 @@ class FirestoreService {
   String _generateDocId(String identifier) {
     String formattedDate = DateFormat(_dateFormat).format(DateTime.now());
     return '$formattedDate-$identifier';
+  }
+
+  User getCurrentUser(){
+    return const User(id: '', email: '', name: '', phone: '');
   }
 }

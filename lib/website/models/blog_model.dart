@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:marketinya/website/models/blog_section_model.dart';
 
 class BlogModel {

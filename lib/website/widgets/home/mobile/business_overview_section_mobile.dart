@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
 import 'package:marketinya/core/utils/routes.dart';
-import 'package:marketinya/website/widgets/custom_elevated_button.dart';
+import 'package:marketinya/website/widgets/common/custom_elevated_button.dart';
 
 class BusinessOverviewSectionMobile extends StatelessWidget {
   const BusinessOverviewSectionMobile({
