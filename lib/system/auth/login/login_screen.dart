@@ -8,8 +8,11 @@ import 'package:marketinya/core/design_system/molecules/button/action_button.dar
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/marketiniya_colors.dart';
 import 'package:marketinya/core/enums/action_button_size.dart';
+import 'package:marketinya/core/enums/status.dart';
+import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:marketinya/core/utils/validators/field_validators.dart';
+import 'package:marketinya/system/screens/home/home_screen.dart';
 import 'bloc/login_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -18,121 +21,165 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginBloc(
-        authenticationRepository: getIt<AuthenticationRepository>(),
-      ),
-      child: const _LoginScreen(),
+      create: (context) => LoginBloc(getIt<AuthenticationRepository>()),
+      child: _LoginScreen(),
     );
   }
 }
 
-class _LoginScreen extends StatefulWidget {
-  const _LoginScreen();
+class _LoginScreen extends StatelessWidget {
+  _LoginScreen();
 
-  @override
-  State<_LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<_LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final color = MarketiniyaColors(context);
-
-    return Form(
-      key: _formKey,
-      child: Container(
-        color: MarketiniyaColors(context).backgrounds.standard,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
+    final colors = MarketiniyaColors(context);
+    return Scaffold(
+      backgroundColor: colors.backgrounds.standard,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: dimen.bottom.sm,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      MarketiniyaImages.marketiniyaLogo(width: xl, height: lg),
-                      const SizedBox(width: xxs),
-                      MarketiniyaImages.marketiniyaLabelBacl(
-                        width: imageWidth,
-                        height: sm - micro,
-                        color: color.backgrounds.black,
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: imageWidth + xxxl,
-                  width: imageWidth + xxxl + xs + micro,
-                  child: Card(
-                    elevation: xxs,
-                    child: Padding(
-                      padding: dimen.all.sm,
-                      child: Column(
-                        children: [
-                          CustomTextFormField(
-                            padding: dimen.bottom.xxs,
-                            labelText: 'Емайл',
-                            helperText: 'Въведи потребителско име',
-                            filledColor: color.backgrounds.standard,
-                            suffixIcon: Icons.cancel_outlined,
-                            validator: FieldValidators.combine([
-                              FieldValidators.notEmpty(),
-                              FieldValidators.email(),
-                            ]),
-                          ),
-                          CustomTextFormField(
-                            padding: dimen.bottom.sm,
-                            labelText: 'Парола',
-                            helperText: 'Въведи парола',
-                            filledColor: color.backgrounds.standard,
-                            suffixIcon: Icons.lock_outline,
-                            validator: FieldValidators.combine([
-                              FieldValidators.notEmpty(),
-                            ]),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              PortalActionButton(
-                                title: 'Назад',
-                                icon: Icon(Icons.arrow_back),
-                                onPressed: () {},
-                                activeTitleColor: Color(0xFF708446),
-                                disabledTitleColor: color.texts.disabled,
-                                loaderColor: Colors.yellow,
-                                buttonType: ActionButtonSize.responsive,
-                                buttonColor: Colors.white,
-                                borderColor: Color(0xFF708446),
-                              ),
-                              const SizedBox(width: xs),
-                              PortalActionButton(
-                                title: 'Влез',
-                                icon: Icon(Icons.login),
-                                onPressed: () {},
-                                activeTitleColor: Colors.white,
-                                disabledTitleColor: color.texts.disabled,
-                                loaderColor: Colors.yellow,
-                                buttonType: ActionButtonSize.responsive,
-                                buttonColor: Color(0xFF708446),
-                                overlayButtonColor: Color(0xFF5F6F39),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                _buildLogoSection(colors),
+                const SizedBox(height: sm),
+                _buildLoginCard(colors, context),
               ],
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );
+  }
+
+  Widget _buildLogoSection(MarketiniyaColors colors) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MarketiniyaImages.marketiniyaLogo(width: xl, height: lg),
+            const SizedBox(width: xxs),
+            MarketiniyaImages.marketiniyaLabelBacl(
+              width: imageWidth,
+              height: sm - micro,
+              color: colors.backgrounds.black,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLoginCard(MarketiniyaColors colors, BuildContext context) {
+    return SizedBox(
+      height: imageWidth + xxxl,
+      width: imageWidth + xxxl + xs + micro,
+      child: Card(
+        elevation: xxs,
+        child: Padding(
+          padding: dimen.all.sm,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustomTextFormField(
+                padding: dimen.bottom.xxs,
+                labelText: 'Емайл',
+                helperText: 'Въведи потребителско име',
+                filledColor: colors.backgrounds.standard,
+                suffixIcon: Icons.cancel_outlined,
+                validator: FieldValidators.combine([
+                  FieldValidators.notEmpty(),
+                  FieldValidators.email(),
+                ]),
+                onSaved: (value) {
+                  if (value == null || value.isEmpty) return;
+                  context.read<LoginBloc>().add(
+                      LoginEvent.onEmailChanged(value));
+                },
+              ),
+              CustomTextFormField(
+                padding: dimen.bottom.sm,
+                labelText: 'Парола',
+                helperText: 'Въведи парола',
+                filledColor: colors.backgrounds.standard,
+                suffixIcon: Icons.lock_outline,
+                validator: FieldValidators.combine([
+                  FieldValidators.notEmpty(),
+                ]),
+                onSaved: (value) {
+                  if (value == null || value.isEmpty) return;
+                  context.read<LoginBloc>().add(
+                      LoginEvent.onPasswordChanged(value));
+                },
+              ),
+              _buildActionButtons(colors, context),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildActionButtons(MarketiniyaColors colors, BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          child: PortalActionButton(
+            title: 'Назад',
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {},
+            activeTitleColor: colors.buttons.primary,
+            disabledTitleColor: colors.texts.disabled,
+            loaderColor: colors.buttons.loader,
+            buttonType: ActionButtonSize.responsive,
+            buttonColor: colors.buttons.secondary,
+            borderColor: colors.buttons.primary,
+            overlayButtonColor: colors.buttons.secondaryOverlay,
+          ),
+        ),
+        const SizedBox(width: xs),
+        BlocConsumer<LoginBloc, LoginState>(
+          listener: (context, state) {
+            if (state.status == Status.error) {
+              context.showFailureSnackBar(state.errorMessage ?? 'Login failed');
+            }
+
+            if (state.status == Status.success) {
+              context.pushReplacement(const HomeScreen());
+            }
+          },
+          builder: (context, state) {
+            return Expanded(
+              child: PortalActionButton(
+                title: 'Влез',
+                isLoading: state.status == Status.loading,
+                icon: const Icon(Icons.login),
+                onPressed: () => _validateAndSubmit(context),
+                activeTitleColor: colors.buttons.secondary,
+                disabledTitleColor: colors.texts.disabled,
+                loaderColor: colors.buttons.loader,
+                buttonType: ActionButtonSize.responsive,
+                buttonColor: colors.buttons.primary,
+                overlayButtonColor: colors.buttons.primaryOverlay,
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  void _validateAndSubmit(BuildContext context) {
+    FocusScope.of(context).unfocus();
+
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      context.read<LoginBloc>().add(const LoginEvent.onSubmitted());
+    }
   }
 }

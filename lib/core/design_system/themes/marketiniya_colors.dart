@@ -14,6 +14,7 @@ class MarketiniyaColors {
   BackgroundColors get backgrounds => const BackgroundColors();
   Shimmers get shimmers => const Shimmers();
   Decorative get decorative => const Decorative();
+  ButtonColors get buttons => const ButtonColors();
 
   // Plan specific colors
   Color get standardPlanBackground => lightBlue;
@@ -95,7 +96,7 @@ class IconColors {
   Color get error => red500;
   Color get errorBold => red800;
   Color get errorBolder => red800;
-  
+
   Color get purpleSubtle => purple500;
   Color get tealSubtle => teal500;
   Color get magentaSubtle => magenta500;
@@ -188,4 +189,17 @@ class Decorative {
   Color get yellowSubtle => yellow200;
   Color get yellow => yellow300;
   Color get yellowBold => yellow700;
+}
+
+class ButtonColors {
+  const ButtonColors();
+
+  Color get primary => const Color(0xFF708446);
+  Color get primaryDark => const Color(0xFF5F6F39);
+  Color get secondary => Colors.white;
+  Color get loader => Colors.yellow;
+
+  // Overlay colors
+  Color get primaryOverlay => const Color(0xFF5F6F39);
+  Color get secondaryOverlay => const Color(0xFFF5F5F5);
 }
