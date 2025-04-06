@@ -9,6 +9,7 @@ class CustomTextFormField extends StatefulWidget {
     this.padding = EdgeInsets.zero,
     this.borderRadius,
     this.labelText = '',
+    this.helperText = '',
     this.floatingLabelBehavior = FloatingLabelBehavior.auto,
     this.hintText = '',
     this.filledColor,
@@ -28,6 +29,7 @@ class CustomTextFormField extends StatefulWidget {
   final TextEditingController? controller;
   final FocusNode? focusNode;
   final String labelText;
+  final String? helperText;
   final FloatingLabelBehavior floatingLabelBehavior;
   final String hintText;
   final IconData? prefixIcon;
@@ -59,6 +61,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       child: TextFormField(
         controller: widget.controller,
         focusNode: widget.focusNode,
+        style: const TextStyle(color: Colors.black),
         onChanged: widget.onChanged,
         onSaved: widget.onSaved,
         validator: widget.validator,
@@ -66,6 +69,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         obscureText: _obscureText,
         decoration: InputDecoration(
           labelText: widget.labelText,
+          labelStyle: const TextStyle(color: Colors.black),
+          helperText: widget.helperText,
           floatingLabelBehavior: widget.floatingLabelBehavior,
           hintText: widget.hintText,
           prefixIcon: widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,

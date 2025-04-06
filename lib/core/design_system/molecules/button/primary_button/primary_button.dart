@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/action_button.dart';
-import 'package:marketinya/core/design_system/themes/klinik_colors.dart';
+import 'package:marketinya/core/design_system/themes/marketiniya_colors.dart';
 import 'package:marketinya/core/enums/action_button_size.dart';
 
 class PrimaryButton extends StatelessWidget {
