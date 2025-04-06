@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/website/widgets/appBar/custom_app_bar_mobile.dart';
 import 'package:marketinya/website/widgets/blog/blog_cards_mobile.dart';
+import 'package:marketinya/website/widgets/common/lime_contact_form_mobile.dart';
+import 'package:marketinya/website/widgets/common/subscription_form_mobile.dart';
 import 'package:marketinya/website/widgets/home/mobile/business_overview_section_mobile.dart';
 import 'package:marketinya/website/widgets/home/mobile/explore_services_section_mobile.dart';
 import 'package:marketinya/website/widgets/footer/footer_mobile.dart';
-import 'package:marketinya/website/widgets/lime_contact_form_mobile.dart';
-import 'package:marketinya/website/widgets/subscription_form_mobile.dart';
 
 class BlogMobileLayout extends StatelessWidget {
   const BlogMobileLayout({super.key});

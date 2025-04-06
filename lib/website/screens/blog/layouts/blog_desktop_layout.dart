@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/website/widgets/appBar/custom_app_bar_desktop.dart';
+import 'package:marketinya/website/widgets/common/lime_contact_form.dart';
+import 'package:marketinya/website/widgets/common/space_box.dart';
+import 'package:marketinya/website/widgets/common/subscription_form.dart';
 import 'package:marketinya/website/widgets/footer/footer.dart';
-import 'package:marketinya/website/widgets/lime_contact_form.dart';
-import 'package:marketinya/website/widgets/subscription_form.dart';
 import 'package:marketinya/website/widgets/blog/blog_cards.dart';
 import 'package:marketinya/website/widgets/blog/check_services_and_free_consultation_section.dart';
-import 'package:marketinya/website/widgets/space_box.dart';
 
 class BlogDesktopLayout extends StatelessWidget {
   const BlogDesktopLayout({super.key});

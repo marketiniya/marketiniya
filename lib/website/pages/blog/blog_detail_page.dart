@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../core/utils/color_utils.dart';
-import '../../data/blog_data.dart';
 import '../../models/blog_model.dart';
 import '../../widgets/blog/blog_cards.dart';
 
@@ -51,47 +50,47 @@ class BlogDetailPage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 32),
-                  ...blog.sections
-                      .map((section) => Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                section.header,
-                                style: const TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              Text(
-                                section.content,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  height: 1.6,
-                                ),
-                              ),
-                              const SizedBox(height: 32),
-                            ],
-                          ))
-                      .toList(),
+                  ...blog.sections.map(
+                    (section) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          section.header,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          section.content,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            height: 1.6,
+                          ),
+                        ),
+                        const SizedBox(height: 32),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
             Container(
               color: ColorUtils.limeGreen,
               padding: const EdgeInsets.all(32.0),
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Related Articles',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 24),
-                  const BlogCards(),
+                  SizedBox(height: 24),
+                  BlogCards(),
                 ],
               ),
             ),
