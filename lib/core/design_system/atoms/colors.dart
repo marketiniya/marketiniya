@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const Color primary100 = Color(0xFFFEF7FF);
+const Color primary100 = Color(0xFFF2F2EA);
 const primary200 = Color(0xFFD5EAE9);
 const primary300 = Color(0xFFA1D2CE);
 
