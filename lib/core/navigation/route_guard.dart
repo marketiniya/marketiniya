@@ -9,6 +9,7 @@ import 'package:marketinya/system/auth/login/login_screen.dart';
 import 'package:marketinya/website/pages/connect_with_us/connect_with_us_screen.dart';
 import 'package:marketinya/website/pages/services/service_screen.dart';
 import 'package:marketinya/website/screens/blog/blog_screen.dart';
+import 'package:marketinya/core/extensions/context_extension.dart';
 
 class RouteGuard {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -94,11 +95,9 @@ class _RedirectToSystemHomeState extends State<_RedirectToSystemHome> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            settings: const RouteSettings(name: Routes.systemHome),
-            builder: (context) => const system.HomeScreen(),
-          ),
+        context.pushReplacement(
+          const system.HomeScreen(),
+          routeName: Routes.systemHome,
         );
       }
     });
@@ -125,11 +124,9 @@ class _RedirectToLoginState extends State<_RedirectToLogin> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            settings: const RouteSettings(name: Routes.login),
-            builder: (context) => const LoginScreen(),
-          ),
+        context.pushReplacement(
+          const LoginScreen(),
+          routeName: Routes.login,
         );
       }
     });
