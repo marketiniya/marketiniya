@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 
 extension ContextExtension on BuildContext {
-  void push(Widget screen) {
+  void push(Widget screen, {String? routeName}) {
     Navigator.of(this).push(
       MaterialPageRoute(
+        settings: RouteSettings(name: routeName),
         builder: (ctx) => screen,
       ),
     );
   }
 
-  void pushReplacement(Widget screen) {
+  void pushReplacement(Widget screen, {String? routeName}) {
     Navigator.of(this).pushReplacement(
       MaterialPageRoute(
+        settings: RouteSettings(name: routeName),
         builder: (ctx) => screen,
       ),
     );
