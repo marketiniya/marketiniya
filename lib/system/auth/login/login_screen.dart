@@ -35,6 +35,7 @@ class _LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = MarketiniyaColors(context);
+
     return Scaffold(
       backgroundColor: colors.backgrounds.standard,
       body: Center(
@@ -85,38 +86,8 @@ class _LoginScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomTextFormField(
-                padding: dimen.bottom.xxs,
-                labelText: 'Емайл',
-                helperText: 'Въведи потребителско име',
-                filledColor: colors.backgrounds.standard,
-                suffixIcon: Icons.cancel_outlined,
-                validator: FieldValidators.combine([
-                  FieldValidators.notEmpty(),
-                  FieldValidators.email(),
-                ]),
-                onSaved: (value) {
-                  if (value == null || value.isEmpty) return;
-                  context.read<LoginBloc>().add(
-                      LoginEvent.onEmailChanged(value));
-                },
-              ),
-              CustomTextFormField(
-                padding: dimen.bottom.sm,
-                labelText: 'Парола',
-                helperText: 'Въведи парола',
-                filledColor: colors.backgrounds.standard,
-                suffixIcon: Icons.lock_outline,
-                obscureText: true,
-                validator: FieldValidators.combine([
-                  FieldValidators.notEmpty(),
-                ]),
-                onSaved: (value) {
-                  if (value == null || value.isEmpty) return;
-                  context.read<LoginBloc>().add(
-                      LoginEvent.onPasswordChanged(value));
-                },
-              ),
+              _buildEmailField(colors, context),
+              _buildPasswordField(colors, context),
               _buildActionButtons(colors, context),
             ],
           ),
@@ -125,53 +96,97 @@ class _LoginScreen extends StatelessWidget {
     );
   }
 
+  Widget _buildEmailField(MarketiniyaColors colors, BuildContext context) {
+    return CustomTextFormField(
+      padding: dimen.bottom.xxs,
+      labelText: 'Емайл',
+      helperText: 'Въведи потребителско име',
+      filledColor: colors.backgrounds.standard,
+      suffixIcon: Icons.cancel_outlined,
+      validator: FieldValidators.combine([
+        FieldValidators.notEmpty(),
+        FieldValidators.email(),
+      ]),
+      onSaved: (value) {
+        if (value == null || value.isEmpty) return;
+        context.read<LoginBloc>().add(LoginEvent.onEmailChanged(value));
+      },
+    );
+  }
+
+  Widget _buildPasswordField(MarketiniyaColors colors, BuildContext context) {
+    return CustomTextFormField(
+      padding: dimen.bottom.sm,
+      labelText: 'Парола',
+      helperText: 'Въведи парола',
+      filledColor: colors.backgrounds.standard,
+      suffixIcon: Icons.lock_outline,
+      obscureText: true,
+      validator: FieldValidators.combine([
+        FieldValidators.notEmpty(),
+      ]),
+      onSaved: (value) {
+        if (value == null || value.isEmpty) return;
+        context.read<LoginBloc>().add(LoginEvent.onPasswordChanged(value));
+      },
+    );
+  }
+
   Widget _buildActionButtons(MarketiniyaColors colors, BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        _buildBackButton(colors),
+        const SizedBox(width: xs),
+        _buildLoginButton(colors, context),
+      ],
+    );
+  }
+
+  Widget _buildBackButton(MarketiniyaColors colors) {
+    return Expanded(
+      child: PortalActionButton(
+        title: 'Назад',
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () {},
+        activeTitleColor: colors.buttons.primary,
+        disabledTitleColor: colors.texts.disabled,
+        loaderColor: colors.buttons.loader,
+        buttonType: ActionButtonSize.responsive,
+        buttonColor: colors.buttons.secondary,
+        borderColor: colors.buttons.primary,
+        overlayButtonColor: colors.buttons.secondaryOverlay,
+      ),
+    );
+  }
+
+  Widget _buildLoginButton(MarketiniyaColors colors, BuildContext context) {
+    return BlocConsumer<LoginBloc, LoginState>(
+      listener: (context, state) {
+        if (state.status == Status.error) {
+          context.showFailureSnackBar(state.errorMessage ?? 'Login failed');
+        }
+
+        if (state.status == Status.success) {
+          context.pushReplacement(const HomeScreen());
+        }
+      },
+      builder: (context, state) {
+        return Expanded(
           child: PortalActionButton(
-            title: 'Назад',
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {},
-            activeTitleColor: colors.buttons.primary,
+            title: 'Влез',
+            isLoading: state.status == Status.loading,
+            icon: const Icon(Icons.login),
+            onPressed: () => _validateAndSubmit(context),
+            activeTitleColor: colors.buttons.secondary,
             disabledTitleColor: colors.texts.disabled,
             loaderColor: colors.buttons.loader,
             buttonType: ActionButtonSize.responsive,
-            buttonColor: colors.buttons.secondary,
-            borderColor: colors.buttons.primary,
-            overlayButtonColor: colors.buttons.secondaryOverlay,
+            buttonColor: colors.buttons.primary,
+            overlayButtonColor: colors.buttons.primaryOverlay,
           ),
-        ),
-        const SizedBox(width: xs),
-        BlocConsumer<LoginBloc, LoginState>(
-          listener: (context, state) {
-            if (state.status == Status.error) {
-              context.showFailureSnackBar(state.errorMessage ?? 'Login failed');
-            }
-
-            if (state.status == Status.success) {
-              context.pushReplacement(const HomeScreen());
-            }
-          },
-          builder: (context, state) {
-            return Expanded(
-              child: PortalActionButton(
-                title: 'Влез',
-                isLoading: state.status == Status.loading,
-                icon: const Icon(Icons.login),
-                onPressed: () => _validateAndSubmit(context),
-                activeTitleColor: colors.buttons.secondary,
-                disabledTitleColor: colors.texts.disabled,
-                loaderColor: colors.buttons.loader,
-                buttonType: ActionButtonSize.responsive,
-                buttonColor: colors.buttons.primary,
-                overlayButtonColor: colors.buttons.primaryOverlay,
-              ),
-            );
-          },
-        ),
-      ],
+        );
+      },
     );
   }
 
