@@ -52,6 +52,7 @@ dependencies:
   logger: ^2.5.0
   path_provider: ^2.1.5
   meta: ^1.15.0
+  url_strategy: ^0.2.0
 
 
 dev_dependencies:
