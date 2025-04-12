@@ -107,6 +107,7 @@ class _LoginScreen extends StatelessWidget {
                 helperText: 'Въведи парола',
                 filledColor: colors.backgrounds.standard,
                 suffixIcon: Icons.lock_outline,
+                obscureText: true,
                 validator: FieldValidators.combine([
                   FieldValidators.notEmpty(),
                 ]),

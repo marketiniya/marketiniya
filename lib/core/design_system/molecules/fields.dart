@@ -104,7 +104,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   Widget? _buildSuffixIcon() {
     // If it's a password field, show toggle visibility button
-    if (widget.obscureText) {
+    if (widget.obscureText && widget.suffixIcon == null) {
       return Padding(
         padding: dimen.horizontal.micro,
         child: IconButton(
