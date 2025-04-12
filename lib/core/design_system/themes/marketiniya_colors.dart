@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:marketinya/core/design_system/atoms/colors.dart';
 import 'package:marketinya/core/design_system/atoms/secondary_colors.dart';
 
