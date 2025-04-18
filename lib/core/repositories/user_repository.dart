@@ -26,7 +26,7 @@ class UserRepository {
 
   Future<void> createUser(User user) async {
     try {
-      await _firestore.setDocument(_users, user.id, user.toJson());
+      await _firestore.createDocument(_users, user.id, user.toJson());
     } catch (e) {
       throw Exception('Failed to create user: $e');
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
-import 'package:marketinya/core/services/firestore_service.dart';
+import 'package:marketinya/core/repositories/contact_repository.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/website/models/contact_model.dart';
 import 'package:marketinya/core/utils/constants.dart';
@@ -216,7 +217,7 @@ class _LimeContactFormState extends State<LimeContactForm> {
                   );
 
                   try {
-                    await FirestoreService.instance.sendQuestion(contactModel);
+                    await getIt<ContactRepository>().sendQuestion(contactModel);
                     context.showSuccessSnackBar('Въпросът Ви е изпратен успешно.');
                   } catch (e) {
                     context.showFailureSnackBar('Възникна проблем с изпращането на въпроса');

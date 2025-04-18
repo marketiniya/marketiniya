@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
+import 'package:marketinya/core/repositories/contact_repository.dart';
 import 'package:marketinya/website/models/contact_model.dart';
-import 'package:marketinya/core/services/firestore_service.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 
 class LimeContactFormMobile extends StatefulWidget {
@@ -154,7 +155,7 @@ class _LimeContactFormMobileState extends State<LimeContactFormMobile> {
             );
 
             try {
-              await FirestoreService.instance.sendQuestion(contactModel);
+              await getIt<ContactRepository>().sendQuestion(contactModel);
               context.showSuccessSnackBar('Въпросът Ви е изпратен успешно.');
             } catch (e) {
               context.showFailureSnackBar(
