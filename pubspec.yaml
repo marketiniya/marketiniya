@@ -53,6 +53,7 @@ dependencies:
   path_provider: ^2.1.5
   meta: ^1.15.0
   url_strategy: ^0.2.0
+  injectable: ^2.5.0
 
 
 dev_dependencies:
