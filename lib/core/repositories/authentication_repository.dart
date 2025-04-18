@@ -2,15 +2,17 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:marketinya/core/config/log.dart';
+import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/enums/authentication.dart';
+import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/core/services/firebase_service.dart';
 
 class AuthenticationRepository {
   final FirebaseAuth _firebaseAuth = FirebaseService.auth;
 
-  final StreamController<Authentication> _controller =
-  StreamController<Authentication>.broadcast();
+  final StreamController<Authentication> _controller = StreamController<Authentication>.broadcast();
   late final StreamSubscription<User?> _authStateSubscription;
+  final userRepository = getIt<UserRepository>();
 
   AuthenticationRepository() {
     // Listen to repository state changes and handle them with _authStateListener.
@@ -42,8 +44,10 @@ class AuthenticationRepository {
     if (user == null) {
       throw FirebaseAuthException(code: 'error-null-user');
     }
-  }
 
+    await userRepository.setCurrentUser(user.uid);
+    _controller.add(Authentication.authenticated);
+  }
 
   Future<void> logout() async {
     try {
@@ -54,10 +58,6 @@ class AuthenticationRepository {
       Log.error('Failed to log out: $error');
       throw Exception('Logout failed');
     }
-  }
-
-  Future<void> sendPasswordResetEmail(String email) async {
-    await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
 
   void dispose() {
