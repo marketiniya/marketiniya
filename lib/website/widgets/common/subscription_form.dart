@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
-import 'package:marketinya/core/services/firestore_service.dart';
+import 'package:marketinya/core/repositories/contact_repository.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 
 class SubscriptionForm extends StatefulWidget {
@@ -122,7 +123,7 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
         onPressed: () async {
           if (_formKey.currentState!.validate()) {
             try {
-              await FirestoreService.instance.subscribe(_emailController.text);
+              await getIt<ContactRepository>().subscribe(_emailController.text);
               context.showSuccessSnackBar('Успешно се абонирахте');
             } catch (e) {
               if (e.toString().contains('email-exists')) {
