@@ -1,14 +1,18 @@
+import 'dart:convert';
+
 import 'package:injectable/injectable.dart';
 import 'package:marketinya/core/config/log.dart';
 import 'package:marketinya/core/models/user.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @injectable
 class UserRepository {
-  final FirestoreService _firestore;
-  User? _currentUser;
+  UserRepository(this._firestore, this._sharedPreferences);
 
-  UserRepository(this._firestore);
+  final FirestoreService _firestore;
+  final SharedPreferences _sharedPreferences;
+  late User? _currentUser;
 
   User? get currentUser => _currentUser;
 
@@ -45,6 +49,8 @@ class UserRepository {
       final user = await getUser(userId);
       if (user != null) {
         _currentUser = user;
+        final userJsonString = jsonEncode(user.toJson());
+        await _sharedPreferences.setString('currentUser', userJsonString);
       } else {
         Log.error('User not found with ID: $userId');
         throw Exception('User not found');

@@ -20,3 +20,7 @@ class AuthenticationStatusChanged extends AuthenticationEvent {
 class AuthenticationLogoutRequested extends AuthenticationEvent {
   const AuthenticationLogoutRequested();
 }
+
+class OnRefresh extends AuthenticationEvent {
+  const OnRefresh();
+}

@@ -20,7 +20,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // Initialize dependency injection
-  initializeDependencyInjection();
+  await initializeDependencyInjection();
 
   // Set preferred orientations
   SystemChrome.setPreferredOrientations([

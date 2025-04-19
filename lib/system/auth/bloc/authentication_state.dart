@@ -1,20 +1,22 @@
-part of 'authentication_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:marketinya/core/enums/authentication.dart';
+import 'package:marketinya/core/models/user.dart';
 
-@immutable
-class AuthenticationState extends Equatable {
-  const AuthenticationState._({this.user, required this.status});
+part 'authentication_state.freezed.dart';
 
-  const AuthenticationState.unknown() : this._(status: Authentication.unknown);
+@freezed
+class AuthenticationState with _$AuthenticationState {
+  const factory AuthenticationState({
+    required Authentication status,
+    User? user,
+  }) = _AuthenticationState;
 
-  const AuthenticationState.authenticated(User user)
-      : this._(user: user, status: Authentication.authenticated);
+  factory AuthenticationState.unknown() =>
+      const AuthenticationState(status: Authentication.unknown);
 
-  const AuthenticationState.unauthenticated()
-      : this._(status: Authentication.unauthenticated);
+  factory AuthenticationState.authenticated(User user) =>
+      AuthenticationState(status: Authentication.authenticated, user: user);
 
-  final User? user;
-  final Authentication status;
-
-  @override
-  List<Object?> get props => [user, status];
+  factory AuthenticationState.unauthenticated() =>
+      const AuthenticationState(status: Authentication.unauthenticated);
 }

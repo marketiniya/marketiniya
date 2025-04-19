@@ -1,30 +1,46 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketinya/core/config/log.dart';
+import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/models/user.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/core/enums/authentication.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-part 'authentication_state.dart';
+import 'authentication_state.dart';
+
 part 'authentication_event.dart';
 
 @injectable
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
-  AuthenticationBloc(
-    this._userRepository, {
+  AuthenticationBloc({
+    required UserRepository userRepository,
     required AuthenticationRepository authenticationRepository,
   })  : _authenticationRepository = authenticationRepository,
-        super(const AuthenticationState.unknown()) {
+        _userRepository = userRepository,
+        super( AuthenticationState.unknown()) {
     on<AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
     on<AuthenticationLogoutRequested>(_onAuthenticationLogoutRequested);
-
+    on<OnRefresh>(onRefresh);
     _authenticationStatusSubscription = _authenticationRepository.status.listen(
       (status) => add(AuthenticationStatusChanged(status)),
     );
+  }
+
+  void onRefresh(OnRefresh event, Emitter<AuthenticationState> emit) {
+    final sharedPreferences = getIt<SharedPreferences>();
+    final userJsonString = sharedPreferences.getString('currentUser');
+
+    if (userJsonString != null) {
+      final userMap = jsonDecode(userJsonString) as Map<String, dynamic>;
+      final currentUserFromCache = User.fromJson(userMap);
+      emit(state.copyWith(user: currentUserFromCache));
+    }
   }
 
   final AuthenticationRepository _authenticationRepository;
@@ -44,10 +60,10 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
         await _handleAuthenticated(emit);
         break;
       case Authentication.unauthenticated:
-        emit(const AuthenticationState.unauthenticated());
+        emit(AuthenticationState.unauthenticated());
         break;
       case Authentication.unknown:
-        emit(const AuthenticationState.unknown());
+        emit(AuthenticationState.unknown());
         break;
     }
   }
@@ -57,13 +73,13 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       final user = _userRepository.currentUser;
       if (user == null) {
         Log.error('User is null after authentication');
-        emit(const AuthenticationState.unauthenticated());
+        emit(AuthenticationState.unauthenticated());
         return;
       }
       emit(AuthenticationState.authenticated(user));
     } catch (e) {
       Log.error('Error while fetching user during authentication: $e');
-      emit(const AuthenticationState.unauthenticated());
+      emit(AuthenticationState.unauthenticated());
     }
   }
 
@@ -72,6 +88,6 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     Emitter<AuthenticationState> emit,
   ) {
     _authenticationRepository.logout();
-    emit(const AuthenticationState.unauthenticated());
+    emit(AuthenticationState.unauthenticated());
   }
 }
