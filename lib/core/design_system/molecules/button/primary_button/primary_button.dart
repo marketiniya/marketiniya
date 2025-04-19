@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/action_button.dart';
+import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/design_system/themes/marketiniya_colors.dart';
 import 'package:marketinya/core/enums/action_button_size.dart';
 
@@ -71,13 +72,12 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = MarketiniyaColors(context);
-    final primaryColor = Theme.of(context).primaryColor;
-
+    const lightBeigeColor = AppColors.lightBeige;
 
     return PortalActionButton(
       title: title,
       onPressed: onPressed,
-      activeTitleColor: colors.texts.inverse,
+      activeTitleColor: colors.backgrounds.black,
       disabledTitleColor: colors.texts.tertiary,
       isLoading: isLoading,
       loaderColor: colors.icons.inverse,
@@ -86,7 +86,7 @@ class PrimaryButton extends StatelessWidget {
       loadingButtonColor:
       colors.backgrounds.brand.withAlpha(Color.getAlphaFromOpacity(tiny)),
       disabledButtonColor: colors.backgrounds.subtle,
-      buttonColor: primaryColor,
+      buttonColor: lightBeigeColor,
     );
   }
 }
