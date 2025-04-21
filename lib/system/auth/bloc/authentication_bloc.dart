@@ -17,22 +17,28 @@ import 'authentication_state.dart';
 part 'authentication_event.dart';
 
 @injectable
-class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
+class AuthenticationBloc
+    extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc({
     required UserRepository userRepository,
     required AuthenticationRepository authenticationRepository,
   })  : _authenticationRepository = authenticationRepository,
         _userRepository = userRepository,
-        super( AuthenticationState.unknown()) {
+        super(AuthenticationState.unknown()) {
     on<AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
     on<AuthenticationLogoutRequested>(_onAuthenticationLogoutRequested);
-    on<OnRefresh>(onRefresh);
+    on<OnRefresh>(_onRefresh);
+    on<OnLogout>(_onLogout);
     _authenticationStatusSubscription = _authenticationRepository.status.listen(
       (status) => add(AuthenticationStatusChanged(status)),
     );
   }
 
-  void onRefresh(OnRefresh event, Emitter<AuthenticationState> emit) {
+  final AuthenticationRepository _authenticationRepository;
+  late StreamSubscription<Authentication> _authenticationStatusSubscription;
+  final UserRepository _userRepository;
+
+  void _onRefresh(OnRefresh event, Emitter<AuthenticationState> emit) {
     final sharedPreferences = getIt<SharedPreferences>();
     final userJsonString = sharedPreferences.getString('currentUser');
 
@@ -43,9 +49,12 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     }
   }
 
-  final AuthenticationRepository _authenticationRepository;
-  late StreamSubscription<Authentication> _authenticationStatusSubscription;
-  final UserRepository _userRepository;
+  Future<void> _onLogout(
+    OnLogout event,
+    Emitter<AuthenticationState> emit,
+  ) async {
+    await _authenticationRepository.logout();
+  }
 
   @override
   Future<void> close() {

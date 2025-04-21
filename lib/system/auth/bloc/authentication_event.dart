@@ -24,3 +24,7 @@ class AuthenticationLogoutRequested extends AuthenticationEvent {
 class OnRefresh extends AuthenticationEvent {
   const OnRefresh();
 }
+
+class OnLogout extends AuthenticationEvent {
+  const OnLogout();
+}
