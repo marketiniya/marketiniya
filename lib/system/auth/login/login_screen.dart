@@ -28,10 +28,24 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class _LoginScreen extends StatelessWidget {
-  _LoginScreen();
+class _LoginScreen extends StatefulWidget {
+  const _LoginScreen();
 
+  @override
+  State<_LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<_LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _emailFocusNode = FocusNode();
+  final _passwordFocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _emailFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,13 +118,15 @@ class _LoginScreen extends StatelessWidget {
       helperText: 'Въведи потребителско име',
       filledColor: colors.backgrounds.standard,
       suffixIcon: Icons.cancel_outlined,
+      focusNode: _emailFocusNode,
       validator: FieldValidators.combine([
         FieldValidators.notEmpty(),
         FieldValidators.email(),
       ]),
       onSaved: (value) {
-        if (value == null || value.isEmpty) return;
-        context.read<LoginBloc>().add(LoginEvent.onEmailChanged(value));
+        if (value != null) {
+          context.read<LoginBloc>().add(LoginEvent.onEmailChanged(value));
+        }
       },
     );
   }
@@ -122,13 +138,15 @@ class _LoginScreen extends StatelessWidget {
       helperText: 'Въведи парола',
       filledColor: colors.backgrounds.standard,
       suffixIcon: Icons.lock_outline,
+      focusNode: _passwordFocusNode,
       obscureText: true,
       validator: FieldValidators.combine([
         FieldValidators.notEmpty(),
       ]),
       onSaved: (value) {
-        if (value == null || value.isEmpty) return;
-        context.read<LoginBloc>().add(LoginEvent.onPasswordChanged(value));
+        if (value != null) {
+          context.read<LoginBloc>().add(LoginEvent.onPasswordChanged(value));
+        }
       },
     );
   }

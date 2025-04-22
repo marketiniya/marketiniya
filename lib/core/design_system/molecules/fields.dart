@@ -47,11 +47,21 @@ class CustomTextFormField extends StatefulWidget {
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   late bool _obscureText;
+  late FocusNode _focusNode;
 
   @override
   void initState() {
     super.initState();
     _obscureText = widget.obscureText;
+    _focusNode = widget.focusNode ?? FocusNode();
+  }
+
+  @override
+  void dispose() {
+    if (widget.focusNode == null) {
+      _focusNode.dispose();
+    }
+    super.dispose();
   }
 
   @override
@@ -60,7 +70,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       padding: widget.padding,
       child: TextFormField(
         controller: widget.controller,
-        focusNode: widget.focusNode,
+        focusNode: _focusNode,
         style: const TextStyle(color: Colors.black),
         onChanged: widget.onChanged,
         onSaved: widget.onSaved,
@@ -73,7 +83,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           helperText: widget.helperText,
           hintText: widget.hintText,
           floatingLabelBehavior: widget.floatingLabelBehavior,
-          prefixIcon: widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
+          prefixIcon:
+              widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
           suffixIcon: _buildSuffixIcon(),
           filled: widget.filledColor != null,
           fillColor: widget.filledColor,
