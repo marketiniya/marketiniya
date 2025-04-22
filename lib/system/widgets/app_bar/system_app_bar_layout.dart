@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/enums/system_tab.dart';
+import 'package:marketinya/system/screens/clients/clients_screen.dart';
+import 'package:marketinya/system/screens/team/team_screen.dart';
 import 'package:marketinya/system/widgets/app_bar/system_app_bar.dart';
 
 const List<SystemTab> tabs = [
@@ -51,9 +53,16 @@ class _SystemAppBarLayoutState extends State<SystemAppBarLayout>
   }
 
   Widget _buildTabView(SystemTab tab) {
-    return Center(
-      child: Text(tab.label),
-    );
+    switch (tab) {
+      case SystemTab.clients:
+        return const ClientsScreen();
+      case SystemTab.team:
+        return const TeamScreen();
+      default:
+        return Center(
+          child: Text(tab.label),
+        );
+    }
   }
 
   @override
