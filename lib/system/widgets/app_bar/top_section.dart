@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
+import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
@@ -64,6 +65,7 @@ class TopSection extends StatelessWidget {
                 const SizedBox(width: 16),
                 PrimaryButton.responsive(
                   title: 'Изход',
+                  overlayButtonColor: AppColors.lightBeige,
                   onPressed: () {
                     context.pushReplacement(const LoginScreen(), routeName: Routes.login);
                     return context.read<AuthenticationBloc>().add(const OnLogout());

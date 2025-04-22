@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/design_system/atoms/colors.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/action_button.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
@@ -11,8 +12,11 @@ class PrimaryButton extends StatelessWidget {
     required this.title,
     required this.isLoading,
     required ActionButtonSize buttonType,
-    this.onPressed,
+    required this.backgroundColor,
     this.icon,
+    required this.activeTitleColor,
+    this.onPressed,
+    required this.overlayButtonColor,
   }) : _buttonType = buttonType;
 
   factory PrimaryButton.responsive({
@@ -21,6 +25,9 @@ class PrimaryButton extends StatelessWidget {
     bool isLoading = false,
     VoidCallback? onPressed,
     Widget? icon,
+    Color backgroundColor = AppColors.lightBeige,
+    Color activeTitleColor = grey1200,
+    Color overlayButtonColor = const Color(0xFF5A6B34),
   }) =>
       PrimaryButton._(
         key: key,
@@ -29,6 +36,9 @@ class PrimaryButton extends StatelessWidget {
         buttonType: ActionButtonSize.responsive,
         onPressed: onPressed,
         icon: icon,
+        backgroundColor: backgroundColor,
+        activeTitleColor: activeTitleColor,
+        overlayButtonColor: overlayButtonColor,
       );
 
   factory PrimaryButton.blocked({
@@ -37,6 +47,8 @@ class PrimaryButton extends StatelessWidget {
     bool isLoading = false,
     VoidCallback? onPressed,
     Widget? icon,
+    Color activeTitleColor = grey1200,
+    Color overlayButtonColor = const Color(0xFF5A6B34),
   }) =>
       PrimaryButton._(
         key: key,
@@ -45,6 +57,9 @@ class PrimaryButton extends StatelessWidget {
         buttonType: ActionButtonSize.blocked,
         onPressed: onPressed,
         icon: icon,
+        backgroundColor: AppColors.lightBeige,
+        activeTitleColor: activeTitleColor,
+        overlayButtonColor: overlayButtonColor,
       );
 
   factory PrimaryButton.small({
@@ -53,6 +68,8 @@ class PrimaryButton extends StatelessWidget {
     bool isLoading = false,
     VoidCallback? onPressed,
     Widget? icon,
+    Color activeTitleColor = grey1200,
+    Color overlayButtonColor = const Color(0xFF5A6B34),
   }) =>
       PrimaryButton._(
         key: key,
@@ -61,6 +78,9 @@ class PrimaryButton extends StatelessWidget {
         buttonType: ActionButtonSize.small,
         onPressed: onPressed,
         icon: icon,
+        backgroundColor: AppColors.lightBeige,
+        activeTitleColor: activeTitleColor,
+        overlayButtonColor: overlayButtonColor,
       );
 
   final String title;
@@ -68,25 +88,27 @@ class PrimaryButton extends StatelessWidget {
   final ActionButtonSize _buttonType;
   final bool isLoading;
   final Widget? icon;
+  final Color backgroundColor;
+  final Color activeTitleColor;
+  final Color overlayButtonColor;
 
   @override
   Widget build(BuildContext context) {
     final colors = MarketiniyaColors(context);
-    const lightBeigeColor = AppColors.lightBeige;
 
     return PortalActionButton(
       title: title,
       onPressed: onPressed,
-      activeTitleColor: colors.backgrounds.black,
+      activeTitleColor: activeTitleColor,
       disabledTitleColor: colors.texts.tertiary,
       isLoading: isLoading,
       loaderColor: colors.icons.inverse,
       buttonType: _buttonType,
       icon: icon,
-      loadingButtonColor:
-      colors.backgrounds.brand.withAlpha(Color.getAlphaFromOpacity(tiny)),
+      loadingButtonColor: colors.backgrounds.brand.withAlpha(Color.getAlphaFromOpacity(tiny)),
       disabledButtonColor: colors.backgrounds.subtle,
-      buttonColor: lightBeigeColor,
+      buttonColor: backgroundColor,
+      overlayButtonColor: overlayButtonColor,
     );
   }
 }
