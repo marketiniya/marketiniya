@@ -11,6 +11,7 @@ class CustomTextFormField extends StatefulWidget {
     this.labelText = '',
     this.helperText = '',
     this.floatingLabelBehavior = FloatingLabelBehavior.auto,
+    this.floatingLabelAlignment = FloatingLabelAlignment.start,
     this.hintText = '',
     this.filledColor,
     this.prefixIcon,
@@ -22,6 +23,7 @@ class CustomTextFormField extends StatefulWidget {
     this.validator,
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
+    this.maxLines = 1,
   });
 
   final EdgeInsetsGeometry padding;
@@ -31,6 +33,7 @@ class CustomTextFormField extends StatefulWidget {
   final String labelText;
   final String? helperText;
   final FloatingLabelBehavior floatingLabelBehavior;
+  final FloatingLabelAlignment floatingLabelAlignment;
   final String hintText;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
@@ -40,6 +43,7 @@ class CustomTextFormField extends StatefulWidget {
   final TextInputType keyboardType;
   final bool obscureText;
   final Color? filledColor;
+  final int? maxLines;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -77,12 +81,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         validator: widget.validator,
         keyboardType: widget.keyboardType,
         obscureText: _obscureText,
+        maxLines: widget.maxLines,
         decoration: InputDecoration(
           labelText: widget.labelText,
           labelStyle: const TextStyle(color: Colors.black),
           helperText: widget.helperText,
           hintText: widget.hintText,
           floatingLabelBehavior: widget.floatingLabelBehavior,
+          floatingLabelAlignment: widget.floatingLabelAlignment,
           prefixIcon:
               widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
           suffixIcon: _buildSuffixIcon(),
