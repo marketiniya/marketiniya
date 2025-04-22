@@ -3,7 +3,7 @@ import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/enums/authentication.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:marketinya/core/utils/routes.dart';
-import 'package:marketinya/system/screens/home/clients_screen.dart' as system;
+import 'package:marketinya/system/screens/system_layout.dart' as system;
 import 'package:marketinya/website/pages/home/home_screen.dart' as website;
 import 'package:marketinya/system/auth/login/login_screen.dart';
 import 'package:marketinya/website/pages/connect_with_us/connect_with_us_screen.dart';
@@ -59,7 +59,9 @@ class RouteGuard {
           }
 
           // Show the appropriate screen based on authentication status
-          return isLoginRoute ? const LoginScreen() : const system.ClientsScreen();
+          return isLoginRoute
+              ? const LoginScreen()
+              : const system.SystemLayout();
         },
       ),
     );
@@ -111,7 +113,7 @@ class _RedirectToSystemHomeState extends State<_RedirectToSystemHome> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         context.pushReplacement(
-          const system.ClientsScreen(),
+          const system.SystemLayout(),
           routeName: Routes.systemHome,
         );
       }
@@ -119,7 +121,7 @@ class _RedirectToSystemHomeState extends State<_RedirectToSystemHome> {
   }
 
   @override
-  Widget build(BuildContext context) => const system.ClientsScreen();
+  Widget build(BuildContext context) => const system.SystemLayout();
 }
 
 /// A widget that handles redirection to the login screen.

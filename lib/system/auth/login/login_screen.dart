@@ -11,8 +11,9 @@ import 'package:marketinya/core/enums/action_button_size.dart';
 import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
+import 'package:marketinya/core/utils/routes.dart';
 import 'package:marketinya/core/utils/validators/field_validators.dart';
-import 'package:marketinya/system/screens/home/clients_screen.dart';
+import 'package:marketinya/system/screens/system_layout.dart';
 import 'bloc/login_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -168,7 +169,7 @@ class _LoginScreen extends StatelessWidget {
         }
 
         if (state.status == Status.success) {
-          context.pushReplacement(const ClientsScreen());
+          context.pushReplacement(const SystemLayout(), routeName: Routes.systemHome);
         }
       },
       builder: (context, state) {

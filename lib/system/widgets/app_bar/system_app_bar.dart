@@ -19,13 +19,9 @@ class SystemAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final width = constraints.maxWidth;
-
-        const baseWidth = 1700;
-        final scaleFactor = (width / baseWidth).clamp(0.8, 1.0);
-
-        final horizontalPadding = width * 0.15;
-        final tabSpacing = xxsPlus * scaleFactor;
+        final screenSize = MediaQuery.sizeOf(context);
+        final availableWidth = screenSize.width * 0.75;
+        final baseTabWidth = availableWidth / tabs.length;
 
         return Container(
           width: double.infinity,
@@ -46,53 +42,70 @@ class SystemAppBar extends StatelessWidget implements PreferredSizeWidget {
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: horizontalPadding),
+                  child: Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: screenSize.width * 0.15,
+                    ),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        children: tabs.asMap().entries.map((tab) {
-                          final index = tab.key;
-                          final item = tab.value;
-                          final isSelected = selectedIndex == index;
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ...tabs.asMap().entries.map((tabItem) {
+                            final index = tabItem.key;
+                            final tab = tabItem.value;
+                            final isSelected = selectedIndex == index;
 
-                          return Padding(
-                            padding: EdgeInsets.only(right: tabSpacing),
-                            child: TextButton.icon(
-                              onPressed: () => onNavigationChanged?.call(index),
-                              icon: Icon(
-                                item.icon,
-                                size: sm * scaleFactor, // Scale the icon size
-                                color: isSelected
-                                    ? AppColors.primary
-                                    : AppColors.textPrimary,
-                              ),
-                              label: Text(
-                                item.label,
-                                style: GoogleFonts.roboto(
-                                  color: isSelected
-                                      ? AppColors.primary
-                                      : AppColors.textPrimary,
-                                  fontSize: xs * scaleFactor,
-                                  // Scale the text size
-                                  fontWeight: FontWeight.w500,
+                            // Give extra width to tabs with longer text
+                            final extraWidth =
+                                tab.label.length > 8 ? 20.0 : 5.0;
+
+                            return SizedBox(
+                              width: baseTabWidth + extraWidth,
+                              child: TextButton.icon(
+                                onPressed: tab.isEnabled
+                                    ? () => onNavigationChanged?.call(index)
+                                    : null,
+                                icon: Icon(
+                                  tab.icon,
+                                  size: sm,
+                                  color: tab.isEnabled
+                                      ? (isSelected
+                                          ? AppColors.primary
+                                          : AppColors.textPrimary)
+                                      : Theme.of(context).disabledColor,
                                 ),
-                              ),
-                              style: TextButton.styleFrom(
-                                backgroundColor: isSelected
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.vertical(
-                                    top: Radius.circular(xxsPlus),
+                                label: Text(
+                                  tab.label,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: GoogleFonts.roboto(
+                                    color: tab.isEnabled
+                                        ? (isSelected
+                                            ? AppColors.primary
+                                            : AppColors.textPrimary)
+                                        : Theme.of(context).disabledColor,
+                                    fontSize: xs,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                                foregroundColor: Colors.black,
+                                style: TextButton.styleFrom(
+                                  backgroundColor: isSelected
+                                      ? Colors.white
+                                      : Colors.transparent,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(xxsPlus),
+                                    ),
+                                  ),
+                                  foregroundColor: Colors.black,
+                                  minimumSize: const Size.fromHeight(xl),
+                                  padding: const EdgeInsets.symmetric(horizontal: xs),
+                                ),
                               ),
-                            ),
-                          );
-                        }).toList(),
+                            );
+                          }),
+                        ],
                       ),
                     ),
                   ),
