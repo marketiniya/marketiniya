@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
+import 'package:marketinya/system/screens/clients/add_client_screen.dart';
 
 class ContentHeader extends StatelessWidget {
   const ContentHeader({super.key});
@@ -34,7 +34,7 @@ class ContentHeader extends StatelessWidget {
                 const SizedBox(width: sm),
                 _buildFilterButton(),
                 const SizedBox(width: _spacingBetweenFilterAndAdd),
-                _buildAddClientButton(),
+                _buildAddClientButton(context),
               ],
             ),
           )
@@ -89,13 +89,19 @@ class ContentHeader extends StatelessWidget {
     );
   }
 
-  Widget _buildAddClientButton() {
+  Widget _buildAddClientButton(BuildContext context) {
     return Transform.translate(
       offset: const Offset(none, _verticalOffset),
       child: PrimaryButton.responsive(
         icon: const Icon(Icons.add),
         title: 'Добави Клиент',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const AddClientScreen(),
+            ),
+          );
+        },
         backgroundColor: _filterButtonColor,
         activeTitleColor: Colors.white,
       ),
