@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginBloc(getIt<AuthenticationRepository>()),
-      child: _LoginScreen(),
+      child: const _LoginScreen(),
     );
   }
 }
@@ -93,7 +93,7 @@ class _LoginScreenState extends State<_LoginScreen> {
   Widget _buildLoginCard(MarketiniyaColors colors, BuildContext context) {
     return SizedBox(
       height: imageWidth + xxxl,
-      width: imageWidth + xxxl + xs + micro,
+      width: 350,
       child: Card(
         elevation: xxs,
         child: Padding(
