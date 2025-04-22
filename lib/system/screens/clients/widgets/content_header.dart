@@ -17,7 +17,7 @@ class ContentHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: xl, horizontal: 180),
+      padding: const EdgeInsets.fromLTRB(180, 0, 180, 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -27,7 +27,7 @@ class ContentHeader extends StatelessWidget {
             child: Divider(thickness: nano, color: Colors.black),
           ),
           Padding(
-            padding: dimen.vertical.lg,
+            padding: const EdgeInsets.only(top: lg),
             child: Row(
               children: [
                 _buildSearchField(),

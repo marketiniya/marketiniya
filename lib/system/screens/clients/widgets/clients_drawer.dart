@@ -12,6 +12,9 @@ class ClientsDrawer extends StatelessWidget {
     return Padding(
       padding: dimen.top.sm,
       child: Drawer(
+        elevation: 15,
+        shadowColor: Colors.black.withValues(alpha: 3),
+        surfaceTintColor: Colors.transparent,
         width: 80,
         child: Container(
           decoration: const BoxDecoration(
