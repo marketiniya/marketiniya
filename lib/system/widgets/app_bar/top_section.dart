@@ -30,7 +30,9 @@ class TopSection extends StatelessWidget {
         builder: (context, state) {
           return Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: screenSize.width * 0.15,
+              horizontal: screenSize.width <= 1344
+                  ? screenSize.width * 0.10
+                  : screenSize.width * 0.15,
               vertical: screenSize.height * 0.01,
             ),
             child: Row(
