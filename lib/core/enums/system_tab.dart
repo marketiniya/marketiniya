@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 enum SystemTab {
   clients('Клиенти', Icons.group_outlined, true),
-  team('Екип', Icons.workspaces_outlined, true),
+  team('Екип', Icons.workspaces_outlined, false),
   orders('Поръчки', Icons.shopping_bag_outlined, false),
   tasks('Задачи', Icons.paste, false),
   services('Услуги', Icons.design_services_outlined, false),
