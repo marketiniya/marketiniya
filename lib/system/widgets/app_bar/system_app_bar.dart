@@ -45,7 +45,9 @@ class SystemAppBar extends StatelessWidget implements PreferredSizeWidget {
                   child: Container(
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(
-                      horizontal: screenSize.width * 0.15,
+                      horizontal: screenSize.width <= 1344
+                          ? screenSize.width * 0.10
+                          : screenSize.width * 0.15,
                     ),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
