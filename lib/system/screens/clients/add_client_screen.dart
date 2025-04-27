@@ -7,16 +7,23 @@ import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/models/tags.dart';
 import 'package:marketinya/system/screens/clients/widgets/clients_drawer.dart';
 import 'package:marketinya/system/screens/clients/widgets/tags_widget.dart';
+import 'package:marketinya/core/enums/client_status.dart';
 
-class AddClientScreen extends StatelessWidget {
+class AddClientScreen extends StatefulWidget {
   const AddClientScreen({super.key});
 
+  @override
+  State<AddClientScreen> createState() => _AddClientScreenState();
+}
+
+class _AddClientScreenState extends State<AddClientScreen> {
   static const double _buttonWidth = 120.0;
   static const double _inputWidth = 360.0;
   static const Color _inputColor = Color(0xFFD9D9C6);
+  ClientStatus? _selectedStatus;
 
   // Example tags list - this should come from your database
-  static const List<Tag> _tags =  [
+  static const List<Tag> _tags = [
     Tag(id: '1', label: 'Важен клиент', color: Color(0xFFE57373)),
     Tag(id: '2', label: 'ВИП', color: Color(0xFF81C784)),
     Tag(id: '3', label: 'Нов', color: Color(0xFF64B5F6)),
@@ -120,10 +127,10 @@ class AddClientScreen extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: _inputWidth,
                   child: CustomTextFormField(
                     labelText: 'Име / Фирма',
@@ -133,8 +140,8 @@ class AddClientScreen extends StatelessWidget {
                     borderRadius: lg,
                   ),
                 ),
-                SizedBox(height: 20),
-                SizedBox(
+                const SizedBox(height: 20),
+                const SizedBox(
                   width: _inputWidth,
                   child: CustomTextFormField(
                     labelText: 'ЕГН / ЕИК',
@@ -144,8 +151,8 @@ class AddClientScreen extends StatelessWidget {
                     borderRadius: lg,
                   ),
                 ),
-                SizedBox(height: 20),
-                SizedBox(
+                const SizedBox(height: 20),
+                const SizedBox(
                   width: _inputWidth,
                   child: CustomTextFormField(
                     labelText: 'Сектор',
@@ -155,15 +162,52 @@ class AddClientScreen extends StatelessWidget {
                     borderRadius: lg,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 SizedBox(
                   width: _inputWidth,
-                  child: CustomTextFormField(
-                    labelText: 'Статус',
-                    suffixIcon: Icons.arrow_drop_down,
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
-                    filledColor: _inputColor,
+                  child: CustomDropdownFormField<ClientStatus>(
+                    padding: EdgeInsets.zero,
                     borderRadius: lg,
+                    labelText: 'Статус',
+                    items: ClientStatus.values,
+                    dropdownValues: (status) => status.label,
+                    isExpanded: true,
+                    value: _selectedStatus,
+                    onSaved: (value) {
+                      setState(() {
+                        _selectedStatus = value;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: _inputColor,
+                      labelText: 'Статус',
+                      labelStyle: const TextStyle(color: Colors.black),
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(lg),
+                        borderSide: BorderSide.none,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(lg),
+                        borderSide: BorderSide.none,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(lg),
+                        borderSide: BorderSide.none,
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: sm, vertical: xs + nano),
+                    ),
+                    dropdownItemBuilder: (status) => Text(
+                      status.label,
+                      style: TextStyle(
+                        color: status == ClientStatus.active
+                            ? Colors.green
+                            : Colors.red,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 ),
               ],
