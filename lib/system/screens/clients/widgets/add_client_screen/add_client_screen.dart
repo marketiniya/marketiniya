@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
@@ -37,6 +38,7 @@ class _AddClientScreenState extends State<_AddClientScreenContent> {
   static const double _inputWidth = 360.0;
   static const Color _inputColor = Color(0xFFD9D9C6);
   final _formKey = GlobalKey<FormState>();
+  final _dateOfBirthController = TextEditingController();
 
   // Example tags list - this should come from your database
   static const List<Tag> _tags = [
@@ -49,6 +51,12 @@ class _AddClientScreenState extends State<_AddClientScreenContent> {
     Tag(id: '7', label: 'Tag 7', color: Color(0xFFFFB74D)),
     Tag(id: '8', label: 'Tag 8', color: Color(0xFF90A4AE)),
   ];
+
+  @override
+  void dispose() {
+    _dateOfBirthController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -214,15 +222,37 @@ class _AddClientScreenState extends State<_AddClientScreenContent> {
                     width: _inputWidth,
                     child: CustomTextFormField(
                       labelText: 'Дата на раждане',
-                      keyboardType: TextInputType.number,
-                      onSaved: (value) {
-                        if (value != null) {
-                          context.read<AddClientBloc>().add(AddClientEvent.phoneChanged(value));
+                      keyboardType: TextInputType.none,
+                      readOnly: true,
+                      controller: _dateOfBirthController,
+                      onTap: () async {
+                        final DateTime? picked = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime.now(),
+                          builder: (context, child) {
+                            return Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: const ColorScheme.light(
+                                  primary: Color(0xFF708445),
+                                  onPrimary: Colors.white,
+                                  onSurface: Colors.black,
+                                ),
+                              ),
+                              child: child!,
+                            );
+                          },
+                        );
+                        if (picked != null) {
+                          final formattedDate = DateFormat('d MMMM yyyy').format(picked);
+                          _dateOfBirthController.text = formattedDate;
+                          context.read<AddClientBloc>().add(
+                              AddClientEvent.dateOfBirthChanged(formattedDate));
                         }
                       },
                       validator: FieldValidators.combine([
                         FieldValidators.notEmpty(),
-                        FieldValidators.phone(),
                       ]),
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       filledColor: _inputColor,
