@@ -4,7 +4,7 @@ import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
-import 'package:marketinya/system/screens/clients/add_client_screen.dart';
+import 'add_client_screen/add_client_screen.dart';
 
 class ContentHeader extends StatelessWidget {
   const ContentHeader({super.key});
