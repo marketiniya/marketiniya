@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 
 class Pagination extends StatelessWidget {
@@ -65,7 +66,7 @@ class Pagination extends StatelessWidget {
           icon: const Icon(Icons.chevron_left, size: 20),
           color: currentPage > 1 ? AppColors.mutedOlive : Colors.grey,
           padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+          constraints: const BoxConstraints(minWidth: md, minHeight: md),
         ),
         ...pageButtons,
         IconButton(
@@ -75,7 +76,7 @@ class Pagination extends StatelessWidget {
           icon: const Icon(Icons.chevron_right, size: 20),
           color: currentPage < totalPages ? AppColors.mutedOlive : Colors.grey,
           padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+          constraints: const BoxConstraints(minWidth: md, minHeight: md),
         ),
       ],
     );
@@ -88,11 +89,11 @@ class Pagination extends StatelessWidget {
       child: InkWell(
         onTap: isCurrentPage ? null : () => onPageChanged(pageNumber),
         child: Container(
-          width: 28,
-          height: 28,
+          width: sm,
+          height: sm,
           decoration: BoxDecoration(
             color: isCurrentPage ? AppColors.mutedOlive : Colors.transparent,
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: BorderRadius.circular(micro),
             border: Border.all(
               color: isCurrentPage ? AppColors.mutedOlive : Colors.grey,
               width: 1,
@@ -102,7 +103,7 @@ class Pagination extends StatelessWidget {
             child: Text(
               pageNumber.toString(),
               style: TextStyle(
-                fontSize: 12,
+                fontSize: xxsPlus,
                 color: isCurrentPage ? Colors.white : Colors.grey,
                 fontWeight: FontWeight.w500,
               ),
@@ -115,12 +116,12 @@ class Pagination extends StatelessWidget {
 
   Widget _buildEllipsis() {
     return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 4),
+      padding: EdgeInsets.symmetric(horizontal: micro),
       child: Text(
         '...',
         style: TextStyle(
           color: Colors.grey,
-          fontSize: 12,
+          fontSize: xxsPlus,
         ),
       ),
     );

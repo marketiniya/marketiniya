@@ -28,7 +28,7 @@ class ClientsScreen extends StatelessWidget {
                   children: [
                     SizedBox(height: xl),
                     ContentHeader(),
-                    ClientsTable(),
+                    ContentTable(),
                   ],
                 ),
               ),
