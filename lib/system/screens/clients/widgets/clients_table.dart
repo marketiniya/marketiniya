@@ -4,21 +4,21 @@ import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/system/screens/clients/models/client_model.dart';
 import 'package:marketinya/system/screens/clients/widgets/pagination.dart';
 
-class ClientsTable extends StatefulWidget {
-  const ClientsTable({super.key});
+class ContentTable extends StatefulWidget {
+  const ContentTable({super.key});
 
   @override
-  State<ClientsTable> createState() => _ClientsTableState();
+  State<ContentTable> createState() => _ContentTableState();
 }
 
-class _ClientsTableState extends State<ClientsTable> {
+class _ContentTableState extends State<ContentTable> {
   static const List<int> _availableRowsPerPage = [10, 15, 25, 50, 100];
   static const _rowTextStyle = TextStyle(
     color: Colors.black87,
-    fontSize: 12,
+    fontSize: xxsPlus,
   );
   static const _headerTextStyle = TextStyle(
-    fontSize: 16,
+    fontSize: xs,
     fontWeight: FontWeight.w500,
     color: Colors.black,
   );
@@ -63,7 +63,7 @@ class _ClientsTableState extends State<ClientsTable> {
           _buildHeader(),
           const SizedBox(height: xxs),
           _buildClientsList(),
-          if (_totalPages > 0) ...[
+          if (_totalPages > none) ...[
             const SizedBox(height: xs),
             _buildTableFooter(),
             const SizedBox(height: xs),
@@ -150,7 +150,7 @@ class _ClientsTableState extends State<ClientsTable> {
         const Text('Редове на страница:', style: _rowTextStyle),
         const SizedBox(width: xxs),
         Container(
-          height: 28,
+          height: sm,
           padding: const EdgeInsets.symmetric(horizontal: xxs),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.shade400),
