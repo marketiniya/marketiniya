@@ -140,7 +140,6 @@ class _AddClientScreenState extends State<AddClientScreen> {
                     borderRadius: lg,
                   ),
                 ),
-                const SizedBox(height: 20),
                 const SizedBox(
                   width: _inputWidth,
                   child: CustomTextFormField(
@@ -151,7 +150,6 @@ class _AddClientScreenState extends State<AddClientScreen> {
                     borderRadius: lg,
                   ),
                 ),
-                const SizedBox(height: 20),
                 const SizedBox(
                   width: _inputWidth,
                   child: CustomTextFormField(
@@ -162,7 +160,6 @@ class _AddClientScreenState extends State<AddClientScreen> {
                     borderRadius: lg,
                   ),
                 ),
-                const SizedBox(height: 20),
                 SizedBox(
                   width: _inputWidth,
                   child: CustomDropdownFormField<ClientStatus>(
@@ -224,7 +221,7 @@ class _AddClientScreenState extends State<AddClientScreen> {
         const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
+            SizedBox(height: xs),
             SizedBox(
               width: _inputWidth * 2 + lg,
               child: CustomTextFormField(
