@@ -154,6 +154,7 @@ class CustomDropdownFormField<T> extends StatefulWidget {
     this.hintText = '',
     this.prefixIcon,
     this.focusNode,
+    this.onChanged,
     this.onSaved,
     this.decoration,
     this.dropdownItemBuilder,
@@ -168,6 +169,7 @@ class CustomDropdownFormField<T> extends StatefulWidget {
   final String labelText;
   final String hintText;
   final double borderRadius;
+  final ValueChanged<T?>? onChanged;
   final FormFieldSetter<T>? onSaved;
   final String Function(T item) dropdownValues;
   final InputDecoration? decoration;
@@ -202,7 +204,10 @@ class _CustomDropdownFormFieldState<T>
             ),
         value: _selectedValue,
         items: _dropdownItems(),
-        onChanged: _onChanged,
+        onChanged: (value) {
+          _onChanged(value);
+          widget.onChanged?.call(value);
+        },
         onSaved: widget.onSaved,
       ),
     );
