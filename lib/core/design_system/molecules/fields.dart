@@ -24,6 +24,8 @@ class CustomTextFormField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
     this.maxLines = 1,
+    this.readOnly = false,
+    this.onTap,
   });
 
   final EdgeInsetsGeometry padding;
@@ -44,6 +46,8 @@ class CustomTextFormField extends StatefulWidget {
   final bool obscureText;
   final Color? filledColor;
   final int? maxLines;
+  final bool readOnly;
+  final VoidCallback? onTap;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -82,6 +86,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         keyboardType: widget.keyboardType,
         obscureText: _obscureText,
         maxLines: widget.maxLines,
+        readOnly: widget.readOnly,
+        onTap: widget.onTap,
         decoration: InputDecoration(
           labelText: widget.labelText,
           labelStyle: const TextStyle(color: Colors.black),
