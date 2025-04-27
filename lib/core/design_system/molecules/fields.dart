@@ -155,6 +155,8 @@ class CustomDropdownFormField<T> extends StatefulWidget {
     this.prefixIcon,
     this.focusNode,
     this.onSaved,
+    this.decoration,
+    this.dropdownItemBuilder,
   });
 
   final FocusNode? focusNode;
@@ -168,6 +170,8 @@ class CustomDropdownFormField<T> extends StatefulWidget {
   final double borderRadius;
   final FormFieldSetter<T>? onSaved;
   final String Function(T item) dropdownValues;
+  final InputDecoration? decoration;
+  final Widget Function(T item)? dropdownItemBuilder;
 
   @override
   State<CustomDropdownFormField<T>> createState() =>
@@ -187,14 +191,15 @@ class _CustomDropdownFormFieldState<T>
         menuMaxHeight: imageWidth,
         focusNode: widget.focusNode,
         isExpanded: widget.isExpanded,
-        decoration: InputDecoration(
-          prefixIcon: Icon(widget.prefixIcon),
-          labelText: widget.labelText,
-          hintText: widget.hintText,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(widget.borderRadius),
-          ),
-        ),
+        decoration: widget.decoration ??
+            InputDecoration(
+              prefixIcon: Icon(widget.prefixIcon),
+              labelText: widget.labelText,
+              hintText: widget.hintText,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+              ),
+            ),
         value: _selectedValue,
         items: _dropdownItems(),
         onChanged: _onChanged,
@@ -214,10 +219,12 @@ class _CustomDropdownFormFieldState<T>
         .map(
           (item) => DropdownMenuItem(
             value: item,
-            child: Text(
-              widget.dropdownValues(item),
-              overflow: TextOverflow.ellipsis,
-            ),
+            child: widget.dropdownItemBuilder != null
+                ? widget.dropdownItemBuilder!(item)
+                : Text(
+                    widget.dropdownValues(item),
+                    overflow: TextOverflow.ellipsis,
+                  ),
           ),
         )
         .toList();
