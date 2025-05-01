@@ -12,7 +12,6 @@ class ContentHeader extends StatelessWidget {
   static const _searchFieldWidth = 360.0;
   static const _spacingBetweenFilterAndAdd = 56.0;
   static const _verticalOffset = -10.0;
-  static const _filterButtonColor = Color(0xFF708445);
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +74,7 @@ class ContentHeader extends StatelessWidget {
       offset: const Offset(none, _verticalOffset),
       child: Container(
         decoration: BoxDecoration(
-          color: _filterButtonColor,
+          color: AppColors.oliveGreen,
           borderRadius: BorderRadius.circular(xxsPlus),
         ),
         child: IconButton(
@@ -102,7 +101,7 @@ class ContentHeader extends StatelessWidget {
             ),
           );
         },
-        backgroundColor: _filterButtonColor,
+        backgroundColor: AppColors.oliveGreen,
         activeTitleColor: Colors.white,
       ),
     );
