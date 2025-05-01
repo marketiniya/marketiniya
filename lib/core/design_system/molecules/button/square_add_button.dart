@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
+import 'package:marketinya/core/design_system/themes/app_colors.dart';
 
 class SquareAddButton extends StatelessWidget {
   const SquareAddButton({
     super.key,
     required this.onPressed,
-    this.backgroundColor = const Color(0xFF708445),
+    this.backgroundColor = AppColors.oliveGreen,
     this.iconColor = Colors.white,
   });
 

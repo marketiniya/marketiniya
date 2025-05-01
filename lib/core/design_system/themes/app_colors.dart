@@ -5,10 +5,10 @@ class AppColors {
   static const Color background = Color(0xFFE6E3D3);
   static const Color primary = Color(0xFF333333);
   static const Color accent = Color(0xFFADD8E6);
+  static const Color oliveGreen = Color(0xFF708445);
 
   static const Color lightBeige = Color(0xFFF2F2EA);
   static const Color mutedOlive = Color(0xFFD5D6BE);
-
 
   // Status colors
   static const Color active = Color(0xFF4CAF50);

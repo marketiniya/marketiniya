@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/models/tags.dart';
-import 'package:marketinya/system/screens/clients/widgets/square_add_button.dart';
+import 'package:marketinya/core/design_system/molecules/button/square_add_button.dart';
 
 class TagsWidget extends StatelessWidget {
   const TagsWidget({
@@ -92,7 +92,7 @@ class TagsWidget extends StatelessWidget {
         tag.label,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 12,
+          fontSize: xxsPlus,
           fontWeight: FontWeight.w500,
         ),
       ),
