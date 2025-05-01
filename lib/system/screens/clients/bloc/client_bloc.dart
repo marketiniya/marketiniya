@@ -4,11 +4,9 @@ import 'package:injectable/injectable.dart';
 import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
-
 import 'client_state.dart';
 
 part 'client_event.dart';
-
 part 'client_bloc.freezed.dart';
 
 @Injectable()
