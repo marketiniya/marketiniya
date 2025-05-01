@@ -31,7 +31,7 @@ mixin _$Client {
   String get industry => throw _privateConstructorUsedError;
   String get personalOrCompanyId => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  ClientStatus get status => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   String get assignedToId => throw _privateConstructorUsedError;
@@ -59,7 +59,7 @@ abstract class $ClientCopyWith<$Res> {
       String industry,
       String personalOrCompanyId,
       String phone,
-      String status,
+      ClientStatus status,
       DateTime createdAt,
       DateTime updatedAt,
       String assignedToId,
@@ -126,7 +126,7 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ClientStatus,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -162,7 +162,7 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       String industry,
       String personalOrCompanyId,
       String phone,
-      String status,
+      ClientStatus status,
       DateTime createdAt,
       DateTime updatedAt,
       String assignedToId,
@@ -227,7 +227,7 @@ class __$$ClientImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ClientStatus,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -294,7 +294,7 @@ class _$ClientImpl implements _Client {
   @override
   final String phone;
   @override
-  final String status;
+  final ClientStatus status;
   @override
   final DateTime createdAt;
   @override
@@ -387,7 +387,7 @@ abstract class _Client implements Client {
       required final String industry,
       required final String personalOrCompanyId,
       required final String phone,
-      required final String status,
+      required final ClientStatus status,
       required final DateTime createdAt,
       required final DateTime updatedAt,
       final String assignedToId,
@@ -412,7 +412,7 @@ abstract class _Client implements Client {
   @override
   String get phone;
   @override
-  String get status;
+  ClientStatus get status;
   @override
   DateTime get createdAt;
   @override

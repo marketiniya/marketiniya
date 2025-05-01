@@ -13,7 +13,7 @@ class AddClientState with _$AddClientState {
     @Default('') String industry,
     @Default('') String personalOrCompanyId,
     @Default('') String phone,
-    @Default(ClientStatus.active) ClientStatus clientStatus,
+    @Default(ClientStatus.inactive) ClientStatus clientStatus,
     @Default('') String description,
     String? errorMessage,
   }) = _AddClientState;

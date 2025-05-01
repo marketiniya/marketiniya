@@ -7,10 +7,8 @@ import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
 import 'package:marketinya/system/screens/clients/widgets/clients_drawer.dart';
-import 'package:marketinya/system/screens/clients/widgets/clients_table.dart';
+import 'package:marketinya/system/screens/clients/widgets/clients_table/clients_table.dart';
 import 'package:marketinya/system/screens/clients/widgets/content_header.dart';
-
-import 'bloc/client_state.dart';
 
 class ClientsScreen extends StatelessWidget {
   const ClientsScreen({super.key});

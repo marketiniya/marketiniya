@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
+import 'package:marketinya/core/enums/client_status.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
 
@@ -43,7 +44,7 @@ class ClientRepository {
     required String industry,
     required String personalOrCompanyId,
     required String phone,
-    required String status,
+    required ClientStatus status,
   }) async {
     try {
       final clientData = {
@@ -54,7 +55,7 @@ class ClientRepository {
         'industry': industry,
         'personalOrCompanyId': personalOrCompanyId,
         'phone': phone,
-        'status': status,
+        'status': status.label,
         'createdAt': FieldValue.serverTimestamp(),
         'updatedAt': FieldValue.serverTimestamp(),
       };
