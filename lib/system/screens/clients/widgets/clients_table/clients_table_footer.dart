@@ -29,37 +29,33 @@ class ClientsTableFooter extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildRowsPerPageSelector(),
+        Row(
+          children: [
+            const Text('Редове на страница:', style: _rowTextStyle),
+            const SizedBox(width: xxs),
+            Container(
+              height: sm,
+              padding: const EdgeInsets.symmetric(horizontal: xxs),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade400),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<int>(
+                  value: itemsPerPage,
+                  isDense: true,
+                  focusColor: Colors.transparent,
+                  items: _availableRowsPerPage.map(_buildDropdownItem).toList(),
+                  onChanged: onRowsPerPageChanged,
+                ),
+              ),
+            ),
+          ],
+        ),
         Pagination(
           currentPage: currentPage,
           totalPages: totalPages,
           onPageChanged: onPageChanged,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildRowsPerPageSelector() {
-    return Row(
-      children: [
-        const Text('Редове на страница:', style: _rowTextStyle),
-        const SizedBox(width: xxs),
-        Container(
-          height: sm,
-          padding: const EdgeInsets.symmetric(horizontal: xxs),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade400),
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: DropdownButtonHideUnderline(
-            child: DropdownButton<int>(
-              value: itemsPerPage,
-              isDense: true,
-              focusColor: Colors.transparent,
-              items: _availableRowsPerPage.map(_buildDropdownItem).toList(),
-              onChanged: onRowsPerPageChanged,
-            ),
-          ),
         ),
       ],
     );
