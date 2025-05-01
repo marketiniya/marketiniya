@@ -19,14 +19,12 @@ class ClientRepository {
           .get();
 
       return querySnapshot.docs.map((doc) {
-        final data = doc.data();
-        return Client.fromJson(data);
+        return Client.fromFirestore(doc);
       }).toList();
     } catch (e) {
       throw Exception('Failed to fetch clients: $e');
     }
   }
-
 
   Future<bool> isClientRegistered(String id) async {
     try {

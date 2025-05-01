@@ -18,15 +18,20 @@ class Client with _$Client {
     required String status,
     required DateTime createdAt,
     required DateTime updatedAt,
+    @Default('') String assignedToId,
+    @Default([]) List<String> tagIds,
   }) = _Client;
 
   factory Client.fromJson(Map<String, dynamic> json) => _$ClientFromJson(json);
 
   factory Client.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
+    final assignedTo = data['assignedTo'] as DocumentReference;
+    final tags = List<DocumentReference>.from(data['tags'] ?? []);
+
     return Client(
-      assignedTo: data['assignedTo'] as DocumentReference,
-      tags: List<DocumentReference>.from(data['tags'] ?? []),
+      assignedTo: assignedTo,
+      tags: tags,
       companyName: data['companyName'] as String,
       dateOfBirth: (data['dateOfBirth'] as Timestamp).toDate(),
       industry: data['industry'] as String,
@@ -35,6 +40,8 @@ class Client with _$Client {
       status: data['status'] as String,
       createdAt: (data['createdAt'] as Timestamp).toDate(),
       updatedAt: (data['updatedAt'] as Timestamp).toDate(),
+      assignedToId: assignedTo.id,
+      tagIds: tags.map((tag) => tag.id).toList(),
     );
   }
 }

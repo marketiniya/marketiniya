@@ -34,6 +34,8 @@ mixin _$Client {
   String get status => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  String get assignedToId => throw _privateConstructorUsedError;
+  List<String> get tagIds => throw _privateConstructorUsedError;
 
   /// Serializes this Client to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -59,7 +61,9 @@ abstract class $ClientCopyWith<$Res> {
       String phone,
       String status,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      String assignedToId,
+      List<String> tagIds});
 }
 
 /// @nodoc
@@ -87,6 +91,8 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
     Object? status = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? assignedToId = null,
+    Object? tagIds = null,
   }) {
     return _then(_value.copyWith(
       assignedTo: null == assignedTo
@@ -129,6 +135,14 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      assignedToId: null == assignedToId
+          ? _value.assignedToId
+          : assignedToId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tagIds: null == tagIds
+          ? _value.tagIds
+          : tagIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -150,7 +164,9 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       String phone,
       String status,
       DateTime createdAt,
-      DateTime updatedAt});
+      DateTime updatedAt,
+      String assignedToId,
+      List<String> tagIds});
 }
 
 /// @nodoc
@@ -176,6 +192,8 @@ class __$$ClientImplCopyWithImpl<$Res>
     Object? status = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? assignedToId = null,
+    Object? tagIds = null,
   }) {
     return _then(_$ClientImpl(
       assignedTo: null == assignedTo
@@ -218,6 +236,14 @@ class __$$ClientImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      assignedToId: null == assignedToId
+          ? _value.assignedToId
+          : assignedToId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tagIds: null == tagIds
+          ? _value._tagIds
+          : tagIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -236,8 +262,11 @@ class _$ClientImpl implements _Client {
       required this.phone,
       required this.status,
       required this.createdAt,
-      required this.updatedAt})
-      : _tags = tags;
+      required this.updatedAt,
+      this.assignedToId = '',
+      final List<String> tagIds = const []})
+      : _tags = tags,
+        _tagIds = tagIds;
 
   factory _$ClientImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClientImplFromJson(json);
@@ -270,10 +299,21 @@ class _$ClientImpl implements _Client {
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
+  @override
+  @JsonKey()
+  final String assignedToId;
+  final List<String> _tagIds;
+  @override
+  @JsonKey()
+  List<String> get tagIds {
+    if (_tagIds is EqualUnmodifiableListView) return _tagIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tagIds);
+  }
 
   @override
   String toString() {
-    return 'Client(assignedTo: $assignedTo, tags: $tags, companyName: $companyName, dateOfBirth: $dateOfBirth, industry: $industry, personalOrCompanyId: $personalOrCompanyId, phone: $phone, status: $status, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Client(assignedTo: $assignedTo, tags: $tags, companyName: $companyName, dateOfBirth: $dateOfBirth, industry: $industry, personalOrCompanyId: $personalOrCompanyId, phone: $phone, status: $status, createdAt: $createdAt, updatedAt: $updatedAt, assignedToId: $assignedToId, tagIds: $tagIds)';
   }
 
   @override
@@ -297,7 +337,10 @@ class _$ClientImpl implements _Client {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.assignedToId, assignedToId) ||
+                other.assignedToId == assignedToId) &&
+            const DeepCollectionEquality().equals(other._tagIds, _tagIds));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -313,7 +356,9 @@ class _$ClientImpl implements _Client {
       phone,
       status,
       createdAt,
-      updatedAt);
+      updatedAt,
+      assignedToId,
+      const DeepCollectionEquality().hash(_tagIds));
 
   /// Create a copy of Client
   /// with the given fields replaced by the non-null parameter values.
@@ -344,7 +389,9 @@ abstract class _Client implements Client {
       required final String phone,
       required final String status,
       required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$ClientImpl;
+      required final DateTime updatedAt,
+      final String assignedToId,
+      final List<String> tagIds}) = _$ClientImpl;
 
   factory _Client.fromJson(Map<String, dynamic> json) = _$ClientImpl.fromJson;
 
@@ -370,6 +417,10 @@ abstract class _Client implements Client {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
+  @override
+  String get assignedToId;
+  @override
+  List<String> get tagIds;
 
   /// Create a copy of Client
   /// with the given fields replaced by the non-null parameter values.
