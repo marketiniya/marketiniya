@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class FieldValidators {
   FieldValidators._();
@@ -91,7 +92,23 @@ class FieldValidators {
       if (repeatedPassword != password) {
         return errorMessage;
       }
-      return null;
+      return null; // Valid
+    };
+  }
+
+  /// Validate that a date is in the correct format (dd.MM.yyyy)
+  static FormFieldValidator<String> validDate({
+    String errorMessage = 'Invalid date format (dd.MM.yyyy)',
+  }) {
+    return (value) {
+      if (value == null || value.trim().isEmpty) return errorMessage;
+
+      try {
+        DateFormat('dd.MM.yyyy').parseStrict(value);
+        return null; // Valid
+      } catch (_) {
+        return 'Invalid date format dd.MM.yyyy';
+      }
     };
   }
 }

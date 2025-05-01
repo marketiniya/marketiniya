@@ -4,9 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
+import 'package:marketinya/core/enums/status.dart';
+import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_bloc.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_event.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/content_form.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_state.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({
@@ -14,70 +16,83 @@ class HeaderSection extends StatelessWidget {
     required this.formKey,
   });
 
-  final GlobalKey<AddClientFormState> formKey;
+  final GlobalKey<FormState> formKey;
 
   static const double _buttonWidth = 120.0;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            SizedBox(
-              width: _buttonWidth,
-              child: PrimaryButton.responsive(
-                icon: const Icon(Icons.check),
-                title: 'Добави',
-                onPressed: () {
-                  final formState = formKey.currentState;
+    return BlocListener<AddClientBloc, AddClientState>(
+      listener: (context, state) {
+        if (state.status == Status.error) {
+          context.showFailureSnackBar(state.errorMessage ?? 'An error occurred');
+        } else if (state.status == Status.success) {
+          context.showSuccessSnackBar('Client created successfully');
+          Navigator.of(context).pop();
+        }
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              BlocBuilder<AddClientBloc, AddClientState>(
+                builder: (context, state) {
+                  return SizedBox(
+                    width: _buttonWidth,
+                    child: PrimaryButton.responsive(
+                      isLoading: state.status == Status.loading,
+                      icon: const Icon(Icons.check),
+                      title: 'Добави',
+                      onPressed: () {
+                        final isValid = formKey.currentState?.validate() ?? false;
 
-                  if (formState?.formKey.currentState?.validate() ?? false) {
-                    formState?.formKey.currentState?.save();
-                    context
-                        .read<AddClientBloc>()
-                        .add(const AddClientEvent.save());
-                  }
-                },
-                backgroundColor: AppColors.oliveGreen,
-                activeTitleColor: Colors.white,
-              ),
-            ),
-            const SizedBox(width: md),
-            SizedBox(
-              width: _buttonWidth,
-              child: PrimaryButton.responsive(
-                icon: const Icon(Icons.close),
-                title: 'Отказ',
-                onPressed: () {
-                  Navigator.of(context).pop();
+                        if (isValid) {
+                          formKey.currentState?.save();
+                          context.read<AddClientBloc>().add(const AddClientEvent.save());
+                        }
+                      },
+                      backgroundColor: AppColors.oliveGreen,
+                      activeTitleColor: Colors.white,
+                    ),
+                  );
                 },
               ),
-            ),
-          ],
-        ),
-        const SizedBox(height: lg),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Профил на клиента',
-              style: GoogleFonts.roboto(
-                textStyle: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
+              const SizedBox(width: md),
+              SizedBox(
+                width: _buttonWidth,
+                child: PrimaryButton.responsive(
+                  icon: const Icon(Icons.close),
+                  title: 'Отказ',
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                 ),
               ),
-            ),
-            const SizedBox(
-              width: 240,
-              child: Divider(thickness: nano, color: Colors.black),
-            ),
-          ],
-        )
-      ],
+            ],
+          ),
+          const SizedBox(height: lg),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Профил на клиента',
+                style: GoogleFonts.roboto(
+                  textStyle: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 240,
+                child: Divider(thickness: nano, color: Colors.black),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

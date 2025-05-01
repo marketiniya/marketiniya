@@ -24,7 +24,7 @@ class TagsWidget extends StatelessWidget {
           style: GoogleFonts.roboto(
             textStyle: const TextStyle(
               color: Colors.black,
-              fontSize: 16,
+              fontSize: xs,
               fontWeight: FontWeight.w500,
             ),
           ),

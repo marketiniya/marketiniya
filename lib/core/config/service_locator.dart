@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
+import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/contact_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
@@ -23,6 +24,7 @@ Future<void> initializeDependencyInjection() async {
   getIt.registerLazySingleton<AuthenticationRepository>(() => AuthenticationRepository());
   getIt.registerLazySingleton<UserRepository>(() => UserRepository(getIt<FirestoreService>(), getIt<SharedPreferences>()));
   getIt.registerLazySingleton<ContactRepository>(() => ContactRepository());
+  getIt.registerLazySingleton<ClientRepository>(() => ClientRepository(getIt<FirestoreService>()));
 
   Log.info('Dependency injection setup completed successfully!');
 }
