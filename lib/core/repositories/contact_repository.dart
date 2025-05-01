@@ -4,7 +4,9 @@ import 'package:marketinya/core/services/firestore_service.dart';
 import 'package:marketinya/website/models/contact_model.dart';
 
 class ContactRepository {
-  final FirestoreService _firestore = FirestoreService.instance;
+  ContactRepository(this._firestore);
+
+  final FirestoreService _firestore;
 
   static const String _questions = 'questions';
   static const String _subscriptions = 'subscriptions';

@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class FirestoreService {
   FirestoreService._();
 
@@ -33,5 +35,9 @@ class FirestoreService {
     required dynamic value,
   }) async {
     return await _firestore.collection(collection).where(field, isEqualTo: value).get();
+  }
+
+  CollectionReference<Map<String, dynamic>> getCollection(String collection) {
+    return _firestore.collection(collection);
   }
 }

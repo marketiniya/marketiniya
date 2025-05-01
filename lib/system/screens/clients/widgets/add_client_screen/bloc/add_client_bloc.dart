@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
@@ -6,6 +7,7 @@ import 'package:marketinya/core/repositories/user_repository.dart';
 import 'add_client_event.dart';
 import 'add_client_state.dart';
 
+@Injectable()
 class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
   AddClientBloc(this._userRepository, this._clientRepository)
       : super(AddClientState()) {
