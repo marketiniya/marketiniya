@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/header_section.dart';
+import 'package:marketinya/core/repositories/client_repository.dart';
+import 'package:marketinya/core/repositories/user_repository.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/add_client_form.dart';
 import 'package:marketinya/system/screens/clients/widgets/clients_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/add_client_bloc.dart';
-import 'widget/content_form.dart';
 
 class AddClientScreen extends StatelessWidget {
   const AddClientScreen({super.key});
@@ -13,39 +15,29 @@ class AddClientScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddClientBloc(),
-      child: _AddClientScreenContent(),
+      create: (context) => AddClientBloc(getIt<UserRepository>(), getIt<ClientRepository>()),
+      child: const _AddClientScreenContent(),
     );
   }
 }
 
 class _AddClientScreenContent extends StatelessWidget {
-  _AddClientScreenContent();
-
-  final GlobalKey<AddClientFormState> _formKey = GlobalKey<AddClientFormState>();
+  const _AddClientScreenContent();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.background,
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ClientsDrawer(),
+          ClientsDrawer(),
           Flexible(
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(180, xl, 180, lg),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: xl),
-                    HeaderSection(formKey: _formKey),
-                    const SizedBox(height: lg),
-                    ContentForm(key: _formKey),
-                  ],
-                ),
+                padding: EdgeInsets.fromLTRB(180, xl, 180, lg),
+                child: AddClientForm()
               ),
             ),
           ),

@@ -5,6 +5,9 @@ import 'package:marketinya/core/config/log.dart';
 import 'package:marketinya/core/models/user.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:marketinya/core/services/firebase_service.dart';
 
 @injectable
 class UserRepository {
@@ -60,5 +63,12 @@ class UserRepository {
       throw Exception('Failed to set current user: $e');
     }
   }
-}
 
+  DocumentReference getCurrentUserRef() {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser == null) {
+      throw Exception('User not authenticated');
+    }
+    return FirebaseService.firestore.collection('users').doc(currentUser.uid);
+  }
+}
