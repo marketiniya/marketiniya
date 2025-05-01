@@ -34,10 +34,7 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
       final currentUserRef = _userRepository.getCurrentUserRef();
       final clients = await _clientRepository.getClientsForUser(currentUserRef);
 
-      emit(state.copyWith(
-        status: Status.success,
-        clients: clients,
-      ));
+      emit(state.copyWith(status: Status.success, clients: clients));
     } catch (e) {
       emit(state.copyWith(
         status: Status.error,

@@ -211,7 +211,7 @@ class _$AddClientStateImpl implements _AddClientState {
       this.industry = '',
       this.personalOrCompanyId = '',
       this.phone = '',
-      this.clientStatus = ClientStatus.active,
+      this.clientStatus = ClientStatus.inactive,
       this.description = '',
       this.errorMessage});
 

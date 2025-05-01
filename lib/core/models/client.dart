@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketinya/core/converters/document_reference_converter.dart';
+import 'package:marketinya/core/enums/client_status.dart';
 
 part 'client.freezed.dart';
 part 'client.g.dart';
@@ -15,7 +16,7 @@ class Client with _$Client {
     required String industry,
     required String personalOrCompanyId,
     required String phone,
-    required String status,
+    required ClientStatus status,
     required DateTime createdAt,
     required DateTime updatedAt,
     @Default('') String assignedToId,
@@ -37,7 +38,10 @@ class Client with _$Client {
       industry: data['industry'] as String,
       personalOrCompanyId: data['personalOrCompanyId'] as String,
       phone: data['phone'] as String,
-      status: data['status'] as String,
+      status: ClientStatus.values.firstWhere(
+        (e) => e.label == (data['status'] as String),
+        orElse: () => ClientStatus.active,
+      ),
       createdAt: (data['createdAt'] as Timestamp).toDate(),
       updatedAt: (data['updatedAt'] as Timestamp).toDate(),
       assignedToId: assignedTo.id,

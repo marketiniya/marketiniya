@@ -17,7 +17,7 @@ _$ClientImpl _$$ClientImplFromJson(Map<String, dynamic> json) => _$ClientImpl(
       industry: json['industry'] as String,
       personalOrCompanyId: json['personalOrCompanyId'] as String,
       phone: json['phone'] as String,
-      status: json['status'] as String,
+      status: $enumDecode(_$ClientStatusEnumMap, json['status']),
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
       assignedToId: json['assignedToId'] as String? ?? '',
@@ -38,9 +38,14 @@ Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
       'industry': instance.industry,
       'personalOrCompanyId': instance.personalOrCompanyId,
       'phone': instance.phone,
-      'status': instance.status,
+      'status': _$ClientStatusEnumMap[instance.status]!,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
       'assignedToId': instance.assignedToId,
       'tagIds': instance.tagIds,
     };
+
+const _$ClientStatusEnumMap = {
+  ClientStatus.active: 'active',
+  ClientStatus.inactive: 'inactive',
+};

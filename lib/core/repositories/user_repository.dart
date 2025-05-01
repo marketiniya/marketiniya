@@ -67,6 +67,7 @@ class UserRepository {
   DocumentReference getCurrentUserRef() {
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser == null) {
+      Log.error('getCurrentUserRef: User not authenticated');
       throw Exception('User not authenticated');
     }
     return FirebaseService.firestore.collection('users').doc(currentUser.uid);

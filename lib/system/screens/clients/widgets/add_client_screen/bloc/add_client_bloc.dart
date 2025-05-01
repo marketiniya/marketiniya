@@ -54,7 +54,7 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
         industry: state.industry,
         personalOrCompanyId: state.personalOrCompanyId,
         phone: state.phone,
-        status: state.clientStatus.name,
+        status: state.clientStatus,
       );
 
       emit(state.copyWith(status: Status.success));
