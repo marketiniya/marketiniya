@@ -23,7 +23,7 @@ Future<void> initializeDependencyInjection() async {
   /// Register repositories
   getIt.registerLazySingleton<AuthenticationRepository>(() => AuthenticationRepository());
   getIt.registerLazySingleton<UserRepository>(() => UserRepository(getIt<FirestoreService>(), getIt<SharedPreferences>()));
-  getIt.registerLazySingleton<ContactRepository>(() => ContactRepository());
+  getIt.registerLazySingleton<ContactRepository>(() => ContactRepository(getIt<FirestoreService>()));
   getIt.registerLazySingleton<ClientRepository>(() => ClientRepository(getIt<FirestoreService>()));
 
   Log.info('Dependency injection setup completed successfully!');

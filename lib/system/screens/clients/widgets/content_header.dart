@@ -10,19 +10,18 @@ class ContentHeader extends StatelessWidget {
   const ContentHeader({super.key});
 
   static const _searchFieldWidth = 360.0;
-  static const _spacingBetweenFilterAndAdd = 56.0;
   static const _verticalOffset = -10.0;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(180, 0, 180, 8),
+      padding: const EdgeInsets.fromLTRB(180, none, 180, xxs),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildTitle(),
           const SizedBox(
-            width: 100,
+            width: imageWidth / nano,
             child: Divider(thickness: nano, color: Colors.black),
           ),
           Padding(
@@ -32,7 +31,7 @@ class ContentHeader extends StatelessWidget {
                 _buildSearchField(),
                 const SizedBox(width: sm),
                 _buildFilterButton(),
-                const SizedBox(width: _spacingBetweenFilterAndAdd),
+                const SizedBox(width: xxl),
                 _buildAddClientButton(context),
               ],
             ),

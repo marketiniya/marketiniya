@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
+import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
 
 @injectable
@@ -9,6 +10,23 @@ class ClientRepository {
   final FirestoreService _firestore;
 
   static const String _clients = 'clients';
+
+  Future<List<Client>> getClientsForUser(DocumentReference userRef) async {
+    try {
+      final querySnapshot = await _firestore
+          .getCollection(_clients)
+          .where('assignedTo', isEqualTo: userRef)
+          .get();
+
+      return querySnapshot.docs.map((doc) {
+        final data = doc.data();
+        return Client.fromJson(data);
+      }).toList();
+    } catch (e) {
+      throw Exception('Failed to fetch clients: $e');
+    }
+  }
+
 
   Future<bool> isClientRegistered(String id) async {
     try {
