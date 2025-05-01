@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
-import 'package:marketinya/system/screens/clients/models/client_model.dart';
+import 'package:marketinya/core/enums/client_status.dart';
+import 'package:marketinya/core/enums/status.dart';
+import 'package:marketinya/core/models/client.dart';
+import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
+import 'package:marketinya/system/screens/clients/bloc/client_state.dart';
 import 'package:marketinya/system/screens/clients/widgets/pagination.dart';
 
 class ContentTable extends StatefulWidget {
@@ -30,16 +35,20 @@ class _ContentTableState extends State<ContentTable> {
   int _itemsPerPage = 15;
   int _currentPage = 1;
 
-  List<ClientModel> get _paginatedClients {
+  List<Client> get _paginatedClients {
+    final clients = context.read<ClientBloc>().state.clients;
     final startIndex = (_currentPage - 1) * _itemsPerPage;
     final endIndex = startIndex + _itemsPerPage;
-    return sampleClients.sublist(
+    return clients.sublist(
       startIndex,
-      endIndex.clamp(0, sampleClients.length),
+      endIndex.clamp(0, clients.length),
     );
   }
 
-  int get _totalPages => (sampleClients.length / _itemsPerPage).ceil();
+  int get _totalPages {
+    final clients = context.read<ClientBloc>().state.clients;
+    return (clients.length / _itemsPerPage).ceil();
+  }
 
   void _onPageChanged(int page) => setState(() => _currentPage = page);
 
@@ -55,21 +64,44 @@ class _ContentTableState extends State<ContentTable> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 180),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          _buildHeader(),
-          const SizedBox(height: xxs),
-          _buildClientsList(),
-          if (_totalPages > none) ...[
-            const SizedBox(height: xs),
-            _buildTableFooter(),
-            const SizedBox(height: xs),
-          ],
-        ],
-      ),
+    return BlocBuilder<ClientBloc, ClientState>(
+      builder: (context, state) {
+        if (state.status == Status.loading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        if (state.status == Status.error) {
+          return Center(
+            child: Text(
+              'Error: ${state.errorMessage}',
+              style: const TextStyle(color: Colors.red),
+            ),
+          );
+        }
+
+        if (state.clients.isEmpty) {
+          return const Center(
+            child: Text('No clients found'),
+          );
+        }
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 180),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _buildHeader(),
+              const SizedBox(height: xxs),
+              _buildClientsList(),
+              if (_totalPages > 0) ...[
+                const SizedBox(height: xs),
+                _buildTableFooter(),
+                const SizedBox(height: xs),
+              ],
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -86,9 +118,9 @@ class _ContentTableState extends State<ContentTable> {
       child: Row(
         children: [
           _buildHeaderCell('№', 0.5),
-          _buildHeaderCell('Клиентски номер', 1),
           _buildHeaderCell('Име/Фирма', 2),
           _buildHeaderCell('ЕГН/ЕИК', 1),
+          _buildHeaderCell('Телефон', 1),
           _buildHeaderCell('Сектор', 1),
           _buildHeaderCell('Статус', 1),
         ],
@@ -117,11 +149,11 @@ class _ContentTableState extends State<ContentTable> {
             child: Row(
               children: [
                 _buildCell(rowNumber.toString(), 0.5),
-                _buildCell(client.clientNumber, 1),
-                _buildCell(client.name, 2),
-                _buildCell(client.identifier, 1),
-                _buildCell(client.sector, 1),
-                _buildStatusCell(client.isActive ? 'Активен' : 'Неактивен', 1),
+                _buildCell(client.companyName, 2),
+                _buildCell(client.personalOrCompanyId, 1),
+                _buildCell(client.phone, 1),
+                _buildCell(client.industry, 1),
+                _buildStatusCell(client.status, 1),
               ],
             ),
           ),
@@ -192,7 +224,7 @@ class _ContentTableState extends State<ContentTable> {
   }
 
   Widget _buildStatusCell(String status, double flex) {
-    final isActive = status == 'Активен';
+    final isActive = status == ClientStatus.active.label;
     return Expanded(
       flex: (flex * 10).toInt(),
       child: Text(

@@ -20,6 +20,11 @@ _$ClientImpl _$$ClientImplFromJson(Map<String, dynamic> json) => _$ClientImpl(
       status: json['status'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
+      assignedToId: json['assignedToId'] as String? ?? '',
+      tagIds: (json['tagIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
@@ -36,4 +41,6 @@ Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
       'status': instance.status,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
+      'assignedToId': instance.assignedToId,
+      'tagIds': instance.tagIds,
     };
