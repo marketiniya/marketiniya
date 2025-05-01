@@ -19,7 +19,16 @@ class ContentHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildTitle(),
+          Text(
+            'Клиенти',
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
           const SizedBox(
             width: imageWidth / nano,
             child: Divider(thickness: nano, color: Colors.black),
@@ -28,80 +37,55 @@ class ContentHeader extends StatelessWidget {
             padding: const EdgeInsets.only(top: lg),
             child: Row(
               children: [
-                _buildSearchField(),
+                const SizedBox(
+                  width: _searchFieldWidth,
+                  child: CustomTextFormField(
+                    labelText: 'Търси',
+                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                    keyboardType: TextInputType.name,
+                    suffixIcon: Icons.search,
+                    borderRadius: lg,
+                    filledColor: AppColors.mutedOlive,
+                  ),
+                ),
                 const SizedBox(width: sm),
-                _buildFilterButton(),
+                Transform.translate(
+                  offset: const Offset(none, _verticalOffset),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.oliveGreen,
+                      borderRadius: BorderRadius.circular(xxsPlus),
+                    ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.filter_alt_outlined,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
                 const SizedBox(width: xxl),
-                _buildAddClientButton(context),
+                Transform.translate(
+                  offset: const Offset(none, _verticalOffset),
+                  child: PrimaryButton.responsive(
+                    icon: const Icon(Icons.add),
+                    title: 'Добави Клиент',
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const AddClientScreen(),
+                        ),
+                      );
+                    },
+                    backgroundColor: AppColors.oliveGreen,
+                    activeTitleColor: Colors.white,
+                  ),
+                ),
               ],
             ),
           )
         ],
-      ),
-    );
-  }
-
-  Widget _buildTitle() {
-    return Text(
-      'Клиенти',
-      style: GoogleFonts.roboto(
-        textStyle: const TextStyle(
-          color: Colors.black,
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSearchField() {
-    return const SizedBox(
-      width: _searchFieldWidth,
-      child: CustomTextFormField(
-        labelText: 'Търси',
-        floatingLabelBehavior: FloatingLabelBehavior.never,
-        keyboardType: TextInputType.name,
-        suffixIcon: Icons.search,
-        borderRadius: lg,
-        filledColor: AppColors.mutedOlive,
-      ),
-    );
-  }
-
-  Widget _buildFilterButton() {
-    return Transform.translate(
-      offset: const Offset(none, _verticalOffset),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.oliveGreen,
-          borderRadius: BorderRadius.circular(xxsPlus),
-        ),
-        child: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.filter_alt_outlined,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildAddClientButton(BuildContext context) {
-    return Transform.translate(
-      offset: const Offset(none, _verticalOffset),
-      child: PrimaryButton.responsive(
-        icon: const Icon(Icons.add),
-        title: 'Добави Клиент',
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const AddClientScreen(),
-            ),
-          );
-        },
-        backgroundColor: AppColors.oliveGreen,
-        activeTitleColor: Colors.white,
       ),
     );
   }

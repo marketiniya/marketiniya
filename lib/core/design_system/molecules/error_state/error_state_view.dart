@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marketinya/core/design_system/atoms/icons/klinik_icons.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/tertiary_button.dart';
+import 'package:marketinya/core/design_system/themes/app_colors.dart';
 
 class ErrorStateView extends StatelessWidget {
   const ErrorStateView({
@@ -77,6 +78,9 @@ class ErrorStateView extends StatelessWidget {
         child: TertiaryButton.responsive(
           title: actionLabel ?? 'Retry',
           onPressed: onRetry!,
+          style: ButtonStyle(
+            backgroundColor: WidgetStateProperty.all(AppColors.oliveGreen),
+          ),
         ),
       ),
     );

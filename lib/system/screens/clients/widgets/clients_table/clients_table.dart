@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
+import 'package:marketinya/core/design_system/molecules/error_state/error_state_view.dart';
+import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_state.dart';
 import 'package:marketinya/system/screens/clients/widgets/clients_table/clients_table_footer.dart';
 import 'package:marketinya/system/screens/clients/widgets/clients_table/clients_table_header.dart';
-import 'package:marketinya/system/screens/clients/widgets/clients_table/clients_table_row.dart';
+import 'clients_list.dart';
 
 class ContentTable extends StatefulWidget {
   const ContentTable({super.key});
@@ -52,21 +54,36 @@ class _ContentTableState extends State<ContentTable> {
     return BlocBuilder<ClientBloc, ClientState>(
       builder: (context, state) {
         if (state.status == Status.loading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Padding(
+            padding: EdgeInsets.symmetric(vertical: imageWidth),
+            child: Center(
+              child: CircularProgressIndicator(color: AppColors.oliveGreen),
+            ),
+          );
         }
 
         if (state.status == Status.error) {
-          return Center(
-            child: Text(
-              'Error: ${state.errorMessage}',
-              style: const TextStyle(color: Colors.red),
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: imageWidth),
+            child: Center(
+              child: ErrorStateView(
+                message: 'Something went wrong. Please try again.',
+                onRetry: () =>
+                    context.read<ClientBloc>().add(const ClientEvent.onLoad()),
+              ),
             ),
           );
         }
 
         if (state.clients.isEmpty) {
-          return const Center(
-            child: Text('No clients found'),
+          return const Padding(
+            padding: EdgeInsets.symmetric(vertical: imageWidth),
+            child: Center(
+              child: Text(
+                'Няма намерени резултати..',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
           );
         }
 
@@ -77,7 +94,11 @@ class _ContentTableState extends State<ContentTable> {
             children: [
               const ClientsTableHeader(),
               const SizedBox(height: xxs),
-              _buildClientsList(),
+              ClientsList(
+                clients: _paginatedClients,
+                currentPage: _currentPage,
+                itemsPerPage: _itemsPerPage,
+              ),
               if (_totalPages > 0) ...[
                 const SizedBox(height: xs),
                 ClientsTableFooter(
@@ -91,26 +112,6 @@ class _ContentTableState extends State<ContentTable> {
               ],
             ],
           ),
-        );
-      },
-    );
-  }
-
-  Widget _buildClientsList() {
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: _paginatedClients.length,
-      separatorBuilder: (_, __) => const Divider(height: 1),
-      itemBuilder: (_, index) {
-        final client = _paginatedClients[index];
-        final rowNumber = (_currentPage - 1) * _itemsPerPage + index + 1;
-        return ClientsTableRow(
-          client: client,
-          rowNumber: rowNumber,
-          onTap: () {
-            // Handle row tap
-          },
         );
       },
     );
