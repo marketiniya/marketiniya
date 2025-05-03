@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 import 'package:marketinya/core/enums/status.dart';
+import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
 import 'add_client_event.dart';
@@ -9,10 +10,14 @@ import 'add_client_state.dart';
 
 @Injectable()
 class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
-  AddClientBloc(this._userRepository, this._clientRepository)
-      : super(AddClientState()) {
+  AddClientBloc(
+    this._userRepository,
+    this._clientRepository,
+    @factoryParam this._client,
+  ) : super(AddClientState()) {
     on<AddClientEvent>((event, emit) async {
       await event.map(
+        load: (e) async => _onLoad(emit),
         companyNameChanged: (e) async => emit(state.copyWith(companyName: e.value)),
         dateOfBirthChanged: (e) async => emit(state.copyWith(dateOfBirth: e.value)),
         industryChanged: (e) async => emit(state.copyWith(industry: e.value)),
@@ -23,10 +28,34 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
         save: (_) async => await _onSave(emit),
       );
     });
+
+    if (_client != null) {
+      add(const AddClientEvent.load());
+    }
   }
 
+  final Client? _client;
   final UserRepository _userRepository;
   final ClientRepository _clientRepository;
+
+  Future<void> _onLoad(Emitter<AddClientState> emit) async {
+    if (_client == null) {
+      return;
+    }
+
+    emit(
+      state.copyWith(
+        isUpdateMode: true,
+        companyName: _client.companyName,
+        dateOfBirth: DateFormat('dd.MM.yyyy').format(_client.dateOfBirth),
+        industry: _client.industry,
+        personalOrCompanyId: _client.personalOrCompanyId,
+        phone: _client.phone,
+        clientStatus: _client.status,
+        description: _client.description,
+      ),
+    );
+  }
 
   Future<void> _onSave(Emitter<AddClientState> emit) async {
     emit(state.copyWith(status: Status.loading));
@@ -55,6 +84,7 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
         personalOrCompanyId: state.personalOrCompanyId,
         phone: state.phone,
         status: state.clientStatus,
+        description: state.description
       );
 
       emit(state.copyWith(status: Status.success));

@@ -6,6 +6,7 @@ import 'package:marketinya/core/utils/validators/field_validators.dart';
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
+    this.controller,
     this.padding = EdgeInsets.zero,
     this.borderRadius,
     this.labelText = '',
@@ -16,7 +17,6 @@ class CustomTextFormField extends StatefulWidget {
     this.filledColor,
     this.prefixIcon,
     this.suffixIcon,
-    this.controller,
     this.focusNode,
     this.onChanged,
     this.onSaved,
@@ -28,9 +28,9 @@ class CustomTextFormField extends StatefulWidget {
     this.onTap,
   });
 
+  final TextEditingController? controller;
   final EdgeInsetsGeometry padding;
   final double? borderRadius;
-  final TextEditingController? controller;
   final FocusNode? focusNode;
   final String labelText;
   final String? helperText;
@@ -188,8 +188,6 @@ class CustomDropdownFormField<T> extends StatefulWidget {
 
 class _CustomDropdownFormFieldState<T>
     extends State<CustomDropdownFormField<T>> {
-  T? _selectedValue;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -208,21 +206,12 @@ class _CustomDropdownFormFieldState<T>
                 borderRadius: BorderRadius.circular(widget.borderRadius),
               ),
             ),
-        value: _selectedValue,
+        value: widget.value,
         items: _dropdownItems(),
-        onChanged: (value) {
-          _onChanged(value);
-          widget.onChanged?.call(value);
-        },
+        onChanged: (value) => widget.onChanged?.call(value),
         onSaved: widget.onSaved,
       ),
     );
-  }
-
-  void _onChanged(T? value) {
-    setState(() {
-      _selectedValue = value;
-    });
   }
 
   List<DropdownMenuItem<T>> _dropdownItems() {

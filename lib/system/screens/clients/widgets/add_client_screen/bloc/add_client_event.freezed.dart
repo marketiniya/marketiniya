@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddClientEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(String value) industryChanged,
@@ -30,6 +31,7 @@ mixin _$AddClientEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(String value)? industryChanged,
@@ -42,6 +44,7 @@ mixin _$AddClientEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(String value)? industryChanged,
@@ -55,6 +58,7 @@ mixin _$AddClientEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_IndustryChanged value) industryChanged,
@@ -68,6 +72,7 @@ mixin _$AddClientEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_IndustryChanged value)? industryChanged,
@@ -81,6 +86,7 @@ mixin _$AddClientEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_IndustryChanged value)? industryChanged,
@@ -114,6 +120,155 @@ class _$AddClientEventCopyWithImpl<$Res, $Val extends AddClientEvent>
 
   /// Create a copy of AddClientEvent
   /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$LoadImplCopyWith<$Res> {
+  factory _$$LoadImplCopyWith(
+          _$LoadImpl value, $Res Function(_$LoadImpl) then) =
+      __$$LoadImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadImplCopyWithImpl<$Res>
+    extends _$AddClientEventCopyWithImpl<$Res, _$LoadImpl>
+    implements _$$LoadImplCopyWith<$Res> {
+  __$$LoadImplCopyWithImpl(_$LoadImpl _value, $Res Function(_$LoadImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadImpl implements _Load {
+  const _$LoadImpl();
+
+  @override
+  String toString() {
+    return 'AddClientEvent.load()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(String value) industryChanged,
+    required TResult Function(String value) personalOrCompanyIdChanged,
+    required TResult Function(String value) phoneChanged,
+    required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function() save,
+  }) {
+    return load();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(String value)? industryChanged,
+    TResult? Function(String value)? personalOrCompanyIdChanged,
+    TResult? Function(String value)? phoneChanged,
+    TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(String value)? descriptionChanged,
+    TResult? Function()? save,
+  }) {
+    return load?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(String value)? industryChanged,
+    TResult Function(String value)? personalOrCompanyIdChanged,
+    TResult Function(String value)? phoneChanged,
+    TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (load != null) {
+      return load();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
+    required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_IndustryChanged value) industryChanged,
+    required TResult Function(_PersonalOrCompanyIdChanged value)
+        personalOrCompanyIdChanged,
+    required TResult Function(PhoneChanged value) phoneChanged,
+    required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SaveClient value) save,
+  }) {
+    return load(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
+    TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_IndustryChanged value)? industryChanged,
+    TResult? Function(_PersonalOrCompanyIdChanged value)?
+        personalOrCompanyIdChanged,
+    TResult? Function(PhoneChanged value)? phoneChanged,
+    TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SaveClient value)? save,
+  }) {
+    return load?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
+    TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_IndustryChanged value)? industryChanged,
+    TResult Function(_PersonalOrCompanyIdChanged value)?
+        personalOrCompanyIdChanged,
+    TResult Function(PhoneChanged value)? phoneChanged,
+    TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SaveClient value)? save,
+    required TResult orElse(),
+  }) {
+    if (load != null) {
+      return load(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Load implements AddClientEvent {
+  const factory _Load() = _$LoadImpl;
 }
 
 /// @nodoc
@@ -185,6 +340,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(String value) industryChanged,
@@ -200,6 +356,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(String value)? industryChanged,
@@ -215,6 +372,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(String value)? industryChanged,
@@ -234,6 +392,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_IndustryChanged value) industryChanged,
@@ -250,6 +409,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_IndustryChanged value)? industryChanged,
@@ -266,6 +426,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_IndustryChanged value)? industryChanged,
@@ -366,6 +527,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(String value) industryChanged,
@@ -381,6 +543,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(String value)? industryChanged,
@@ -396,6 +559,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(String value)? industryChanged,
@@ -415,6 +579,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_IndustryChanged value) industryChanged,
@@ -431,6 +596,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_IndustryChanged value)? industryChanged,
@@ -447,6 +613,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_IndustryChanged value)? industryChanged,
@@ -547,6 +714,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(String value) industryChanged,
@@ -562,6 +730,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(String value)? industryChanged,
@@ -577,6 +746,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(String value)? industryChanged,
@@ -596,6 +766,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_IndustryChanged value) industryChanged,
@@ -612,6 +783,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_IndustryChanged value)? industryChanged,
@@ -628,6 +800,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_IndustryChanged value)? industryChanged,
@@ -729,6 +902,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(String value) industryChanged,
@@ -744,6 +918,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(String value)? industryChanged,
@@ -759,6 +934,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(String value)? industryChanged,
@@ -778,6 +954,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_IndustryChanged value) industryChanged,
@@ -794,6 +971,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_IndustryChanged value)? industryChanged,
@@ -810,6 +988,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_IndustryChanged value)? industryChanged,
@@ -909,6 +1088,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(String value) industryChanged,
@@ -924,6 +1104,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(String value)? industryChanged,
@@ -939,6 +1120,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(String value)? industryChanged,
@@ -958,6 +1140,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_IndustryChanged value) industryChanged,
@@ -974,6 +1157,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_IndustryChanged value)? industryChanged,
@@ -990,6 +1174,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_IndustryChanged value)? industryChanged,
@@ -1089,6 +1274,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(String value) industryChanged,
@@ -1104,6 +1290,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(String value)? industryChanged,
@@ -1119,6 +1306,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(String value)? industryChanged,
@@ -1138,6 +1326,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_IndustryChanged value) industryChanged,
@@ -1154,6 +1343,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_IndustryChanged value)? industryChanged,
@@ -1170,6 +1360,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_IndustryChanged value)? industryChanged,
@@ -1270,6 +1461,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(String value) industryChanged,
@@ -1285,6 +1477,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(String value)? industryChanged,
@@ -1300,6 +1493,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(String value)? industryChanged,
@@ -1319,6 +1513,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_IndustryChanged value) industryChanged,
@@ -1335,6 +1530,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_IndustryChanged value)? industryChanged,
@@ -1351,6 +1547,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_IndustryChanged value)? industryChanged,
@@ -1423,6 +1620,7 @@ class _$SaveClientImpl implements _SaveClient {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(String value) industryChanged,
@@ -1438,6 +1636,7 @@ class _$SaveClientImpl implements _SaveClient {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(String value)? industryChanged,
@@ -1453,6 +1652,7 @@ class _$SaveClientImpl implements _SaveClient {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(String value)? industryChanged,
@@ -1472,6 +1672,7 @@ class _$SaveClientImpl implements _SaveClient {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_IndustryChanged value) industryChanged,
@@ -1488,6 +1689,7 @@ class _$SaveClientImpl implements _SaveClient {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_IndustryChanged value)? industryChanged,
@@ -1504,6 +1706,7 @@ class _$SaveClientImpl implements _SaveClient {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_IndustryChanged value)? industryChanged,

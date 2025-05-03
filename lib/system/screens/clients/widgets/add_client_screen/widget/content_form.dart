@@ -3,6 +3,7 @@ import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/utils/validators/field_validators.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_state.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/tags_section.dart';
 import 'package:marketinya/core/enums/client_status.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,9 +14,11 @@ class ContentForm extends StatelessWidget {
   const ContentForm({
     super.key,
     required this.formKey,
+    required this.state,
   });
 
   final GlobalKey<FormState> formKey;
+  final AddClientState state;
   static const double _inputWidth = 360.0;
   static const Color _inputColor = Color(0xFFD9D9C6);
 
@@ -38,6 +41,7 @@ class ContentForm extends StatelessWidget {
           child: SizedBox(
             width: _inputWidth * nano + lg,
             child: CustomTextFormField(
+              controller: TextEditingController(text: state.description),
               padding: dimen.top.xxs,
               labelText: 'Описание',
               keyboardType: TextInputType.multiline,
@@ -67,6 +71,7 @@ class ContentForm extends StatelessWidget {
         SizedBox(
           width: _inputWidth,
           child: CustomTextFormField(
+            controller: TextEditingController(text: state.companyName),
             labelText: 'Име / Фирма',
             keyboardType: TextInputType.name,
             onSaved: (value) {
@@ -86,6 +91,7 @@ class ContentForm extends StatelessWidget {
         SizedBox(
           width: _inputWidth,
           child: CustomTextFormField(
+            controller: TextEditingController(text: state.personalOrCompanyId),
             padding: dimen.top.micro,
             labelText: 'ЕГН / ЕИК',
             keyboardType: TextInputType.number,
@@ -106,6 +112,7 @@ class ContentForm extends StatelessWidget {
         SizedBox(
           width: _inputWidth,
           child: CustomTextFormField(
+            controller: TextEditingController(text: state.phone),
             padding: dimen.top.micro,
             labelText: 'Телефон',
             keyboardType: TextInputType.number,
@@ -127,6 +134,7 @@ class ContentForm extends StatelessWidget {
         SizedBox(
           width: _inputWidth,
           child: CustomTextFormField(
+            controller: TextEditingController(text: state.dateOfBirth),
             padding: dimen.top.micro,
             labelText: 'Дата на раждане',
             keyboardType: TextInputType.datetime,
@@ -165,10 +173,10 @@ class ContentForm extends StatelessWidget {
             suffixIcon: Icons.arrow_drop_down,
           ),
         ),
-        // Status Field
         SizedBox(
           width: _inputWidth,
           child: CustomDropdownFormField<ClientStatus>(
+            value: state.clientStatus,
             padding: EdgeInsets.zero,
             labelText: 'Статус',
             items: ClientStatus.values,

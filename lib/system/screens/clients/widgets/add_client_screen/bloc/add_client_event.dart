@@ -5,6 +5,8 @@ part 'add_client_event.freezed.dart';
 
 @freezed
 class AddClientEvent with _$AddClientEvent {
+  const factory AddClientEvent.load() = _Load;
+
   const factory AddClientEvent.companyNameChanged(String value) =
       _CompanyNameChanged;
 
