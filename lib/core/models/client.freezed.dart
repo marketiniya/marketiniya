@@ -32,6 +32,7 @@ mixin _$Client {
   String get personalOrCompanyId => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   ClientStatus get status => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   String get assignedToId => throw _privateConstructorUsedError;
@@ -60,6 +61,7 @@ abstract class $ClientCopyWith<$Res> {
       String personalOrCompanyId,
       String phone,
       ClientStatus status,
+      String description,
       DateTime createdAt,
       DateTime updatedAt,
       String assignedToId,
@@ -89,6 +91,7 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
     Object? personalOrCompanyId = null,
     Object? phone = null,
     Object? status = null,
+    Object? description = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? assignedToId = null,
@@ -127,6 +130,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ClientStatus,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -163,6 +170,7 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       String personalOrCompanyId,
       String phone,
       ClientStatus status,
+      String description,
       DateTime createdAt,
       DateTime updatedAt,
       String assignedToId,
@@ -190,6 +198,7 @@ class __$$ClientImplCopyWithImpl<$Res>
     Object? personalOrCompanyId = null,
     Object? phone = null,
     Object? status = null,
+    Object? description = null,
     Object? createdAt = null,
     Object? updatedAt = null,
     Object? assignedToId = null,
@@ -228,6 +237,10 @@ class __$$ClientImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ClientStatus,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -261,6 +274,7 @@ class _$ClientImpl implements _Client {
       required this.personalOrCompanyId,
       required this.phone,
       required this.status,
+      required this.description,
       required this.createdAt,
       required this.updatedAt,
       this.assignedToId = '',
@@ -296,6 +310,8 @@ class _$ClientImpl implements _Client {
   @override
   final ClientStatus status;
   @override
+  final String description;
+  @override
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
@@ -313,7 +329,7 @@ class _$ClientImpl implements _Client {
 
   @override
   String toString() {
-    return 'Client(assignedTo: $assignedTo, tags: $tags, companyName: $companyName, dateOfBirth: $dateOfBirth, industry: $industry, personalOrCompanyId: $personalOrCompanyId, phone: $phone, status: $status, createdAt: $createdAt, updatedAt: $updatedAt, assignedToId: $assignedToId, tagIds: $tagIds)';
+    return 'Client(assignedTo: $assignedTo, tags: $tags, companyName: $companyName, dateOfBirth: $dateOfBirth, industry: $industry, personalOrCompanyId: $personalOrCompanyId, phone: $phone, status: $status, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedToId: $assignedToId, tagIds: $tagIds)';
   }
 
   @override
@@ -334,6 +350,8 @@ class _$ClientImpl implements _Client {
                 other.personalOrCompanyId == personalOrCompanyId) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -355,6 +373,7 @@ class _$ClientImpl implements _Client {
       personalOrCompanyId,
       phone,
       status,
+      description,
       createdAt,
       updatedAt,
       assignedToId,
@@ -388,6 +407,7 @@ abstract class _Client implements Client {
       required final String personalOrCompanyId,
       required final String phone,
       required final ClientStatus status,
+      required final String description,
       required final DateTime createdAt,
       required final DateTime updatedAt,
       final String assignedToId,
@@ -413,6 +433,8 @@ abstract class _Client implements Client {
   String get phone;
   @override
   ClientStatus get status;
+  @override
+  String get description;
   @override
   DateTime get createdAt;
   @override

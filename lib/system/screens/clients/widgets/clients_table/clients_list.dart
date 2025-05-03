@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/core/models/client.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/add_client_screen.dart';
 import 'clients_table_row.dart';
 
 class ClientsList extends StatelessWidget {
@@ -27,7 +29,7 @@ class ClientsList extends StatelessWidget {
         return ClientsTableRow(
           client: client,
           rowNumber: rowNumber,
-          onTap: () {},
+          onTap: () => context.push(AddClientScreen(client: client)),
         );
       },
     );

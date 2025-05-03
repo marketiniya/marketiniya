@@ -45,6 +45,7 @@ class ClientRepository {
     required String personalOrCompanyId,
     required String phone,
     required ClientStatus status,
+    required String description,
   }) async {
     try {
       final clientData = {
@@ -56,6 +57,7 @@ class ClientRepository {
         'personalOrCompanyId': personalOrCompanyId,
         'phone': phone,
         'status': status.label,
+        'description': description,
         'createdAt': FieldValue.serverTimestamp(),
         'updatedAt': FieldValue.serverTimestamp(),
       };

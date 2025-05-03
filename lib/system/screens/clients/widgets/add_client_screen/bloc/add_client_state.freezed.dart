@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AddClientState {
   Status get status => throw _privateConstructorUsedError;
+  bool get isUpdateMode =>
+      throw _privateConstructorUsedError; // True when updating an existing client.
   String get companyName => throw _privateConstructorUsedError;
   String get dateOfBirth => throw _privateConstructorUsedError;
   String get industry => throw _privateConstructorUsedError;
@@ -41,6 +43,7 @@ abstract class $AddClientStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Status status,
+      bool isUpdateMode,
       String companyName,
       String dateOfBirth,
       String industry,
@@ -67,6 +70,7 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
   @override
   $Res call({
     Object? status = null,
+    Object? isUpdateMode = null,
     Object? companyName = null,
     Object? dateOfBirth = null,
     Object? industry = null,
@@ -81,6 +85,10 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as Status,
+      isUpdateMode: null == isUpdateMode
+          ? _value.isUpdateMode
+          : isUpdateMode // ignore: cast_nullable_to_non_nullable
+              as bool,
       companyName: null == companyName
           ? _value.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
@@ -127,6 +135,7 @@ abstract class _$$AddClientStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {Status status,
+      bool isUpdateMode,
       String companyName,
       String dateOfBirth,
       String industry,
@@ -151,6 +160,7 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? isUpdateMode = null,
     Object? companyName = null,
     Object? dateOfBirth = null,
     Object? industry = null,
@@ -165,6 +175,10 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as Status,
+      isUpdateMode: null == isUpdateMode
+          ? _value.isUpdateMode
+          : isUpdateMode // ignore: cast_nullable_to_non_nullable
+              as bool,
       companyName: null == companyName
           ? _value.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
@@ -206,6 +220,7 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
 class _$AddClientStateImpl implements _AddClientState {
   _$AddClientStateImpl(
       {this.status = Status.initial,
+      this.isUpdateMode = false,
       this.companyName = '',
       this.dateOfBirth = '',
       this.industry = '',
@@ -218,6 +233,10 @@ class _$AddClientStateImpl implements _AddClientState {
   @override
   @JsonKey()
   final Status status;
+  @override
+  @JsonKey()
+  final bool isUpdateMode;
+// True when updating an existing client.
   @override
   @JsonKey()
   final String companyName;
@@ -244,7 +263,7 @@ class _$AddClientStateImpl implements _AddClientState {
 
   @override
   String toString() {
-    return 'AddClientState(status: $status, companyName: $companyName, dateOfBirth: $dateOfBirth, industry: $industry, personalOrCompanyId: $personalOrCompanyId, phone: $phone, clientStatus: $clientStatus, description: $description, errorMessage: $errorMessage)';
+    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, companyName: $companyName, dateOfBirth: $dateOfBirth, industry: $industry, personalOrCompanyId: $personalOrCompanyId, phone: $phone, clientStatus: $clientStatus, description: $description, errorMessage: $errorMessage)';
   }
 
   @override
@@ -253,6 +272,8 @@ class _$AddClientStateImpl implements _AddClientState {
         (other.runtimeType == runtimeType &&
             other is _$AddClientStateImpl &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.isUpdateMode, isUpdateMode) ||
+                other.isUpdateMode == isUpdateMode) &&
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
@@ -274,6 +295,7 @@ class _$AddClientStateImpl implements _AddClientState {
   int get hashCode => Object.hash(
       runtimeType,
       status,
+      isUpdateMode,
       companyName,
       dateOfBirth,
       industry,
@@ -296,6 +318,7 @@ class _$AddClientStateImpl implements _AddClientState {
 abstract class _AddClientState implements AddClientState {
   factory _AddClientState(
       {final Status status,
+      final bool isUpdateMode,
       final String companyName,
       final String dateOfBirth,
       final String industry,
@@ -307,6 +330,8 @@ abstract class _AddClientState implements AddClientState {
 
   @override
   Status get status;
+  @override
+  bool get isUpdateMode; // True when updating an existing client.
   @override
   String get companyName;
   @override

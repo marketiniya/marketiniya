@@ -43,7 +43,7 @@ class HeaderSection extends StatelessWidget {
                     child: PrimaryButton.responsive(
                       isLoading: state.status == Status.loading,
                       icon: const Icon(Icons.check),
-                      title: 'Добави',
+                      title: state.isUpdateMode ? 'Запази' : 'Добави',
                       onPressed: () {
                         final isValid = formKey.currentState?.validate() ?? false;
 
