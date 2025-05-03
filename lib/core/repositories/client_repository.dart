@@ -13,18 +13,14 @@ class ClientRepository {
   static const String _clients = 'clients';
 
   Future<List<Client>> getClientsForUser(DocumentReference userRef) async {
-    try {
-      final querySnapshot = await _firestore
-          .getCollection(_clients)
-          .where('assignedTo', isEqualTo: userRef)
-          .get();
+    final querySnapshot = await _firestore
+        .getCollection(_clients)
+        .where('assignedTo', isEqualTo: userRef)
+        .get();
 
-      return querySnapshot.docs.map((doc) {
-        return Client.fromFirestore(doc);
-      }).toList();
-    } catch (e) {
-      throw Exception('Failed to fetch clients: $e');
-    }
+    return querySnapshot.docs.map((doc) {
+      return Client.fromFirestore(doc);
+    }).toList();
   }
 
   Future<bool> isClientRegistered(String id) async {
@@ -47,28 +43,50 @@ class ClientRepository {
     required ClientStatus status,
     required String description,
   }) async {
-    try {
-      final clientData = {
-        'assignedTo': assignedTo,
-        'tags': tags,
-        'companyName': companyName,
-        'dateOfBirth': Timestamp.fromDate(dateOfBirth),
-        'industry': industry,
-        'personalOrCompanyId': personalOrCompanyId,
-        'phone': phone,
-        'status': status.label,
-        'description': description,
-        'createdAt': FieldValue.serverTimestamp(),
-        'updatedAt': FieldValue.serverTimestamp(),
-      };
+    final clientData = {
+      'assignedTo': assignedTo,
+      'tags': tags,
+      'companyName': companyName,
+      'dateOfBirth': Timestamp.fromDate(dateOfBirth),
+      'industry': industry,
+      'personalOrCompanyId': personalOrCompanyId,
+      'phone': phone,
+      'status': status.label,
+      'description': description,
+      'createdAt': FieldValue.serverTimestamp(),
+      'updatedAt': FieldValue.serverTimestamp(),
+    };
 
-      await _firestore.createDocument(
-        _clients,
-        personalOrCompanyId,
-        clientData,
-      );
-    } catch (e) {
-      throw Exception('Failed to create client: $e');
-    }
+    await _firestore.createDocument(
+      _clients,
+      personalOrCompanyId,
+      clientData,
+    );
+  }
+
+  Future<void> updateClient({
+    required String personalOrCompanyId,
+    required String companyName,
+    required DateTime dateOfBirth,
+    required String industry,
+    required String phone,
+    required ClientStatus status,
+    required String description,
+  }) async {
+    final clientData = {
+      'companyName': companyName,
+      'dateOfBirth': Timestamp.fromDate(dateOfBirth),
+      'industry': industry,
+      'phone': phone,
+      'status': status.label,
+      'description': description,
+      'updatedAt': FieldValue.serverTimestamp(),
+    };
+
+    await _firestore.updateDocument(
+      _clients,
+      personalOrCompanyId,
+      clientData,
+    );
   }
 }

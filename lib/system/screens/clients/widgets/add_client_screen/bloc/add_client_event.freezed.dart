@@ -27,6 +27,7 @@ mixin _$AddClientEvent {
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
+    required TResult Function() update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$AddClientEvent {
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
+    TResult? Function()? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +55,7 @@ mixin _$AddClientEvent {
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
+    TResult Function()? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +71,7 @@ mixin _$AddClientEvent {
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,6 +86,7 @@ mixin _$AddClientEvent {
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,6 +101,7 @@ mixin _$AddClientEvent {
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -171,6 +177,7 @@ class _$LoadImpl implements _Load {
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
+    required TResult Function() update,
   }) {
     return load();
   }
@@ -187,6 +194,7 @@ class _$LoadImpl implements _Load {
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
+    TResult? Function()? update,
   }) {
     return load?.call();
   }
@@ -203,6 +211,7 @@ class _$LoadImpl implements _Load {
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
+    TResult Function()? update,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -224,6 +233,7 @@ class _$LoadImpl implements _Load {
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
   }) {
     return load(this);
   }
@@ -241,6 +251,7 @@ class _$LoadImpl implements _Load {
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
   }) {
     return load?.call(this);
   }
@@ -258,6 +269,7 @@ class _$LoadImpl implements _Load {
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -349,6 +361,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
+    required TResult Function() update,
   }) {
     return companyNameChanged(value);
   }
@@ -365,6 +378,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
+    TResult? Function()? update,
   }) {
     return companyNameChanged?.call(value);
   }
@@ -381,6 +395,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
+    TResult Function()? update,
     required TResult orElse(),
   }) {
     if (companyNameChanged != null) {
@@ -402,6 +417,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
   }) {
     return companyNameChanged(this);
   }
@@ -419,6 +435,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
   }) {
     return companyNameChanged?.call(this);
   }
@@ -436,6 +453,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
     required TResult orElse(),
   }) {
     if (companyNameChanged != null) {
@@ -536,6 +554,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
+    required TResult Function() update,
   }) {
     return dateOfBirthChanged(value);
   }
@@ -552,6 +571,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
+    TResult? Function()? update,
   }) {
     return dateOfBirthChanged?.call(value);
   }
@@ -568,6 +588,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
+    TResult Function()? update,
     required TResult orElse(),
   }) {
     if (dateOfBirthChanged != null) {
@@ -589,6 +610,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
   }) {
     return dateOfBirthChanged(this);
   }
@@ -606,6 +628,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
   }) {
     return dateOfBirthChanged?.call(this);
   }
@@ -623,6 +646,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
     required TResult orElse(),
   }) {
     if (dateOfBirthChanged != null) {
@@ -723,6 +747,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
+    required TResult Function() update,
   }) {
     return industryChanged(value);
   }
@@ -739,6 +764,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
+    TResult? Function()? update,
   }) {
     return industryChanged?.call(value);
   }
@@ -755,6 +781,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
+    TResult Function()? update,
     required TResult orElse(),
   }) {
     if (industryChanged != null) {
@@ -776,6 +803,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
   }) {
     return industryChanged(this);
   }
@@ -793,6 +821,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
   }) {
     return industryChanged?.call(this);
   }
@@ -810,6 +839,7 @@ class _$IndustryChangedImpl implements _IndustryChanged {
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
     required TResult orElse(),
   }) {
     if (industryChanged != null) {
@@ -911,6 +941,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
+    required TResult Function() update,
   }) {
     return personalOrCompanyIdChanged(value);
   }
@@ -927,6 +958,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
+    TResult? Function()? update,
   }) {
     return personalOrCompanyIdChanged?.call(value);
   }
@@ -943,6 +975,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
+    TResult Function()? update,
     required TResult orElse(),
   }) {
     if (personalOrCompanyIdChanged != null) {
@@ -964,6 +997,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
   }) {
     return personalOrCompanyIdChanged(this);
   }
@@ -981,6 +1015,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
   }) {
     return personalOrCompanyIdChanged?.call(this);
   }
@@ -998,6 +1033,7 @@ class _$PersonalOrCompanyIdChangedImpl implements _PersonalOrCompanyIdChanged {
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
     required TResult orElse(),
   }) {
     if (personalOrCompanyIdChanged != null) {
@@ -1097,6 +1133,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
+    required TResult Function() update,
   }) {
     return phoneChanged(value);
   }
@@ -1113,6 +1150,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
+    TResult? Function()? update,
   }) {
     return phoneChanged?.call(value);
   }
@@ -1129,6 +1167,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
+    TResult Function()? update,
     required TResult orElse(),
   }) {
     if (phoneChanged != null) {
@@ -1150,6 +1189,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
   }) {
     return phoneChanged(this);
   }
@@ -1167,6 +1207,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
   }) {
     return phoneChanged?.call(this);
   }
@@ -1184,6 +1225,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
     required TResult orElse(),
   }) {
     if (phoneChanged != null) {
@@ -1283,6 +1325,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
+    required TResult Function() update,
   }) {
     return clientStatusChanged(value);
   }
@@ -1299,6 +1342,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
+    TResult? Function()? update,
   }) {
     return clientStatusChanged?.call(value);
   }
@@ -1315,6 +1359,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
+    TResult Function()? update,
     required TResult orElse(),
   }) {
     if (clientStatusChanged != null) {
@@ -1336,6 +1381,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
   }) {
     return clientStatusChanged(this);
   }
@@ -1353,6 +1399,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
   }) {
     return clientStatusChanged?.call(this);
   }
@@ -1370,6 +1417,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
     required TResult orElse(),
   }) {
     if (clientStatusChanged != null) {
@@ -1470,6 +1518,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
+    required TResult Function() update,
   }) {
     return descriptionChanged(value);
   }
@@ -1486,6 +1535,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
+    TResult? Function()? update,
   }) {
     return descriptionChanged?.call(value);
   }
@@ -1502,6 +1552,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
+    TResult Function()? update,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -1523,6 +1574,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
   }) {
     return descriptionChanged(this);
   }
@@ -1540,6 +1592,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
   }) {
     return descriptionChanged?.call(this);
   }
@@ -1557,6 +1610,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -1629,6 +1683,7 @@ class _$SaveClientImpl implements _SaveClient {
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
+    required TResult Function() update,
   }) {
     return save();
   }
@@ -1645,6 +1700,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
+    TResult? Function()? update,
   }) {
     return save?.call();
   }
@@ -1661,6 +1717,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
+    TResult Function()? update,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -1682,6 +1739,7 @@ class _$SaveClientImpl implements _SaveClient {
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
   }) {
     return save(this);
   }
@@ -1699,6 +1757,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
   }) {
     return save?.call(this);
   }
@@ -1716,6 +1775,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -1727,4 +1787,160 @@ class _$SaveClientImpl implements _SaveClient {
 
 abstract class _SaveClient implements AddClientEvent {
   const factory _SaveClient() = _$SaveClientImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateClientImplCopyWith<$Res> {
+  factory _$$UpdateClientImplCopyWith(
+          _$UpdateClientImpl value, $Res Function(_$UpdateClientImpl) then) =
+      __$$UpdateClientImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateClientImplCopyWithImpl<$Res>
+    extends _$AddClientEventCopyWithImpl<$Res, _$UpdateClientImpl>
+    implements _$$UpdateClientImplCopyWith<$Res> {
+  __$$UpdateClientImplCopyWithImpl(
+      _$UpdateClientImpl _value, $Res Function(_$UpdateClientImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UpdateClientImpl implements _UpdateClient {
+  const _$UpdateClientImpl();
+
+  @override
+  String toString() {
+    return 'AddClientEvent.update()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateClientImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(String value) industryChanged,
+    required TResult Function(String value) personalOrCompanyIdChanged,
+    required TResult Function(String value) phoneChanged,
+    required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function() save,
+    required TResult Function() update,
+  }) {
+    return update();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(String value)? industryChanged,
+    TResult? Function(String value)? personalOrCompanyIdChanged,
+    TResult? Function(String value)? phoneChanged,
+    TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(String value)? descriptionChanged,
+    TResult? Function()? save,
+    TResult? Function()? update,
+  }) {
+    return update?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(String value)? industryChanged,
+    TResult Function(String value)? personalOrCompanyIdChanged,
+    TResult Function(String value)? phoneChanged,
+    TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function()? save,
+    TResult Function()? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
+    required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_IndustryChanged value) industryChanged,
+    required TResult Function(_PersonalOrCompanyIdChanged value)
+        personalOrCompanyIdChanged,
+    required TResult Function(PhoneChanged value) phoneChanged,
+    required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
+  }) {
+    return update(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
+    TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_IndustryChanged value)? industryChanged,
+    TResult? Function(_PersonalOrCompanyIdChanged value)?
+        personalOrCompanyIdChanged,
+    TResult? Function(PhoneChanged value)? phoneChanged,
+    TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
+  }) {
+    return update?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
+    TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_IndustryChanged value)? industryChanged,
+    TResult Function(_PersonalOrCompanyIdChanged value)?
+        personalOrCompanyIdChanged,
+    TResult Function(PhoneChanged value)? phoneChanged,
+    TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateClient implements AddClientEvent {
+  const factory _UpdateClient() = _$UpdateClientImpl;
 }

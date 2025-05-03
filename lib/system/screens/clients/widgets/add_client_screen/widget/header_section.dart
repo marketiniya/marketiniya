@@ -38,6 +38,7 @@ class HeaderSection extends StatelessWidget {
             children: [
               BlocBuilder<AddClientBloc, AddClientState>(
                 builder: (context, state) {
+                  final bloc = context.read<AddClientBloc>();
                   return SizedBox(
                     width: _buttonWidth,
                     child: PrimaryButton.responsive(
@@ -45,11 +46,13 @@ class HeaderSection extends StatelessWidget {
                       icon: const Icon(Icons.check),
                       title: state.isUpdateMode ? 'Запази' : 'Добави',
                       onPressed: () {
-                        final isValid = formKey.currentState?.validate() ?? false;
-
-                        if (isValid) {
+                        if (formKey.currentState?.validate() ?? false) {
                           formKey.currentState?.save();
-                          context.read<AddClientBloc>().add(const AddClientEvent.save());
+                          bloc.add(
+                            state.isUpdateMode
+                                ? const AddClientEvent.update()
+                                : const AddClientEvent.save(),
+                          );
                         }
                       },
                       backgroundColor: AppColors.oliveGreen,
@@ -64,9 +67,7 @@ class HeaderSection extends StatelessWidget {
                 child: PrimaryButton.responsive(
                   icon: const Icon(Icons.close),
                   title: 'Отказ',
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
+                  onPressed: () => context.pop(),
                 ),
               ),
             ],
@@ -86,7 +87,7 @@ class HeaderSection extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                width: 240,
+                width: imageWidth + lg,
                 child: Divider(thickness: nano, color: Colors.black),
               ),
             ],
