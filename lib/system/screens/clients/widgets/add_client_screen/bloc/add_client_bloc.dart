@@ -26,6 +26,7 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
         clientStatusChanged: (e) async => emit(state.copyWith(clientStatus: e.value)),
         descriptionChanged: (e) async => emit(state.copyWith(description: e.value)),
         save: (_) async => await _onSave(emit),
+        update: (_) async => await _onUpdate(emit),
       );
     });
 
@@ -59,10 +60,8 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
 
   Future<void> _onSave(Emitter<AddClientState> emit) async {
     emit(state.copyWith(status: Status.loading));
-
     try {
       final userReference = _userRepository.getCurrentUserRef();
-      final dateOfBirth = _parseDateOfBirth();
 
       final exists = await _clientRepository.isClientRegistered(state.personalOrCompanyId);
       if (exists) {
@@ -76,20 +75,41 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
       }
 
       await _clientRepository.createClient(
-        assignedTo: userReference,
-        tags: [], // TODO: Add tags when implemented
-        companyName: state.companyName,
-        dateOfBirth: dateOfBirth,
-        industry: state.industry,
-        personalOrCompanyId: state.personalOrCompanyId,
-        phone: state.phone,
-        status: state.clientStatus,
-        description: state.description
-      );
+          assignedTo: userReference,
+          tags: [], // TODO: Add tags when implemented
+          companyName: state.companyName,
+          dateOfBirth: _parseDateOfBirth(),
+          industry: state.industry,
+          personalOrCompanyId: state.personalOrCompanyId,
+          phone: state.phone,
+          status: state.clientStatus,
+          description: state.description);
 
       emit(state.copyWith(status: Status.success));
     } catch (e) {
       emit(state.copyWith(status: Status.error, errorMessage: e.toString()));
+    }
+  }
+
+  Future<void> _onUpdate(Emitter<AddClientState> emit) async {
+    emit(state.copyWith(status: Status.loading));
+    try {
+      await _clientRepository.updateClient(
+        personalOrCompanyId: state.personalOrCompanyId,
+        companyName: state.companyName,
+        dateOfBirth: _parseDateOfBirth(),
+        industry: state.industry,
+        phone: state.phone,
+        status: state.clientStatus,
+        description: state.description,
+      );
+
+      emit(state.copyWith(status: Status.success));
+    } catch (e) {
+      emit(state.copyWith(
+        status: Status.error,
+        errorMessage: e.toString(),
+      ));
     }
   }
 

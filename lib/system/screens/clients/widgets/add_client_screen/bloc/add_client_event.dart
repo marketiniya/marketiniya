@@ -27,4 +27,6 @@ class AddClientEvent with _$AddClientEvent {
       _DescriptionChanged;
 
   const factory AddClientEvent.save() = _SaveClient;
+
+  const factory AddClientEvent.update() = _UpdateClient;
 }
