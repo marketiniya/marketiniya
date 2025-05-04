@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/core/models/client.dart';
+import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/add_client_screen.dart';
 import 'clients_table_row.dart';
 
@@ -29,7 +31,14 @@ class ClientsList extends StatelessWidget {
         return ClientsTableRow(
           client: client,
           rowNumber: rowNumber,
-          onTap: () => context.push(AddClientScreen(client: client)),
+          onTap: () => context.push(
+            AddClientScreen(
+              client: client,
+              onClientUpdated: (client) => context.read<ClientBloc>().add(
+                ClientEvent.onClientUpdated(client),
+              ),
+            ),
+          ),
         );
       },
     );
