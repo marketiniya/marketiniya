@@ -43,6 +43,8 @@ class ClientRepository {
     required ClientStatus status,
     required String description,
   }) async {
+    final now = DateTime.now();
+
     final clientData = {
       'assignedTo': assignedTo,
       'tags': tags,
@@ -53,19 +55,20 @@ class ClientRepository {
       'phone': phone,
       'status': status.label,
       'description': description,
-      'createdAt': FieldValue.serverTimestamp(),
-      'updatedAt': FieldValue.serverTimestamp(),
+      'createdAt': Timestamp.fromDate(now),
+      'updatedAt': Timestamp.fromDate(now),
     };
 
-    await _firestore.createDocument(
+    final docId = await _firestore.createDocument(
       _clients,
-      personalOrCompanyId,
       clientData,
     );
 
     final client = Client(
+      id: docId,
       assignedTo: assignedTo,
-      tags: [],
+      assignedToId: assignedTo.id,
+      tags: tags,
       companyName: companyName,
       dateOfBirth: dateOfBirth,
       industry: industry,
@@ -73,14 +76,16 @@ class ClientRepository {
       phone: phone,
       status: status,
       description: description,
-      createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
+      createdAt: now,
+      updatedAt: now,
+      tagIds: tags.map((tag) => tag.id).toList(),
     );
 
-    return Future.value(client);
+    return client;
   }
 
   Future<Client> updateClient({
+    required String id,
     required DocumentReference assignedTo,
     required String personalOrCompanyId,
     required String companyName,
@@ -89,7 +94,10 @@ class ClientRepository {
     required String phone,
     required ClientStatus status,
     required String description,
+    required DateTime createdAt,
   }) async {
+    final now = DateTime.now();
+
     final clientData = {
       'companyName': companyName,
       'dateOfBirth': Timestamp.fromDate(dateOfBirth),
@@ -100,13 +108,15 @@ class ClientRepository {
       'updatedAt': FieldValue.serverTimestamp(),
     };
 
+    // 'id' is the auto-generated document ID, also used as the unique identifier for the client.
     await _firestore.updateDocument(
       _clients,
-      personalOrCompanyId,
+      id,
       clientData,
     );
 
-    final client = Client(
+    final updatedClient = Client(
+      id: id,
       assignedTo: assignedTo,
       tags: [], //TODO: update when tags available
       companyName: companyName,
@@ -116,10 +126,11 @@ class ClientRepository {
       phone: phone,
       status: status,
       description: description,
-      createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
+      createdAt: createdAt,
+      updatedAt: now,
+      assignedToId: assignedTo.id,
     );
 
-    return Future.value(client);
+    return updatedClient;
   }
 }

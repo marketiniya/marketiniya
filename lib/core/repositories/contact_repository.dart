@@ -14,8 +14,7 @@ class ContactRepository {
 
   Future<void> sendQuestion(ContactModel contactModel) async {
     try {
-      String docId = _generateDocId(contactModel.name);
-      await _firestore.createDocument(_questions, docId, contactModel.toJson());
+      await _firestore.createDocument(_questions, contactModel.toJson());
     } catch (e) {
       debugPrint('Error sending question to Firestore: $e');
       rethrow;
@@ -39,17 +38,11 @@ class ContactRepository {
         'subscribedAt': DateFormat(_dateFormat).format(DateTime.now()),
       };
 
-      String docId = _generateDocId(email);
-      await _firestore.createDocument(_subscriptions, docId, data);
+      await _firestore.createDocument(_subscriptions, data);
       debugPrint('User subscribed successfully.');
     } catch (e) {
       debugPrint('Error subscribing user: $e');
       rethrow;
     }
-  }
-
-  String _generateDocId(String identifier) {
-    String formattedDate = DateFormat(_dateFormat).format(DateTime.now());
-    return '$formattedDate-$identifier';
   }
 }

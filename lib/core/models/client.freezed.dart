@@ -20,12 +20,15 @@ Client _$ClientFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Client {
+  String get id => throw _privateConstructorUsedError;
   @DocumentReferenceConverter()
   DocumentReference<Object?> get assignedTo =>
       throw _privateConstructorUsedError;
+  String get assignedToId => throw _privateConstructorUsedError;
   @DocumentReferenceConverter()
   List<DocumentReference<Object?>> get tags =>
       throw _privateConstructorUsedError;
+  List<String> get tagIds => throw _privateConstructorUsedError;
   String get companyName => throw _privateConstructorUsedError;
   DateTime get dateOfBirth => throw _privateConstructorUsedError;
   String get industry => throw _privateConstructorUsedError;
@@ -35,8 +38,6 @@ mixin _$Client {
   String get description => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  String get assignedToId => throw _privateConstructorUsedError;
-  List<String> get tagIds => throw _privateConstructorUsedError;
 
   /// Serializes this Client to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,8 +54,11 @@ abstract class $ClientCopyWith<$Res> {
       _$ClientCopyWithImpl<$Res, Client>;
   @useResult
   $Res call(
-      {@DocumentReferenceConverter() DocumentReference<Object?> assignedTo,
+      {String id,
+      @DocumentReferenceConverter() DocumentReference<Object?> assignedTo,
+      String assignedToId,
       @DocumentReferenceConverter() List<DocumentReference<Object?>> tags,
+      List<String> tagIds,
       String companyName,
       DateTime dateOfBirth,
       String industry,
@@ -63,9 +67,7 @@ abstract class $ClientCopyWith<$Res> {
       ClientStatus status,
       String description,
       DateTime createdAt,
-      DateTime updatedAt,
-      String assignedToId,
-      List<String> tagIds});
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -83,8 +85,11 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? assignedTo = null,
+    Object? assignedToId = null,
     Object? tags = null,
+    Object? tagIds = null,
     Object? companyName = null,
     Object? dateOfBirth = null,
     Object? industry = null,
@@ -94,18 +99,28 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
     Object? description = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? assignedToId = null,
-    Object? tagIds = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       assignedTo: null == assignedTo
           ? _value.assignedTo
           : assignedTo // ignore: cast_nullable_to_non_nullable
               as DocumentReference<Object?>,
+      assignedToId: null == assignedToId
+          ? _value.assignedToId
+          : assignedToId // ignore: cast_nullable_to_non_nullable
+              as String,
       tags: null == tags
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<DocumentReference<Object?>>,
+      tagIds: null == tagIds
+          ? _value.tagIds
+          : tagIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       companyName: null == companyName
           ? _value.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
@@ -142,14 +157,6 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      assignedToId: null == assignedToId
-          ? _value.assignedToId
-          : assignedToId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tagIds: null == tagIds
-          ? _value.tagIds
-          : tagIds // ignore: cast_nullable_to_non_nullable
-              as List<String>,
     ) as $Val);
   }
 }
@@ -162,8 +169,11 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@DocumentReferenceConverter() DocumentReference<Object?> assignedTo,
+      {String id,
+      @DocumentReferenceConverter() DocumentReference<Object?> assignedTo,
+      String assignedToId,
       @DocumentReferenceConverter() List<DocumentReference<Object?>> tags,
+      List<String> tagIds,
       String companyName,
       DateTime dateOfBirth,
       String industry,
@@ -172,9 +182,7 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       ClientStatus status,
       String description,
       DateTime createdAt,
-      DateTime updatedAt,
-      String assignedToId,
-      List<String> tagIds});
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -190,8 +198,11 @@ class __$$ClientImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? assignedTo = null,
+    Object? assignedToId = null,
     Object? tags = null,
+    Object? tagIds = null,
     Object? companyName = null,
     Object? dateOfBirth = null,
     Object? industry = null,
@@ -201,18 +212,28 @@ class __$$ClientImplCopyWithImpl<$Res>
     Object? description = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? assignedToId = null,
-    Object? tagIds = null,
   }) {
     return _then(_$ClientImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       assignedTo: null == assignedTo
           ? _value.assignedTo
           : assignedTo // ignore: cast_nullable_to_non_nullable
               as DocumentReference<Object?>,
+      assignedToId: null == assignedToId
+          ? _value.assignedToId
+          : assignedToId // ignore: cast_nullable_to_non_nullable
+              as String,
       tags: null == tags
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<DocumentReference<Object?>>,
+      tagIds: null == tagIds
+          ? _value._tagIds
+          : tagIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       companyName: null == companyName
           ? _value.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
@@ -249,14 +270,6 @@ class __$$ClientImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      assignedToId: null == assignedToId
-          ? _value.assignedToId
-          : assignedToId // ignore: cast_nullable_to_non_nullable
-              as String,
-      tagIds: null == tagIds
-          ? _value._tagIds
-          : tagIds // ignore: cast_nullable_to_non_nullable
-              as List<String>,
     ));
   }
 }
@@ -265,9 +278,12 @@ class __$$ClientImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ClientImpl implements _Client {
   const _$ClientImpl(
-      {@DocumentReferenceConverter() required this.assignedTo,
+      {required this.id,
+      @DocumentReferenceConverter() required this.assignedTo,
+      this.assignedToId = '',
       @DocumentReferenceConverter()
       required final List<DocumentReference<Object?>> tags,
+      final List<String> tagIds = const [],
       required this.companyName,
       required this.dateOfBirth,
       required this.industry,
@@ -276,9 +292,7 @@ class _$ClientImpl implements _Client {
       required this.status,
       required this.description,
       required this.createdAt,
-      required this.updatedAt,
-      this.assignedToId = '',
-      final List<String> tagIds = const []})
+      required this.updatedAt})
       : _tags = tags,
         _tagIds = tagIds;
 
@@ -286,8 +300,13 @@ class _$ClientImpl implements _Client {
       _$$ClientImplFromJson(json);
 
   @override
+  final String id;
+  @override
   @DocumentReferenceConverter()
   final DocumentReference<Object?> assignedTo;
+  @override
+  @JsonKey()
+  final String assignedToId;
   final List<DocumentReference<Object?>> _tags;
   @override
   @DocumentReferenceConverter()
@@ -295,6 +314,15 @@ class _$ClientImpl implements _Client {
     if (_tags is EqualUnmodifiableListView) return _tags;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tags);
+  }
+
+  final List<String> _tagIds;
+  @override
+  @JsonKey()
+  List<String> get tagIds {
+    if (_tagIds is EqualUnmodifiableListView) return _tagIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tagIds);
   }
 
   @override
@@ -315,21 +343,10 @@ class _$ClientImpl implements _Client {
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
-  @override
-  @JsonKey()
-  final String assignedToId;
-  final List<String> _tagIds;
-  @override
-  @JsonKey()
-  List<String> get tagIds {
-    if (_tagIds is EqualUnmodifiableListView) return _tagIds;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tagIds);
-  }
 
   @override
   String toString() {
-    return 'Client(assignedTo: $assignedTo, tags: $tags, companyName: $companyName, dateOfBirth: $dateOfBirth, industry: $industry, personalOrCompanyId: $personalOrCompanyId, phone: $phone, status: $status, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedToId: $assignedToId, tagIds: $tagIds)';
+    return 'Client(id: $id, assignedTo: $assignedTo, assignedToId: $assignedToId, tags: $tags, tagIds: $tagIds, companyName: $companyName, dateOfBirth: $dateOfBirth, industry: $industry, personalOrCompanyId: $personalOrCompanyId, phone: $phone, status: $status, description: $description, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -337,9 +354,13 @@ class _$ClientImpl implements _Client {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ClientImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.assignedTo, assignedTo) ||
                 other.assignedTo == assignedTo) &&
+            (identical(other.assignedToId, assignedToId) ||
+                other.assignedToId == assignedToId) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
+            const DeepCollectionEquality().equals(other._tagIds, _tagIds) &&
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
@@ -355,18 +376,18 @@ class _$ClientImpl implements _Client {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.assignedToId, assignedToId) ||
-                other.assignedToId == assignedToId) &&
-            const DeepCollectionEquality().equals(other._tagIds, _tagIds));
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       assignedTo,
+      assignedToId,
       const DeepCollectionEquality().hash(_tags),
+      const DeepCollectionEquality().hash(_tagIds),
       companyName,
       dateOfBirth,
       industry,
@@ -375,9 +396,7 @@ class _$ClientImpl implements _Client {
       status,
       description,
       createdAt,
-      updatedAt,
-      assignedToId,
-      const DeepCollectionEquality().hash(_tagIds));
+      updatedAt);
 
   /// Create a copy of Client
   /// with the given fields replaced by the non-null parameter values.
@@ -397,10 +416,13 @@ class _$ClientImpl implements _Client {
 
 abstract class _Client implements Client {
   const factory _Client(
-      {@DocumentReferenceConverter()
+      {required final String id,
+      @DocumentReferenceConverter()
       required final DocumentReference<Object?> assignedTo,
+      final String assignedToId,
       @DocumentReferenceConverter()
       required final List<DocumentReference<Object?>> tags,
+      final List<String> tagIds,
       required final String companyName,
       required final DateTime dateOfBirth,
       required final String industry,
@@ -409,18 +431,22 @@ abstract class _Client implements Client {
       required final ClientStatus status,
       required final String description,
       required final DateTime createdAt,
-      required final DateTime updatedAt,
-      final String assignedToId,
-      final List<String> tagIds}) = _$ClientImpl;
+      required final DateTime updatedAt}) = _$ClientImpl;
 
   factory _Client.fromJson(Map<String, dynamic> json) = _$ClientImpl.fromJson;
 
   @override
+  String get id;
+  @override
   @DocumentReferenceConverter()
   DocumentReference<Object?> get assignedTo;
   @override
+  String get assignedToId;
+  @override
   @DocumentReferenceConverter()
   List<DocumentReference<Object?>> get tags;
+  @override
+  List<String> get tagIds;
   @override
   String get companyName;
   @override
@@ -439,10 +465,6 @@ abstract class _Client implements Client {
   DateTime get createdAt;
   @override
   DateTime get updatedAt;
-  @override
-  String get assignedToId;
-  @override
-  List<String> get tagIds;
 
   /// Create a copy of Client
   /// with the given fields replaced by the non-null parameter values.
