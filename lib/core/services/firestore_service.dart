@@ -9,16 +9,20 @@ class FirestoreService {
 
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  ///TODO: to add Tide's logger to every API call
+
   Future<DocumentSnapshot> getDocument(String collection, String docId) async {
     return await _firestore.collection(collection).doc(docId).get();
   }
 
-  Future<void> createDocument(
+  Future<String> createDocument(
     String collection,
-    String docId,
     Map<String, dynamic> data,
   ) async {
-    await _firestore.collection(collection).doc(docId).set(data);
+    final docRef = await _firestore.collection(collection).add(data);
+
+    // Return the auto-generated ID of the newly created document used for objectId
+    return docRef.id;
   }
 
   Future<void> updateDocument(

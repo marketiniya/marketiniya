@@ -80,40 +80,6 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
 
       _onClientUpdated(client);
       emit(state.copyWith(status: Status.success));
-    } catch (e) {
-      emit(state.copyWith(
-        status: Status.error,
-        errorMessage: e.toString(),
-      ));
-    }
-  }
-
-  Future<void> _onUpdate(Emitter<AddClientState> emit) async {
-    emit(state.copyWith(status: Status.loading));
-
-    try {
-      if (_client == null) {
-        emit(state.copyWith(
-          status: Status.error,
-          errorMessage: 'Cannot update: no existing client data provided.',
-        ));
-        return;
-      }
-
-      final updatedClient = await _clientRepository.updateClient(
-        assignedTo: _client.assignedTo,
-        personalOrCompanyId: _client.personalOrCompanyId,
-        companyName: state.companyName,
-        dateOfBirth: _parseDateOfBirth(),
-        industry: state.industry,
-        phone: state.phone,
-        status: state.clientStatus,
-        description: state.description,
-      );
-
-      _onClientUpdated(updatedClient);
-
-      emit(state.copyWith(status: Status.success));
     } catch (e, stackTrace) {
       Log.error('Update failed: ${e.toString()}');
       Log.error(stackTrace.toString());
@@ -121,6 +87,42 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
     }
   }
 
+  Future<void> _onUpdate(Emitter<AddClientState> emit) async {
+    emit(state.copyWith(status: Status.loading));
+
+    if (_client == null) {
+      emit(state.copyWith(status: Status.error));
+      Log.error('Cannot update: no existing client data provided.');
+      return;
+    }
+
+    try {
+      final updatedClient = await _clientRepository.updateClient(
+        id: _client.id,
+        assignedTo: _client.assignedTo,
+        personalOrCompanyId: state.personalOrCompanyId,
+        companyName: state.companyName,
+        dateOfBirth: _parseDateOfBirth(),
+        industry: state.industry,
+        phone: state.phone,
+        status: state.clientStatus,
+        description: state.description,
+        createdAt: _client.createdAt,
+      );
+
+      _onClientUpdated(updatedClient);
+
+      emit(state.copyWith(status: Status.success));
+    } catch (e, stackTrace) {
+      Log.error('Update failed for client ID: ${_client.id}, Error: ${e.toString()}');
+      Log.error('Stack trace: ${stackTrace.toString()}');
+
+      emit(state.copyWith(
+        status: Status.error,
+        errorMessage: 'Failed to update the client. Please try again later.',
+      ));
+    }
+  }
 
   DateTime _parseDateOfBirth() {
     final dateFormat = DateFormat('dd.MM.yyyy');

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/core/utils/color_utils.dart';
 
 extension ContextExtension on BuildContext {
   void push(Widget screen, {String? routeName}) {
@@ -42,7 +41,7 @@ extension ContextExtension on BuildContext {
       ..showSnackBar(
         SnackBar(
           behavior: SnackBarBehavior.floating,
-          backgroundColor: ColorUtils.limeGreen,
+          backgroundColor: Colors.green,
           content: Text(message, textAlign: TextAlign.center),
         ),
       );

@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:marketinya/core/config/log.dart';
 import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
@@ -36,7 +37,8 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
       final clients = await _clientRepository.getClientsForUser(currentUserRef);
 
       emit(state.copyWith(status: Status.success, clients: clients));
-    } catch (e) {
+    } catch (e, stackTrace) {
+      Log.error(stackTrace.toString());
       emit(state.copyWith(
         status: Status.error,
         errorMessage: e.toString(),

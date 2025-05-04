@@ -156,6 +156,7 @@ class ContentForm extends StatelessWidget {
         SizedBox(
           width: _inputWidth,
           child: CustomTextFormField(
+            controller: TextEditingController(text: state.industry),
             padding: dimen.top.micro,
             labelText: 'Сектор',
             keyboardType: TextInputType.text,
