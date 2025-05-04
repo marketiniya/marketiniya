@@ -32,7 +32,7 @@ class ClientRepository {
     }
   }
 
-  Future<void> createClient({
+  Future<Client> createClient({
     required DocumentReference assignedTo,
     required List<DocumentReference> tags,
     required String companyName,
@@ -62,9 +62,26 @@ class ClientRepository {
       personalOrCompanyId,
       clientData,
     );
+
+    final client = Client(
+      assignedTo: assignedTo,
+      tags: [],
+      companyName: companyName,
+      dateOfBirth: dateOfBirth,
+      industry: industry,
+      personalOrCompanyId: personalOrCompanyId,
+      phone: phone,
+      status: status,
+      description: description,
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
+
+    return Future.value(client);
   }
 
-  Future<void> updateClient({
+  Future<Client> updateClient({
+    required DocumentReference assignedTo,
     required String personalOrCompanyId,
     required String companyName,
     required DateTime dateOfBirth,
@@ -88,5 +105,21 @@ class ClientRepository {
       personalOrCompanyId,
       clientData,
     );
+
+    final client = Client(
+      assignedTo: assignedTo,
+      tags: [], //TODO: update when tags available
+      companyName: companyName,
+      dateOfBirth: dateOfBirth,
+      industry: industry,
+      personalOrCompanyId: personalOrCompanyId,
+      phone: phone,
+      status: status,
+      description: description,
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
+
+    return Future.value(client);
   }
 }

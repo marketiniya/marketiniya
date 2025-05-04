@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
+import 'package:marketinya/core/extensions/context_extension.dart';
+import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
+
 import 'add_client_screen/add_client_screen.dart';
 
 class ContentHeader extends StatelessWidget {
@@ -71,13 +75,14 @@ class ContentHeader extends StatelessWidget {
                   child: PrimaryButton.responsive(
                     icon: const Icon(Icons.add),
                     title: 'Добави Клиент',
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const AddClientScreen(),
-                        ),
-                      );
-                    },
+                    onPressed: () => context.push(
+                      AddClientScreen(
+                        onClientUpdated: (client) =>
+                            context.read<ClientBloc>().add(
+                                  ClientEvent.onClientUpdated(client),
+                                ),
+                      ),
+                    ),
                     backgroundColor: AppColors.oliveGreen,
                     activeTitleColor: Colors.white,
                   ),

@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
+import 'package:marketinya/core/config/log.dart';
 import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
@@ -14,6 +15,7 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
     this._userRepository,
     this._clientRepository,
     @factoryParam this._client,
+    @factoryParam this._onClientUpdated,
   ) : super(AddClientState()) {
     on<AddClientEvent>((event, emit) async {
       await event.map(
@@ -38,6 +40,7 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
   final Client? _client;
   final UserRepository _userRepository;
   final ClientRepository _clientRepository;
+  final void Function(Client client) _onClientUpdated;
 
   Future<void> _onLoad(Emitter<AddClientState> emit) async {
     if (_client == null) {
@@ -61,49 +64,21 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
   Future<void> _onSave(Emitter<AddClientState> emit) async {
     emit(state.copyWith(status: Status.loading));
     try {
-      final userReference = _userRepository.getCurrentUserRef();
+      final userRef = _userRepository.getCurrentUserRef();
 
-      final exists = await _clientRepository.isClientRegistered(state.personalOrCompanyId);
-      if (exists) {
-        emit(
-          state.copyWith(
-            status: Status.error,
-            errorMessage: 'A client with this ID already exists.',
-          ),
-        );
-        return;
-      }
-
-      await _clientRepository.createClient(
-          assignedTo: userReference,
-          tags: [], // TODO: Add tags when implemented
-          companyName: state.companyName,
-          dateOfBirth: _parseDateOfBirth(),
-          industry: state.industry,
-          personalOrCompanyId: state.personalOrCompanyId,
-          phone: state.phone,
-          status: state.clientStatus,
-          description: state.description);
-
-      emit(state.copyWith(status: Status.success));
-    } catch (e) {
-      emit(state.copyWith(status: Status.error, errorMessage: e.toString()));
-    }
-  }
-
-  Future<void> _onUpdate(Emitter<AddClientState> emit) async {
-    emit(state.copyWith(status: Status.loading));
-    try {
-      await _clientRepository.updateClient(
-        personalOrCompanyId: state.personalOrCompanyId,
+      final client = await _clientRepository.createClient(
         companyName: state.companyName,
         dateOfBirth: _parseDateOfBirth(),
         industry: state.industry,
+        personalOrCompanyId: state.personalOrCompanyId,
         phone: state.phone,
         status: state.clientStatus,
         description: state.description,
+        assignedTo: userRef,
+        tags: [],
       );
 
+      _onClientUpdated(client);
       emit(state.copyWith(status: Status.success));
     } catch (e) {
       emit(state.copyWith(
@@ -112,6 +87,40 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
       ));
     }
   }
+
+  Future<void> _onUpdate(Emitter<AddClientState> emit) async {
+    emit(state.copyWith(status: Status.loading));
+
+    try {
+      if (_client == null) {
+        emit(state.copyWith(
+          status: Status.error,
+          errorMessage: 'Cannot update: no existing client data provided.',
+        ));
+        return;
+      }
+
+      final updatedClient = await _clientRepository.updateClient(
+        assignedTo: _client.assignedTo,
+        personalOrCompanyId: _client.personalOrCompanyId,
+        companyName: state.companyName,
+        dateOfBirth: _parseDateOfBirth(),
+        industry: state.industry,
+        phone: state.phone,
+        status: state.clientStatus,
+        description: state.description,
+      );
+
+      _onClientUpdated(updatedClient);
+
+      emit(state.copyWith(status: Status.success));
+    } catch (e, stackTrace) {
+      Log.error('Update failed: ${e.toString()}');
+      Log.error(stackTrace.toString());
+      emit(state.copyWith(status: Status.error));
+    }
+  }
+
 
   DateTime _parseDateOfBirth() {
     final dateFormat = DateFormat('dd.MM.yyyy');

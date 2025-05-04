@@ -14,9 +14,12 @@ class AddClientScreen extends StatelessWidget {
   const AddClientScreen({
     super.key,
     this.client,
+    required this.onClientUpdated,
   });
 
   final Client? client;
+  // Callback to update the client on the previous screen after changes
+  final Function(Client) onClientUpdated;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +28,7 @@ class AddClientScreen extends StatelessWidget {
         getIt<UserRepository>(),
         getIt<ClientRepository>(),
         client,
+        onClientUpdated,
       ),
       child: const _AddClientScreenContent(),
     );

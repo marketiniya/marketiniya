@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketinya/core/enums/status.dart';
+import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
 import 'client_state.dart';
@@ -15,11 +16,13 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
     this._userRepository,
     this._clientRepository,
   ) : super(const ClientState()) {
-    on<ClientEvent>((event, emit) async {
-      await event.map(
-        onLoad: (_) async => await _onLoad(emit),
-      );
-    });
+    on<ClientEvent>(
+      (event, emit) => event.map(
+        onLoad: (_) => _onLoad(emit),
+        onClientUpdated: (e) => _onClientUpdated(emit, e),
+      ),
+    );
+
     add(const ClientEvent.onLoad());
   }
 
@@ -39,5 +42,27 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
         errorMessage: e.toString(),
       ));
     }
+  }
+
+  Future<void> _onClientUpdated(
+    Emitter<ClientState> emit,
+    _OnClientUpdated event,
+  ) async {
+    final client = event.client;
+
+    final updatedClients = List<Client>.from(state.clients);
+    final index = updatedClients.indexWhere(
+      (c) => c.personalOrCompanyId == client.personalOrCompanyId,
+    );
+
+    final clientExists = index != -1;
+
+    if (clientExists) {
+      updatedClients[index] = client;
+    } else {
+      updatedClients.add(client);
+    }
+
+    emit(state.copyWith(clients: updatedClients));
   }
 }

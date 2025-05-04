@@ -26,8 +26,14 @@ class HeaderSection extends StatelessWidget {
       listener: (context, state) {
         if (state.status == Status.error) {
           context.showFailureSnackBar(state.errorMessage ?? 'An error occurred');
-        } else if (state.status == Status.success) {
-          context.showSuccessSnackBar('Client created successfully');
+          return;
+        }
+        if (state.status == Status.success) {
+          final message = state.isUpdateMode
+              ? 'Client updated successfully'
+              : 'Client created successfully';
+
+          context.showSuccessSnackBar(message);
           Navigator.of(context).pop();
         }
       },

@@ -19,32 +19,38 @@ mixin _$ClientEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onLoad,
+    required TResult Function(Client client) onClientUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onLoad,
+    TResult? Function(Client client)? onClientUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onLoad,
+    TResult Function(Client client)? onClientUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_onLoad value) onLoad,
+    required TResult Function(_OnLoad value) onLoad,
+    required TResult Function(_OnClientUpdated value) onClientUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_onLoad value)? onLoad,
+    TResult? Function(_OnLoad value)? onLoad,
+    TResult? Function(_OnClientUpdated value)? onClientUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_onLoad value)? onLoad,
+    TResult Function(_OnLoad value)? onLoad,
+    TResult Function(_OnClientUpdated value)? onClientUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,18 +78,18 @@ class _$ClientEventCopyWithImpl<$Res, $Val extends ClientEvent>
 }
 
 /// @nodoc
-abstract class _$$onLoadImplCopyWith<$Res> {
-  factory _$$onLoadImplCopyWith(
-          _$onLoadImpl value, $Res Function(_$onLoadImpl) then) =
-      __$$onLoadImplCopyWithImpl<$Res>;
+abstract class _$$OnLoadImplCopyWith<$Res> {
+  factory _$$OnLoadImplCopyWith(
+          _$OnLoadImpl value, $Res Function(_$OnLoadImpl) then) =
+      __$$OnLoadImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$onLoadImplCopyWithImpl<$Res>
-    extends _$ClientEventCopyWithImpl<$Res, _$onLoadImpl>
-    implements _$$onLoadImplCopyWith<$Res> {
-  __$$onLoadImplCopyWithImpl(
-      _$onLoadImpl _value, $Res Function(_$onLoadImpl) _then)
+class __$$OnLoadImplCopyWithImpl<$Res>
+    extends _$ClientEventCopyWithImpl<$Res, _$OnLoadImpl>
+    implements _$$OnLoadImplCopyWith<$Res> {
+  __$$OnLoadImplCopyWithImpl(
+      _$OnLoadImpl _value, $Res Function(_$OnLoadImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ClientEvent
@@ -92,8 +98,8 @@ class __$$onLoadImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$onLoadImpl implements _onLoad {
-  const _$onLoadImpl();
+class _$OnLoadImpl implements _OnLoad {
+  const _$OnLoadImpl();
 
   @override
   String toString() {
@@ -103,7 +109,7 @@ class _$onLoadImpl implements _onLoad {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$onLoadImpl);
+        (other.runtimeType == runtimeType && other is _$OnLoadImpl);
   }
 
   @override
@@ -113,6 +119,7 @@ class _$onLoadImpl implements _onLoad {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onLoad,
+    required TResult Function(Client client) onClientUpdated,
   }) {
     return onLoad();
   }
@@ -121,6 +128,7 @@ class _$onLoadImpl implements _onLoad {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onLoad,
+    TResult? Function(Client client)? onClientUpdated,
   }) {
     return onLoad?.call();
   }
@@ -129,6 +137,7 @@ class _$onLoadImpl implements _onLoad {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onLoad,
+    TResult Function(Client client)? onClientUpdated,
     required TResult orElse(),
   }) {
     if (onLoad != null) {
@@ -140,7 +149,8 @@ class _$onLoadImpl implements _onLoad {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_onLoad value) onLoad,
+    required TResult Function(_OnLoad value) onLoad,
+    required TResult Function(_OnClientUpdated value) onClientUpdated,
   }) {
     return onLoad(this);
   }
@@ -148,7 +158,8 @@ class _$onLoadImpl implements _onLoad {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_onLoad value)? onLoad,
+    TResult? Function(_OnLoad value)? onLoad,
+    TResult? Function(_OnClientUpdated value)? onClientUpdated,
   }) {
     return onLoad?.call(this);
   }
@@ -156,7 +167,8 @@ class _$onLoadImpl implements _onLoad {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_onLoad value)? onLoad,
+    TResult Function(_OnLoad value)? onLoad,
+    TResult Function(_OnClientUpdated value)? onClientUpdated,
     required TResult orElse(),
   }) {
     if (onLoad != null) {
@@ -166,6 +178,159 @@ class _$onLoadImpl implements _onLoad {
   }
 }
 
-abstract class _onLoad implements ClientEvent {
-  const factory _onLoad() = _$onLoadImpl;
+abstract class _OnLoad implements ClientEvent {
+  const factory _OnLoad() = _$OnLoadImpl;
+}
+
+/// @nodoc
+abstract class _$$OnClientUpdatedImplCopyWith<$Res> {
+  factory _$$OnClientUpdatedImplCopyWith(_$OnClientUpdatedImpl value,
+          $Res Function(_$OnClientUpdatedImpl) then) =
+      __$$OnClientUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Client client});
+
+  $ClientCopyWith<$Res> get client;
+}
+
+/// @nodoc
+class __$$OnClientUpdatedImplCopyWithImpl<$Res>
+    extends _$ClientEventCopyWithImpl<$Res, _$OnClientUpdatedImpl>
+    implements _$$OnClientUpdatedImplCopyWith<$Res> {
+  __$$OnClientUpdatedImplCopyWithImpl(
+      _$OnClientUpdatedImpl _value, $Res Function(_$OnClientUpdatedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? client = null,
+  }) {
+    return _then(_$OnClientUpdatedImpl(
+      null == client
+          ? _value.client
+          : client // ignore: cast_nullable_to_non_nullable
+              as Client,
+    ));
+  }
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ClientCopyWith<$Res> get client {
+    return $ClientCopyWith<$Res>(_value.client, (value) {
+      return _then(_value.copyWith(client: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$OnClientUpdatedImpl implements _OnClientUpdated {
+  const _$OnClientUpdatedImpl(this.client);
+
+  @override
+  final Client client;
+
+  @override
+  String toString() {
+    return 'ClientEvent.onClientUpdated(client: $client)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnClientUpdatedImpl &&
+            (identical(other.client, client) || other.client == client));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, client);
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnClientUpdatedImplCopyWith<_$OnClientUpdatedImpl> get copyWith =>
+      __$$OnClientUpdatedImplCopyWithImpl<_$OnClientUpdatedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onLoad,
+    required TResult Function(Client client) onClientUpdated,
+  }) {
+    return onClientUpdated(client);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onLoad,
+    TResult? Function(Client client)? onClientUpdated,
+  }) {
+    return onClientUpdated?.call(client);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onLoad,
+    TResult Function(Client client)? onClientUpdated,
+    required TResult orElse(),
+  }) {
+    if (onClientUpdated != null) {
+      return onClientUpdated(client);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnLoad value) onLoad,
+    required TResult Function(_OnClientUpdated value) onClientUpdated,
+  }) {
+    return onClientUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnLoad value)? onLoad,
+    TResult? Function(_OnClientUpdated value)? onClientUpdated,
+  }) {
+    return onClientUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnLoad value)? onLoad,
+    TResult Function(_OnClientUpdated value)? onClientUpdated,
+    required TResult orElse(),
+  }) {
+    if (onClientUpdated != null) {
+      return onClientUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnClientUpdated implements ClientEvent {
+  const factory _OnClientUpdated(final Client client) = _$OnClientUpdatedImpl;
+
+  Client get client;
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnClientUpdatedImplCopyWith<_$OnClientUpdatedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
