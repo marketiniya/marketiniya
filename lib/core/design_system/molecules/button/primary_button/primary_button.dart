@@ -17,6 +17,7 @@ class PrimaryButton extends StatelessWidget {
     required this.activeTitleColor,
     this.onPressed,
     required this.overlayButtonColor,
+    this.borderColor,
   }) : _buttonType = buttonType;
 
   factory PrimaryButton.responsive({
@@ -27,7 +28,8 @@ class PrimaryButton extends StatelessWidget {
     Widget? icon,
     Color backgroundColor = AppColors.lightBeige,
     Color activeTitleColor = grey1200,
-    Color overlayButtonColor = const Color(0xFF5A6B34),
+    Color overlayButtonColor = AppColors.oliveGreenDark,
+    Color? borderColor,
   }) =>
       PrimaryButton._(
         key: key,
@@ -39,6 +41,7 @@ class PrimaryButton extends StatelessWidget {
         backgroundColor: backgroundColor,
         activeTitleColor: activeTitleColor,
         overlayButtonColor: overlayButtonColor,
+        borderColor: borderColor,
       );
 
   factory PrimaryButton.blocked({
@@ -48,7 +51,7 @@ class PrimaryButton extends StatelessWidget {
     VoidCallback? onPressed,
     Widget? icon,
     Color activeTitleColor = grey1200,
-    Color overlayButtonColor = const Color(0xFF5A6B34),
+    Color overlayButtonColor = AppColors.oliveGreenDark,
   }) =>
       PrimaryButton._(
         key: key,
@@ -69,7 +72,7 @@ class PrimaryButton extends StatelessWidget {
     VoidCallback? onPressed,
     Widget? icon,
     Color activeTitleColor = grey1200,
-    Color overlayButtonColor = const Color(0xFF5A6B34),
+    Color overlayButtonColor = AppColors.oliveGreenDark,
   }) =>
       PrimaryButton._(
         key: key,
@@ -91,6 +94,7 @@ class PrimaryButton extends StatelessWidget {
   final Color backgroundColor;
   final Color activeTitleColor;
   final Color overlayButtonColor;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -109,6 +113,7 @@ class PrimaryButton extends StatelessWidget {
       disabledButtonColor: colors.backgrounds.subtle,
       buttonColor: backgroundColor,
       overlayButtonColor: overlayButtonColor,
+      borderColor: borderColor,
     );
   }
 }

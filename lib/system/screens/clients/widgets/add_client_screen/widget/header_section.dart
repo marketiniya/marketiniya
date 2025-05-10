@@ -73,6 +73,7 @@ class HeaderSection extends StatelessWidget {
                 child: PrimaryButton.responsive(
                   icon: const Icon(Icons.close),
                   title: 'Отказ',
+                  borderColor: AppColors.oliveGreen,
                   onPressed: () => context.pop(),
                 ),
               ),
