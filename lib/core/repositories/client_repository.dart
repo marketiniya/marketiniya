@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
+import 'package:marketinya/core/enums/business_sector.dart';
 import 'package:marketinya/core/enums/client_status.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
@@ -37,8 +38,9 @@ class ClientRepository {
     required List<DocumentReference> tags,
     required String companyName,
     required DateTime dateOfBirth,
-    required String industry,
-    required String personalOrCompanyId,
+    required BusinessSector businessSector,
+    required String companyId,
+    required String personalId,
     required String phone,
     required ClientStatus status,
     required String description,
@@ -50,8 +52,9 @@ class ClientRepository {
       'tags': tags,
       'companyName': companyName,
       'dateOfBirth': Timestamp.fromDate(dateOfBirth),
-      'industry': industry,
-      'personalOrCompanyId': personalOrCompanyId,
+      'businessSector': businessSector.label,
+      'companyId': companyId,
+      'personalId': personalId,
       'phone': phone,
       'status': status.label,
       'description': description,
@@ -71,8 +74,9 @@ class ClientRepository {
       tags: tags,
       companyName: companyName,
       dateOfBirth: dateOfBirth,
-      industry: industry,
-      personalOrCompanyId: personalOrCompanyId,
+      businessSector: businessSector,
+      companyId: companyId,
+      personalId: personalId,
       phone: phone,
       status: status,
       description: description,
@@ -87,10 +91,11 @@ class ClientRepository {
   Future<Client> updateClient({
     required String id,
     required DocumentReference assignedTo,
-    required String personalOrCompanyId,
+    required String companyId,
+    required String personalId,
     required String companyName,
     required DateTime dateOfBirth,
-    required String industry,
+    required BusinessSector businessSector,
     required String phone,
     required ClientStatus status,
     required String description,
@@ -101,7 +106,9 @@ class ClientRepository {
     final clientData = {
       'companyName': companyName,
       'dateOfBirth': Timestamp.fromDate(dateOfBirth),
-      'industry': industry,
+      'businessSector': businessSector.label,
+      'personalId': personalId,
+      'companyId': companyId,
       'phone': phone,
       'status': status.label,
       'description': description,
@@ -121,8 +128,9 @@ class ClientRepository {
       tags: [], //TODO: update when tags available
       companyName: companyName,
       dateOfBirth: dateOfBirth,
-      industry: industry,
-      personalOrCompanyId: personalOrCompanyId,
+      businessSector: businessSector,
+      personalId: personalId,
+      companyId: companyId,
       phone: phone,
       status: status,
       description: description,

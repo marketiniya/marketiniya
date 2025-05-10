@@ -21,8 +21,9 @@ mixin _$AddClientState {
       throw _privateConstructorUsedError; // True when updating an existing client.
   String get companyName => throw _privateConstructorUsedError;
   String get dateOfBirth => throw _privateConstructorUsedError;
-  String get industry => throw _privateConstructorUsedError;
-  String get personalOrCompanyId => throw _privateConstructorUsedError;
+  BusinessSector get businessSector => throw _privateConstructorUsedError;
+  String get companyId => throw _privateConstructorUsedError;
+  String get personalId => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   ClientStatus get clientStatus => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -46,8 +47,9 @@ abstract class $AddClientStateCopyWith<$Res> {
       bool isUpdateMode,
       String companyName,
       String dateOfBirth,
-      String industry,
-      String personalOrCompanyId,
+      BusinessSector businessSector,
+      String companyId,
+      String personalId,
       String phone,
       ClientStatus clientStatus,
       String description,
@@ -73,8 +75,9 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
     Object? isUpdateMode = null,
     Object? companyName = null,
     Object? dateOfBirth = null,
-    Object? industry = null,
-    Object? personalOrCompanyId = null,
+    Object? businessSector = null,
+    Object? companyId = null,
+    Object? personalId = null,
     Object? phone = null,
     Object? clientStatus = null,
     Object? description = null,
@@ -97,13 +100,17 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as String,
-      industry: null == industry
-          ? _value.industry
-          : industry // ignore: cast_nullable_to_non_nullable
+      businessSector: null == businessSector
+          ? _value.businessSector
+          : businessSector // ignore: cast_nullable_to_non_nullable
+              as BusinessSector,
+      companyId: null == companyId
+          ? _value.companyId
+          : companyId // ignore: cast_nullable_to_non_nullable
               as String,
-      personalOrCompanyId: null == personalOrCompanyId
-          ? _value.personalOrCompanyId
-          : personalOrCompanyId // ignore: cast_nullable_to_non_nullable
+      personalId: null == personalId
+          ? _value.personalId
+          : personalId // ignore: cast_nullable_to_non_nullable
               as String,
       phone: null == phone
           ? _value.phone
@@ -138,8 +145,9 @@ abstract class _$$AddClientStateImplCopyWith<$Res>
       bool isUpdateMode,
       String companyName,
       String dateOfBirth,
-      String industry,
-      String personalOrCompanyId,
+      BusinessSector businessSector,
+      String companyId,
+      String personalId,
       String phone,
       ClientStatus clientStatus,
       String description,
@@ -163,8 +171,9 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
     Object? isUpdateMode = null,
     Object? companyName = null,
     Object? dateOfBirth = null,
-    Object? industry = null,
-    Object? personalOrCompanyId = null,
+    Object? businessSector = null,
+    Object? companyId = null,
+    Object? personalId = null,
     Object? phone = null,
     Object? clientStatus = null,
     Object? description = null,
@@ -187,13 +196,17 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as String,
-      industry: null == industry
-          ? _value.industry
-          : industry // ignore: cast_nullable_to_non_nullable
+      businessSector: null == businessSector
+          ? _value.businessSector
+          : businessSector // ignore: cast_nullable_to_non_nullable
+              as BusinessSector,
+      companyId: null == companyId
+          ? _value.companyId
+          : companyId // ignore: cast_nullable_to_non_nullable
               as String,
-      personalOrCompanyId: null == personalOrCompanyId
-          ? _value.personalOrCompanyId
-          : personalOrCompanyId // ignore: cast_nullable_to_non_nullable
+      personalId: null == personalId
+          ? _value.personalId
+          : personalId // ignore: cast_nullable_to_non_nullable
               as String,
       phone: null == phone
           ? _value.phone
@@ -223,8 +236,9 @@ class _$AddClientStateImpl implements _AddClientState {
       this.isUpdateMode = false,
       this.companyName = '',
       this.dateOfBirth = '',
-      this.industry = '',
-      this.personalOrCompanyId = '',
+      this.businessSector = BusinessSector.unknown,
+      this.companyId = '',
+      this.personalId = '',
       this.phone = '',
       this.clientStatus = ClientStatus.inactive,
       this.description = '',
@@ -245,10 +259,13 @@ class _$AddClientStateImpl implements _AddClientState {
   final String dateOfBirth;
   @override
   @JsonKey()
-  final String industry;
+  final BusinessSector businessSector;
   @override
   @JsonKey()
-  final String personalOrCompanyId;
+  final String companyId;
+  @override
+  @JsonKey()
+  final String personalId;
   @override
   @JsonKey()
   final String phone;
@@ -263,7 +280,7 @@ class _$AddClientStateImpl implements _AddClientState {
 
   @override
   String toString() {
-    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, companyName: $companyName, dateOfBirth: $dateOfBirth, industry: $industry, personalOrCompanyId: $personalOrCompanyId, phone: $phone, clientStatus: $clientStatus, description: $description, errorMessage: $errorMessage)';
+    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, companyName: $companyName, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, clientStatus: $clientStatus, description: $description, errorMessage: $errorMessage)';
   }
 
   @override
@@ -278,10 +295,12 @@ class _$AddClientStateImpl implements _AddClientState {
                 other.companyName == companyName) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
                 other.dateOfBirth == dateOfBirth) &&
-            (identical(other.industry, industry) ||
-                other.industry == industry) &&
-            (identical(other.personalOrCompanyId, personalOrCompanyId) ||
-                other.personalOrCompanyId == personalOrCompanyId) &&
+            (identical(other.businessSector, businessSector) ||
+                other.businessSector == businessSector) &&
+            (identical(other.companyId, companyId) ||
+                other.companyId == companyId) &&
+            (identical(other.personalId, personalId) ||
+                other.personalId == personalId) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.clientStatus, clientStatus) ||
                 other.clientStatus == clientStatus) &&
@@ -298,8 +317,9 @@ class _$AddClientStateImpl implements _AddClientState {
       isUpdateMode,
       companyName,
       dateOfBirth,
-      industry,
-      personalOrCompanyId,
+      businessSector,
+      companyId,
+      personalId,
       phone,
       clientStatus,
       description,
@@ -321,8 +341,9 @@ abstract class _AddClientState implements AddClientState {
       final bool isUpdateMode,
       final String companyName,
       final String dateOfBirth,
-      final String industry,
-      final String personalOrCompanyId,
+      final BusinessSector businessSector,
+      final String companyId,
+      final String personalId,
       final String phone,
       final ClientStatus clientStatus,
       final String description,
@@ -337,9 +358,11 @@ abstract class _AddClientState implements AddClientState {
   @override
   String get dateOfBirth;
   @override
-  String get industry;
+  BusinessSector get businessSector;
   @override
-  String get personalOrCompanyId;
+  String get companyId;
+  @override
+  String get personalId;
   @override
   String get phone;
   @override

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:marketinya/core/enums/business_sector.dart';
 import 'package:marketinya/core/enums/client_status.dart';
 import 'package:marketinya/core/enums/status.dart';
 
@@ -11,8 +12,9 @@ class AddClientState with _$AddClientState {
     @Default(false) bool isUpdateMode, // True when updating an existing client.
     @Default('') String companyName,
     @Default('') String dateOfBirth,
-    @Default('') String industry,
-    @Default('') String personalOrCompanyId,
+    @Default(BusinessSector.unknown) BusinessSector businessSector,
+    @Default('') String companyId,
+    @Default('') String personalId,
     @Default('') String phone,
     @Default(ClientStatus.inactive) ClientStatus clientStatus,
     @Default('') String description,

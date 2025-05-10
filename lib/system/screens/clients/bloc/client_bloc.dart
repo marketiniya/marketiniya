@@ -54,7 +54,7 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
 
     final updatedClients = List<Client>.from(state.clients);
     final index = updatedClients.indexWhere(
-      (c) => c.personalOrCompanyId == client.personalOrCompanyId,
+      (c) => c.id == client.id,
     );
 
     final clientExists = index != -1;

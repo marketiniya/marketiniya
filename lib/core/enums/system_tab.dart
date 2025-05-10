@@ -11,9 +11,9 @@ enum SystemTab {
   profile('Моя профил', Icons.account_circle_outlined, false),
   history('История', Icons.history, false);
 
+  const SystemTab(this.label, this.icon, this.isEnabled);
+
   final String label;
   final IconData icon;
   final bool isEnabled;
-
-  const SystemTab(this.label, this.icon, this.isEnabled);
 }

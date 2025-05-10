@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:marketinya/core/enums/business_sector.dart';
 import 'package:marketinya/core/enums/client_status.dart';
 
 part 'add_client_event.freezed.dart';
@@ -13,10 +14,13 @@ class AddClientEvent with _$AddClientEvent {
   const factory AddClientEvent.dateOfBirthChanged(String value) =
       _DateOfBirthChanged;
 
-  const factory AddClientEvent.industryChanged(String value) = _IndustryChanged;
+  const factory AddClientEvent.businessSectorChanged(BusinessSector value) = _BusinessSectorChanged;
 
-  const factory AddClientEvent.personalOrCompanyIdChanged(String value) =
-      _PersonalOrCompanyIdChanged;
+  const factory AddClientEvent.companyIdChanged(String value) =
+      _CompanyIdChanged;
+
+  const factory AddClientEvent.personalIdChanged(String value) =
+  _PersonalIdChanged;
 
   const factory AddClientEvent.phoneChanged(String value) = PhoneChanged;
 
