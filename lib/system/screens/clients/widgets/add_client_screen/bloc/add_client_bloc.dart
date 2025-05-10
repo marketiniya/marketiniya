@@ -6,8 +6,8 @@ import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
-import 'add_client_event.dart';
-import 'add_client_state.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_event.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_state.dart';
 
 @Injectable()
 class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
@@ -27,8 +27,8 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
         phoneChanged: (e) async => emit(state.copyWith(phone: e.value)),
         clientStatusChanged: (e) async => emit(state.copyWith(clientStatus: e.value)),
         descriptionChanged: (e) async => emit(state.copyWith(description: e.value)),
-        save: (_) async => await _onSave(emit),
-        update: (_) async => await _onUpdate(emit),
+        save: (_) async => _onSave(emit),
+        update: (_) async => _onUpdate(emit),
       );
     });
 
@@ -81,7 +81,7 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
       _onClientUpdated(client);
       emit(state.copyWith(status: Status.success));
     } catch (e, stackTrace) {
-      Log.error('Update failed: ${e.toString()}');
+      Log.error('Update failed: $e');
       Log.error(stackTrace.toString());
       emit(state.copyWith(status: Status.error));
     }
@@ -114,13 +114,15 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
 
       emit(state.copyWith(status: Status.success));
     } catch (e, stackTrace) {
-      Log.error('Update failed for client ID: ${_client.id}, Error: ${e.toString()}');
+      Log.error('Update failed for client ID: ${_client.id}, Error: $e');
       Log.error('Stack trace: ${stackTrace.toString()}');
 
-      emit(state.copyWith(
-        status: Status.error,
-        errorMessage: 'Failed to update the client. Please try again later.',
-      ));
+      emit(
+        state.copyWith(
+          status: Status.error,
+          errorMessage: 'Failed to update the client. Please try again later.',
+        ),
+      );
     }
   }
 
