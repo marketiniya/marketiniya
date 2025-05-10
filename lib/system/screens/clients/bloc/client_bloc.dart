@@ -6,10 +6,10 @@ import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
-import 'client_state.dart';
+import 'package:marketinya/system/screens/clients/bloc/client_state.dart';
 
-part 'client_event.dart';
 part 'client_bloc.freezed.dart';
+part 'client_event.dart';
 
 @Injectable()
 class ClientBloc extends Bloc<ClientEvent, ClientState> {

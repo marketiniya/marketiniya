@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_bloc.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/add_client_form.dart';
 import 'package:marketinya/system/screens/clients/widgets/clients_drawer.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'bloc/add_client_bloc.dart';
 
 class AddClientScreen extends StatelessWidget {
   const AddClientScreen({
@@ -18,6 +18,7 @@ class AddClientScreen extends StatelessWidget {
   });
 
   final Client? client;
+
   // Callback to update the client on the previous screen after changes
   final Function(Client) onClientUpdated;
 
