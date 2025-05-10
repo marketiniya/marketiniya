@@ -22,8 +22,9 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
         load: (e) async => _onLoad(emit),
         companyNameChanged: (e) async => emit(state.copyWith(companyName: e.value)),
         dateOfBirthChanged: (e) async => emit(state.copyWith(dateOfBirth: e.value)),
-        industryChanged: (e) async => emit(state.copyWith(industry: e.value)),
-        personalOrCompanyIdChanged: (e) async => emit(state.copyWith(personalOrCompanyId: e.value)),
+        businessSectorChanged: (e) async => emit(state.copyWith(businessSector: e.value)),
+        companyIdChanged: (e) async => emit(state.copyWith(companyId: e.value)),
+        personalIdChanged: (e) async => emit(state.copyWith(personalId: e.value)),
         phoneChanged: (e) async => emit(state.copyWith(phone: e.value)),
         clientStatusChanged: (e) async => emit(state.copyWith(clientStatus: e.value)),
         descriptionChanged: (e) async => emit(state.copyWith(description: e.value)),
@@ -52,8 +53,9 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
         isUpdateMode: true,
         companyName: _client.companyName,
         dateOfBirth: DateFormat('dd.MM.yyyy').format(_client.dateOfBirth),
-        industry: _client.industry,
-        personalOrCompanyId: _client.personalOrCompanyId,
+        businessSector: _client.businessSector,
+        companyId: _client.companyId,
+        personalId: _client.personalId,
         phone: _client.phone,
         clientStatus: _client.status,
         description: _client.description,
@@ -69,8 +71,9 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
       final client = await _clientRepository.createClient(
         companyName: state.companyName,
         dateOfBirth: _parseDateOfBirth(),
-        industry: state.industry,
-        personalOrCompanyId: state.personalOrCompanyId,
+        businessSector: state.businessSector,
+        companyId: state.companyId,
+        personalId: state.personalId,
         phone: state.phone,
         status: state.clientStatus,
         description: state.description,
@@ -100,10 +103,11 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
       final updatedClient = await _clientRepository.updateClient(
         id: _client.id,
         assignedTo: _client.assignedTo,
-        personalOrCompanyId: state.personalOrCompanyId,
+        companyId: state.companyId,
+        personalId: state.personalId,
         companyName: state.companyName,
         dateOfBirth: _parseDateOfBirth(),
-        industry: state.industry,
+        businessSector: state.businessSector,
         phone: state.phone,
         status: state.clientStatus,
         description: state.description,
@@ -115,7 +119,7 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
       emit(state.copyWith(status: Status.success));
     } catch (e, stackTrace) {
       Log.error('Update failed for client ID: ${_client.id}, Error: $e');
-      Log.error('Stack trace: ${stackTrace.toString()}');
+      Log.error('Stack trace: $stackTrace');
 
       emit(
         state.copyWith(

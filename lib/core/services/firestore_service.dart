@@ -11,8 +11,8 @@ class FirestoreService {
 
   ///TODO: to add Tide's logger to every API call
 
-  Future<DocumentSnapshot> getDocument(String collection, String docId) async {
-    return await _firestore.collection(collection).doc(docId).get();
+  Future<DocumentSnapshot> getDocument(String collection, String docId) {
+    return _firestore.collection(collection).doc(docId).get();
   }
 
   Future<String> createDocument(
@@ -37,8 +37,8 @@ class FirestoreService {
     String collection, {
     required String field,
     required dynamic value,
-  }) async {
-    return await _firestore.collection(collection).where(field, isEqualTo: value).get();
+  }) {
+    return _firestore.collection(collection).where(field, isEqualTo: value).get();
   }
 
   CollectionReference<Map<String, dynamic>> getCollection(String collection) {

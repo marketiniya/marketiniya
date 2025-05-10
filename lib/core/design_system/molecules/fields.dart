@@ -8,6 +8,7 @@ class CustomTextFormField extends StatefulWidget {
     super.key,
     this.controller,
     this.padding = EdgeInsets.zero,
+    this.contentPadding,
     this.borderRadius,
     this.labelText = '',
     this.helperText = '',
@@ -30,6 +31,7 @@ class CustomTextFormField extends StatefulWidget {
 
   final TextEditingController? controller;
   final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? contentPadding;
   final double? borderRadius;
   final FocusNode? focusNode;
   final String labelText;
@@ -89,6 +91,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         readOnly: widget.readOnly,
         onTap: widget.onTap,
         decoration: InputDecoration(
+          contentPadding: widget.contentPadding,
           labelText: widget.labelText,
           labelStyle: const TextStyle(color: Colors.black),
           helperText: widget.helperText,
@@ -150,10 +153,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 class CustomDropdownFormField<T> extends StatefulWidget {
   const CustomDropdownFormField({
     super.key,
-    required this.padding,
     required this.borderRadius,
     required this.items,
     required this.dropdownValues,
+    this.padding = EdgeInsets.zero,
     this.isExpanded = false,
     this.value,
     this.labelText = '',

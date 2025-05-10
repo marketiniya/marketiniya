@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketinya/core/converters/document_reference_converter.dart';
+import 'package:marketinya/core/enums/business_sector.dart';
 import 'package:marketinya/core/enums/client_status.dart';
 
 part 'client.freezed.dart';
@@ -12,8 +13,9 @@ class Client with _$Client {
     required String id,
     required String companyName,
     required DateTime dateOfBirth,
-    required String industry,
-    required String personalOrCompanyId,
+    required BusinessSector businessSector,
+    required String companyId,
+    required String personalId,
     required String phone,
     required ClientStatus status,
     required String description,
@@ -28,7 +30,13 @@ class Client with _$Client {
   factory Client.fromJson(Map<String, dynamic> json) => _$ClientFromJson(json);
 
   factory Client.fromFirestore(DocumentSnapshot doc) {
-    final data = doc.data() as Map<String, dynamic>;
+    final rawData = doc.data();
+
+    if (rawData == null) {
+      throw Exception('Document data is null');
+    }
+
+    final data = rawData as Map<String, dynamic>;
     final assignedTo = data['assignedTo'] as DocumentReference;
     final tags = List<DocumentReference>.from((data['tags'] as Iterable?) ?? []);
 
@@ -39,8 +47,12 @@ class Client with _$Client {
       tags: tags,
       companyName: data['companyName'] as String,
       dateOfBirth: (data['dateOfBirth'] as Timestamp).toDate(),
-      industry: data['industry'] as String,
-      personalOrCompanyId: data['personalOrCompanyId'] as String,
+      businessSector: BusinessSector.values.firstWhere(
+        (e) => e.label == (data['businessSector'] as String),
+        orElse: () => BusinessSector.other,
+      ),
+      personalId: data['personalId'] as String,
+      companyId: data['companyId'] as String,
       phone: data['phone'] as String,
       status: ClientStatus.values.firstWhere(
         (e) => e.label == (data['status'] as String),
