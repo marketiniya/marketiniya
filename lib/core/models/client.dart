@@ -10,10 +10,6 @@ part 'client.g.dart';
 class Client with _$Client {
   const factory Client({
     required String id,
-    @DocumentReferenceConverter() required DocumentReference assignedTo,
-    @Default('') String assignedToId,
-    @DocumentReferenceConverter() required List<DocumentReference> tags,
-    @Default([]) List<String> tagIds,
     required String companyName,
     required DateTime dateOfBirth,
     required String industry,
@@ -23,6 +19,10 @@ class Client with _$Client {
     required String description,
     required DateTime createdAt,
     required DateTime updatedAt,
+    @DocumentReferenceConverter() required DocumentReference assignedTo,
+    @DocumentReferenceConverter() required List<DocumentReference> tags,
+    @Default('') String assignedToId,
+    @Default([]) List<String> tagIds,
   }) = _Client;
 
   factory Client.fromJson(Map<String, dynamic> json) => _$ClientFromJson(json);
@@ -30,7 +30,7 @@ class Client with _$Client {
   factory Client.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
     final assignedTo = data['assignedTo'] as DocumentReference;
-    final tags = List<DocumentReference>.from(data['tags'] ?? []);
+    final tags = List<DocumentReference>.from((data['tags'] as Iterable?) ?? []);
 
     return Client(
       // Auto-generated document ID, also used as the client's unique id
