@@ -126,76 +126,28 @@ class InformationForm extends StatelessWidget {
             borderRadius: lg,
           ),
         ),
-        SizedBox(
-          width: _inputWidth,
-          child: CustomDropdownFormField<BusinessSector>(
-            value: state.businessSector,
-            items: BusinessSector.values,
-            dropdownValues: (businessSector) => businessSector.label,
-            onSaved: (value) {
-              if (value != null) {
-                bloc.add(AddClientEvent.businessSectorChanged(value));
-              }
-            },
-            borderRadius: lg,
-            decoration: InputDecoration(
-              contentPadding: dimen.horizontal.sm,
-              filled: true,
-              fillColor: AppColors.lightOlive,
-              labelText: 'Сектор',
-              labelStyle: const TextStyle(color: Colors.black),
-              floatingLabelBehavior: FloatingLabelBehavior.auto,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(lg),
-                borderSide: BorderSide.none,
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(lg),
-                borderSide: BorderSide.none,
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(lg),
-                borderSide: BorderSide.none,
-              ),
-            ),
-            dropdownItemBuilder: (status) => Text(status.label),
-          ),
+        CustomDropdownMenu<BusinessSector>(
+          value: state.businessSector,
+          items: BusinessSector.values,
+          labelText: 'Сектор',
+          labelBuilder: (sector) => sector.label,
+          onChanged: (value) {
+            if (value != null) {
+              bloc.add(AddClientEvent.businessSectorChanged(value));
+            }
+          },
         ),
-        SizedBox(
-          width: _inputWidth,
-          child: CustomDropdownFormField<ClientStatus>(
-            value: state.clientStatus,
-            padding: dimen.top.sm,
-            items: ClientStatus.values,
-            dropdownValues: (status) => status.label,
-            onSaved: (value) {
-              if (value != null) {
-                bloc.add(AddClientEvent.clientStatusChanged(value));
-              }
-            },
-            borderRadius: lg,
-            decoration: InputDecoration(
-              contentPadding: dimen.horizontal.sm,
-              filled: true,
-              fillColor: AppColors.lightOlive,
-              labelText: 'Статус',
-              labelStyle: const TextStyle(color: Colors.black),
-              floatingLabelBehavior: FloatingLabelBehavior.auto,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(lg),
-                borderSide: BorderSide.none,
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(lg),
-                borderSide: BorderSide.none,
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(lg),
-                borderSide: BorderSide.none,
-              ),
-            ),
-            dropdownItemBuilder: (status) => Text(status.label),
-          ),
+        const SizedBox(height: xs),
+        CustomDropdownMenu<ClientStatus>(
+          value: state.clientStatus,
+          items: ClientStatus.values,
+          labelText: 'Статус',
+          labelBuilder: (status) => status.label,
+          onChanged: (value) {
+            if (value != null) {
+              bloc.add(AddClientEvent.clientStatusChanged(value));
+            }
+          },
         ),
       ],
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
-import 'package:marketinya/core/utils/validators/field_validators.dart';
+import 'package:marketinya/core/design_system/themes/app_colors.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
@@ -150,86 +150,71 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   }
 }
 
-class CustomDropdownFormField<T> extends StatefulWidget {
-  const CustomDropdownFormField({
+class CustomDropdownMenu<T> extends StatelessWidget {
+  const CustomDropdownMenu({
     super.key,
-    required this.borderRadius,
+    required this.value,
     required this.items,
-    required this.dropdownValues,
-    this.padding = EdgeInsets.zero,
-    this.isExpanded = false,
-    this.value,
-    this.labelText = '',
-    this.hintText = '',
-    this.prefixIcon,
-    this.focusNode,
-    this.onChanged,
-    this.onSaved,
-    this.decoration,
-    this.dropdownItemBuilder,
+    required this.onChanged,
+    required this.labelText,
+    required this.labelBuilder,
+    this.width = 360.0,
   });
 
-  final FocusNode? focusNode;
-  final EdgeInsetsGeometry padding;
-  final IconData? prefixIcon;
-  final bool isExpanded;
-  final T? value;
+  final T value;
   final List<T> items;
+  final Function(T?) onChanged;
   final String labelText;
-  final String hintText;
-  final double borderRadius;
-  final ValueChanged<T?>? onChanged;
-  final FormFieldSetter<T>? onSaved;
-  final String Function(T item) dropdownValues;
-  final InputDecoration? decoration;
-  final Widget Function(T item)? dropdownItemBuilder;
+  final String Function(T) labelBuilder;
+  final double width;
 
-  @override
-  State<CustomDropdownFormField<T>> createState() =>
-      _CustomDropdownFormFieldState<T>();
-}
-
-class _CustomDropdownFormFieldState<T>
-    extends State<CustomDropdownFormField<T>> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: widget.padding,
-      child: DropdownButtonFormField<T>(
-        validator: FieldValidators.notEmptyObject(),
-        menuMaxHeight: imageWidth,
-        focusNode: widget.focusNode,
-        isExpanded: widget.isExpanded,
-        decoration: widget.decoration ??
-            InputDecoration(
-              prefixIcon: Icon(widget.prefixIcon),
-              labelText: widget.labelText,
-              hintText: widget.hintText,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(widget.borderRadius),
-              ),
-            ),
-        value: widget.value,
-        items: _dropdownItems(),
-        onChanged: (value) => widget.onChanged?.call(value),
-        onSaved: widget.onSaved,
+    return DropdownMenu<T>(
+      width: width,
+      initialSelection: value,
+      enableFilter: true,
+      textStyle: const TextStyle(color: Colors.black),
+      inputDecorationTheme: InputDecorationTheme(
+        contentPadding: dimen.horizontal.sm,
+        filled: true,
+        fillColor: AppColors.lightOlive,
+        labelStyle: const TextStyle(color: Colors.black),
+        floatingLabelBehavior: FloatingLabelBehavior.auto,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(lg),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(lg),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(lg),
+          borderSide: BorderSide.none,
+        ),
       ),
+      menuStyle: MenuStyle(
+        backgroundColor: WidgetStateProperty.all(AppColors.lightBeige),
+        fixedSize: WidgetStateProperty.resolveWith((states) {
+          if (items.length > 5) {
+            return const Size(360, 240);
+          }
+          return null;
+        }),
+      ),
+      dropdownMenuEntries: items
+          .map(
+            (item) => DropdownMenuEntry<T>(
+              value: item,
+              label: labelBuilder(item),
+              trailingIcon: item == value
+                  ? const Icon(Icons.check_box, color: AppColors.oliveGreen)
+                  : const SizedBox(width: 24),
+            ),
+          )
+          .toList(),
+      onSelected: onChanged,
     );
-  }
-
-  List<DropdownMenuItem<T>> _dropdownItems() {
-    return widget.items
-        .map(
-          (item) => DropdownMenuItem(
-            value: item,
-            child: widget.dropdownItemBuilder != null
-                ? widget.dropdownItemBuilder!(item)
-                : Text(
-                    widget.dropdownValues(item),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-          ),
-        )
-        .toList();
   }
 }
