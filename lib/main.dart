@@ -23,7 +23,7 @@ void main() async {
   await initializeDependencyInjection();
 
   // Set preferred orientations
-  SystemChrome.setPreferredOrientations([
+  await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
