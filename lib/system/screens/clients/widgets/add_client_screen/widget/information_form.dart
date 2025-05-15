@@ -28,7 +28,7 @@ class InformationForm extends StatelessWidget {
         SizedBox(
           width: _inputWidth,
           child: CustomTextFormField(
-            controller: TextEditingController(text: state.companyName),
+            value: state.companyName,
             labelText: 'Фирма',
             keyboardType: TextInputType.name,
             onSaved: (value) {
@@ -48,7 +48,8 @@ class InformationForm extends StatelessWidget {
         SizedBox(
           width: _inputWidth,
           child: CustomTextFormField(
-            controller: TextEditingController(text: state.companyId),
+            padding: dimen.top.xs,
+            value: state.companyId,
             labelText: 'ЕИК',
             keyboardType: TextInputType.number,
             onSaved: (value) {
@@ -68,7 +69,8 @@ class InformationForm extends StatelessWidget {
         SizedBox(
           width: _inputWidth,
           child: CustomTextFormField(
-            controller: TextEditingController(text: state.name),
+            padding: dimen.top.xs,
+            value: state.name,
             labelText: 'Име',
             keyboardType: TextInputType.name,
             onSaved: (value) {
@@ -88,7 +90,8 @@ class InformationForm extends StatelessWidget {
         SizedBox(
           width: _inputWidth,
           child: CustomTextFormField(
-            controller: TextEditingController(text: state.personalId),
+            padding: dimen.top.xs,
+            value: state.personalId,
             labelText: 'ЕГН',
             keyboardType: TextInputType.number,
             onSaved: (value) {
@@ -108,7 +111,8 @@ class InformationForm extends StatelessWidget {
         SizedBox(
           width: _inputWidth,
           child: CustomTextFormField(
-            controller: TextEditingController(text: state.phone),
+            padding: dimen.top.xs,
+            value: state.phone,
             labelText: 'Телефон',
             keyboardType: TextInputType.number,
             onSaved: (value) {
@@ -129,7 +133,8 @@ class InformationForm extends StatelessWidget {
         SizedBox(
           width: _inputWidth,
           child: CustomTextFormField(
-            controller: TextEditingController(text: state.dateOfBirth),
+            padding: dimen.vertical.xs,
+            value: state.dateOfBirth,
             labelText: 'Дата на раждане',
             keyboardType: TextInputType.datetime,
             onSaved: (value) {
@@ -158,7 +163,7 @@ class InformationForm extends StatelessWidget {
             }
           },
         ),
-        const SizedBox(height: xs + micro),
+        const SizedBox(height: xs),
         CustomDropdownMenu<ClientStatus>(
           value: state.clientStatus,
           items: ClientStatus.values,
@@ -170,7 +175,7 @@ class InformationForm extends StatelessWidget {
             }
           },
         ),
-        const SizedBox(height: xs + micro),
+        const SizedBox(height: xs),
         CustomDropdownMenu<PriorityLevel>(
           value: state.priorityLevel,
           items: PriorityLevel.values,
