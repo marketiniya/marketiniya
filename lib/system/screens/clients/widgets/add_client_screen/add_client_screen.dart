@@ -8,7 +8,7 @@ import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_bloc.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/add_client_form.dart';
-import 'package:marketinya/system/screens/clients/widgets/clients_drawer.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/clients_drawer.dart';
 
 class AddClientScreen extends StatelessWidget {
   const AddClientScreen({

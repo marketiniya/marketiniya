@@ -26,7 +26,7 @@ class ClientsTableHeader extends StatelessWidget {
           Cell(label: 'Телефон', flex: 1, isHeaderCell: true),
           Cell(label: 'Сектор', flex: 1, isHeaderCell: true),
           Cell(label: 'Статус', flex: 1, isHeaderCell: true),
-          Cell(label: 'Приоритет', flex: 0.75, isHeaderCell: true),
+          Cell(label: 'Приоритет', flex: 0.75, isHeaderCell: true, isCentered: true),
         ],
       ),
     );
