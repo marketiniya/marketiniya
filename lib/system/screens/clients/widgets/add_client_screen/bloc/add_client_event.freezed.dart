@@ -20,12 +20,14 @@ mixin _$AddClientEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -35,12 +37,14 @@ mixin _$AddClientEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -50,12 +54,14 @@ mixin _$AddClientEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -66,6 +72,7 @@ mixin _$AddClientEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -73,6 +80,7 @@ mixin _$AddClientEvent {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -82,12 +90,14 @@ mixin _$AddClientEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -97,12 +107,14 @@ mixin _$AddClientEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
@@ -174,12 +186,14 @@ class _$LoadImpl implements _Load {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -192,12 +206,14 @@ class _$LoadImpl implements _Load {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -210,12 +226,14 @@ class _$LoadImpl implements _Load {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -232,6 +250,7 @@ class _$LoadImpl implements _Load {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -239,6 +258,7 @@ class _$LoadImpl implements _Load {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -251,12 +271,14 @@ class _$LoadImpl implements _Load {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -269,12 +291,14 @@ class _$LoadImpl implements _Load {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
@@ -362,12 +386,14 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -380,12 +406,14 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -398,12 +426,14 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -420,6 +450,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -427,6 +458,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -439,12 +471,14 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -457,12 +491,14 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
@@ -485,6 +521,213 @@ abstract class _CompanyNameChanged implements AddClientEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CompanyNameChangedImplCopyWith<_$CompanyNameChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NameChangedImplCopyWith<$Res> {
+  factory _$$NameChangedImplCopyWith(
+          _$NameChangedImpl value, $Res Function(_$NameChangedImpl) then) =
+      __$$NameChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$NameChangedImplCopyWithImpl<$Res>
+    extends _$AddClientEventCopyWithImpl<$Res, _$NameChangedImpl>
+    implements _$$NameChangedImplCopyWith<$Res> {
+  __$$NameChangedImplCopyWithImpl(
+      _$NameChangedImpl _value, $Res Function(_$NameChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$NameChangedImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NameChangedImpl implements _NameChanged {
+  const _$NameChangedImpl(this.value);
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'AddClientEvent.nameChanged(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NameChangedImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NameChangedImplCopyWith<_$NameChangedImpl> get copyWith =>
+      __$$NameChangedImplCopyWithImpl<_$NameChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
+    required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(BusinessSector value) businessSectorChanged,
+    required TResult Function(String value) companyIdChanged,
+    required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) phoneChanged,
+    required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function() save,
+    required TResult Function() update,
+  }) {
+    return nameChanged(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
+    TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(BusinessSector value)? businessSectorChanged,
+    TResult? Function(String value)? companyIdChanged,
+    TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? phoneChanged,
+    TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
+    TResult? Function(String value)? descriptionChanged,
+    TResult? Function()? save,
+    TResult? Function()? update,
+  }) {
+    return nameChanged?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
+    TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(BusinessSector value)? businessSectorChanged,
+    TResult Function(String value)? companyIdChanged,
+    TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? phoneChanged,
+    TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function()? save,
+    TResult Function()? update,
+    required TResult orElse(),
+  }) {
+    if (nameChanged != null) {
+      return nameChanged(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
+    required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_BusinessSectorChanged value)
+        businessSectorChanged,
+    required TResult Function(_CompanyIdChanged value) companyIdChanged,
+    required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(PhoneChanged value) phoneChanged,
+    required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
+  }) {
+    return nameChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
+    TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
+    TResult? Function(_CompanyIdChanged value)? companyIdChanged,
+    TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(PhoneChanged value)? phoneChanged,
+    TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
+  }) {
+    return nameChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
+    TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
+    TResult Function(_CompanyIdChanged value)? companyIdChanged,
+    TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(PhoneChanged value)? phoneChanged,
+    TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
+    required TResult orElse(),
+  }) {
+    if (nameChanged != null) {
+      return nameChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NameChanged implements AddClientEvent {
+  const factory _NameChanged(final String value) = _$NameChangedImpl;
+
+  String get value;
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$NameChangedImplCopyWith<_$NameChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -559,12 +802,14 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -577,12 +822,14 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -595,12 +842,14 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -617,6 +866,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -624,6 +874,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -636,12 +887,14 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -654,12 +907,14 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
@@ -757,12 +1012,14 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -775,12 +1032,14 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -793,12 +1052,14 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -815,6 +1076,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -822,6 +1084,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -834,12 +1097,14 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -852,12 +1117,14 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
@@ -954,12 +1221,14 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -972,12 +1241,14 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -990,12 +1261,14 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -1012,6 +1285,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -1019,6 +1293,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -1031,12 +1306,14 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -1049,12 +1326,14 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
@@ -1150,12 +1429,14 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -1168,12 +1449,14 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -1186,12 +1469,14 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -1208,6 +1493,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -1215,6 +1501,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -1227,12 +1514,14 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -1245,12 +1534,14 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
@@ -1346,12 +1637,14 @@ class _$PhoneChangedImpl implements PhoneChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -1364,12 +1657,14 @@ class _$PhoneChangedImpl implements PhoneChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -1382,12 +1677,14 @@ class _$PhoneChangedImpl implements PhoneChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -1404,6 +1701,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -1411,6 +1709,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -1423,12 +1722,14 @@ class _$PhoneChangedImpl implements PhoneChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -1441,12 +1742,14 @@ class _$PhoneChangedImpl implements PhoneChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
@@ -1542,12 +1845,14 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -1560,12 +1865,14 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -1578,12 +1885,14 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -1600,6 +1909,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -1607,6 +1917,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -1619,12 +1930,14 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -1637,12 +1950,14 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
@@ -1666,6 +1981,216 @@ abstract class _ClientStatusChanged implements AddClientEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ClientStatusChangedImplCopyWith<_$ClientStatusChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PriorityLevelChangedImplCopyWith<$Res> {
+  factory _$$PriorityLevelChangedImplCopyWith(_$PriorityLevelChangedImpl value,
+          $Res Function(_$PriorityLevelChangedImpl) then) =
+      __$$PriorityLevelChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PriorityLevel value});
+}
+
+/// @nodoc
+class __$$PriorityLevelChangedImplCopyWithImpl<$Res>
+    extends _$AddClientEventCopyWithImpl<$Res, _$PriorityLevelChangedImpl>
+    implements _$$PriorityLevelChangedImplCopyWith<$Res> {
+  __$$PriorityLevelChangedImplCopyWithImpl(_$PriorityLevelChangedImpl _value,
+      $Res Function(_$PriorityLevelChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$PriorityLevelChangedImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as PriorityLevel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
+  const _$PriorityLevelChangedImpl(this.value);
+
+  @override
+  final PriorityLevel value;
+
+  @override
+  String toString() {
+    return 'AddClientEvent.priorityLevelChanged(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PriorityLevelChangedImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PriorityLevelChangedImplCopyWith<_$PriorityLevelChangedImpl>
+      get copyWith =>
+          __$$PriorityLevelChangedImplCopyWithImpl<_$PriorityLevelChangedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
+    required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(BusinessSector value) businessSectorChanged,
+    required TResult Function(String value) companyIdChanged,
+    required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) phoneChanged,
+    required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function() save,
+    required TResult Function() update,
+  }) {
+    return priorityLevelChanged(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
+    TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(BusinessSector value)? businessSectorChanged,
+    TResult? Function(String value)? companyIdChanged,
+    TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? phoneChanged,
+    TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
+    TResult? Function(String value)? descriptionChanged,
+    TResult? Function()? save,
+    TResult? Function()? update,
+  }) {
+    return priorityLevelChanged?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
+    TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(BusinessSector value)? businessSectorChanged,
+    TResult Function(String value)? companyIdChanged,
+    TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? phoneChanged,
+    TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function()? save,
+    TResult Function()? update,
+    required TResult orElse(),
+  }) {
+    if (priorityLevelChanged != null) {
+      return priorityLevelChanged(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
+    required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_BusinessSectorChanged value)
+        businessSectorChanged,
+    required TResult Function(_CompanyIdChanged value) companyIdChanged,
+    required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(PhoneChanged value) phoneChanged,
+    required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
+  }) {
+    return priorityLevelChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
+    TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
+    TResult? Function(_CompanyIdChanged value)? companyIdChanged,
+    TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(PhoneChanged value)? phoneChanged,
+    TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
+  }) {
+    return priorityLevelChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
+    TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
+    TResult Function(_CompanyIdChanged value)? companyIdChanged,
+    TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(PhoneChanged value)? phoneChanged,
+    TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
+    required TResult orElse(),
+  }) {
+    if (priorityLevelChanged != null) {
+      return priorityLevelChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PriorityLevelChanged implements AddClientEvent {
+  const factory _PriorityLevelChanged(final PriorityLevel value) =
+      _$PriorityLevelChangedImpl;
+
+  PriorityLevel get value;
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PriorityLevelChangedImplCopyWith<_$PriorityLevelChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1739,12 +2264,14 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -1757,12 +2284,14 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -1775,12 +2304,14 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -1797,6 +2328,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -1804,6 +2336,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -1816,12 +2349,14 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -1834,12 +2369,14 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
@@ -1908,12 +2445,14 @@ class _$SaveClientImpl implements _SaveClient {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -1926,12 +2465,14 @@ class _$SaveClientImpl implements _SaveClient {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -1944,12 +2485,14 @@ class _$SaveClientImpl implements _SaveClient {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -1966,6 +2509,7 @@ class _$SaveClientImpl implements _SaveClient {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -1973,6 +2517,7 @@ class _$SaveClientImpl implements _SaveClient {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -1985,12 +2530,14 @@ class _$SaveClientImpl implements _SaveClient {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -2003,12 +2550,14 @@ class _$SaveClientImpl implements _SaveClient {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
@@ -2068,12 +2617,14 @@ class _$UpdateClientImpl implements _UpdateClient {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function() save,
     required TResult Function() update,
@@ -2086,12 +2637,14 @@ class _$UpdateClientImpl implements _UpdateClient {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function()? save,
     TResult? Function()? update,
@@ -2104,12 +2657,14 @@ class _$UpdateClientImpl implements _UpdateClient {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function()? save,
     TResult Function()? update,
@@ -2126,6 +2681,7 @@ class _$UpdateClientImpl implements _UpdateClient {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
@@ -2133,6 +2689,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
@@ -2145,12 +2702,14 @@ class _$UpdateClientImpl implements _UpdateClient {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
@@ -2163,12 +2722,14 @@ class _$UpdateClientImpl implements _UpdateClient {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,

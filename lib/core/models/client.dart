@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketinya/core/converters/document_reference_converter.dart';
 import 'package:marketinya/core/enums/business_sector.dart';
 import 'package:marketinya/core/enums/client_status.dart';
+import 'package:marketinya/core/enums/priority_level.dart';
 
 part 'client.freezed.dart';
 part 'client.g.dart';
@@ -12,12 +13,14 @@ class Client with _$Client {
   const factory Client({
     required String id,
     required String companyName,
+    required String name,
     required DateTime dateOfBirth,
     required BusinessSector businessSector,
     required String companyId,
     required String personalId,
     required String phone,
     required ClientStatus status,
+    required PriorityLevel priorityLevel,
     required String description,
     required DateTime createdAt,
     required DateTime updatedAt,
@@ -46,6 +49,7 @@ class Client with _$Client {
       assignedTo: assignedTo,
       tags: tags,
       companyName: data['companyName'] as String,
+      name: data['name'] as String,
       dateOfBirth: (data['dateOfBirth'] as Timestamp).toDate(),
       businessSector: BusinessSector.values.firstWhere(
         (e) => e.label == (data['businessSector'] as String),
@@ -57,6 +61,10 @@ class Client with _$Client {
       status: ClientStatus.values.firstWhere(
         (e) => e.label == (data['status'] as String),
         orElse: () => ClientStatus.active,
+      ),
+      priorityLevel: PriorityLevel.values.firstWhere(
+        (e) => e.label == (data['priorityLevel'] as String),
+        orElse: () => PriorityLevel.lowPriority,
       ),
       description: data['description'] as String,
       createdAt: (data['createdAt'] as Timestamp).toDate(),

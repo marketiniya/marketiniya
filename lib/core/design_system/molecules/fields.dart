@@ -155,7 +155,7 @@ class CustomDropdownMenu<T> extends StatelessWidget {
     super.key,
     required this.value,
     required this.items,
-    required this.onChanged,
+    required this.onSelected,
     required this.labelText,
     required this.labelBuilder,
     this.width = 360.0,
@@ -163,7 +163,7 @@ class CustomDropdownMenu<T> extends StatelessWidget {
 
   final T value;
   final List<T> items;
-  final Function(T?) onChanged;
+  final Function(T?) onSelected;
   final String labelText;
   final String Function(T) labelBuilder;
   final double width;
@@ -172,6 +172,7 @@ class CustomDropdownMenu<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownMenu<T>(
       width: width,
+      label: Text(labelText),
       initialSelection: value,
       enableFilter: true,
       textStyle: const TextStyle(color: Colors.black),
@@ -210,11 +211,11 @@ class CustomDropdownMenu<T> extends StatelessWidget {
               label: labelBuilder(item),
               trailingIcon: item == value
                   ? const Icon(Icons.check_box, color: AppColors.oliveGreen)
-                  : const SizedBox(width: 24),
+                  : const SizedBox(width: sm),
             ),
           )
           .toList(),
-      onSelected: onChanged,
+      onSelected: onSelected,
     );
   }
 }

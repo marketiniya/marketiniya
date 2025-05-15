@@ -20,11 +20,13 @@ class ClientsTableHeader extends StatelessWidget {
       child: const Row(
         children: [
           Cell(label: '№', flex: 0.5, isHeaderCell: true),
-          Cell(label: 'Име/Фирма', flex: 2, isHeaderCell: true),
-          Cell(label: 'ЕГН/ЕИК', flex: 1, isHeaderCell: true),
+          Cell(label: 'Фирма', flex: 2, isHeaderCell: true),
+          Cell(label: 'ЕИК', flex: 1, isHeaderCell: true),
+          Cell(label: 'Име', flex: 1, isHeaderCell: true),
           Cell(label: 'Телефон', flex: 1, isHeaderCell: true),
           Cell(label: 'Сектор', flex: 1, isHeaderCell: true),
           Cell(label: 'Статус', flex: 1, isHeaderCell: true),
+          Cell(label: 'Приоритет', flex: 0.75, isHeaderCell: true),
         ],
       ),
     );

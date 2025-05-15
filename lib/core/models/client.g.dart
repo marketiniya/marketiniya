@@ -9,6 +9,7 @@ part of 'client.dart';
 _$ClientImpl _$$ClientImplFromJson(Map<String, dynamic> json) => _$ClientImpl(
       id: json['id'] as String,
       companyName: json['companyName'] as String,
+      name: json['name'] as String,
       dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
       businessSector:
           $enumDecode(_$BusinessSectorEnumMap, json['businessSector']),
@@ -16,6 +17,7 @@ _$ClientImpl _$$ClientImplFromJson(Map<String, dynamic> json) => _$ClientImpl(
       personalId: json['personalId'] as String,
       phone: json['phone'] as String,
       status: $enumDecode(_$ClientStatusEnumMap, json['status']),
+      priorityLevel: $enumDecode(_$PriorityLevelEnumMap, json['priorityLevel']),
       description: json['description'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
@@ -35,12 +37,14 @@ Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'companyName': instance.companyName,
+      'name': instance.name,
       'dateOfBirth': instance.dateOfBirth.toIso8601String(),
       'businessSector': _$BusinessSectorEnumMap[instance.businessSector]!,
       'companyId': instance.companyId,
       'personalId': instance.personalId,
       'phone': instance.phone,
       'status': _$ClientStatusEnumMap[instance.status]!,
+      'priorityLevel': _$PriorityLevelEnumMap[instance.priorityLevel]!,
       'description': instance.description,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
@@ -71,4 +75,10 @@ const _$BusinessSectorEnumMap = {
 const _$ClientStatusEnumMap = {
   ClientStatus.active: 'active',
   ClientStatus.inactive: 'inactive',
+};
+
+const _$PriorityLevelEnumMap = {
+  PriorityLevel.highPriority: 'highPriority',
+  PriorityLevel.mediumPriority: 'mediumPriority',
+  PriorityLevel.lowPriority: 'lowPriority',
 };

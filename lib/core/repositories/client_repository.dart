@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketinya/core/enums/business_sector.dart';
 import 'package:marketinya/core/enums/client_status.dart';
+import 'package:marketinya/core/enums/priority_level.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
 
@@ -37,12 +38,14 @@ class ClientRepository {
     required DocumentReference assignedTo,
     required List<DocumentReference> tags,
     required String companyName,
+    required String name,
     required DateTime dateOfBirth,
     required BusinessSector businessSector,
     required String companyId,
     required String personalId,
     required String phone,
     required ClientStatus status,
+    required PriorityLevel priorityLevel,
     required String description,
   }) async {
     final now = DateTime.now();
@@ -51,12 +54,14 @@ class ClientRepository {
       'assignedTo': assignedTo,
       'tags': tags,
       'companyName': companyName,
+      'name': name,
       'dateOfBirth': Timestamp.fromDate(dateOfBirth),
       'businessSector': businessSector.label,
       'companyId': companyId,
       'personalId': personalId,
       'phone': phone,
       'status': status.label,
+      'priorityLevel': priorityLevel.label,
       'description': description,
       'createdAt': Timestamp.fromDate(now),
       'updatedAt': Timestamp.fromDate(now),
@@ -73,12 +78,14 @@ class ClientRepository {
       assignedToId: assignedTo.id,
       tags: tags,
       companyName: companyName,
+      name: name,
       dateOfBirth: dateOfBirth,
       businessSector: businessSector,
       companyId: companyId,
       personalId: personalId,
       phone: phone,
       status: status,
+      priorityLevel: priorityLevel,
       description: description,
       createdAt: now,
       updatedAt: now,
@@ -94,10 +101,12 @@ class ClientRepository {
     required String companyId,
     required String personalId,
     required String companyName,
+    required String name,
     required DateTime dateOfBirth,
     required BusinessSector businessSector,
     required String phone,
     required ClientStatus status,
+    required PriorityLevel priorityLevel,
     required String description,
     required DateTime createdAt,
   }) async {
@@ -105,12 +114,14 @@ class ClientRepository {
 
     final clientData = {
       'companyName': companyName,
+      'name': name,
       'dateOfBirth': Timestamp.fromDate(dateOfBirth),
       'businessSector': businessSector.label,
       'personalId': personalId,
       'companyId': companyId,
       'phone': phone,
       'status': status.label,
+      'priorityLevel': priorityLevel.label,
       'description': description,
       'updatedAt': FieldValue.serverTimestamp(),
     };
@@ -127,12 +138,14 @@ class ClientRepository {
       assignedTo: assignedTo,
       tags: [], //TODO: update when tags available
       companyName: companyName,
+      name: name,
       dateOfBirth: dateOfBirth,
       businessSector: businessSector,
       personalId: personalId,
       companyId: companyId,
       phone: phone,
       status: status,
+      priorityLevel: priorityLevel,
       description: description,
       createdAt: createdAt,
       updatedAt: now,

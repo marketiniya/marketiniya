@@ -24,7 +24,6 @@ class _AddClientFormState extends State<AddClientForm> {
           key: _formKey,
           child: Column(
             children: [
-              const SizedBox(height: xl),
               HeaderSection(formKey: _formKey),
               const SizedBox(height: lg),
               ContentForm(formKey: _formKey, state: state),
