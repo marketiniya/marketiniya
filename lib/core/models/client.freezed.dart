@@ -22,12 +22,14 @@ Client _$ClientFromJson(Map<String, dynamic> json) {
 mixin _$Client {
   String get id => throw _privateConstructorUsedError;
   String get companyName => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   DateTime get dateOfBirth => throw _privateConstructorUsedError;
   BusinessSector get businessSector => throw _privateConstructorUsedError;
   String get companyId => throw _privateConstructorUsedError;
   String get personalId => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   ClientStatus get status => throw _privateConstructorUsedError;
+  PriorityLevel get priorityLevel => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
@@ -57,12 +59,14 @@ abstract class $ClientCopyWith<$Res> {
   $Res call(
       {String id,
       String companyName,
+      String name,
       DateTime dateOfBirth,
       BusinessSector businessSector,
       String companyId,
       String personalId,
       String phone,
       ClientStatus status,
+      PriorityLevel priorityLevel,
       String description,
       DateTime createdAt,
       DateTime updatedAt,
@@ -89,12 +93,14 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
   $Res call({
     Object? id = null,
     Object? companyName = null,
+    Object? name = null,
     Object? dateOfBirth = null,
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
     Object? phone = null,
     Object? status = null,
+    Object? priorityLevel = null,
     Object? description = null,
     Object? createdAt = null,
     Object? updatedAt = null,
@@ -111,6 +117,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
       companyName: null == companyName
           ? _value.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       dateOfBirth: null == dateOfBirth
           ? _value.dateOfBirth
@@ -136,6 +146,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ClientStatus,
+      priorityLevel: null == priorityLevel
+          ? _value.priorityLevel
+          : priorityLevel // ignore: cast_nullable_to_non_nullable
+              as PriorityLevel,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -178,12 +192,14 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
   $Res call(
       {String id,
       String companyName,
+      String name,
       DateTime dateOfBirth,
       BusinessSector businessSector,
       String companyId,
       String personalId,
       String phone,
       ClientStatus status,
+      PriorityLevel priorityLevel,
       String description,
       DateTime createdAt,
       DateTime updatedAt,
@@ -208,12 +224,14 @@ class __$$ClientImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? companyName = null,
+    Object? name = null,
     Object? dateOfBirth = null,
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
     Object? phone = null,
     Object? status = null,
+    Object? priorityLevel = null,
     Object? description = null,
     Object? createdAt = null,
     Object? updatedAt = null,
@@ -230,6 +248,10 @@ class __$$ClientImplCopyWithImpl<$Res>
       companyName: null == companyName
           ? _value.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       dateOfBirth: null == dateOfBirth
           ? _value.dateOfBirth
@@ -255,6 +277,10 @@ class __$$ClientImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ClientStatus,
+      priorityLevel: null == priorityLevel
+          ? _value.priorityLevel
+          : priorityLevel // ignore: cast_nullable_to_non_nullable
+              as PriorityLevel,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -293,12 +319,14 @@ class _$ClientImpl implements _Client {
   const _$ClientImpl(
       {required this.id,
       required this.companyName,
+      required this.name,
       required this.dateOfBirth,
       required this.businessSector,
       required this.companyId,
       required this.personalId,
       required this.phone,
       required this.status,
+      required this.priorityLevel,
       required this.description,
       required this.createdAt,
       required this.updatedAt,
@@ -318,6 +346,8 @@ class _$ClientImpl implements _Client {
   @override
   final String companyName;
   @override
+  final String name;
+  @override
   final DateTime dateOfBirth;
   @override
   final BusinessSector businessSector;
@@ -329,6 +359,8 @@ class _$ClientImpl implements _Client {
   final String phone;
   @override
   final ClientStatus status;
+  @override
+  final PriorityLevel priorityLevel;
   @override
   final String description;
   @override
@@ -361,7 +393,7 @@ class _$ClientImpl implements _Client {
 
   @override
   String toString() {
-    return 'Client(id: $id, companyName: $companyName, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds)';
+    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds)';
   }
 
   @override
@@ -372,6 +404,7 @@ class _$ClientImpl implements _Client {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
                 other.dateOfBirth == dateOfBirth) &&
             (identical(other.businessSector, businessSector) ||
@@ -382,6 +415,8 @@ class _$ClientImpl implements _Client {
                 other.personalId == personalId) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.priorityLevel, priorityLevel) ||
+                other.priorityLevel == priorityLevel) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.createdAt, createdAt) ||
@@ -402,12 +437,14 @@ class _$ClientImpl implements _Client {
       runtimeType,
       id,
       companyName,
+      name,
       dateOfBirth,
       businessSector,
       companyId,
       personalId,
       phone,
       status,
+      priorityLevel,
       description,
       createdAt,
       updatedAt,
@@ -436,12 +473,14 @@ abstract class _Client implements Client {
   const factory _Client(
       {required final String id,
       required final String companyName,
+      required final String name,
       required final DateTime dateOfBirth,
       required final BusinessSector businessSector,
       required final String companyId,
       required final String personalId,
       required final String phone,
       required final ClientStatus status,
+      required final PriorityLevel priorityLevel,
       required final String description,
       required final DateTime createdAt,
       required final DateTime updatedAt,
@@ -459,6 +498,8 @@ abstract class _Client implements Client {
   @override
   String get companyName;
   @override
+  String get name;
+  @override
   DateTime get dateOfBirth;
   @override
   BusinessSector get businessSector;
@@ -470,6 +511,8 @@ abstract class _Client implements Client {
   String get phone;
   @override
   ClientStatus get status;
+  @override
+  PriorityLevel get priorityLevel;
   @override
   String get description;
   @override

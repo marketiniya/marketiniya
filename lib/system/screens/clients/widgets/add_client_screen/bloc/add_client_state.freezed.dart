@@ -20,12 +20,14 @@ mixin _$AddClientState {
   bool get isUpdateMode =>
       throw _privateConstructorUsedError; // True when updating an existing client.
   String get companyName => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   String get dateOfBirth => throw _privateConstructorUsedError;
   BusinessSector get businessSector => throw _privateConstructorUsedError;
   String get companyId => throw _privateConstructorUsedError;
   String get personalId => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   ClientStatus get clientStatus => throw _privateConstructorUsedError;
+  PriorityLevel get priorityLevel => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
@@ -46,12 +48,14 @@ abstract class $AddClientStateCopyWith<$Res> {
       {Status status,
       bool isUpdateMode,
       String companyName,
+      String name,
       String dateOfBirth,
       BusinessSector businessSector,
       String companyId,
       String personalId,
       String phone,
       ClientStatus clientStatus,
+      PriorityLevel priorityLevel,
       String description,
       String? errorMessage});
 }
@@ -74,12 +78,14 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
     Object? status = null,
     Object? isUpdateMode = null,
     Object? companyName = null,
+    Object? name = null,
     Object? dateOfBirth = null,
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
     Object? phone = null,
     Object? clientStatus = null,
+    Object? priorityLevel = null,
     Object? description = null,
     Object? errorMessage = freezed,
   }) {
@@ -95,6 +101,10 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
       companyName: null == companyName
           ? _value.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       dateOfBirth: null == dateOfBirth
           ? _value.dateOfBirth
@@ -120,6 +130,10 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
           ? _value.clientStatus
           : clientStatus // ignore: cast_nullable_to_non_nullable
               as ClientStatus,
+      priorityLevel: null == priorityLevel
+          ? _value.priorityLevel
+          : priorityLevel // ignore: cast_nullable_to_non_nullable
+              as PriorityLevel,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -144,12 +158,14 @@ abstract class _$$AddClientStateImplCopyWith<$Res>
       {Status status,
       bool isUpdateMode,
       String companyName,
+      String name,
       String dateOfBirth,
       BusinessSector businessSector,
       String companyId,
       String personalId,
       String phone,
       ClientStatus clientStatus,
+      PriorityLevel priorityLevel,
       String description,
       String? errorMessage});
 }
@@ -170,12 +186,14 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? isUpdateMode = null,
     Object? companyName = null,
+    Object? name = null,
     Object? dateOfBirth = null,
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
     Object? phone = null,
     Object? clientStatus = null,
+    Object? priorityLevel = null,
     Object? description = null,
     Object? errorMessage = freezed,
   }) {
@@ -191,6 +209,10 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
       companyName: null == companyName
           ? _value.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       dateOfBirth: null == dateOfBirth
           ? _value.dateOfBirth
@@ -216,6 +238,10 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
           ? _value.clientStatus
           : clientStatus // ignore: cast_nullable_to_non_nullable
               as ClientStatus,
+      priorityLevel: null == priorityLevel
+          ? _value.priorityLevel
+          : priorityLevel // ignore: cast_nullable_to_non_nullable
+              as PriorityLevel,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -235,12 +261,14 @@ class _$AddClientStateImpl implements _AddClientState {
       {this.status = Status.initial,
       this.isUpdateMode = false,
       this.companyName = '',
+      this.name = '',
       this.dateOfBirth = '',
       this.businessSector = BusinessSector.unknown,
       this.companyId = '',
       this.personalId = '',
       this.phone = '',
       this.clientStatus = ClientStatus.inactive,
+      this.priorityLevel = PriorityLevel.lowPriority,
       this.description = '',
       this.errorMessage});
 
@@ -254,6 +282,9 @@ class _$AddClientStateImpl implements _AddClientState {
   @override
   @JsonKey()
   final String companyName;
+  @override
+  @JsonKey()
+  final String name;
   @override
   @JsonKey()
   final String dateOfBirth;
@@ -274,13 +305,16 @@ class _$AddClientStateImpl implements _AddClientState {
   final ClientStatus clientStatus;
   @override
   @JsonKey()
+  final PriorityLevel priorityLevel;
+  @override
+  @JsonKey()
   final String description;
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, companyName: $companyName, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, clientStatus: $clientStatus, description: $description, errorMessage: $errorMessage)';
+    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, clientStatus: $clientStatus, priorityLevel: $priorityLevel, description: $description, errorMessage: $errorMessage)';
   }
 
   @override
@@ -293,6 +327,7 @@ class _$AddClientStateImpl implements _AddClientState {
                 other.isUpdateMode == isUpdateMode) &&
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
                 other.dateOfBirth == dateOfBirth) &&
             (identical(other.businessSector, businessSector) ||
@@ -304,6 +339,8 @@ class _$AddClientStateImpl implements _AddClientState {
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.clientStatus, clientStatus) ||
                 other.clientStatus == clientStatus) &&
+            (identical(other.priorityLevel, priorityLevel) ||
+                other.priorityLevel == priorityLevel) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -316,12 +353,14 @@ class _$AddClientStateImpl implements _AddClientState {
       status,
       isUpdateMode,
       companyName,
+      name,
       dateOfBirth,
       businessSector,
       companyId,
       personalId,
       phone,
       clientStatus,
+      priorityLevel,
       description,
       errorMessage);
 
@@ -340,12 +379,14 @@ abstract class _AddClientState implements AddClientState {
       {final Status status,
       final bool isUpdateMode,
       final String companyName,
+      final String name,
       final String dateOfBirth,
       final BusinessSector businessSector,
       final String companyId,
       final String personalId,
       final String phone,
       final ClientStatus clientStatus,
+      final PriorityLevel priorityLevel,
       final String description,
       final String? errorMessage}) = _$AddClientStateImpl;
 
@@ -355,6 +396,8 @@ abstract class _AddClientState implements AddClientState {
   bool get isUpdateMode; // True when updating an existing client.
   @override
   String get companyName;
+  @override
+  String get name;
   @override
   String get dateOfBirth;
   @override
@@ -367,6 +410,8 @@ abstract class _AddClientState implements AddClientState {
   String get phone;
   @override
   ClientStatus get clientStatus;
+  @override
+  PriorityLevel get priorityLevel;
   @override
   String get description;
   @override
