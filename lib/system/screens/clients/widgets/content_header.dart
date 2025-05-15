@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
-
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/add_client_screen.dart';
 
 class ContentHeader extends StatelessWidget {
@@ -40,16 +40,21 @@ class ContentHeader extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: lg),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(
-                  width: _searchFieldWidth,
-                  child: CustomTextFormField(
-                    labelText: 'Търси',
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
-                    keyboardType: TextInputType.name,
-                    suffixIcon: Icons.search,
-                    borderRadius: lg,
-                    filledColor: AppColors.mutedOlive,
+                Transform.translate(
+                  offset: const Offset(none, _verticalOffset),
+                  child: SizedBox(
+                    width: _searchFieldWidth,
+                    child: CustomTextFormField(
+                      labelText: 'Търси',
+                      contentPadding: dimen.horizontal.sm,
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      keyboardType: TextInputType.name,
+                      suffixIcon: Icons.search,
+                      borderRadius: lg,
+                      filledColor: AppColors.mutedOlive,
+                    ),
                   ),
                 ),
                 const SizedBox(width: sm),

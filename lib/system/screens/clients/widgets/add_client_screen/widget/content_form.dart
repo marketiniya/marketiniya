@@ -41,7 +41,7 @@ class ContentForm extends StatelessWidget {
           child: SizedBox(
             width: _inputWidth * nano + lg,
             child: CustomTextFormField(
-              controller: TextEditingController(text: state.description),
+              value: state.description,
               padding: dimen.top.xxs,
               labelText: 'Описание',
               keyboardType: TextInputType.multiline,
