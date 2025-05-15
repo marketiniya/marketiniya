@@ -59,13 +59,44 @@ class ClientsDrawer extends StatelessWidget {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                  )
+                  ),
                 ],
-              )
+              ),
+              const SizedBox(height: xxs),
+              Column(
+                children: [
+                  Padding(
+                    padding: dimen.horizontal.xxsPlus,
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFC1C29E),
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.attach_file_outlined),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: micro),
+                  Text(
+                    'Прикачени файлове',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.roboto(
+                      textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: xxsPlus,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
       ),
-    );;
+    );
   }
 }

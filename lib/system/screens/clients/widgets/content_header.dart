@@ -19,7 +19,7 @@ class ContentHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(180, none, 180, xxs),
+      padding: const EdgeInsets.fromLTRB(180, none, 180, xs),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -94,7 +94,7 @@ class ContentHeader extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
