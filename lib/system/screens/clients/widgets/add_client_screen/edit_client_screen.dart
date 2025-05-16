@@ -8,11 +8,11 @@ import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_bloc.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_tab.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/add_client_form.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/client_form_page.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/drawer/clients_drawer.dart';
 
-class AddClientScreen extends StatefulWidget {
-  const AddClientScreen({
+class EditClientScreen extends StatefulWidget {
+  const EditClientScreen({
     super.key,
     this.client,
     required this.onClientUpdated,
@@ -24,15 +24,15 @@ class AddClientScreen extends StatefulWidget {
   final Function(Client) onClientUpdated;
 
   @override
-  State<AddClientScreen> createState() => _AddClientScreenContentState();
+  State<EditClientScreen> createState() => _AddClientScreenContentState();
 }
 
-class _AddClientScreenContentState extends State<AddClientScreen>
+class _AddClientScreenContentState extends State<EditClientScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   static final List<Widget> _tabs = [
-    const AddClientForm(),
+    const ClientFormPage(),
     const Center(
       child: Text(
         'Client Notes',

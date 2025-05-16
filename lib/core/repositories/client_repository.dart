@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
-import 'package:marketinya/core/enums/business_sector.dart';
-import 'package:marketinya/core/enums/client_status.dart';
-import 'package:marketinya/core/enums/priority_level.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/business_sector.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_status.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/priority_level.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
 

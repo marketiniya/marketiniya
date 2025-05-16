@@ -33,13 +33,11 @@ class ClientsDrawer extends StatelessWidget {
                 AppColors.dustyOlive,
                 AppColors.lightBeige,
               ],
-              stops: [1, 2],
+              stops: [0.4, 1.0],
             ),
           ),
           child: ListView(
             children: [
-              const SizedBox(height: sm + micro),
-              const DrawerButton(),
               const SizedBox(height: lg),
               ...ClientTab.values.map(
                 (tab) => Column(
@@ -51,7 +49,7 @@ class ClientsDrawer extends StatelessWidget {
                       selected: selectedIndex == tab.tabIndex,
                       onTap: onItemSelected,
                     ),
-                    const SizedBox(height: xxs),
+                    const SizedBox(height: xs),
                   ],
                 ),
               ),
