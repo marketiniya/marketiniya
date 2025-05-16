@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
-import 'package:marketinya/core/models/tags.dart';
 import 'package:marketinya/core/design_system/molecules/button/square_add_button.dart';
+import 'package:marketinya/core/models/tags.dart';
 
 class TagsWidget extends StatelessWidget {
   const TagsWidget({

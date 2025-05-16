@@ -6,14 +6,14 @@ import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/header_section.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/content_form.dart';
 
-class AddClientForm extends StatefulWidget {
-  const AddClientForm({super.key});
+class ClientFormPage extends StatefulWidget {
+  const ClientFormPage({super.key});
 
   @override
-  State<AddClientForm> createState() => _AddClientFormState();
+  State<ClientFormPage> createState() => _ClientFormPageState();
 }
 
-class _AddClientFormState extends State<AddClientForm> {
+class _ClientFormPageState extends State<ClientFormPage> {
   final _formKey = GlobalKey<FormState>();
 
   @override

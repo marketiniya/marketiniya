@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketinya/core/converters/document_reference_converter.dart';
-import 'package:marketinya/core/enums/business_sector.dart';
-import 'package:marketinya/core/enums/client_status.dart';
-import 'package:marketinya/core/enums/priority_level.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/business_sector.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_status.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/priority_level.dart';
 
 part 'client.freezed.dart';
 part 'client.g.dart';
