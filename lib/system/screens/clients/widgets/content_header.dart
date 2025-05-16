@@ -53,7 +53,7 @@ class ContentHeader extends StatelessWidget {
                       keyboardType: TextInputType.name,
                       suffixIcon: Icons.search,
                       borderRadius: lg,
-                      filledColor: AppColors.mutedOlive,
+                      filledColor: AppColors.dustyOlive,
                     ),
                   ),
                 ),

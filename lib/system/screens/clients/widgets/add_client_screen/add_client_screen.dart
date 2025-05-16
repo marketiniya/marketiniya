@@ -7,10 +7,11 @@ import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_bloc.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_tab.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/add_client_form.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/clients_drawer.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/drawer/clients_drawer.dart';
 
-class AddClientScreen extends StatelessWidget {
+class AddClientScreen extends StatefulWidget {
   const AddClientScreen({
     super.key,
     this.client,
@@ -23,40 +24,79 @@ class AddClientScreen extends StatelessWidget {
   final Function(Client) onClientUpdated;
 
   @override
+  State<AddClientScreen> createState() => _AddClientScreenContentState();
+}
+
+class _AddClientScreenContentState extends State<AddClientScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  static final List<Widget> _tabs = [
+    const AddClientForm(),
+    const Center(
+      child: Text(
+        'Client Notes',
+        style: TextStyle(color: Colors.black),
+      ),
+    ),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: ClientTab.values.length, vsync: this);
+    _tabController.addListener(_handleTabChange);
+  }
+
+  void _handleTabChange() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
+  }
+
+  void _onDrawerItemTap(int index) {
+    _tabController.animateTo(index);
+  }
+
+  @override
+  void dispose() {
+    _tabController.removeListener(_handleTabChange);
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddClientBloc(
         getIt<UserRepository>(),
         getIt<ClientRepository>(),
-        client,
-        onClientUpdated,
+        widget.client,
+        widget.onClientUpdated,
       ),
-      child: const _AddClientScreenContent(),
-    );
-  }
-}
-
-class _AddClientScreenContent extends StatelessWidget {
-  const _AddClientScreenContent();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColors.background,
-      body: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClientsDrawer(),
-          Flexible(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(180, xl, 180, lg),
-                child: AddClientForm(),
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        body: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClientsDrawer(
+              onItemSelected: _onDrawerItemTap,
+              selectedIndex: _tabController.index,
+            ),
+            Flexible(
+              child: TabBarView(
+                controller: _tabController,
+                physics: const NeverScrollableScrollPhysics(),
+                children: _tabs.map((tab) {
+                  return SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(180, xl, 180, lg),
+                    child: tab,
+                  );
+                }).toList(),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

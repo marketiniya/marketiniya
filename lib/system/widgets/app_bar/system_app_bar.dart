@@ -31,7 +31,7 @@ class SystemAppBar extends StatelessWidget implements PreferredSizeWidget {
               end: Alignment.bottomCenter,
               colors: [
                 AppColors.lightBeige,
-                AppColors.mutedOlive,
+                AppColors.dustyOlive,
               ],
               stops: [0.2, 1.0],
             ),
