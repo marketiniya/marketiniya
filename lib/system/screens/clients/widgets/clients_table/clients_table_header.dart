@@ -10,7 +10,7 @@ class ClientsTableHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: AppColors.mutedOlive,
+        color: AppColors.dustyOlive,
         borderRadius: BorderRadius.all(Radius.circular(24)),
       ),
       padding: const EdgeInsets.symmetric(

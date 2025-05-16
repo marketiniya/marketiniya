@@ -64,7 +64,7 @@ class Pagination extends StatelessWidget {
           onPressed:
               currentPage > 1 ? () => onPageChanged(currentPage - 1) : null,
           icon: const Icon(Icons.chevron_left, size: 20),
-          color: currentPage > 1 ? AppColors.mutedOlive : Colors.grey,
+          color: currentPage > 1 ? AppColors.dustyOlive : Colors.grey,
           padding: EdgeInsets.zero,
           constraints: const BoxConstraints(minWidth: md, minHeight: md),
         ),
@@ -74,7 +74,7 @@ class Pagination extends StatelessWidget {
               ? () => onPageChanged(currentPage + 1)
               : null,
           icon: const Icon(Icons.chevron_right, size: 20),
-          color: currentPage < totalPages ? AppColors.mutedOlive : Colors.grey,
+          color: currentPage < totalPages ? AppColors.dustyOlive : Colors.grey,
           padding: EdgeInsets.zero,
           constraints: const BoxConstraints(minWidth: md, minHeight: md),
         ),
@@ -92,10 +92,10 @@ class Pagination extends StatelessWidget {
           width: sm,
           height: sm,
           decoration: BoxDecoration(
-            color: isCurrentPage ? AppColors.mutedOlive : Colors.transparent,
+            color: isCurrentPage ? AppColors.dustyOlive : Colors.transparent,
             borderRadius: BorderRadius.circular(micro),
             border: Border.all(
-              color: isCurrentPage ? AppColors.mutedOlive : Colors.grey,
+              color: isCurrentPage ? AppColors.dustyOlive : Colors.grey,
               width: 1,
             ),
           ),
