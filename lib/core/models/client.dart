@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketinya/core/converters/document_reference_converter.dart';
+import 'package:marketinya/core/models/social_media_link.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/business_sector.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_status.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/priority_level.dart';
@@ -28,6 +29,7 @@ class Client with _$Client {
     @DocumentReferenceConverter() required List<DocumentReference> tags,
     @Default('') String assignedToId,
     @Default([]) List<String> tagIds,
+    @Default([]) List<SocialMediaLink> socialLinks,
   }) = _Client;
 
   factory Client.fromJson(Map<String, dynamic> json) => _$ClientFromJson(json);
@@ -42,6 +44,11 @@ class Client with _$Client {
     final data = rawData as Map<String, dynamic>;
     final assignedTo = data['assignedTo'] as DocumentReference;
     final tags = List<DocumentReference>.from((data['tags'] as Iterable?) ?? []);
+
+    final socialLinks = (data['socialLinks'] as List<dynamic>? ?? [])
+        .whereType<Map<String, dynamic>>()
+        .map((json) => SocialMediaLink.fromJson(json))
+        .toList();
 
     return Client(
       // Auto-generated document ID, also used as the client's unique id
@@ -71,6 +78,7 @@ class Client with _$Client {
       updatedAt: (data['updatedAt'] as Timestamp).toDate(),
       assignedToId: assignedTo.id,
       tagIds: tags.map((tag) => tag.id).toList(),
+      socialLinks: socialLinks,
     );
   }
 }

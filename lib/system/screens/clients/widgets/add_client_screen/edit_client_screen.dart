@@ -44,7 +44,8 @@ class _AddClientScreenContentState extends State<EditClientScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: ClientTab.values.length, vsync: this);
+    _tabController =
+        TabController(length: ClientTab.values.length, vsync: this);
     _tabController.addListener(_handleTabChange);
   }
 
@@ -89,7 +90,7 @@ class _AddClientScreenContentState extends State<EditClientScreen>
                 physics: const NeverScrollableScrollPhysics(),
                 children: _tabs.map((tab) {
                   return SingleChildScrollView(
-                    padding: const EdgeInsets.fromLTRB(180, xl, 180, lg),
+                    padding: const EdgeInsets.only(left: 180, top: xl, bottom: xl),
                     child: tab,
                   );
                 }).toList(),

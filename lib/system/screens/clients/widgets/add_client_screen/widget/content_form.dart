@@ -9,6 +9,7 @@ import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_event.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_state.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/information_form.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/social_media_links_section.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/tags_section.dart';
 
 class ContentForm extends StatelessWidget {
@@ -32,8 +33,10 @@ class ContentForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InformationForm(state: state),
-            const SizedBox(width: lg),
+            const SizedBox(width: xxxl * 2),
             const TagsSection(),
+            const SizedBox(width: xxxl * 2),
+            const SocialMediaLinksSection(),
           ],
         ),
         Padding(
