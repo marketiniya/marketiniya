@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
+import 'package:marketinya/core/models/client.dart';
+import 'package:marketinya/core/models/social_media_link.dart';
+import 'package:marketinya/core/services/firestore_service.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/business_sector.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_status.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/priority_level.dart';
-import 'package:marketinya/core/models/client.dart';
-import 'package:marketinya/core/services/firestore_service.dart';
 
 @injectable
 class ClientRepository {
@@ -47,6 +48,7 @@ class ClientRepository {
     required ClientStatus status,
     required PriorityLevel priorityLevel,
     required String description,
+    List<SocialMediaLink> socialLinks = const [],
   }) async {
     final now = DateTime.now();
 
@@ -63,6 +65,7 @@ class ClientRepository {
       'status': status.label,
       'priorityLevel': priorityLevel.label,
       'description': description,
+      'socialLinks': socialLinks.map((link) => link.toJson()).toList(),
       'createdAt': Timestamp.fromDate(now),
       'updatedAt': Timestamp.fromDate(now),
     };
@@ -90,6 +93,7 @@ class ClientRepository {
       createdAt: now,
       updatedAt: now,
       tagIds: tags.map((tag) => tag.id).toList(),
+      socialLinks: socialLinks,
     );
 
     return client;
@@ -109,6 +113,7 @@ class ClientRepository {
     required PriorityLevel priorityLevel,
     required String description,
     required DateTime createdAt,
+    List<SocialMediaLink> socialLinks = const [],
   }) async {
     final now = DateTime.now();
 
@@ -123,6 +128,7 @@ class ClientRepository {
       'status': status.label,
       'priorityLevel': priorityLevel.label,
       'description': description,
+      'socialLinks': socialLinks.map((link) => link.toJson()).toList(),
       'updatedAt': FieldValue.serverTimestamp(),
     };
 
@@ -150,6 +156,7 @@ class ClientRepository {
       createdAt: createdAt,
       updatedAt: now,
       assignedToId: assignedTo.id,
+      socialLinks: socialLinks,
     );
 
     return updatedClient;

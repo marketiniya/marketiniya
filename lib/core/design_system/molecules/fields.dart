@@ -16,6 +16,7 @@ class CustomTextFormField extends StatefulWidget {
     this.floatingLabelAlignment = FloatingLabelAlignment.start,
     this.hintText = '',
     this.filledColor,
+    this.borderColor,
     this.prefixIcon,
     this.suffixIcon,
     this.focusNode,
@@ -87,6 +88,9 @@ class CustomTextFormField extends StatefulWidget {
 
   /// The background color of the text field
   final Color? filledColor;
+
+  /// The color of the border
+  final Color? borderColor;
 
   /// The maximum number of lines for the text field
   final int? maxLines;
@@ -205,12 +209,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       return null;
     }
 
-    final filledColor = widget.filledColor;
+    final color = widget.borderColor ?? widget.filledColor;
 
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(borderRadius),
-      borderSide: filledColor != null
-          ? BorderSide(color: filledColor)
+      borderSide: color != null
+          ? BorderSide(color: color)
           : const BorderSide(),
     );
   }

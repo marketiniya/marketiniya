@@ -41,6 +41,7 @@ mixin _$Client {
       throw _privateConstructorUsedError;
   String get assignedToId => throw _privateConstructorUsedError;
   List<String> get tagIds => throw _privateConstructorUsedError;
+  List<SocialMediaLink> get socialLinks => throw _privateConstructorUsedError;
 
   /// Serializes this Client to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -73,7 +74,8 @@ abstract class $ClientCopyWith<$Res> {
       @DocumentReferenceConverter() DocumentReference<Object?> assignedTo,
       @DocumentReferenceConverter() List<DocumentReference<Object?>> tags,
       String assignedToId,
-      List<String> tagIds});
+      List<String> tagIds,
+      List<SocialMediaLink> socialLinks});
 }
 
 /// @nodoc
@@ -108,6 +110,7 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
     Object? tags = null,
     Object? assignedToId = null,
     Object? tagIds = null,
+    Object? socialLinks = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -178,6 +181,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
           ? _value.tagIds
           : tagIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      socialLinks: null == socialLinks
+          ? _value.socialLinks
+          : socialLinks // ignore: cast_nullable_to_non_nullable
+              as List<SocialMediaLink>,
     ) as $Val);
   }
 }
@@ -206,7 +213,8 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       @DocumentReferenceConverter() DocumentReference<Object?> assignedTo,
       @DocumentReferenceConverter() List<DocumentReference<Object?>> tags,
       String assignedToId,
-      List<String> tagIds});
+      List<String> tagIds,
+      List<SocialMediaLink> socialLinks});
 }
 
 /// @nodoc
@@ -239,6 +247,7 @@ class __$$ClientImplCopyWithImpl<$Res>
     Object? tags = null,
     Object? assignedToId = null,
     Object? tagIds = null,
+    Object? socialLinks = null,
   }) {
     return _then(_$ClientImpl(
       id: null == id
@@ -309,6 +318,10 @@ class __$$ClientImplCopyWithImpl<$Res>
           ? _value._tagIds
           : tagIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      socialLinks: null == socialLinks
+          ? _value._socialLinks
+          : socialLinks // ignore: cast_nullable_to_non_nullable
+              as List<SocialMediaLink>,
     ));
   }
 }
@@ -334,9 +347,11 @@ class _$ClientImpl implements _Client {
       @DocumentReferenceConverter()
       required final List<DocumentReference<Object?>> tags,
       this.assignedToId = '',
-      final List<String> tagIds = const []})
+      final List<String> tagIds = const [],
+      final List<SocialMediaLink> socialLinks = const []})
       : _tags = tags,
-        _tagIds = tagIds;
+        _tagIds = tagIds,
+        _socialLinks = socialLinks;
 
   factory _$ClientImpl.fromJson(Map<String, dynamic> json) =>
       _$$ClientImplFromJson(json);
@@ -391,9 +406,18 @@ class _$ClientImpl implements _Client {
     return EqualUnmodifiableListView(_tagIds);
   }
 
+  final List<SocialMediaLink> _socialLinks;
+  @override
+  @JsonKey()
+  List<SocialMediaLink> get socialLinks {
+    if (_socialLinks is EqualUnmodifiableListView) return _socialLinks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_socialLinks);
+  }
+
   @override
   String toString() {
-    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds)';
+    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds, socialLinks: $socialLinks)';
   }
 
   @override
@@ -428,7 +452,9 @@ class _$ClientImpl implements _Client {
             const DeepCollectionEquality().equals(other._tags, _tags) &&
             (identical(other.assignedToId, assignedToId) ||
                 other.assignedToId == assignedToId) &&
-            const DeepCollectionEquality().equals(other._tagIds, _tagIds));
+            const DeepCollectionEquality().equals(other._tagIds, _tagIds) &&
+            const DeepCollectionEquality()
+                .equals(other._socialLinks, _socialLinks));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -451,7 +477,8 @@ class _$ClientImpl implements _Client {
       assignedTo,
       const DeepCollectionEquality().hash(_tags),
       assignedToId,
-      const DeepCollectionEquality().hash(_tagIds));
+      const DeepCollectionEquality().hash(_tagIds),
+      const DeepCollectionEquality().hash(_socialLinks));
 
   /// Create a copy of Client
   /// with the given fields replaced by the non-null parameter values.
@@ -489,7 +516,8 @@ abstract class _Client implements Client {
       @DocumentReferenceConverter()
       required final List<DocumentReference<Object?>> tags,
       final String assignedToId,
-      final List<String> tagIds}) = _$ClientImpl;
+      final List<String> tagIds,
+      final List<SocialMediaLink> socialLinks}) = _$ClientImpl;
 
   factory _Client.fromJson(Map<String, dynamic> json) = _$ClientImpl.fromJson;
 
@@ -529,6 +557,8 @@ abstract class _Client implements Client {
   String get assignedToId;
   @override
   List<String> get tagIds;
+  @override
+  List<SocialMediaLink> get socialLinks;
 
   /// Create a copy of Client
   /// with the given fields replaced by the non-null parameter values.

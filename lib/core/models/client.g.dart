@@ -31,6 +31,10 @@ _$ClientImpl _$$ClientImplFromJson(Map<String, dynamic> json) => _$ClientImpl(
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      socialLinks: (json['socialLinks'] as List<dynamic>?)
+              ?.map((e) => SocialMediaLink.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
@@ -54,6 +58,7 @@ Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
           instance.tags.map(const DocumentReferenceConverter().toJson).toList(),
       'assignedToId': instance.assignedToId,
       'tagIds': instance.tagIds,
+      'socialLinks': instance.socialLinks,
     };
 
 const _$BusinessSectorEnumMap = {

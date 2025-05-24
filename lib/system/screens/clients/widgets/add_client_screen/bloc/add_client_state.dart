@@ -1,8 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:marketinya/core/enums/status.dart';
+import 'package:marketinya/core/models/social_media_link.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/business_sector.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_status.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/priority_level.dart';
-import 'package:marketinya/core/enums/status.dart';
 
 part 'add_client_state.freezed.dart';
 
@@ -21,6 +22,7 @@ class AddClientState with _$AddClientState {
     @Default(ClientStatus.inactive) ClientStatus clientStatus,
     @Default(PriorityLevel.lowPriority) PriorityLevel priorityLevel,
     @Default('') String description,
+    @Default([]) List<SocialMediaLink> socialLinks,
     String? errorMessage,
   }) = _AddClientState;
 }

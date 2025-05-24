@@ -6,11 +6,14 @@ class FieldValidators {
 
   /// Combine multiple validators into one
   static FormFieldValidator<String> combine(
-      List<FormFieldValidator<String>> validators) {
+    List<FormFieldValidator<String>> validators,
+  ) {
     return (value) {
-      for (var validator in validators) {
+      for (final validator in validators) {
         final error = validator(value);
-        if (error != null) return error;
+        if (error != null) {
+          return error;
+        }
       }
       return null;
     };
@@ -109,6 +112,24 @@ class FieldValidators {
       } catch (_) {
         return 'Invalid date format dd.MM.yyyy';
       }
+    };
+  }
+
+  /// Validate URL format
+  static FormFieldValidator<String> url({
+    String errorMessage = 'Invalid URL',
+  }) {
+    return (value) {
+      if (value == null || value.trim().isEmpty) {
+        return errorMessage;
+      }
+
+      const urlPattern = r'^(https?:\/\/)?'
+          r'(([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,})'
+          r'(\/[^\s]*)?$';
+      final regex = RegExp(urlPattern, caseSensitive: false);
+
+      return regex.hasMatch(value.trim()) ? null : errorMessage;
     };
   }
 }
