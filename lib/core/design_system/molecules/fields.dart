@@ -261,6 +261,7 @@ class CustomDropdownMenu<T> extends StatelessWidget {
     required this.labelText,
     required this.labelBuilder,
     this.width = 360.0,
+    this.contentPadding,
   });
 
   final T value;
@@ -269,6 +270,7 @@ class CustomDropdownMenu<T> extends StatelessWidget {
   final String labelText;
   final String Function(T) labelBuilder;
   final double width;
+  final EdgeInsetsGeometry? contentPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -279,7 +281,7 @@ class CustomDropdownMenu<T> extends StatelessWidget {
       enableFilter: true,
       textStyle: const TextStyle(color: Colors.black),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: dimen.horizontal.sm,
+        contentPadding: contentPadding,
         filled: true,
         fillColor: AppColors.lightOlive,
         labelStyle: const TextStyle(color: Colors.black),

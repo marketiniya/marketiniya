@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
@@ -21,50 +20,85 @@ class ContentForm extends StatelessWidget {
 
   final GlobalKey<FormState> formKey;
   final AddClientState state;
-  static const double _inputWidth = 360.0;
 
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<AddClientBloc>();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            InformationForm(state: state),
-            const SizedBox(width: xxxl * 2),
-            const TagsSection(),
-            const SizedBox(width: xxxl * 2),
-            const SocialMediaLinksSection(),
-          ],
-        ),
-        Padding(
-          padding: dimen.top.xs,
-          child: SizedBox(
-            width: _inputWidth * nano + lg,
-            child: CustomTextFormField(
-              value: state.description,
-              padding: dimen.top.xxs,
-              labelText: 'Описание',
-              keyboardType: TextInputType.multiline,
-              onSaved: (value) {
-                if (value != null) {
-                  bloc.add(AddClientEvent.descriptionChanged(value));
-                }
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    const headerHeight = 120;
+    const paddingHeight = 80;
+    final availableHeight = screenHeight - headerHeight - paddingHeight - 90;
+
+    return SizedBox(
+      height: availableHeight,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            flex: 8,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final informationFormWidth = constraints.maxWidth * 0.28;
+                final tagsWidth = constraints.maxWidth * 0.22;
+                final spacing = constraints.maxWidth * 0.04;
+
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: informationFormWidth,
+                      height: constraints.maxHeight,
+                      child: SingleChildScrollView(
+                        child: InformationForm(state: state),
+                      ),
+                    ),
+                    SizedBox(width: spacing),
+                    SizedBox(
+                      width: tagsWidth,
+                      child: const TagsSection(),
+                    ),
+                    SizedBox(width: spacing),
+                    Expanded(
+                      child: SizedBox(
+                        height: constraints.maxHeight,
+                        child: const SingleChildScrollView(
+                          child: SocialMediaLinksSection(),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
               },
-              validator: FieldValidators.combine([
-                FieldValidators.notEmpty(),
-              ]),
-              contentPadding: dimen.horizontal.sm + dimen.vertical.sm,
-              floatingLabelBehavior: FloatingLabelBehavior.auto,
-              filledColor: AppColors.lightOlive,
-              borderRadius: lg,
-              maxLines: 5,
             ),
           ),
-        )
-      ],
+          Container(
+            height: availableHeight * 0.19,
+            padding: const EdgeInsets.only(top: sm, right: 180),
+            child: SizedBox(
+              width: double.infinity,
+              child: CustomTextFormField(
+                value: state.description,
+                labelText: 'Описание',
+                keyboardType: TextInputType.multiline,
+                onSaved: (value) {
+                  if (value != null) {
+                    bloc.add(AddClientEvent.descriptionChanged(value));
+                  }
+                },
+                validator: FieldValidators.combine([
+                  FieldValidators.notEmpty(),
+                ]),
+                contentPadding: const EdgeInsets.all(sm),
+                floatingLabelBehavior: FloatingLabelBehavior.auto,
+                filledColor: AppColors.lightOlive,
+                borderRadius: lg,
+                maxLines: 5,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
