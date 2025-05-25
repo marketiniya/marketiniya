@@ -89,7 +89,7 @@ class _AddClientScreenContentState extends State<EditClientScreen>
                 controller: _tabController,
                 physics: const NeverScrollableScrollPhysics(),
                 children: _tabs.map((tab) {
-                  return SingleChildScrollView(
+                  return Padding(
                     padding: const EdgeInsets.only(left: 180, top: xl, bottom: xl),
                     child: tab,
                   );
