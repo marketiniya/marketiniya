@@ -1,0 +1,51 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flutter WIP",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define=ENVIRONMENT=wip"
+            ],
+            "console": "debugConsole"
+        },
+        {
+            "name": "Flutter PROD",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define=ENVIRONMENT=prod"
+            ],
+            "console": "debugConsole"
+        },
+        {
+            "name": "Flutter WIP (Web)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define=ENVIRONMENT=wip",
+                "-d",
+                "web-server",
+                "--web-port=3000"
+            ],
+            "console": "debugConsole"
+        },
+        {
+            "name": "Flutter PROD (Web)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define=ENVIRONMENT=prod",
+                "-d",
+                "web-server",
+                "--web-port=3000"
+            ],
+            "console": "debugConsole"
+        }
+    ]
+}
