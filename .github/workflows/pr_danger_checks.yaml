@@ -1,0 +1,22 @@
+name: pr_danger_checks
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, labeled, unlabeled]
+    branches:
+      - master
+
+jobs:
+  danger-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+      - name: 🧪 Run Danger
+        run: npx danger ci --dangerfile scripts/danger/Dangerfile.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

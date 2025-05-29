@@ -1,0 +1,60 @@
+name: pull_request
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+    branches:
+      - master
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐣 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: 📦 Install Dependencies
+        run: flutter pub get
+
+      - name: 🔍 Run Flutter Analyze
+        run: flutter analyze --fatal-infos
+
+      - name: 🧪 Run Tests
+        if: contains(github.event.pull_request.labels.*.name, 'run-tests')
+        run: flutter test
+
+      # - name: 📊 Check Code Coverage
+      #   run: |
+      #     flutter test --coverage
+      #     sudo apt-get update
+      #     sudo apt-get install -y lcov
+      #     lcov --remove coverage/lcov.info \
+      #       '*/generated/*' \
+      #       '*/l10n/*' \
+      #       '*/test/*' \
+      #       '*/tests/*' \
+      #       '*/.dart_tool/*' \
+      #       '*/build/*' \
+      #       '*/*.g.dart' \
+      #       '*/*.freezed.dart' \
+      #       '*/*.mocks.dart' \
+      #       -o coverage/lcov_cleaned.info
+      #     COVERAGE=$(lcov --summary coverage/lcov_cleaned.info 2>&1 | grep "lines" | grep -o '[0-9.]*' | head -1)
+      #     echo "Current coverage: ${COVERAGE}%"
+      #     THRESHOLD=10
+      #     if (( $(echo "$COVERAGE < $THRESHOLD" | bc -l) )); then
+      #       echo "❌ Coverage ${COVERAGE}% is below threshold ${THRESHOLD}%"
+      #       exit 1
+      #     else
+      #       echo "✅ Coverage ${COVERAGE}% meets threshold ${THRESHOLD}%"
+      #     fi
