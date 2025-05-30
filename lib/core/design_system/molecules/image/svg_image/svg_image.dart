@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+// ignore_for_file: avoid_implementing_value_types
 abstract class SvgImage extends Widget {
   const factory SvgImage.asset(
     String assetName, {
