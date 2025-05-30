@@ -10,12 +10,31 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  statuses: write
+  checks: write
+
 jobs:
   danger-checks:
     runs-on: ubuntu-latest
     steps:
       - name: 📚 Git Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: 📦 Install Danger
+        run: npm install danger
+
       - name: 🧪 Run Danger
         run: npx danger ci --dangerfile scripts/danger/Dangerfile.js
         env:
