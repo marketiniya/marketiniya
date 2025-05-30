@@ -11,6 +11,35 @@ on:
       - master
 
 jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔍 Check Version Bump
+        run: |
+          # Get the current version from pubspec.yaml
+          CURRENT_VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //' | tr -d ' ')
+          echo "Current version: $CURRENT_VERSION"
+
+          # Get the version from master branch
+          git fetch origin master
+          MASTER_VERSION=$(git show origin/master:pubspec.yaml | grep '^version:' | sed 's/version: //' | tr -d ' ')
+          echo "Master version: $MASTER_VERSION"
+
+          # Compare versions
+          if [ "$CURRENT_VERSION" = "$MASTER_VERSION" ]; then
+            echo "❌ Version has not been bumped! Please update the version in pubspec.yaml"
+            echo "Current: $CURRENT_VERSION"
+            echo "Master: $MASTER_VERSION"
+            exit 1
+          else
+            echo "✅ Version has been bumped from $MASTER_VERSION to $CURRENT_VERSION"
+          fi
+
   analyze:
     runs-on: ubuntu-latest
     steps:

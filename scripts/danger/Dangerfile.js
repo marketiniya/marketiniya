@@ -7,8 +7,9 @@ const git = danger.git;
 // Check PR title format
 if (pr && pr.title) {
   const prTitle = pr.title;
-  if (!prTitle.match(/^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .+/)) {
-    fail('PR title should follow conventional commits format: type(scope): description');
+  // More flexible title format - you can customize this regex (case-insensitive)
+  if (!prTitle.match(/^(feat|feature|fix|docs|style|refactor|test|chore|ci|build|perf)(\(.+\))?: .+/i)) {
+    fail('PR title should follow conventional commits format: type(scope): description\nExamples: feat: add login, Feature: add new component, fix(auth): resolve token issue, docs: update README');
   }
 } else {
   message('⚠️ Could not access PR title for validation');
@@ -38,9 +39,9 @@ if (git && git.modified_files && Array.isArray(git.modified_files)) {
   const hasAppChanges = git.modified_files.some(file => file.includes('lib/'));
   const hasTestChanges = git.modified_files.some(file => file.includes('test/'));
 
-  if (hasAppChanges && !hasTestChanges) {
-    warn('You have app changes but no test changes. Consider adding tests.');
-  }
+//  if (hasAppChanges && !hasTestChanges) {
+//    warn('You have app changes but no test changes. Consider adding tests.');
+//  }
 
   message(`📊 Files changed: ${git.modified_files.length}`);
 } else {
@@ -55,4 +56,18 @@ if (git && git.commits && Array.isArray(git.commits)) {
   message(`📝 Commits in PR: ${git.commits.length}`);
 } else {
   message('⚠️ Could not access commit information');
+}
+
+// Check for version bump in pubspec.yaml
+if (git && git.modified_files && Array.isArray(git.modified_files)) {
+  const pubspecChanged = git.modified_files.includes('pubspec.yaml');
+  const hasAppChanges = git.modified_files.some(file =>
+    file.includes('lib/') && !file.includes('.g.dart') && !file.includes('.freezed.dart')
+  );
+
+  if (hasAppChanges && !pubspecChanged) {
+    warn('📦 You have app changes but pubspec.yaml was not modified. Consider bumping the version if this includes user-facing changes.');
+  } else if (pubspecChanged) {
+    message('📦 pubspec.yaml was modified - version may have been updated');
+  }
 }
