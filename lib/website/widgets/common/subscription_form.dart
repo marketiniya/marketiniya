@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/config/service_locator.dart';
+import 'package:marketinya/core/design_system/atoms/dimensions.dart';
+import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/core/repositories/contact_repository.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
@@ -29,7 +31,7 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
     return Container(
       width: double.infinity,
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      padding: dimen.all.sm,
       child: Form(
         key: _formKey,
         child: Wrap(
@@ -70,31 +72,31 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
           labelText: 'Въведи имейл',
           labelStyle: const TextStyle(color: Colors.black),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(xs),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(xs),
             borderSide: const BorderSide(
               color: Colors.black,
               width: 2.0,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(xs),
             borderSide: const BorderSide(
               color: Colors.black,
               width: 2.5,
             ),
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(xs),
             borderSide: const BorderSide(
               color: Colors.red,
               width: 2.0,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(xs),
             borderSide: const BorderSide(
               color: Colors.red,
               width: 2.5,
@@ -124,23 +126,27 @@ class _SubscriptionFormState extends State<SubscriptionForm> {
           if (_formKey.currentState!.validate()) {
             try {
               await getIt<ContactRepository>().subscribe(_emailController.text);
-              context.showSuccessSnackBar('Успешно се абонирахте');
+              if (context.mounted) {
+                context.showSuccessSnackBar('Успешно се абонирахте');
+              }
             } catch (e) {
-              if (e.toString().contains('email-exists')) {
-                context.showFailureSnackBar('Вече сте абонирани');
-              } else {
-                context.showFailureSnackBar('Възникна грешка с абонирането');
+              if (context.mounted) {
+                if (e.toString().contains('email-exists')) {
+                  context.showFailureSnackBar('Вече сте абонирани');
+                } else {
+                  context.showFailureSnackBar('Възникна грешка с абонирането');
+                }
               }
             }
           }
         },
         style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: xs),
           splashFactory: InkRipple.splashFactory,
-          shadowColor: Colors.black.withOpacity(0.2),
+          shadowColor: Colors.black.withValues(alpha: 0.2),
           backgroundColor: ColorUtils.charcoal,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(xs),
           ),
         ),
         child: const Text(

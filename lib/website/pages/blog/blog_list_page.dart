@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../core/utils/color_utils.dart';
-import '../../data/blog_data.dart';
-import '../../models/blog_model.dart';
-import '../../widgets/blog/blog_cards.dart';
+import 'package:marketinya/core/utils/color_utils.dart';
+import 'package:marketinya/website/data/blog_data.dart';
+import 'package:marketinya/website/models/blog_model.dart';
+import 'package:marketinya/website/widgets/blog/blog_cards.dart';
 
 class BlogListPage extends StatelessWidget {
   const BlogListPage({super.key});

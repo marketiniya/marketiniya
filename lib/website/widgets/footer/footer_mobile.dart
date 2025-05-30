@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:marketinya/core/utils/image_utils.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
+import 'package:marketinya/core/utils/image_utils.dart';
 import 'package:marketinya/core/utils/routes.dart';
 
 class FooterMobile extends StatelessWidget {
@@ -56,7 +56,9 @@ class FooterMobile extends StatelessWidget {
         _contactInfo(Icons.location_on_outlined, 'България'),
         const SizedBox(height: 12),
         _contactInfo(
-            Icons.mail_outline_outlined, 'rumen.katincharov@marketiniya.bg'),
+          Icons.mail_outline_outlined,
+          'rumen.katincharov@marketiniya.bg',
+        ),
         const SizedBox(height: 12),
         _contactInfo(Icons.phone_in_talk_outlined, '+359 896 867 024'),
       ],
@@ -111,7 +113,7 @@ class FooterMobile extends StatelessWidget {
   }
 
   Widget _buildNavigationLinks(BuildContext context) {
-    final List<Map<String, String>> links = [
+    final links = [
       {'text': 'За нас', 'route': '/'},
       {'text': 'Услуги', 'route': Routes.services},
       {'text': 'Цени', 'route': '/'},
@@ -122,8 +124,9 @@ class FooterMobile extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: links
-          .map((link) =>
-              _footerTextButton(context, link['text']!, link['route']!))
+          .map(
+            (link) => _footerTextButton(context, link['text']!, link['route']!),
+          )
           .toList(),
     );
   }

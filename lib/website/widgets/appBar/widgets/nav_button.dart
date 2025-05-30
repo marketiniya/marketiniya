@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
 class NavButton extends StatefulWidget {
-  final String label;
-  final String activeTab;
-  final VoidCallback onPressed;
-  final double fontSize;
-
   const NavButton({
     super.key,
     required this.label,
@@ -13,6 +8,11 @@ class NavButton extends StatefulWidget {
     required this.onPressed,
     required this.fontSize,
   });
+
+  final String label;
+  final String activeTab;
+  final VoidCallback onPressed;
+  final double fontSize;
 
   @override
   State<NavButton> createState() => _NavButtonState();

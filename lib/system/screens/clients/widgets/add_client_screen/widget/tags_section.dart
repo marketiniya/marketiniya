@@ -21,7 +21,7 @@ class TagsSection extends StatelessWidget {
     return TagsWidget(
       tags: _tags,
       onAddTag: () {
-        // TODO: Implement add tag logic
+        // TODO(Anybody): Implement add tag logic
       },
     );
   }

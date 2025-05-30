@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/config/service_locator.dart';
+import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/core/repositories/contact_repository.dart';
-import 'package:marketinya/website/models/contact_model.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
+import 'package:marketinya/website/models/contact_model.dart';
 
 class LimeContactFormMobile extends StatefulWidget {
   const LimeContactFormMobile({super.key});
@@ -54,16 +55,19 @@ class _LimeContactFormMobileState extends State<LimeContactFormMobile> {
           _buildFormField('Име на фирма', 'Фирма', _firmNameController),
           _buildFormField('Имейл адрес', 'Имейл', _emailController),
           _bigInputField(),
-          _sendButton(context)
+          _sendButton(context),
         ],
       ),
     );
   }
 
-  Widget _buildFormField(String labelText, String placeholderText,
-      TextEditingController controller) {
+  Widget _buildFormField(
+    String labelText,
+    String placeholderText,
+    TextEditingController controller,
+  ) {
     return Padding(
-      padding: const EdgeInsets.only(left: 12, right: 12, top: 16),
+      padding: const EdgeInsets.only(left: xxsPlus, right: xxsPlus, top: xs),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -78,11 +82,11 @@ class _LimeContactFormMobileState extends State<LimeContactFormMobile> {
               filled: true,
               fillColor: ColorUtils.lightGray,
               contentPadding:
-                  const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                  const EdgeInsets.symmetric(vertical: xxsPlus, horizontal: 20),
               labelText: placeholderText,
               labelStyle: const TextStyle(color: Colors.black),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(xs),
               ),
               floatingLabelBehavior: FloatingLabelBehavior.never,
             ),
@@ -100,7 +104,7 @@ class _LimeContactFormMobileState extends State<LimeContactFormMobile> {
 
   Widget _bigInputField() {
     return Padding(
-      padding: const EdgeInsets.only(left: 12, right: 12, top: 16),
+      padding: const EdgeInsets.only(left: xxsPlus, right: xxsPlus, top: xs),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -108,7 +112,7 @@ class _LimeContactFormMobileState extends State<LimeContactFormMobile> {
             'Задай въпрос',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: xxsPlus),
           SizedBox(
             height: 110,
             child: TextFormField(
@@ -122,7 +126,7 @@ class _LimeContactFormMobileState extends State<LimeContactFormMobile> {
                 filled: true,
                 fillColor: ColorUtils.lightGray,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(xs),
                 ),
                 floatingLabelBehavior: FloatingLabelBehavior.never,
               ),
@@ -141,7 +145,7 @@ class _LimeContactFormMobileState extends State<LimeContactFormMobile> {
 
   Widget _sendButton(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 32, left: 12, right: 12, bottom: 40),
+      padding: const EdgeInsets.only(top: md, left: xxsPlus, right: xxsPlus, bottom: lg),
       child: ElevatedButton(
         onPressed: () async {
           if (_formKey.currentState!.validate()) {
@@ -156,20 +160,25 @@ class _LimeContactFormMobileState extends State<LimeContactFormMobile> {
 
             try {
               await getIt<ContactRepository>().sendQuestion(contactModel);
-              context.showSuccessSnackBar('Въпросът Ви е изпратен успешно.');
+              if (context.mounted) {
+                context.showSuccessSnackBar('Въпросът Ви е изпратен успешно.');
+              }
             } catch (e) {
-              context.showFailureSnackBar(
-                  'Възникна проблем с изпращането на въпроса');
+              if (context.mounted) {
+                context.showFailureSnackBar(
+                    'Възникна проблем с изпращането на въпроса',
+                );
+              }
             }
           }
         },
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(xxsPlus),
           ),
         ),
         child: const Padding(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(xs),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -180,7 +189,7 @@ class _LimeContactFormMobileState extends State<LimeContactFormMobile> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(width: 12),
+              SizedBox(width: xxsPlus),
               Icon(Icons.arrow_forward),
             ],
           ),
@@ -191,7 +200,7 @@ class _LimeContactFormMobileState extends State<LimeContactFormMobile> {
 
   Widget _buildTitle(String text, double fontSize) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: xxsPlus, vertical: 20),
       child: Text(
         text,
         style: GoogleFonts.roboto(

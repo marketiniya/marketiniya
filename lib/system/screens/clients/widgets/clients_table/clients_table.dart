@@ -7,9 +7,9 @@ import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_state.dart';
+import 'package:marketinya/system/screens/clients/widgets/clients_table/clients_list.dart';
 import 'package:marketinya/system/screens/clients/widgets/clients_table/clients_table_footer.dart';
 import 'package:marketinya/system/screens/clients/widgets/clients_table/clients_table_header.dart';
-import 'clients_list.dart';
 
 class ContentTable extends StatefulWidget {
   const ContentTable({super.key});

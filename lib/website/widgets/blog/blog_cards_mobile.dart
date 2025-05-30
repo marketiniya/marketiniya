@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/website/data/blog_data.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:marketinya/website/models/blog_model.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
+import 'package:marketinya/website/data/blog_data.dart';
+import 'package:marketinya/website/models/blog_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BlogCardsMobile extends StatefulWidget {
   const BlogCardsMobile({super.key});
@@ -125,7 +125,7 @@ class _BlogCardsMobileState extends State<BlogCardsMobile> {
             ),
             Padding(
               padding:
-              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -144,7 +144,7 @@ class _BlogCardsMobileState extends State<BlogCardsMobile> {
                     onPressed: () {
                       _toggleExpansion(post);
 
-                      if(post.isExpanded) {
+                      if (post.isExpanded) {
                         _incrementViews(post);
                       }
                     },

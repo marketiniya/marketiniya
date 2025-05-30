@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveLayout extends StatelessWidget {
-  final Widget mobile;
-  final Widget desktop;
-  static const mobileScreenLimit = 1265;
-
   const ResponsiveLayout({
     super.key,
     required this.mobile,
     required this.desktop,
   });
+
+  final Widget mobile;
+  final Widget desktop;
+  static const mobileScreenLimit = 1265;
 
   @override
   Widget build(BuildContext context) {

@@ -75,7 +75,7 @@ class TextSection extends StatelessWidget {
               fontSize: 38,
               fontWeight: FontWeight.w400,
             ),
-          )
+          ),
         ],
       ),
     );

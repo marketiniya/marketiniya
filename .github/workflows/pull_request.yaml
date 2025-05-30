@@ -1,0 +1,110 @@
+name: pull_request
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+    branches:
+      - master
+
+jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔍 Check Version Bump
+        run: |
+          # Get the current version from pubspec.yaml
+          CURRENT_VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //' | tr -d ' ')
+          echo "Current version: $CURRENT_VERSION"
+
+          # Get the version from master branch
+          git fetch origin master
+          MASTER_VERSION=$(git show origin/master:pubspec.yaml | grep '^version:' | sed 's/version: //' | tr -d ' ')
+          echo "Master version: $MASTER_VERSION"
+
+          # Compare versions
+          if [ "$CURRENT_VERSION" = "$MASTER_VERSION" ]; then
+            echo "❌ Version has not been bumped! Please update the version in pubspec.yaml"
+            echo "Current: $CURRENT_VERSION"
+            echo "Master: $MASTER_VERSION"
+            exit 1
+          else
+            echo "✅ Version has been bumped from $MASTER_VERSION to $CURRENT_VERSION"
+          fi
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐣 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: 📦 Install Dependencies
+        run: flutter pub get
+
+      - name: 🏗️ Build Flutter Web
+        run: flutter build web --release --dart-define=environment=wip
+
+      - name: ✅ Build Success
+        run: echo "🎉 Build completed successfully!"
+
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐣 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: 📦 Install Dependencies
+        run: flutter pub get
+
+      - name: 🔍 Run Flutter Analyze
+        run: flutter analyze --fatal-infos
+
+      - name: 🧪 Run Tests
+        if: contains(github.event.pull_request.labels.*.name, 'run-tests')
+        run: flutter test
+
+      # - name: 📊 Check Code Coverage
+      #   run: |
+      #     flutter test --coverage
+      #     sudo apt-get update
+      #     sudo apt-get install -y lcov
+      #     lcov --remove coverage/lcov.info \
+      #       '*/generated/*' \
+      #       '*/l10n/*' \
+      #       '*/test/*' \
+      #       '*/tests/*' \
+      #       '*/.dart_tool/*' \
+      #       '*/build/*' \
+      #       '*/*.g.dart' \
+      #       '*/*.freezed.dart' \
+      #       '*/*.mocks.dart' \
+      #       -o coverage/lcov_cleaned.info
+      #     COVERAGE=$(lcov --summary coverage/lcov_cleaned.info 2>&1 | grep "lines" | grep -o '[0-9.]*' | head -1)
+      #     echo "Current coverage: ${COVERAGE}%"
+      #     THRESHOLD=10
+      #     if (( $(echo "$COVERAGE < $THRESHOLD" | bc -l) )); then
+      #       echo "❌ Coverage ${COVERAGE}% is below threshold ${THRESHOLD}%"
+      #       exit 1
+      #     else
+      #       echo "✅ Coverage ${COVERAGE}% meets threshold ${THRESHOLD}%"
+      #     fi

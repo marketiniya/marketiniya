@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/loader_widget.dart';
-import 'package:marketinya/core/design_system/themes/marketiniya_colors.dart';
 import 'package:marketinya/core/enums/action_button_size.dart';
 
 /// Tertiary button only uses {responsive} and {small} enum values
@@ -141,8 +140,4 @@ class TertiaryButton extends StatelessWidget {
       child: ExcludeSemantics(child: icon),
     );
   }
-
-
-  Color _foregroundColor(MarketiniyaColors colors) =>
-      isDestructive ? colors.texts.errorBold : colors.texts.brand;
 }

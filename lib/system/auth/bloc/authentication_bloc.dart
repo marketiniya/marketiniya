@@ -1,18 +1,18 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketinya/core/config/log.dart';
 import 'package:marketinya/core/config/service_locator.dart';
-import 'package:marketinya/core/models/user.dart';
-import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/core/enums/authentication.dart';
+import 'package:marketinya/core/models/user.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
+import 'package:marketinya/core/repositories/user_repository.dart';
+import 'package:marketinya/system/auth/bloc/authentication_state.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'authentication_state.dart';
 
 part 'authentication_event.dart';
 
@@ -62,8 +62,10 @@ class AuthenticationBloc
     return super.close();
   }
 
-  Future<void> _onAuthenticationStatusChanged(AuthenticationStatusChanged event,
-      Emitter<AuthenticationState> emit) async {
+  Future<void> _onAuthenticationStatusChanged(
+    AuthenticationStatusChanged event,
+    Emitter<AuthenticationState> emit,
+  ) async {
     switch (event.status) {
       case Authentication.authenticated:
         await _handleAuthenticated(emit);

@@ -65,9 +65,9 @@ class BusinessOverviewSection extends StatelessWidget {
               ),
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               splashFactory: InkRipple.splashFactory,
-              overlayColor: ColorUtils.lightGray.withOpacity(0.3),
+              overlayColor: ColorUtils.lightGray.withValues(alpha: 0.3),
               shadowColor:
-              Colors.black.withOpacity(0.2),
+              Colors.black.withValues(alpha: 0.2),
             ),
             child: const Row(
               children: [

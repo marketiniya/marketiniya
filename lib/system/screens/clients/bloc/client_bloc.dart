@@ -39,10 +39,12 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
       emit(state.copyWith(status: Status.success, clients: clients));
     } catch (e, stackTrace) {
       Log.error(stackTrace.toString());
-      emit(state.copyWith(
-        status: Status.error,
-        errorMessage: e.toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: Status.error,
+          errorMessage: e.toString(),
+        ),
+      );
     }
   }
 
