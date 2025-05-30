@@ -4,7 +4,9 @@ import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
-/// Default [FirebaseOptions] for use with your Firebase apps.
+enum FirebaseEnvironment { wip, prod }
+
+/// Environment-aware [FirebaseOptions] for use with your Firebase apps.
 ///
 /// Example:
 /// ```dart
@@ -15,19 +17,47 @@ import 'package:flutter/foundation.dart'
 /// );
 /// ```
 class DefaultFirebaseOptions {
+  static FirebaseEnvironment _environment = FirebaseEnvironment.wip;
+
+  static void setEnvironment(FirebaseEnvironment environment) {
+    _environment = environment;
+  }
+
+  static FirebaseEnvironment get currentEnvironment => _environment;
+
   static FirebaseOptions get currentPlatform {
+    switch (_environment) {
+      case FirebaseEnvironment.wip:
+        return _getWipOptions();
+      case FirebaseEnvironment.prod:
+        return _getProdOptions();
+    }
+  }
+
+  static FirebaseOptions _getWipOptions() {
     if (kIsWeb) {
-      return web;
+      return wipWeb;
+    }
+    // WIP environment only supports web for now
+    throw UnsupportedError(
+      'WIP environment only supports web platform. '
+      'Use PROD environment for mobile platforms or add WIP mobile configuration.',
+    );
+  }
+
+  static FirebaseOptions _getProdOptions() {
+    if (kIsWeb) {
+      return prodWeb;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        return android;
+        return prodAndroid;
       case TargetPlatform.iOS:
-        return ios;
+        return prodIos;
       case TargetPlatform.macOS:
-        return macos;
+        return prodMacos;
       case TargetPlatform.windows:
-        return windows;
+        return prodWindows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -40,7 +70,19 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
+  // WIP Environment Firebase Options
+  static const FirebaseOptions wipWeb = FirebaseOptions(
+    apiKey: '***REMOVED***',
+    appId: '***REMOVED***',
+    messagingSenderId: '***REMOVED***',
+    projectId: 'marketiniya-wip',
+    authDomain: 'marketiniya-wip.firebaseapp.com',
+    storageBucket: 'marketiniya-wip.firebasestorage.app',
+    measurementId: 'G-VNFXXGWGE0',
+  );
+
+  // PROD Environment Firebase Options (Current project: ***REMOVED***)
+  static const FirebaseOptions prodWeb = FirebaseOptions(
     apiKey: '***REMOVED***',
     appId: '***REMOVED***',
     messagingSenderId: '***REMOVED***',
@@ -49,7 +91,7 @@ class DefaultFirebaseOptions {
     storageBucket: '***REMOVED***.appspot.com',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
+  static const FirebaseOptions prodAndroid = FirebaseOptions(
     apiKey: '***REMOVED***',
     appId: '1:***REMOVED***:android:41ced3639f94e9abcbf8b4',
     messagingSenderId: '***REMOVED***',
@@ -57,7 +99,7 @@ class DefaultFirebaseOptions {
     storageBucket: '***REMOVED***.appspot.com',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
+  static const FirebaseOptions prodIos = FirebaseOptions(
     apiKey: '***REMOVED***',
     appId: '1:***REMOVED***:ios:29abef0470a9e5e4cbf8b4',
     messagingSenderId: '***REMOVED***',
@@ -66,7 +108,7 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.marketinya',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
+  static const FirebaseOptions prodMacos = FirebaseOptions(
     apiKey: '***REMOVED***',
     appId: '1:***REMOVED***:ios:29abef0470a9e5e4cbf8b4',
     messagingSenderId: '***REMOVED***',
@@ -75,7 +117,7 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.marketinya',
   );
 
-  static const FirebaseOptions windows = FirebaseOptions(
+  static const FirebaseOptions prodWindows = FirebaseOptions(
     apiKey: '***REMOVED***',
     appId: '1:***REMOVED***:web:10d1a63827ac16cacbf8b4',
     messagingSenderId: '***REMOVED***',

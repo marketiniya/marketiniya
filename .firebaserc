@@ -1,5 +1,22 @@
 {
   "projects": {
-    "default": "***REMOVED***"
-  }
+    "default": "marketiniya-wip"
+  },
+  "targets": {
+    "marketiniya-wip": {
+      "hosting": {
+        "wip": [
+          "marketiniya-wip"
+        ]
+      }
+    },
+    "***REMOVED***": {
+      "hosting": {
+        "prod": [
+          "***REMOVED***"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

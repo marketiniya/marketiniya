@@ -1,12 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:marketinya/core/config/environment_config.dart';
 import 'package:marketinya/core/config/firebase_options.dart';
+import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/navigation/route_guard.dart';
 import 'package:marketinya/core/utils/routes.dart';
 import 'package:marketinya/website/widgets/custom_theme.dart';
-
-import 'core/config/service_locator.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
@@ -16,7 +16,10 @@ void main() async {
   // Set URL strategy for web
   setPathUrlStrategy();
 
-  // Initialize Firebase
+  // Initialize environment configuration
+  EnvironmentConfig.initializeEnvironment();
+
+  // Initialize Firebase with environment-specific options
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // Initialize dependency injection
@@ -37,10 +40,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Marketinya',
+      title: EnvironmentConfig.isProd ? 'Marketiniya' : 'Marketinya - WIP',
       theme: CustomTheme.customThemeData,
       initialRoute: Routes.home,
       onGenerateRoute: RouteGuard.generateRoute,
+      debugShowCheckedModeBanner: EnvironmentConfig.isWip,
     );
   }
 }
