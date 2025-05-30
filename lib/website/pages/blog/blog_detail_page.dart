@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../core/utils/color_utils.dart';
-import '../../models/blog_model.dart';
-import '../../widgets/blog/blog_cards.dart';
+import 'package:marketinya/core/utils/color_utils.dart';
+import 'package:marketinya/website/models/blog_model.dart';
+import 'package:marketinya/website/widgets/blog/blog_cards.dart';
 
 class BlogDetailPage extends StatelessWidget {
-  final BlogModel blog;
-
   const BlogDetailPage({super.key, required this.blog});
+
+  final BlogModel blog;
 
   @override
   Widget build(BuildContext context) {

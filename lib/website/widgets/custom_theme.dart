@@ -27,7 +27,7 @@ class CustomTheme {
         ),
       ),
       textSelectionTheme: TextSelectionThemeData(
-        selectionColor: Colors.blue.withOpacity(0.4), // Customize the selection color
+        selectionColor: Colors.blue.withValues(alpha: 0.4), // Customize the selection color
         cursorColor: Colors.black, // Customize the cursor color
         selectionHandleColor: Colors.blue, // The color of the selection handles
       ),

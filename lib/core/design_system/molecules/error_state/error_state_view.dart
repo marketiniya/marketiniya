@@ -77,7 +77,7 @@ class ErrorStateView extends StatelessWidget {
       child: Center(
         child: TertiaryButton.responsive(
           title: actionLabel ?? 'Retry',
-          onPressed: onRetry!,
+          onPressed: onRetry,
           style: ButtonStyle(
             backgroundColor: WidgetStateProperty.all(AppColors.oliveGreen),
           ),

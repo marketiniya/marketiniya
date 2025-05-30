@@ -47,7 +47,9 @@ class FieldValidators {
     String errorMessage = 'Invalid email',
   }) {
     return (value) {
-      if (value == null || value.isEmpty) return errorMessage;
+      if (value == null || value.isEmpty) {
+        return errorMessage;
+      }
       const emailPattern =
           r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
       final regex = RegExp(emailPattern);
@@ -61,7 +63,9 @@ class FieldValidators {
     String errorMessage = 'Too short',
   }) {
     return (value) {
-      if (value == null || value.length < minLength) return errorMessage;
+      if (value == null || value.length < minLength) {
+        return errorMessage;
+      }
       return null;
     };
   }
@@ -71,7 +75,9 @@ class FieldValidators {
     String errorMessage = 'Invalid phone number',
   }) {
     return (value) {
-      if (value == null || value.isEmpty) return errorMessage;
+      if (value == null || value.isEmpty) {
+        return errorMessage;
+      }
       const phonePattern = r"^\+?[0-9]{10,15}$";
       final regex = RegExp(phonePattern);
       return regex.hasMatch(value) ? null : errorMessage;

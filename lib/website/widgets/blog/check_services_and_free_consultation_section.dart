@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/core/utils/routes.dart';
-
 
 class CheckServicesAndFreeConsultationSection extends StatelessWidget {
   const CheckServicesAndFreeConsultationSection({super.key});
@@ -24,11 +24,11 @@ class CheckServicesAndFreeConsultationSection extends StatelessWidget {
                   Navigator.pushNamed(context, Routes.services);
                 },
                 style: ElevatedButton.styleFrom(
-                  shadowColor: Colors.black.withOpacity(0.2),
+                  shadowColor: Colors.black.withValues(alpha: 0.2),
                   splashFactory: InkRipple.splashFactory,
                   backgroundColor: ColorUtils.lightGray,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(xs),
                     side: const BorderSide(
                       color: ColorUtils.charcoal,
                       width: 2.0,
@@ -46,7 +46,7 @@ class CheckServicesAndFreeConsultationSection extends StatelessWidget {
                         color: ColorUtils.charcoal,
                       ),
                     ),
-                    SizedBox(width: 12),
+                    SizedBox(width: xxsPlus),
                     Icon(
                       Icons.arrow_forward_outlined,
                       color: ColorUtils.charcoal,
@@ -64,12 +64,12 @@ class CheckServicesAndFreeConsultationSection extends StatelessWidget {
                   Navigator.pushNamed(context, Routes.connectWithUs);
                 },
                 style: ElevatedButton.styleFrom(
-                  overlayColor: ColorUtils.lightGray.withOpacity(0.3),
-                  shadowColor: Colors.black.withOpacity(0.2),
+                  overlayColor: ColorUtils.lightGray.withValues(alpha: 0.3),
+                  shadowColor: Colors.black.withValues(alpha: 0.2),
                   splashFactory: InkRipple.splashFactory,
                   backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(xs),
                   ),
                 ),
                 child: const Row(
@@ -83,7 +83,7 @@ class CheckServicesAndFreeConsultationSection extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(width: 12),
+                    SizedBox(width: xxsPlus),
                     Icon(
                       Icons.arrow_forward_outlined,
                       color: Colors.white,

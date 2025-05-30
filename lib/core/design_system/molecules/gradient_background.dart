@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/design_system/atoms/colors.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
-import '../atoms/colors.dart';
 
 class GradientBackground extends StatelessWidget {
   const GradientBackground({

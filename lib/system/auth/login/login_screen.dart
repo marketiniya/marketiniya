@@ -13,8 +13,8 @@ import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:marketinya/core/utils/routes.dart';
 import 'package:marketinya/core/utils/validators/field_validators.dart';
+import 'package:marketinya/system/auth/login/bloc/login_bloc.dart';
 import 'package:marketinya/system/screens/system_layout.dart';
-import 'bloc/login_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

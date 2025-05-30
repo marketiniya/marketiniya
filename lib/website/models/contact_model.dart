@@ -1,11 +1,4 @@
 class ContactModel {
-  String name;
-  String telephone;
-  String firmName;
-  String email;
-  String question;
-  String date;
-
   ContactModel(
     this.name,
     this.telephone,
@@ -14,6 +7,13 @@ class ContactModel {
     this.question,
     this.date,
   );
+
+  String name;
+  String telephone;
+  String firmName;
+  String email;
+  String question;
+  String date;
 
   Map<String, dynamic> toJson() {
     return {

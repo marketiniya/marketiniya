@@ -142,7 +142,7 @@ class ClientRepository {
     final updatedClient = Client(
       id: id,
       assignedTo: assignedTo,
-      tags: [], //TODO: update when tags available
+      tags: [], // TODO(HristoPetkov): Update when tags are available
       companyName: companyName,
       name: name,
       dateOfBirth: dateOfBirth,

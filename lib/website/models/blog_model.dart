@@ -1,13 +1,6 @@
 import 'package:marketinya/website/models/blog_section_model.dart';
 
 class BlogModel {
-  final String headerValue;
-  final String imageAsset;
-  final String date;
-  final List<BlogSectionModel> sections;
-  bool isExpanded;
-  int views;
-
   BlogModel({
     required this.headerValue,
     required this.imageAsset,
@@ -16,4 +9,11 @@ class BlogModel {
     this.isExpanded = false,
     this.views = 0,
   });
+
+  final String headerValue;
+  final String imageAsset;
+  final String date;
+  final List<BlogSectionModel> sections;
+  bool isExpanded;
+  int views;
 }
