@@ -9,7 +9,7 @@ class FirestoreService {
 
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  ///TODO: to add Tide's logger to every API call
+  // TODO(HristoPetkov): to add Tide's logger to every API call
 
   Future<DocumentSnapshot> getDocument(String collection, String docId) {
     return _firestore.collection(collection).doc(docId).get();

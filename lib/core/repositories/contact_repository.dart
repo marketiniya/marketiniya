@@ -23,7 +23,7 @@ class ContactRepository {
 
   Future<void> subscribe(String email) async {
     try {
-      var querySnapshot = await _firestore.queryDocuments(
+      final querySnapshot = await _firestore.queryDocuments(
         _subscriptions,
         field: 'email',
         value: email,
@@ -33,7 +33,7 @@ class ContactRepository {
         throw Exception('email-exists');
       }
 
-      Map<String, dynamic> data = {
+      final data = <String, dynamic>{
         'email': email,
         'subscribedAt': DateFormat(_dateFormat).format(DateTime.now()),
       };

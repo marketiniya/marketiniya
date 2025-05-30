@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/core/utils/routes.dart';
-
 import 'package:marketinya/core/utils/color_utils.dart';
+import 'package:marketinya/core/utils/routes.dart';
 
 class ExploreServicesSection extends StatelessWidget {
   const ExploreServicesSection({super.key});
@@ -21,8 +20,8 @@ class ExploreServicesSection extends StatelessWidget {
               Navigator.pushNamed(context, Routes.services);
             },
             style: ElevatedButton.styleFrom(
-              overlayColor: ColorUtils.lightGray.withOpacity(0.3),
-              shadowColor: Colors.black.withOpacity(0.2),
+              overlayColor: ColorUtils.lightGray.withValues(alpha: 0.3),
+              shadowColor: Colors.black.withValues(alpha: 0.2),
               splashFactory: InkRipple.splashFactory,
               backgroundColor: ColorUtils.charcoal,
               shape: RoundedRectangleBorder(

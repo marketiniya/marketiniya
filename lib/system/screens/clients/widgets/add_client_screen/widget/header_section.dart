@@ -98,7 +98,7 @@ class HeaderSection extends StatelessWidget {
                 child: Divider(thickness: nano, color: Colors.black),
               ),
             ],
-          )
+          ),
         ],
       ),
     );

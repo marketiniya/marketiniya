@@ -1,0 +1,19 @@
+# Coverage configuration disabled - uncomment when tests are ready
+# coverage:
+#   status:
+#     project:
+#       default:
+#         target: 70%
+#         threshold: 5%
+#     patch:
+#       default:
+#         target: 70%
+
+# ignore:
+#   - "**/*.g.dart"
+#   - "**/*.freezed.dart"
+#   - "**/*.mocks.dart"
+#   - "**/generated/**"
+#   - "**/l10n/**"
+#   - "**/test/**"
+#   - "**/tests/**"

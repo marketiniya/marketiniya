@@ -82,7 +82,10 @@ class _SocialMediaLinksSectionState extends State<SocialMediaLinksSection> {
   }
 
   void _removeField(
-      BuildContext context, List<SocialMediaLink> currentLinks, int index) {
+    BuildContext context,
+    List<SocialMediaLink> currentLinks,
+    int index,
+  ) {
     final newLinks = List<SocialMediaLink>.from(currentLinks);
     newLinks.removeAt(index);
 
@@ -209,7 +212,10 @@ class _SocialMediaLinksSectionState extends State<SocialMediaLinksSection> {
                                 defaultColor: Colors.red,
                                 hoverColor: Colors.red[700]!,
                                 onTap: () => _removeField(
-                                    context, state.socialLinks, index),
+                                  context,
+                                  state.socialLinks,
+                                  index,
+                                ),
                               ),
                             ),
                           ],

@@ -6,14 +6,14 @@ import 'package:marketinya/system/widgets/app_bar/system_app_bar_layout.dart';
 import 'package:marketinya/system/widgets/app_bar/top_section.dart';
 
 class SystemAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final int selectedIndex;
-  final Function(int)? onNavigationChanged;
-
   const SystemAppBar({
     super.key,
     this.selectedIndex = 0,
     this.onNavigationChanged,
   });
+
+  final int selectedIndex;
+  final Function(int)? onNavigationChanged;
 
   @override
   Widget build(BuildContext context) {

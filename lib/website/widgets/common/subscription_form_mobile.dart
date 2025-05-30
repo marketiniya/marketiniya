@@ -51,9 +51,9 @@ class _SubscriptionFormMobileState extends State<SubscriptionFormMobile> {
         color: Colors.black,
         textStyle: const TextStyle(
           fontSize: 20,
-            fontWeight: FontWeight.w500
+            fontWeight: FontWeight.w500,
         ),
-      )
+      ),
     );
   }
 
@@ -123,12 +123,16 @@ class _SubscriptionFormMobileState extends State<SubscriptionFormMobile> {
           if (_formKey.currentState!.validate()) {
             try {
               await getIt<ContactRepository>().subscribe(_emailController.text);
-              context.showSuccessSnackBar('Успешно се абонирахте');
+              if (context.mounted) {
+                context.showSuccessSnackBar('Успешно се абонирахте');
+              }
             } catch (e) {
-              if (e.toString().contains('email-exists')) {
-                context.showFailureSnackBar('Вече сте абонирани');
-              } else {
-                context.showFailureSnackBar('Възникна грешка с абонирането');
+              if (context.mounted) {
+                if (e.toString().contains('email-exists')) {
+                  context.showFailureSnackBar('Вече сте абонирани');
+                } else {
+                  context.showFailureSnackBar('Възникна грешка с абонирането');
+                }
               }
             }
           }
@@ -136,7 +140,7 @@ class _SubscriptionFormMobileState extends State<SubscriptionFormMobile> {
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           splashFactory: InkRipple.splashFactory,
-          shadowColor: Colors.black.withOpacity(0.2),
+          shadowColor: Colors.black.withValues(alpha: 0.2),
           backgroundColor: ColorUtils.charcoal,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),

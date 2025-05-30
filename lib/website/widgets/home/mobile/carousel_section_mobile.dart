@@ -25,7 +25,8 @@ class CarouselSectionMobile extends StatelessWidget {
         children: [
           _text(),
           _buildImageCard(
-              'Маркетинг в\nСоциалните Мрежи', ImageUtils.carouselImage1noText),
+              'Маркетинг в\nСоциалните Мрежи', ImageUtils.carouselImage1noText,
+          ),
           const SizedBox(height: 24),
           _buildImageCard(
             'Разработка на Уебсайт и\nМобилни Приложения',
@@ -41,7 +42,7 @@ class CarouselSectionMobile extends StatelessWidget {
             height: 8,
             width: double.infinity,
             color: Colors.white,
-          )
+          ),
         ],
       ),
     );
@@ -74,7 +75,7 @@ class CarouselSectionMobile extends StatelessWidget {
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
-                    Colors.white.withOpacity(1.0),
+                    Colors.white.withValues(alpha: 1.0),
                     Colors.transparent,
                   ],
                 ),

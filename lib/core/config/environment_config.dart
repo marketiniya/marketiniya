@@ -1,6 +1,7 @@
 import 'package:marketinya/core/config/firebase_options.dart';
 import 'package:marketinya/core/config/log.dart';
 
+// ignore_for_file: do_not_use_environment
 /// Simple environment configuration for WIP/PROD Firebase setup
 class EnvironmentConfig {
   static const String _environmentKey = 'environment';

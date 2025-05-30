@@ -33,7 +33,7 @@ class Footer extends StatelessWidget {
         const SizedBox(width: 86),
         _redirectTextButtons(context),
         const SizedBox(width: 184),
-        _socialMediaColumn()
+        _socialMediaColumn(),
       ],
     );
   }

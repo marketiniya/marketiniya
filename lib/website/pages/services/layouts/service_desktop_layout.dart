@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/website/widgets/appBar/custom_app_bar_desktop.dart';
 import 'package:marketinya/website/widgets/common/subscription_form.dart';
+import 'package:marketinya/website/widgets/footer/footer.dart';
 import 'package:marketinya/website/widgets/home/features_with_images_section.dart';
 import 'package:marketinya/website/widgets/services/free_consultation_section.dart';
-import 'package:marketinya/website/widgets/services/text_section.dart';
-import 'package:marketinya/website/widgets/appBar/custom_app_bar_desktop.dart';
-import 'package:marketinya/website/widgets/footer/footer.dart';
 import 'package:marketinya/website/widgets/services/services_list.dart';
+import 'package:marketinya/website/widgets/services/text_section.dart';
 
 class ServiceDesktopLayout extends StatelessWidget {
   const ServiceDesktopLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: const CustomAppBarDesktop(
         activeTab: 'Услуги',
       ),

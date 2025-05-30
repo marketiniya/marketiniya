@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 
 class ServiceCardMobile extends StatelessWidget {
-  final String title;
-  final String imagePath;
-
   const ServiceCardMobile({
     super.key,
     required this.title,
     required this.imagePath,
   });
+
+  final String title;
+  final String imagePath;
 
   @override
   Widget build(BuildContext context) {

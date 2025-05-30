@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/enums/authentication.dart';
+import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:marketinya/core/utils/routes.dart';
-import 'package:marketinya/system/screens/system_layout.dart' as system;
-import 'package:marketinya/website/pages/home/home_screen.dart' as website;
 import 'package:marketinya/system/auth/login/login_screen.dart';
+import 'package:marketinya/system/screens/system_layout.dart' as system;
 import 'package:marketinya/website/pages/connect_with_us/connect_with_us_screen.dart';
+import 'package:marketinya/website/pages/home/home_screen.dart' as website;
 import 'package:marketinya/website/pages/services/service_screen.dart';
 import 'package:marketinya/website/screens/blog/blog_screen.dart';
-import 'package:marketinya/core/extensions/context_extension.dart';
 
 /// A route guard that handles navigation and authentication in the application.
 /// It manages both authenticated and public routes, ensuring proper access control.
@@ -97,9 +98,9 @@ class RouteGuard {
 /// to the system home screen. It uses post-frame callback to ensure proper
 /// navigation timing.
 class _RedirectToSystemHome extends StatefulWidget {
-  final RouteSettings settings;
-
   const _RedirectToSystemHome({required this.settings});
+
+  final RouteSettings settings;
 
   @override
   State<_RedirectToSystemHome> createState() => _RedirectToSystemHomeState();
@@ -130,9 +131,9 @@ class _RedirectToSystemHomeState extends State<_RedirectToSystemHome> {
 /// to the login screen. It uses post-frame callback to ensure proper
 /// navigation timing.
 class _RedirectToLogin extends StatefulWidget {
-  final RouteSettings settings;
-
   const _RedirectToLogin({required this.settings});
+
+  final RouteSettings settings;
 
   @override
   State<_RedirectToLogin> createState() => _RedirectToLoginState();

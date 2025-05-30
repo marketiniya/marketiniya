@@ -3,10 +3,6 @@ import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 
 class Pagination extends StatelessWidget {
-  final int currentPage;
-  final int totalPages;
-  final Function(int) onPageChanged;
-
   const Pagination({
     super.key,
     required this.currentPage,
@@ -14,10 +10,14 @@ class Pagination extends StatelessWidget {
     required this.onPageChanged,
   });
 
+  final int currentPage;
+  final int totalPages;
+  final Function(int) onPageChanged;
+
   @override
   Widget build(BuildContext context) {
     // Show max 5 pages, with ellipsis if needed
-    List<Widget> pageButtons = [];
+    var pageButtons = <Widget>[];
     const maxVisiblePages = 5;
 
     if (totalPages <= maxVisiblePages) {

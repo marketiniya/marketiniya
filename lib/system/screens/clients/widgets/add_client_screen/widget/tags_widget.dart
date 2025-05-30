@@ -67,7 +67,7 @@ class TagsWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (var tag in tags) ...[
+                    for (final tag in tags) ...[
                       _buildTag(tag),
                       const SizedBox(height: xs),
                     ],

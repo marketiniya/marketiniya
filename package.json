@@ -1,0 +1,11 @@
+{
+  "name": "marketinya-ci-tools",
+  "version": "1.0.0",
+  "description": "CI/CD tools for Marketinya project",
+  "scripts": {
+    "danger": "danger ci"
+  },
+  "devDependencies": {
+    "danger": "^11.0.0"
+  }
+}

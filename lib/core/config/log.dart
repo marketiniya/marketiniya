@@ -15,7 +15,7 @@ class Log {
     Level.debug: '🪲',
     Level.info: '💡',
     Level.warning: '🚧',
-    Level.error: '⛔'
+    Level.error: '⛔',
   };
 
   static final _logger = Logger(
