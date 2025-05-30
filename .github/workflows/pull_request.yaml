@@ -40,6 +40,27 @@ jobs:
             echo "✅ Version has been bumped from $MASTER_VERSION to $CURRENT_VERSION"
           fi
 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐣 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: 📦 Install Dependencies
+        run: flutter pub get
+
+      - name: 🏗️ Build Flutter Web
+        run: flutter build web --release --dart-define=environment=wip
+
+      - name: ✅ Build Success
+        run: echo "🎉 Build completed successfully!"
+
   analyze:
     runs-on: ubuntu-latest
     steps:
