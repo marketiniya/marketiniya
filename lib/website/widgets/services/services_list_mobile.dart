@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
-import 'mobile/service_card_mobile.dart';
+import 'package:marketinya/website/widgets/services/mobile/service_card_mobile.dart';
 
 class ServicesListMobile extends StatelessWidget {
   const ServicesListMobile({super.key});

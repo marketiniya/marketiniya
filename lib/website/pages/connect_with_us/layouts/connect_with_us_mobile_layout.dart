@@ -20,7 +20,7 @@ class ConnectWithUsMobileLayout extends StatelessWidget {
             ExploreServicesSectionMobile(),
             BusinessInfoSectionMobile(),
             SubscriptionFormMobile(),
-            FooterMobile()
+            FooterMobile(),
           ],
         ),
       ),

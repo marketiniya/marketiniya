@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:marketinya/website/data/blog_data.dart';
 import 'package:marketinya/website/models/blog_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BlogCards extends StatefulWidget {
   const BlogCards({super.key});

@@ -19,7 +19,7 @@ class BusinessInfoSection extends StatelessWidget {
           child: Container(
             width: Constants.kContentMaxWidth,
             decoration: BoxDecoration(
-              color: ColorUtils.lightGray.withOpacity(0.6),
+              color: ColorUtils.lightGray.withValues(alpha: 0.6),
               borderRadius: BorderRadius.circular(32),
             ),
             child: const Column(
@@ -49,7 +49,7 @@ class BusinessInfoSection extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                )
+                ),
               ],
             ),
           ),

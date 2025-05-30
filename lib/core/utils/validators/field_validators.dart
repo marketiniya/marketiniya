@@ -110,7 +110,9 @@ class FieldValidators {
     String errorMessage = 'Invalid date format (dd.MM.yyyy)',
   }) {
     return (value) {
-      if (value == null || value.trim().isEmpty) return errorMessage;
+      if (value == null || value.trim().isEmpty) {
+        return errorMessage;
+      }
 
       try {
         DateFormat('dd.MM.yyyy').parseStrict(value);
