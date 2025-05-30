@@ -16,7 +16,7 @@
       ]
     },
     {
-      "target": "stage",
+      "target": "wip",
       "public": "build/web",
       "ignore": [
         "firebase.json",

@@ -1,5 +1,22 @@
 {
   "projects": {
-    "default": "marketinya-a4876"
-  }
+    "default": "marketiniya-wip"
+  },
+  "targets": {
+    "marketiniya-wip": {
+      "hosting": {
+        "wip": [
+          "marketiniya-wip"
+        ]
+      }
+    },
+    "marketinya-a4876": {
+      "hosting": {
+        "prod": [
+          "marketinya-a4876"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
