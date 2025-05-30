@@ -21,8 +21,8 @@ class FreeConsultationSection extends StatelessWidget {
               Navigator.pushNamed(context, Routes.connectWithUs);
             },
             style: ElevatedButton.styleFrom(
-              overlayColor: ColorUtils.lightGray.withOpacity(0.3),
-              shadowColor: Colors.black.withOpacity(0.2),
+              overlayColor: ColorUtils.lightGray.withValues(alpha: 0.3),
+              shadowColor: Colors.black.withValues(alpha: 0.2),
               splashFactory: InkRipple.splashFactory,
               backgroundColor: Colors.black,
               shape: RoundedRectangleBorder(

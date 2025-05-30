@@ -53,7 +53,7 @@ class BusinessInfoSection extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }

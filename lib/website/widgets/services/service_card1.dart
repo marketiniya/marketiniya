@@ -3,16 +3,16 @@ import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/core/utils/routes.dart';
 
 class ServiceCard1 extends StatefulWidget {
-  final String imagePath;
-  final String title;
-  final double fontSize;
-
   const ServiceCard1({
     super.key,
     required this.imagePath,
     required this.title,
     required this.fontSize,
   });
+
+  final String imagePath;
+  final String title;
+  final double fontSize;
 
   @override
   State createState() => _ServiceCard1State();
