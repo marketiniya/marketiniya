@@ -7,6 +7,7 @@ import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_bloc.dart';
+import 'package:marketinya/system/screens/clients/widgets/add_client_screen/client_attachments_tab/client_files_page.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_tab.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/client_form_page.dart';
 import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/drawer/clients_drawer.dart';
@@ -33,12 +34,7 @@ class _AddClientScreenContentState extends State<EditClientScreen>
 
   static final List<Widget> _tabs = [
     const ClientFormPage(),
-    const Center(
-      child: Text(
-        'Client Notes',
-        style: TextStyle(color: Colors.black),
-      ),
-    ),
+    const ClientFilesPage(),
   ];
 
   @override
