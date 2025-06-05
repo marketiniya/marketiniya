@@ -6,14 +6,14 @@ import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_bloc.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/client_attachments_tab/client_files_page.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_tab.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/client_form_page.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/drawer/clients_drawer.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_bloc.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/client_files_page.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_editor_tab.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/client_form_page.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/drawer/clients_drawer.dart';
 
-class EditClientScreen extends StatefulWidget {
-  const EditClientScreen({
+class ClientEditorScreen extends StatefulWidget {
+  const ClientEditorScreen({
     super.key,
     this.client,
     required this.onClientUpdated,
@@ -25,10 +25,10 @@ class EditClientScreen extends StatefulWidget {
   final Function(Client) onClientUpdated;
 
   @override
-  State<EditClientScreen> createState() => _AddClientScreenContentState();
+  State<ClientEditorScreen> createState() => _ClientEditorScreenState();
 }
 
-class _AddClientScreenContentState extends State<EditClientScreen>
+class _ClientEditorScreenState extends State<ClientEditorScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -41,7 +41,7 @@ class _AddClientScreenContentState extends State<EditClientScreen>
   void initState() {
     super.initState();
     _tabController =
-        TabController(length: ClientTab.values.length, vsync: this);
+        TabController(length: ClientEditorTab.values.length, vsync: this);
     _tabController.addListener(_handleTabChange);
   }
 

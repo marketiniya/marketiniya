@@ -4,12 +4,12 @@ import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/utils/validators/field_validators.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_bloc.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_event.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_state.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/information_form.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/social_media_links_section.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/tags_section.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_bloc.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_event.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_state.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/information_form.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/social_media_links_section.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/tags_section.dart';
 
 class ContentForm extends StatelessWidget {
   const ContentForm({

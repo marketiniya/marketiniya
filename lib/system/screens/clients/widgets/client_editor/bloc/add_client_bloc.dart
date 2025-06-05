@@ -6,8 +6,8 @@ import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_event.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_state.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_event.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_state.dart';
 
 @Injectable()
 class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {

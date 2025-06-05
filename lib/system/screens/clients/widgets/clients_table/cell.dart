@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_status.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
 
 class Cell extends StatelessWidget {
   const Cell({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/client_attachments_tab/client_files_header.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/client_files_header.dart';
 
 class ClientFilesPage extends StatelessWidget {
   const ClientFilesPage({super.key});
