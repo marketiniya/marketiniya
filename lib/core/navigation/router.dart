@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:marketinya/core/enums/go_router_paths.dart';
+import 'package:marketinya/core/navigation/tab_navigation_screen_shell.dart';
 import 'package:marketinya/website/pages/connect_with_us/connect_with_us_screen.dart';
 import 'package:marketinya/website/pages/home/home_screen.dart';
 import 'package:marketinya/website/pages/services/service_screen.dart';
@@ -9,6 +10,9 @@ final GoRouter router = GoRouter(
   initialLocation: GoRouterPaths.home.path,
   routes: [
     ShellRoute(
+      builder: (context, state, child) {
+        return TabNavigationScreen(child: child);
+      },
       routes: [
         GoRoute(
           path: GoRouterPaths.home.path,
@@ -21,7 +25,7 @@ final GoRouter router = GoRouter(
               const NoTransitionPage(child: BlogScreen()),
         ),
         GoRoute(
-          path:GoRouterPaths.services.path,
+          path: GoRouterPaths.services.path,
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: ServiceScreen()),
         ),
