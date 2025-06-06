@@ -18,27 +18,27 @@ class ClientFilesPage extends StatelessWidget {
             padding: const EdgeInsets.only(right: 180),
             child: ListView(
               children: const [
-                  FileSection(
-                    title: 'PDF',
-                    showDivider: true,
-                  ),
-                  FileSection(
-                    title: 'TXT',
-                    showDivider: true,
-                  ),
-                  FileSection(
-                    title: 'Image',
-                    showDivider: true,
-                  ),
-                  FileSection(
-                    title: 'Video',
-                    showDivider: false,
-                  ),
-                  SizedBox(height: lg),
-                ],
-              ),
+                FileSection(
+                  title: 'PDF',
+                  showDivider: true,
+                ),
+                FileSection(
+                  title: 'TXT',
+                  showDivider: true,
+                ),
+                FileSection(
+                  title: 'Image',
+                  showDivider: true,
+                ),
+                FileSection(
+                  title: 'Video',
+                  showDivider: false,
+                ),
+                SizedBox(height: lg),
+              ],
             ),
           ),
+        ),
       ],
     );
   }

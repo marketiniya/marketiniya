@@ -8,7 +8,6 @@ class FilePlaceholder extends StatelessWidget {
     required this.fileName,
     required this.fileType,
   });
-
   final String fileName;
   final String fileType;
 
