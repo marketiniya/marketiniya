@@ -16,7 +16,6 @@ class HomeDesktopLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBarDesktop(activeTab: 'Начало'),
       body: SingleChildScrollView(
         child: Column(
           children: [
