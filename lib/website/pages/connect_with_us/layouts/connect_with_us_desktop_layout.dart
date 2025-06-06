@@ -12,7 +12,6 @@ class ConnectWithUsDesktopLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBarDesktop(activeTab: 'Свържи се с нас'),
       body: SingleChildScrollView(
         child: Column(
           children: [

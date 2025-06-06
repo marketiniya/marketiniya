@@ -13,9 +13,6 @@ class ServiceDesktopLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarDesktop(
-        activeTab: 'Услуги',
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
