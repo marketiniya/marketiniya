@@ -18,41 +18,58 @@ class FileSectionContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Stack(
       children: [
-        Expanded(
-          child: SizedBox(
-            height: 76,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: files.length,
-              separatorBuilder: (context, index) => const SizedBox(width: sm),
-              itemBuilder: (context, index) => FileItem(
-                file: files[index],
-                fileType: fileType,
+        Center(
+          child: Text(
+            'Drag and drop files',
+            style: TextStyle(
+              fontSize: xxsPlus,
+              color: Colors.grey.shade400,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: SizedBox(
+                height: 76,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: files.length,
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(width: sm),
+                  itemBuilder: (context, index) => FileItem(
+                    file: files[index],
+                    fileType: fileType,
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.file_upload_outlined,
-            size: sm,
-            color: AppColors.lightOlive,
-          ),
-          style: IconButton.styleFrom(
-            backgroundColor: AppColors.oliveGreen,
-            padding: dimen.all.micro,
-            minimumSize: const Size(md, md),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(micro),
+            Padding(
+              padding: dimen.horizontal.xs,
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.file_upload_outlined,
+                  size: sm,
+                  color: AppColors.lightOlive,
+                ),
+                style: IconButton.styleFrom(
+                  backgroundColor: AppColors.oliveGreen,
+                  padding: dimen.all.micro,
+                  minimumSize: const Size(md, md),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(micro),
+                  ),
+                  elevation: nano,
+                  shadowColor: Colors.black.withValues(alpha: 0.1),
+                ),
+              ),
             ),
-            elevation: nano,
-            shadowColor: Colors.black.withValues(alpha: 0.1),
-          ),
+          ],
         ),
-        const SizedBox(width: xs),
       ],
     );
   }
