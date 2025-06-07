@@ -45,12 +45,12 @@ class _TabButtonWrapperState extends State<TabButtonWrapper> {
             ),
             border: _isHovered
                 ? Border.all(
-              color: Colors.green,
+              color: Theme.of(context).colorScheme.secondary,
               width: 2,
             )
                 : widget.isContactButton && widget.isActive
                 ? Border.all(
-              color: Theme.of(context).colorScheme.primary,
+              color: Theme.of(context).colorScheme.secondary,
               width: 2,
             )
                 : widget.isActive
