@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:file_picker/file_picker.dart' as picker;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:injectable/injectable.dart';
@@ -23,6 +24,7 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
         loadAllSections: () => _onLoadAllSections(emit),
         loadSection: (fileType) => _loadFileTypeData(fileType, emit),
         fileDropped: (fileType, file, controller) => _onFileDropped(fileType, file, controller, emit),
+        filePicked: (fileType, file) => _onFilePicked(fileType, file, emit),
         dragEntered: (fileType) => _onDragEntered(fileType, emit),
         dragLeft: (fileType) => _onDragLeft(fileType, emit),
         fileRemoved: (fileType, fileId) => _onFileRemoved(fileType, fileId, emit),
@@ -33,8 +35,6 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
 
   final FileValidationService _fileValidationService;
   final HardcodedDataService _hardcodedDataService;
-
-
 
   /// Load all sections when tab opens
   Future<void> _onLoadAllSections(
@@ -57,34 +57,17 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     ]);
   }
 
-
-
   /// Load data for a specific file type
   Future<void> _loadFileTypeData(
     FileType fileType,
     Emitter<FileUploadState> emit,
   ) async {
-    try {
-      // Set section to loading
-      emit(_updateSectionStatus(state, fileType, Status.loading));
+    emit(_updateSectionStatus(state, fileType, Status.loading));
 
-      // Fetch data for section (convert to string for service call)
-      final files = await _hardcodedDataService.getFilesForSection(fileType.value);
+    final files = await _hardcodedDataService.getFilesForSection(fileType.value);
 
-      // Update section with success
-      emit(_updateSectionData(state, fileType, Status.success, files, null));
-    } catch (e) {
-      Log.error('Error loading ${fileType.value} files: $e');
-
-      // Update section with error
-      emit(_updateSectionData(
-        state,
-        fileType,
-        Status.error,
-        [],
-        'Failed to load ${fileType.value} files: $e',
-      ));
-    }
+    // Update section with success
+    emit(_updateSectionData(state, fileType, Status.success, files, null));
   }
 
   /// Handle file dropped in specific section
@@ -94,7 +77,6 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     DropzoneViewController controller,
     Emitter<FileUploadState> emit,
   ) async {
-
     // Clear drag state
     emit(state.copyWith(
       isDragOver: false,
@@ -103,7 +85,7 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
 
     try {
       // Validate file for section
-      final config = FileUploadConfigExtension.forSectionType(fileType.value);
+      final config = FileUploadConfigExtension.forFile(fileType);
       final validationError = await _fileValidationService.validateFile(
         file,
         controller,
@@ -165,6 +147,68 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     }
   }
 
+  /// Handle file picked from system via file picker
+  Future<void> _onFilePicked(
+    FileType fileType,
+    picker.PlatformFile file,
+    Emitter<FileUploadState> emit,
+  ) async {
+    final config = FileUploadConfigExtension.forFile(fileType);
+
+    if (file.size > config.maxFileSize) {
+      emit(
+        _updateSectionData(
+          state,
+          fileType,
+          Status.error,
+          state.getSectionFiles(fileType),
+          'File size exceeds maximum allowed size of ${config.maxFileSize ~/ (1024 * 1024)}MB',
+        ),
+      );
+      return;
+    }
+
+    final fileExtension = _getFileExtension(file.name);
+    if (!config.allowedExtensions.contains(fileExtension)) {
+      emit(
+        _updateSectionData(
+          state,
+          fileType,
+          Status.error,
+          state.getSectionFiles(fileType),
+          'File type not allowed. Allowed types: ${config.allowedExtensions.join(', ')}',
+        ),
+      );
+      return;
+    }
+
+    final uploadedFile = UploadedFile(
+      id: '${file.name}_${DateTime.now().millisecondsSinceEpoch}',
+      name: file.name,
+      size: file.size,
+      mimeType: _getMimeTypeFromExtension(fileExtension),
+      lastModified: DateTime.now(),
+      fileExtension: fileExtension,
+      sectionType: fileType,
+      tempUrl: file.path,
+      platformFile: file, // Store the PlatformFile for later use
+    );
+
+    // Add file to section
+    final currentFiles = state.getSectionFiles(fileType);
+    final updatedFiles = [...currentFiles, uploadedFile];
+
+    emit(
+      _updateSectionData(
+        state,
+        fileType,
+        Status.success,
+        updatedFiles,
+        null,
+      ),
+    );
+  }
+
   /// Handle drag enter for specific section
   Future<void> _onDragEntered(
     FileType fileType,
@@ -193,7 +237,6 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     String fileId,
     Emitter<FileUploadState> emit,
   ) async {
-
     try {
       final currentFiles = state.getSectionFiles(fileType);
       final fileToRemove = currentFiles.firstWhere((file) => file.id == fileId);
@@ -204,9 +247,8 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
         // This should be handled by the widget's dispose method
       }
 
-      final updatedFiles = currentFiles
-          .where((file) => file.id != fileId)
-          .toList();
+      final updatedFiles =
+          currentFiles.where((file) => file.id != fileId).toList();
 
       emit(_updateSectionData(
         state,
@@ -304,5 +346,30 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
   String _getFileExtension(String fileName) {
     final parts = fileName.split('.');
     return parts.length > 1 ? parts.last.toLowerCase() : '';
+  }
+
+  /// Helper method to get MIME type from file extension
+  String _getMimeTypeFromExtension(String extension) {
+    switch (extension.toLowerCase()) {
+      case 'pdf':
+        return 'application/pdf';
+      case 'txt':
+        return 'text/plain';
+      case 'jpg':
+      case 'jpeg':
+        return 'image/jpeg';
+      case 'png':
+        return 'image/png';
+      case 'gif':
+        return 'image/gif';
+      case 'mp4':
+        return 'video/mp4';
+      case 'avi':
+        return 'video/avi';
+      case 'mov':
+        return 'video/quicktime';
+      default:
+        return 'application/octet-stream';
+    }
   }
 }

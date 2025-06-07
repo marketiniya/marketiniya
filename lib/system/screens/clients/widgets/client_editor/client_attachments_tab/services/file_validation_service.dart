@@ -1,5 +1,6 @@
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:injectable/injectable.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/enums/file_type.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/models/uploaded_file.dart';
 
 @Injectable()
@@ -55,7 +56,10 @@ class FileValidationService {
     return errors;
   }
 
-  FileValidationError? _validateFileSize(int fileSize, FileUploadConfig config) {
+  FileValidationError? _validateFileSize(
+    int fileSize,
+    FileUploadConfig config,
+  ) {
     if (fileSize > config.maxFileSize) {
       final maxSizeMB = (config.maxFileSize / (1024 * 1024)).toStringAsFixed(1);
       return FileValidationError(
@@ -88,17 +92,17 @@ class FileValidationService {
     FileUploadConfig config,
   ) {
     final extension = _getFileExtension(fileName);
-    final sectionType = config.sectionType.toLowerCase();
+    final fileType = config.fileType;
 
     final isValidForSection = _isFileTypeAllowedForSection(
       extension,
       mimeType,
-      sectionType,
+      fileType,
     );
 
     if (!isValidForSection) {
       return FileValidationError(
-        message: 'File type does not match this section (${config.sectionType})',
+        message: 'File type does not match this section (${config.fileType})',
         type: FileValidationErrorType.sectionMismatch,
       );
     }
@@ -109,23 +113,23 @@ class FileValidationService {
   bool _isFileTypeAllowedForSection(
     String extension,
     String mimeType,
-    String sectionType,
+    FileType fileType,
   ) {
-    switch (sectionType) {
-      case 'pdf':
+    switch (fileType) {
+      case FileType.pdf:
         return extension == 'pdf' || mimeType.contains('pdf');
-      case 'txt':
-        return ['txt', 'doc', 'docx'].contains(extension) || 
-               mimeType.contains('text') || 
-               mimeType.contains('document');
-      case 'image':
-        return ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].contains(extension) ||
-               mimeType.startsWith('image/');
-      case 'video':
-        return ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm'].contains(extension) ||
-               mimeType.startsWith('video/');
-      default:
-        return true; // Allow all types for unknown sections
+      case FileType.txt:
+        return ['txt', 'doc', 'docx'].contains(extension) ||
+            mimeType.contains('text') ||
+            mimeType.contains('document');
+      case FileType.image:
+        return ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp']
+                .contains(extension) ||
+            mimeType.startsWith('image/');
+      case FileType.video:
+        return ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm']
+                .contains(extension) ||
+            mimeType.startsWith('video/');
     }
   }
 
@@ -134,7 +138,6 @@ class FileValidationService {
     return parts.length > 1 ? parts.last.toLowerCase() : '';
   }
 
-  /// Get human-readable error message for validation error type
   String getErrorMessage(FileValidationErrorType type) {
     switch (type) {
       case FileValidationErrorType.fileTooLarge:
@@ -152,7 +155,6 @@ class FileValidationService {
     }
   }
 
-  /// Check if file is supported for preview
   bool canPreviewFile(String extension, String mimeType) {
     // Images can be previewed
     if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].contains(extension) ||

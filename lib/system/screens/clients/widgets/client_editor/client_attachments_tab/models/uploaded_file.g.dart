@@ -63,7 +63,7 @@ const _$FileValidationErrorTypeEnumMap = {
 _$FileUploadConfigImpl _$$FileUploadConfigImplFromJson(
         Map<String, dynamic> json) =>
     _$FileUploadConfigImpl(
-      sectionType: json['sectionType'] as String,
+      fileType: $enumDecode(_$FileTypeEnumMap, json['fileType']),
       maxFileSize: (json['maxFileSize'] as num).toInt(),
       allowedExtensions: (json['allowedExtensions'] as List<dynamic>)
           .map((e) => e as String)
@@ -73,7 +73,7 @@ _$FileUploadConfigImpl _$$FileUploadConfigImplFromJson(
 Map<String, dynamic> _$$FileUploadConfigImplToJson(
         _$FileUploadConfigImpl instance) =>
     <String, dynamic>{
-      'sectionType': instance.sectionType,
+      'fileType': _$FileTypeEnumMap[instance.fileType]!,
       'maxFileSize': instance.maxFileSize,
       'allowedExtensions': instance.allowedExtensions,
     };

@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart' as picker;
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/enums/file_type.dart';
@@ -18,6 +19,12 @@ class FileUploadEvent with _$FileUploadEvent {
     required DropzoneFileInterface file,
     required DropzoneViewController controller,
   }) = _FileDropped;
+
+  /// File picked from system via file picker
+  const factory FileUploadEvent.filePicked({
+    required FileType fileType,
+    required picker.PlatformFile file,
+  }) = _FilePicked;
 
   /// Drag enter event for specific section
   const factory FileUploadEvent.dragEntered(FileType fileType) = _DragEntered;

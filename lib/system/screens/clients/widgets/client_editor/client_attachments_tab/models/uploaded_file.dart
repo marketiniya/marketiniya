@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart' as picker;
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/enums/file_type.dart';
@@ -18,6 +19,8 @@ class UploadedFile with _$UploadedFile {
     String? tempUrl,
     @JsonKey(includeFromJson: false, includeToJson: false)
     DropzoneFileInterface? fileInterface,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    picker.PlatformFile? platformFile,
   }) = _UploadedFile;
 
   factory UploadedFile.fromJson(Map<String, dynamic> json) =>
@@ -35,9 +38,14 @@ extension UploadedFileExtension on UploadedFile {
     return '${(size / (1024 * 1024)).toStringAsFixed(1)}MB';
   }
 
-  bool get isImage => ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].contains(fileExtension);
+  bool get isImage =>
+      ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].contains(fileExtension);
+
   bool get isPdf => fileExtension == 'pdf';
-  bool get isVideo => ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm'].contains(fileExtension);
+
+  bool get isVideo =>
+      ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm'].contains(fileExtension);
+
   bool get isText => ['txt', 'doc', 'docx'].contains(fileExtension);
 }
 
@@ -64,7 +72,7 @@ enum FileValidationErrorType {
 @freezed
 class FileUploadConfig with _$FileUploadConfig {
   const factory FileUploadConfig({
-    required String sectionType,
+    required FileType fileType,
     required int maxFileSize,
     required List<String> allowedExtensions,
   }) = _FileUploadConfig;
@@ -74,37 +82,31 @@ class FileUploadConfig with _$FileUploadConfig {
 }
 
 extension FileUploadConfigExtension on FileUploadConfig {
-  static FileUploadConfig forSectionType(String sectionType) {
-    switch (sectionType.toLowerCase()) {
-      case 'pdf':
+  static FileUploadConfig forFile(FileType fileType) {
+    switch (fileType) {
+      case FileType.pdf:
         return const FileUploadConfig(
-          sectionType: 'pdf',
+          fileType: FileType.pdf,
           maxFileSize: 50 * 1024 * 1024, // 50MB
           allowedExtensions: ['pdf'],
         );
-      case 'txt':
+      case FileType.txt:
         return const FileUploadConfig(
-          sectionType: 'txt',
+          fileType: FileType.txt,
           maxFileSize: 10 * 1024 * 1024, // 10MB
           allowedExtensions: ['txt', 'doc', 'docx'],
         );
-      case 'image':
+      case FileType.image:
         return const FileUploadConfig(
-          sectionType: 'image',
+          fileType: FileType.image,
           maxFileSize: 20 * 1024 * 1024, // 20MB
-          allowedExtensions: ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'],
+          allowedExtensions: ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg'],
         );
-      case 'video':
+      case FileType.video:
         return const FileUploadConfig(
-          sectionType: 'video',
+          fileType: FileType.video,
           maxFileSize: 100 * 1024 * 1024, // 100MB
           allowedExtensions: ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm'],
-        );
-      default:
-        return const FileUploadConfig(
-          sectionType: 'unknown',
-          maxFileSize: 10 * 1024 * 1024, // 10MB
-          allowedExtensions: [],
         );
     }
   }

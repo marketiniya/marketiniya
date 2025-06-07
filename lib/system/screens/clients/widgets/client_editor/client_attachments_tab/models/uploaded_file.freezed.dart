@@ -31,6 +31,8 @@ mixin _$UploadedFile {
   @JsonKey(includeFromJson: false, includeToJson: false)
   DropzoneFileInterface? get fileInterface =>
       throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  picker.PlatformFile? get platformFile => throw _privateConstructorUsedError;
 
   /// Serializes this UploadedFile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -58,7 +60,9 @@ abstract class $UploadedFileCopyWith<$Res> {
       FileType sectionType,
       String? tempUrl,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      DropzoneFileInterface? fileInterface});
+      DropzoneFileInterface? fileInterface,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      picker.PlatformFile? platformFile});
 }
 
 /// @nodoc
@@ -85,6 +89,7 @@ class _$UploadedFileCopyWithImpl<$Res, $Val extends UploadedFile>
     Object? sectionType = null,
     Object? tempUrl = freezed,
     Object? fileInterface = freezed,
+    Object? platformFile = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -123,6 +128,10 @@ class _$UploadedFileCopyWithImpl<$Res, $Val extends UploadedFile>
           ? _value.fileInterface
           : fileInterface // ignore: cast_nullable_to_non_nullable
               as DropzoneFileInterface?,
+      platformFile: freezed == platformFile
+          ? _value.platformFile
+          : platformFile // ignore: cast_nullable_to_non_nullable
+              as picker.PlatformFile?,
     ) as $Val);
   }
 }
@@ -145,7 +154,9 @@ abstract class _$$UploadedFileImplCopyWith<$Res>
       FileType sectionType,
       String? tempUrl,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      DropzoneFileInterface? fileInterface});
+      DropzoneFileInterface? fileInterface,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      picker.PlatformFile? platformFile});
 }
 
 /// @nodoc
@@ -170,6 +181,7 @@ class __$$UploadedFileImplCopyWithImpl<$Res>
     Object? sectionType = null,
     Object? tempUrl = freezed,
     Object? fileInterface = freezed,
+    Object? platformFile = freezed,
   }) {
     return _then(_$UploadedFileImpl(
       id: null == id
@@ -208,6 +220,10 @@ class __$$UploadedFileImplCopyWithImpl<$Res>
           ? _value.fileInterface
           : fileInterface // ignore: cast_nullable_to_non_nullable
               as DropzoneFileInterface?,
+      platformFile: freezed == platformFile
+          ? _value.platformFile
+          : platformFile // ignore: cast_nullable_to_non_nullable
+              as picker.PlatformFile?,
     ));
   }
 }
@@ -224,8 +240,9 @@ class _$UploadedFileImpl implements _UploadedFile {
       required this.fileExtension,
       required this.sectionType,
       this.tempUrl,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.fileInterface,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      this.fileInterface});
+      this.platformFile});
 
   factory _$UploadedFileImpl.fromJson(Map<String, dynamic> json) =>
       _$$UploadedFileImplFromJson(json);
@@ -249,10 +266,13 @@ class _$UploadedFileImpl implements _UploadedFile {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   final DropzoneFileInterface? fileInterface;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final picker.PlatformFile? platformFile;
 
   @override
   String toString() {
-    return 'UploadedFile(id: $id, name: $name, size: $size, mimeType: $mimeType, lastModified: $lastModified, fileExtension: $fileExtension, sectionType: $sectionType, tempUrl: $tempUrl, fileInterface: $fileInterface)';
+    return 'UploadedFile(id: $id, name: $name, size: $size, mimeType: $mimeType, lastModified: $lastModified, fileExtension: $fileExtension, sectionType: $sectionType, tempUrl: $tempUrl, fileInterface: $fileInterface, platformFile: $platformFile)';
   }
 
   @override
@@ -273,13 +293,25 @@ class _$UploadedFileImpl implements _UploadedFile {
                 other.sectionType == sectionType) &&
             (identical(other.tempUrl, tempUrl) || other.tempUrl == tempUrl) &&
             (identical(other.fileInterface, fileInterface) ||
-                other.fileInterface == fileInterface));
+                other.fileInterface == fileInterface) &&
+            (identical(other.platformFile, platformFile) ||
+                other.platformFile == platformFile));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, size, mimeType,
-      lastModified, fileExtension, sectionType, tempUrl, fileInterface);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      size,
+      mimeType,
+      lastModified,
+      fileExtension,
+      sectionType,
+      tempUrl,
+      fileInterface,
+      platformFile);
 
   /// Create a copy of UploadedFile
   /// with the given fields replaced by the non-null parameter values.
@@ -308,7 +340,9 @@ abstract class _UploadedFile implements UploadedFile {
       required final FileType sectionType,
       final String? tempUrl,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      final DropzoneFileInterface? fileInterface}) = _$UploadedFileImpl;
+      final DropzoneFileInterface? fileInterface,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final picker.PlatformFile? platformFile}) = _$UploadedFileImpl;
 
   factory _UploadedFile.fromJson(Map<String, dynamic> json) =
       _$UploadedFileImpl.fromJson;
@@ -332,6 +366,9 @@ abstract class _UploadedFile implements UploadedFile {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   DropzoneFileInterface? get fileInterface;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  picker.PlatformFile? get platformFile;
 
   /// Create a copy of UploadedFile
   /// with the given fields replaced by the non-null parameter values.
@@ -515,7 +552,7 @@ FileUploadConfig _$FileUploadConfigFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FileUploadConfig {
-  String get sectionType => throw _privateConstructorUsedError;
+  FileType get fileType => throw _privateConstructorUsedError;
   int get maxFileSize => throw _privateConstructorUsedError;
   List<String> get allowedExtensions => throw _privateConstructorUsedError;
 
@@ -536,7 +573,7 @@ abstract class $FileUploadConfigCopyWith<$Res> {
       _$FileUploadConfigCopyWithImpl<$Res, FileUploadConfig>;
   @useResult
   $Res call(
-      {String sectionType, int maxFileSize, List<String> allowedExtensions});
+      {FileType fileType, int maxFileSize, List<String> allowedExtensions});
 }
 
 /// @nodoc
@@ -554,15 +591,15 @@ class _$FileUploadConfigCopyWithImpl<$Res, $Val extends FileUploadConfig>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sectionType = null,
+    Object? fileType = null,
     Object? maxFileSize = null,
     Object? allowedExtensions = null,
   }) {
     return _then(_value.copyWith(
-      sectionType: null == sectionType
-          ? _value.sectionType
-          : sectionType // ignore: cast_nullable_to_non_nullable
-              as String,
+      fileType: null == fileType
+          ? _value.fileType
+          : fileType // ignore: cast_nullable_to_non_nullable
+              as FileType,
       maxFileSize: null == maxFileSize
           ? _value.maxFileSize
           : maxFileSize // ignore: cast_nullable_to_non_nullable
@@ -584,7 +621,7 @@ abstract class _$$FileUploadConfigImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String sectionType, int maxFileSize, List<String> allowedExtensions});
+      {FileType fileType, int maxFileSize, List<String> allowedExtensions});
 }
 
 /// @nodoc
@@ -600,15 +637,15 @@ class __$$FileUploadConfigImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sectionType = null,
+    Object? fileType = null,
     Object? maxFileSize = null,
     Object? allowedExtensions = null,
   }) {
     return _then(_$FileUploadConfigImpl(
-      sectionType: null == sectionType
-          ? _value.sectionType
-          : sectionType // ignore: cast_nullable_to_non_nullable
-              as String,
+      fileType: null == fileType
+          ? _value.fileType
+          : fileType // ignore: cast_nullable_to_non_nullable
+              as FileType,
       maxFileSize: null == maxFileSize
           ? _value.maxFileSize
           : maxFileSize // ignore: cast_nullable_to_non_nullable
@@ -625,7 +662,7 @@ class __$$FileUploadConfigImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$FileUploadConfigImpl implements _FileUploadConfig {
   const _$FileUploadConfigImpl(
-      {required this.sectionType,
+      {required this.fileType,
       required this.maxFileSize,
       required final List<String> allowedExtensions})
       : _allowedExtensions = allowedExtensions;
@@ -634,7 +671,7 @@ class _$FileUploadConfigImpl implements _FileUploadConfig {
       _$$FileUploadConfigImplFromJson(json);
 
   @override
-  final String sectionType;
+  final FileType fileType;
   @override
   final int maxFileSize;
   final List<String> _allowedExtensions;
@@ -648,7 +685,7 @@ class _$FileUploadConfigImpl implements _FileUploadConfig {
 
   @override
   String toString() {
-    return 'FileUploadConfig(sectionType: $sectionType, maxFileSize: $maxFileSize, allowedExtensions: $allowedExtensions)';
+    return 'FileUploadConfig(fileType: $fileType, maxFileSize: $maxFileSize, allowedExtensions: $allowedExtensions)';
   }
 
   @override
@@ -656,8 +693,8 @@ class _$FileUploadConfigImpl implements _FileUploadConfig {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FileUploadConfigImpl &&
-            (identical(other.sectionType, sectionType) ||
-                other.sectionType == sectionType) &&
+            (identical(other.fileType, fileType) ||
+                other.fileType == fileType) &&
             (identical(other.maxFileSize, maxFileSize) ||
                 other.maxFileSize == maxFileSize) &&
             const DeepCollectionEquality()
@@ -666,7 +703,7 @@ class _$FileUploadConfigImpl implements _FileUploadConfig {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, sectionType, maxFileSize,
+  int get hashCode => Object.hash(runtimeType, fileType, maxFileSize,
       const DeepCollectionEquality().hash(_allowedExtensions));
 
   /// Create a copy of FileUploadConfig
@@ -688,7 +725,7 @@ class _$FileUploadConfigImpl implements _FileUploadConfig {
 
 abstract class _FileUploadConfig implements FileUploadConfig {
   const factory _FileUploadConfig(
-      {required final String sectionType,
+      {required final FileType fileType,
       required final int maxFileSize,
       required final List<String> allowedExtensions}) = _$FileUploadConfigImpl;
 
@@ -696,7 +733,7 @@ abstract class _FileUploadConfig implements FileUploadConfig {
       _$FileUploadConfigImpl.fromJson;
 
   @override
-  String get sectionType;
+  FileType get fileType;
   @override
   int get maxFileSize;
   @override

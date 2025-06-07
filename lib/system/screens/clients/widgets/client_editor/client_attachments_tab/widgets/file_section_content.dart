@@ -1,7 +1,11 @@
+import 'package:file_picker/file_picker.dart' as picker;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/bloc/file_upload_bloc.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/bloc/file_upload_event.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/enums/file_type.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/models/uploaded_file.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/widgets/file_item.dart';
@@ -50,7 +54,7 @@ class FileSectionContent extends StatelessWidget {
             Padding(
               padding: dimen.horizontal.xs,
               child: IconButton(
-                onPressed: () {},
+                onPressed: () => _pickFiles(context),
                 icon: const Icon(
                   Icons.file_upload_outlined,
                   size: sm,
@@ -72,5 +76,54 @@ class FileSectionContent extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Future<void> _pickFiles(BuildContext context) async {
+    // Get allowed extensions for this file type
+    final config = FileUploadConfigExtension.forFile(fileType);
+
+    // Configure file picker based on file type
+    picker.FileType pickerType;
+    List<String>? allowedExtensions;
+
+    switch (fileType) {
+      case FileType.image:
+        pickerType = picker.FileType.image;
+        allowedExtensions = null;
+        break;
+      case FileType.video:
+        pickerType = picker.FileType.video;
+        allowedExtensions = null;
+        break;
+      case FileType.pdf:
+      case FileType.txt:
+        pickerType = picker.FileType.custom;
+        allowedExtensions = config.allowedExtensions;
+        break;
+    }
+
+    // Pick files
+    final result = await picker.FilePicker.platform.pickFiles(
+      type: pickerType,
+      allowedExtensions: allowedExtensions,
+      allowMultiple: true,
+      withData: false, // We don't need the bytes for web
+      withReadStream: false,
+    );
+
+    if (!context.mounted) {
+      return;
+    }
+
+    if (result != null && result.files.isNotEmpty) {
+      for (final file in result.files) {
+        context.read<FileUploadBloc>().add(
+              FileUploadEvent.filePicked(
+                fileType: fileType,
+                file: file,
+              ),
+            );
+      }
+    }
   }
 }

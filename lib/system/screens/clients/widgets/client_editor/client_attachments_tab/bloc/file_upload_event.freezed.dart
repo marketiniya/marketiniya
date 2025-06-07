@@ -23,6 +23,8 @@ mixin _$FileUploadEvent {
     required TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)
         fileDropped,
+    required TResult Function(FileType fileType, picker.PlatformFile file)
+        filePicked,
     required TResult Function(FileType fileType) dragEntered,
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
@@ -36,6 +38,7 @@ mixin _$FileUploadEvent {
     TResult? Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult? Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult? Function(FileType fileType)? dragEntered,
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
@@ -49,6 +52,7 @@ mixin _$FileUploadEvent {
     TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult Function(FileType fileType)? dragEntered,
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
@@ -61,6 +65,7 @@ mixin _$FileUploadEvent {
     required TResult Function(_LoadAllSections value) loadAllSections,
     required TResult Function(_LoadSection value) loadSection,
     required TResult Function(_FileDropped value) fileDropped,
+    required TResult Function(_FilePicked value) filePicked,
     required TResult Function(_DragEntered value) dragEntered,
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
@@ -72,6 +77,7 @@ mixin _$FileUploadEvent {
     TResult? Function(_LoadAllSections value)? loadAllSections,
     TResult? Function(_LoadSection value)? loadSection,
     TResult? Function(_FileDropped value)? fileDropped,
+    TResult? Function(_FilePicked value)? filePicked,
     TResult? Function(_DragEntered value)? dragEntered,
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
@@ -83,6 +89,7 @@ mixin _$FileUploadEvent {
     TResult Function(_LoadAllSections value)? loadAllSections,
     TResult Function(_LoadSection value)? loadSection,
     TResult Function(_FileDropped value)? fileDropped,
+    TResult Function(_FilePicked value)? filePicked,
     TResult Function(_DragEntered value)? dragEntered,
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
@@ -159,6 +166,8 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     required TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)
         fileDropped,
+    required TResult Function(FileType fileType, picker.PlatformFile file)
+        filePicked,
     required TResult Function(FileType fileType) dragEntered,
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
@@ -175,6 +184,7 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     TResult? Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult? Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult? Function(FileType fileType)? dragEntered,
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
@@ -191,6 +201,7 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult Function(FileType fileType)? dragEntered,
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
@@ -209,6 +220,7 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     required TResult Function(_LoadAllSections value) loadAllSections,
     required TResult Function(_LoadSection value) loadSection,
     required TResult Function(_FileDropped value) fileDropped,
+    required TResult Function(_FilePicked value) filePicked,
     required TResult Function(_DragEntered value) dragEntered,
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
@@ -223,6 +235,7 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     TResult? Function(_LoadAllSections value)? loadAllSections,
     TResult? Function(_LoadSection value)? loadSection,
     TResult? Function(_FileDropped value)? fileDropped,
+    TResult? Function(_FilePicked value)? filePicked,
     TResult? Function(_DragEntered value)? dragEntered,
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
@@ -237,6 +250,7 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     TResult Function(_LoadAllSections value)? loadAllSections,
     TResult Function(_LoadSection value)? loadSection,
     TResult Function(_FileDropped value)? fileDropped,
+    TResult Function(_FilePicked value)? filePicked,
     TResult Function(_DragEntered value)? dragEntered,
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
@@ -328,6 +342,8 @@ class _$LoadSectionImpl implements _LoadSection {
     required TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)
         fileDropped,
+    required TResult Function(FileType fileType, picker.PlatformFile file)
+        filePicked,
     required TResult Function(FileType fileType) dragEntered,
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
@@ -344,6 +360,7 @@ class _$LoadSectionImpl implements _LoadSection {
     TResult? Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult? Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult? Function(FileType fileType)? dragEntered,
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
@@ -360,6 +377,7 @@ class _$LoadSectionImpl implements _LoadSection {
     TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult Function(FileType fileType)? dragEntered,
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
@@ -378,6 +396,7 @@ class _$LoadSectionImpl implements _LoadSection {
     required TResult Function(_LoadAllSections value) loadAllSections,
     required TResult Function(_LoadSection value) loadSection,
     required TResult Function(_FileDropped value) fileDropped,
+    required TResult Function(_FilePicked value) filePicked,
     required TResult Function(_DragEntered value) dragEntered,
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
@@ -392,6 +411,7 @@ class _$LoadSectionImpl implements _LoadSection {
     TResult? Function(_LoadAllSections value)? loadAllSections,
     TResult? Function(_LoadSection value)? loadSection,
     TResult? Function(_FileDropped value)? fileDropped,
+    TResult? Function(_FilePicked value)? filePicked,
     TResult? Function(_DragEntered value)? dragEntered,
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
@@ -406,6 +426,7 @@ class _$LoadSectionImpl implements _LoadSection {
     TResult Function(_LoadAllSections value)? loadAllSections,
     TResult Function(_LoadSection value)? loadSection,
     TResult Function(_FileDropped value)? fileDropped,
+    TResult Function(_FilePicked value)? filePicked,
     TResult Function(_DragEntered value)? dragEntered,
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
@@ -526,6 +547,8 @@ class _$FileDroppedImpl implements _FileDropped {
     required TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)
         fileDropped,
+    required TResult Function(FileType fileType, picker.PlatformFile file)
+        filePicked,
     required TResult Function(FileType fileType) dragEntered,
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
@@ -542,6 +565,7 @@ class _$FileDroppedImpl implements _FileDropped {
     TResult? Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult? Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult? Function(FileType fileType)? dragEntered,
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
@@ -558,6 +582,7 @@ class _$FileDroppedImpl implements _FileDropped {
     TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult Function(FileType fileType)? dragEntered,
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
@@ -576,6 +601,7 @@ class _$FileDroppedImpl implements _FileDropped {
     required TResult Function(_LoadAllSections value) loadAllSections,
     required TResult Function(_LoadSection value) loadSection,
     required TResult Function(_FileDropped value) fileDropped,
+    required TResult Function(_FilePicked value) filePicked,
     required TResult Function(_DragEntered value) dragEntered,
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
@@ -590,6 +616,7 @@ class _$FileDroppedImpl implements _FileDropped {
     TResult? Function(_LoadAllSections value)? loadAllSections,
     TResult? Function(_LoadSection value)? loadSection,
     TResult? Function(_FileDropped value)? fileDropped,
+    TResult? Function(_FilePicked value)? filePicked,
     TResult? Function(_DragEntered value)? dragEntered,
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
@@ -604,6 +631,7 @@ class _$FileDroppedImpl implements _FileDropped {
     TResult Function(_LoadAllSections value)? loadAllSections,
     TResult Function(_LoadSection value)? loadSection,
     TResult Function(_FileDropped value)? fileDropped,
+    TResult Function(_FilePicked value)? filePicked,
     TResult Function(_DragEntered value)? dragEntered,
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
@@ -631,6 +659,201 @@ abstract class _FileDropped implements FileUploadEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FileDroppedImplCopyWith<_$FileDroppedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FilePickedImplCopyWith<$Res> {
+  factory _$$FilePickedImplCopyWith(
+          _$FilePickedImpl value, $Res Function(_$FilePickedImpl) then) =
+      __$$FilePickedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({FileType fileType, picker.PlatformFile file});
+}
+
+/// @nodoc
+class __$$FilePickedImplCopyWithImpl<$Res>
+    extends _$FileUploadEventCopyWithImpl<$Res, _$FilePickedImpl>
+    implements _$$FilePickedImplCopyWith<$Res> {
+  __$$FilePickedImplCopyWithImpl(
+      _$FilePickedImpl _value, $Res Function(_$FilePickedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FileUploadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fileType = null,
+    Object? file = null,
+  }) {
+    return _then(_$FilePickedImpl(
+      fileType: null == fileType
+          ? _value.fileType
+          : fileType // ignore: cast_nullable_to_non_nullable
+              as FileType,
+      file: null == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as picker.PlatformFile,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FilePickedImpl implements _FilePicked {
+  const _$FilePickedImpl({required this.fileType, required this.file});
+
+  @override
+  final FileType fileType;
+  @override
+  final picker.PlatformFile file;
+
+  @override
+  String toString() {
+    return 'FileUploadEvent.filePicked(fileType: $fileType, file: $file)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilePickedImpl &&
+            (identical(other.fileType, fileType) ||
+                other.fileType == fileType) &&
+            (identical(other.file, file) || other.file == file));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, fileType, file);
+
+  /// Create a copy of FileUploadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilePickedImplCopyWith<_$FilePickedImpl> get copyWith =>
+      __$$FilePickedImplCopyWithImpl<_$FilePickedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAllSections,
+    required TResult Function(FileType fileType) loadSection,
+    required TResult Function(FileType fileType, DropzoneFileInterface file,
+            DropzoneViewController controller)
+        fileDropped,
+    required TResult Function(FileType fileType, picker.PlatformFile file)
+        filePicked,
+    required TResult Function(FileType fileType) dragEntered,
+    required TResult Function(FileType fileType) dragLeft,
+    required TResult Function(FileType fileType, String fileId) fileRemoved,
+    required TResult Function(FileType fileType) errorCleared,
+  }) {
+    return filePicked(fileType, file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadAllSections,
+    TResult? Function(FileType fileType)? loadSection,
+    TResult? Function(FileType fileType, DropzoneFileInterface file,
+            DropzoneViewController controller)?
+        fileDropped,
+    TResult? Function(FileType fileType, picker.PlatformFile file)? filePicked,
+    TResult? Function(FileType fileType)? dragEntered,
+    TResult? Function(FileType fileType)? dragLeft,
+    TResult? Function(FileType fileType, String fileId)? fileRemoved,
+    TResult? Function(FileType fileType)? errorCleared,
+  }) {
+    return filePicked?.call(fileType, file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAllSections,
+    TResult Function(FileType fileType)? loadSection,
+    TResult Function(FileType fileType, DropzoneFileInterface file,
+            DropzoneViewController controller)?
+        fileDropped,
+    TResult Function(FileType fileType, picker.PlatformFile file)? filePicked,
+    TResult Function(FileType fileType)? dragEntered,
+    TResult Function(FileType fileType)? dragLeft,
+    TResult Function(FileType fileType, String fileId)? fileRemoved,
+    TResult Function(FileType fileType)? errorCleared,
+    required TResult orElse(),
+  }) {
+    if (filePicked != null) {
+      return filePicked(fileType, file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadAllSections value) loadAllSections,
+    required TResult Function(_LoadSection value) loadSection,
+    required TResult Function(_FileDropped value) fileDropped,
+    required TResult Function(_FilePicked value) filePicked,
+    required TResult Function(_DragEntered value) dragEntered,
+    required TResult Function(_DragLeft value) dragLeft,
+    required TResult Function(_FileRemoved value) fileRemoved,
+    required TResult Function(_ErrorCleared value) errorCleared,
+  }) {
+    return filePicked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadAllSections value)? loadAllSections,
+    TResult? Function(_LoadSection value)? loadSection,
+    TResult? Function(_FileDropped value)? fileDropped,
+    TResult? Function(_FilePicked value)? filePicked,
+    TResult? Function(_DragEntered value)? dragEntered,
+    TResult? Function(_DragLeft value)? dragLeft,
+    TResult? Function(_FileRemoved value)? fileRemoved,
+    TResult? Function(_ErrorCleared value)? errorCleared,
+  }) {
+    return filePicked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadAllSections value)? loadAllSections,
+    TResult Function(_LoadSection value)? loadSection,
+    TResult Function(_FileDropped value)? fileDropped,
+    TResult Function(_FilePicked value)? filePicked,
+    TResult Function(_DragEntered value)? dragEntered,
+    TResult Function(_DragLeft value)? dragLeft,
+    TResult Function(_FileRemoved value)? fileRemoved,
+    TResult Function(_ErrorCleared value)? errorCleared,
+    required TResult orElse(),
+  }) {
+    if (filePicked != null) {
+      return filePicked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FilePicked implements FileUploadEvent {
+  const factory _FilePicked(
+      {required final FileType fileType,
+      required final picker.PlatformFile file}) = _$FilePickedImpl;
+
+  FileType get fileType;
+  picker.PlatformFile get file;
+
+  /// Create a copy of FileUploadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FilePickedImplCopyWith<_$FilePickedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -708,6 +931,8 @@ class _$DragEnteredImpl implements _DragEntered {
     required TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)
         fileDropped,
+    required TResult Function(FileType fileType, picker.PlatformFile file)
+        filePicked,
     required TResult Function(FileType fileType) dragEntered,
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
@@ -724,6 +949,7 @@ class _$DragEnteredImpl implements _DragEntered {
     TResult? Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult? Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult? Function(FileType fileType)? dragEntered,
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
@@ -740,6 +966,7 @@ class _$DragEnteredImpl implements _DragEntered {
     TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult Function(FileType fileType)? dragEntered,
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
@@ -758,6 +985,7 @@ class _$DragEnteredImpl implements _DragEntered {
     required TResult Function(_LoadAllSections value) loadAllSections,
     required TResult Function(_LoadSection value) loadSection,
     required TResult Function(_FileDropped value) fileDropped,
+    required TResult Function(_FilePicked value) filePicked,
     required TResult Function(_DragEntered value) dragEntered,
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
@@ -772,6 +1000,7 @@ class _$DragEnteredImpl implements _DragEntered {
     TResult? Function(_LoadAllSections value)? loadAllSections,
     TResult? Function(_LoadSection value)? loadSection,
     TResult? Function(_FileDropped value)? fileDropped,
+    TResult? Function(_FilePicked value)? filePicked,
     TResult? Function(_DragEntered value)? dragEntered,
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
@@ -786,6 +1015,7 @@ class _$DragEnteredImpl implements _DragEntered {
     TResult Function(_LoadAllSections value)? loadAllSections,
     TResult Function(_LoadSection value)? loadSection,
     TResult Function(_FileDropped value)? fileDropped,
+    TResult Function(_FilePicked value)? filePicked,
     TResult Function(_DragEntered value)? dragEntered,
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
@@ -885,6 +1115,8 @@ class _$DragLeftImpl implements _DragLeft {
     required TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)
         fileDropped,
+    required TResult Function(FileType fileType, picker.PlatformFile file)
+        filePicked,
     required TResult Function(FileType fileType) dragEntered,
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
@@ -901,6 +1133,7 @@ class _$DragLeftImpl implements _DragLeft {
     TResult? Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult? Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult? Function(FileType fileType)? dragEntered,
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
@@ -917,6 +1150,7 @@ class _$DragLeftImpl implements _DragLeft {
     TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult Function(FileType fileType)? dragEntered,
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
@@ -935,6 +1169,7 @@ class _$DragLeftImpl implements _DragLeft {
     required TResult Function(_LoadAllSections value) loadAllSections,
     required TResult Function(_LoadSection value) loadSection,
     required TResult Function(_FileDropped value) fileDropped,
+    required TResult Function(_FilePicked value) filePicked,
     required TResult Function(_DragEntered value) dragEntered,
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
@@ -949,6 +1184,7 @@ class _$DragLeftImpl implements _DragLeft {
     TResult? Function(_LoadAllSections value)? loadAllSections,
     TResult? Function(_LoadSection value)? loadSection,
     TResult? Function(_FileDropped value)? fileDropped,
+    TResult? Function(_FilePicked value)? filePicked,
     TResult? Function(_DragEntered value)? dragEntered,
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
@@ -963,6 +1199,7 @@ class _$DragLeftImpl implements _DragLeft {
     TResult Function(_LoadAllSections value)? loadAllSections,
     TResult Function(_LoadSection value)? loadSection,
     TResult Function(_FileDropped value)? fileDropped,
+    TResult Function(_FilePicked value)? filePicked,
     TResult Function(_DragEntered value)? dragEntered,
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
@@ -1070,6 +1307,8 @@ class _$FileRemovedImpl implements _FileRemoved {
     required TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)
         fileDropped,
+    required TResult Function(FileType fileType, picker.PlatformFile file)
+        filePicked,
     required TResult Function(FileType fileType) dragEntered,
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
@@ -1086,6 +1325,7 @@ class _$FileRemovedImpl implements _FileRemoved {
     TResult? Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult? Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult? Function(FileType fileType)? dragEntered,
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
@@ -1102,6 +1342,7 @@ class _$FileRemovedImpl implements _FileRemoved {
     TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult Function(FileType fileType)? dragEntered,
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
@@ -1120,6 +1361,7 @@ class _$FileRemovedImpl implements _FileRemoved {
     required TResult Function(_LoadAllSections value) loadAllSections,
     required TResult Function(_LoadSection value) loadSection,
     required TResult Function(_FileDropped value) fileDropped,
+    required TResult Function(_FilePicked value) filePicked,
     required TResult Function(_DragEntered value) dragEntered,
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
@@ -1134,6 +1376,7 @@ class _$FileRemovedImpl implements _FileRemoved {
     TResult? Function(_LoadAllSections value)? loadAllSections,
     TResult? Function(_LoadSection value)? loadSection,
     TResult? Function(_FileDropped value)? fileDropped,
+    TResult? Function(_FilePicked value)? filePicked,
     TResult? Function(_DragEntered value)? dragEntered,
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
@@ -1148,6 +1391,7 @@ class _$FileRemovedImpl implements _FileRemoved {
     TResult Function(_LoadAllSections value)? loadAllSections,
     TResult Function(_LoadSection value)? loadSection,
     TResult Function(_FileDropped value)? fileDropped,
+    TResult Function(_FilePicked value)? filePicked,
     TResult Function(_DragEntered value)? dragEntered,
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
@@ -1250,6 +1494,8 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     required TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)
         fileDropped,
+    required TResult Function(FileType fileType, picker.PlatformFile file)
+        filePicked,
     required TResult Function(FileType fileType) dragEntered,
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
@@ -1266,6 +1512,7 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     TResult? Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult? Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult? Function(FileType fileType)? dragEntered,
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
@@ -1282,6 +1529,7 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     TResult Function(FileType fileType, DropzoneFileInterface file,
             DropzoneViewController controller)?
         fileDropped,
+    TResult Function(FileType fileType, picker.PlatformFile file)? filePicked,
     TResult Function(FileType fileType)? dragEntered,
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
@@ -1300,6 +1548,7 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     required TResult Function(_LoadAllSections value) loadAllSections,
     required TResult Function(_LoadSection value) loadSection,
     required TResult Function(_FileDropped value) fileDropped,
+    required TResult Function(_FilePicked value) filePicked,
     required TResult Function(_DragEntered value) dragEntered,
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
@@ -1314,6 +1563,7 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     TResult? Function(_LoadAllSections value)? loadAllSections,
     TResult? Function(_LoadSection value)? loadSection,
     TResult? Function(_FileDropped value)? fileDropped,
+    TResult? Function(_FilePicked value)? filePicked,
     TResult? Function(_DragEntered value)? dragEntered,
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
@@ -1328,6 +1578,7 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     TResult Function(_LoadAllSections value)? loadAllSections,
     TResult Function(_LoadSection value)? loadSection,
     TResult Function(_FileDropped value)? fileDropped,
+    TResult Function(_FilePicked value)? filePicked,
     TResult Function(_DragEntered value)? dragEntered,
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
