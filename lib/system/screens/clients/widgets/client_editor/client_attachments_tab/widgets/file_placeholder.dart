@@ -16,15 +16,15 @@ class FilePlaceholder extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          width: 70,
+          width: 90,
           height: 50,
           child: Center(
-            child: FileTypeIcons.getIcon(fileType, size: lg),
+            child: FileTypeIcons.getSectionIcon(fileType, size: lg),
           ),
         ),
         const SizedBox(height: micro),
         SizedBox(
-          width: 70,
+          width: 200,
           child: Text(
             fileName,
             style: const TextStyle(
@@ -33,6 +33,8 @@ class FilePlaceholder extends StatelessWidget {
               color: Colors.black,
             ),
             textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ],
