@@ -43,12 +43,14 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     Emitter<FileUploadState> emit,
   ) async {
     // Set all sections to loading
-    emit(state.copyWith(
-      pdfStatus: Status.loading,
-      txtStatus: Status.loading,
-      imageStatus: Status.loading,
-      videoStatus: Status.loading,
-    ));
+    emit(
+      state.copyWith(
+        pdfStatus: Status.loading,
+        txtStatus: Status.loading,
+        imageStatus: Status.loading,
+        videoStatus: Status.loading,
+      ),
+    );
 
     // Load each section independently
     await Future.wait([
@@ -266,7 +268,7 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
         fileType,
         Status.error,
         state.getSectionFiles(fileType),
-        'Failed to remove file: ${e.toString()}',
+        'Failed to remove file: $e',
       ));
     }
   }
@@ -276,13 +278,15 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     FileType fileType,
     Emitter<FileUploadState> emit,
   ) async {
-    emit(_updateSectionData(
-      state,
-      fileType,
-      Status.success,
-      state.getSectionFiles(fileType),
-      null,
-    ));
+    emit(
+      _updateSectionData(
+        state,
+        fileType,
+        Status.success,
+        state.getSectionFiles(fileType),
+        null,
+      ),
+    );
   }
 
   /// Helper method to update section status only
