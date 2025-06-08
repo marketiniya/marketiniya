@@ -14,7 +14,7 @@ _$UploadedFileImpl _$$UploadedFileImplFromJson(Map<String, dynamic> json) =>
       mimeType: json['mimeType'] as String,
       lastModified: DateTime.parse(json['lastModified'] as String),
       fileExtension: json['fileExtension'] as String,
-      sectionType: $enumDecode(_$FileTypeEnumMap, json['sectionType']),
+      fileType: $enumDecode(_$FileTypeEnumMap, json['fileType']),
       tempUrl: json['tempUrl'] as String?,
     );
 
@@ -26,7 +26,7 @@ Map<String, dynamic> _$$UploadedFileImplToJson(_$UploadedFileImpl instance) =>
       'mimeType': instance.mimeType,
       'lastModified': instance.lastModified.toIso8601String(),
       'fileExtension': instance.fileExtension,
-      'sectionType': _$FileTypeEnumMap[instance.sectionType]!,
+      'fileType': _$FileTypeEnumMap[instance.fileType]!,
       'tempUrl': instance.tempUrl,
     };
 

@@ -31,6 +31,8 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
         errorCleared: (fileType) => _onErrorCleared(fileType, emit),
       );
     });
+
+    add(const FileUploadEvent.loadAllSections());
   }
 
   final FileValidationService _fileValidationService;
@@ -119,7 +121,7 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
         mimeType: mimeType,
         lastModified: lastModified,
         fileExtension: _getFileExtension(fileName),
-        sectionType: fileType,
+        fileType: fileType,
         tempUrl: tempUrl,
         fileInterface: file,
       );
@@ -189,7 +191,7 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
       mimeType: _getMimeTypeFromExtension(fileExtension),
       lastModified: DateTime.now(),
       fileExtension: fileExtension,
-      sectionType: fileType,
+      fileType: fileType,
       tempUrl: file.path,
       platformFile: file, // Store the PlatformFile for later use
     );

@@ -4,18 +4,15 @@ import 'package:marketinya/core/design_system/atoms/icons/file_type_icons.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/bloc/file_upload_bloc.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/bloc/file_upload_event.dart';
-import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/enums/file_type.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/models/uploaded_file.dart';
 
 class FileItem extends StatelessWidget {
   const FileItem({
     super.key,
     required this.file,
-    required this.fileType,
   });
 
   final UploadedFile file;
-  final FileType fileType;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +75,7 @@ class FileItem extends StatelessWidget {
   void _removeFile(BuildContext context) {
     context.read<FileUploadBloc>().add(
           FileUploadEvent.fileRemoved(
-            fileType: fileType,
+            fileType: file.fileType,
             fileId: file.id,
           ),
         );

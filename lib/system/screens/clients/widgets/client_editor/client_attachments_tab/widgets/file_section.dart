@@ -16,10 +16,10 @@ import 'package:marketinya/system/screens/clients/widgets/client_editor/client_a
 class FileSection extends StatefulWidget {
   const FileSection({
     super.key,
-    required this.fileType,
+    required this.supportedFileType,
   });
 
-  final FileType fileType;
+  final FileType supportedFileType;
 
   @override
   State<FileSection> createState() => _FileSectionState();
@@ -35,7 +35,7 @@ class _FileSectionState extends State<FileSection> {
   void _onDropFile(DropzoneFileInterface file) {
     context.read<FileUploadBloc>().add(
           FileUploadEvent.fileDropped(
-            fileType: widget.fileType,
+            fileType: widget.supportedFileType,
             file: file,
             controller: _dropzoneController,
           ),
@@ -44,13 +44,13 @@ class _FileSectionState extends State<FileSection> {
 
   void _onHover() {
     context.read<FileUploadBloc>().add(
-          FileUploadEvent.dragEntered(widget.fileType),
+          FileUploadEvent.dragEntered(widget.supportedFileType),
         );
   }
 
   void _onLeave() {
     context.read<FileUploadBloc>().add(
-          FileUploadEvent.dragLeft(widget.fileType),
+          FileUploadEvent.dragLeft(widget.supportedFileType),
         );
   }
 
@@ -58,18 +58,18 @@ class _FileSectionState extends State<FileSection> {
   Widget build(BuildContext context) {
     return BlocBuilder<FileUploadBloc, FileUploadState>(
       builder: (context, state) {
-        final status = state.getSectionStatus(widget.fileType);
-        final files = state.getSectionFiles(widget.fileType);
-        final error = state.getSectionError(widget.fileType);
+        final status = state.getSectionStatus(widget.supportedFileType);
+        final files = state.getSectionFiles(widget.supportedFileType);
+        final error = state.getSectionError(widget.supportedFileType);
         final isDragOver = state.isDragOver &&
-            state.currentDragSection == widget.fileType.value;
+            state.currentDragSection == widget.supportedFileType.value;
 
         if (status == Status.loading) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.fileType.displayName,
+                widget.supportedFileType.displayName,
                 style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
@@ -86,7 +86,7 @@ class _FileSectionState extends State<FileSection> {
                   ),
                 ),
               ),
-              if (widget.fileType != FileType.video) ...[
+              if (widget.supportedFileType != FileType.video) ...[
                 Padding(
                   padding: dimen.top.xs + dimen.bottom.xs,
                   child: const Divider(
@@ -104,7 +104,7 @@ class _FileSectionState extends State<FileSection> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.fileType.displayName,
+                widget.supportedFileType.displayName,
                 style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
@@ -117,10 +117,10 @@ class _FileSectionState extends State<FileSection> {
                 hasError: true,
                 child: FileSectionErrorState(
                   error: error,
-                  fileType: widget.fileType,
+                  fileType: widget.supportedFileType,
                 ),
               ),
-              if (widget.fileType != FileType.video) ...[
+              if (widget.supportedFileType != FileType.video) ...[
                 Padding(
                   padding: dimen.top.xs + dimen.bottom.xs,
                   child: const Divider(
@@ -138,7 +138,7 @@ class _FileSectionState extends State<FileSection> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              widget.fileType.displayName,
+              widget.supportedFileType.displayName,
               style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
@@ -164,14 +164,14 @@ class _FileSectionState extends State<FileSection> {
                   hasError: error != null,
                   child: FileSectionContent(
                     files: files,
-                    fileType: widget.fileType,
+                    supportedFileType: widget.supportedFileType,
                   ),
                 ),
               ],
             ),
 
             // Always show divider except for last section
-            if (widget.fileType != FileType.video) ...[
+            if (widget.supportedFileType != FileType.video) ...[
               Padding(
                 padding: dimen.top.xs + dimen.bottom.xs,
                 child: const Divider(

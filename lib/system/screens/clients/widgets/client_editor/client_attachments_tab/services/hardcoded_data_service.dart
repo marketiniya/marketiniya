@@ -17,7 +17,7 @@ class HardcodedDataService {
         mimeType: 'application/pdf',
         lastModified: DateTime.now().subtract(const Duration(days: 1)),
         fileExtension: 'pdf',
-        sectionType: FileType.pdf,
+        fileType: FileType.pdf,
       ),
       UploadedFile(
         id: 'pdf_2',
@@ -26,7 +26,7 @@ class HardcodedDataService {
         mimeType: 'application/pdf',
         lastModified: DateTime.now().subtract(const Duration(hours: 3)),
         fileExtension: 'pdf',
-        sectionType: FileType.pdf,
+        fileType: FileType.pdf,
       ),
       UploadedFile(
         id: 'pdf_3',
@@ -35,7 +35,7 @@ class HardcodedDataService {
         mimeType: 'application/pdf',
         lastModified: DateTime.now().subtract(const Duration(days: 7)),
         fileExtension: 'pdf',
-        sectionType: FileType.pdf,
+        fileType: FileType.pdf,
       ),
     ];
   }
@@ -53,7 +53,7 @@ class HardcodedDataService {
         mimeType: 'text/plain',
         lastModified: DateTime.now().subtract(const Duration(hours: 2)),
         fileExtension: 'txt',
-        sectionType: FileType.txt,
+        fileType: FileType.txt,
       ),
       UploadedFile(
         id: 'txt_2',
@@ -62,7 +62,7 @@ class HardcodedDataService {
         mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         lastModified: DateTime.now().subtract(const Duration(days: 2)),
         fileExtension: 'docx',
-        sectionType: FileType.txt,
+        fileType: FileType.txt,
       ),
     ];
   }
@@ -80,7 +80,7 @@ class HardcodedDataService {
         mimeType: 'image/png',
         lastModified: DateTime.now().subtract(const Duration(hours: 5)),
         fileExtension: 'png',
-        sectionType: FileType.image,
+        fileType: FileType.image,
       ),
       UploadedFile(
         id: 'img_2',
@@ -89,7 +89,7 @@ class HardcodedDataService {
         mimeType: 'image/jpeg',
         lastModified: DateTime.now().subtract(const Duration(days: 1)),
         fileExtension: 'jpg',
-        sectionType: FileType.image,
+        fileType: FileType.image,
       ),
       UploadedFile(
         id: 'img_3',
@@ -98,7 +98,7 @@ class HardcodedDataService {
         mimeType: 'image/webp',
         lastModified: DateTime.now().subtract(const Duration(hours: 8)),
         fileExtension: 'webp',
-        sectionType: FileType.image,
+        fileType: FileType.image,
       ),
       UploadedFile(
         id: 'img_4',
@@ -107,7 +107,7 @@ class HardcodedDataService {
         mimeType: 'image/gif',
         lastModified: DateTime.now().subtract(const Duration(days: 3)),
         fileExtension: 'gif',
-        sectionType: FileType.image,
+        fileType: FileType.image,
       ),
     ];
   }
@@ -125,7 +125,7 @@ class HardcodedDataService {
         mimeType: 'video/mp4',
         lastModified: DateTime.now().subtract(const Duration(days: 2)),
         fileExtension: 'mp4',
-        sectionType: FileType.video,
+        fileType: FileType.video,
       ),
       UploadedFile(
         id: 'vid_2',
@@ -134,7 +134,7 @@ class HardcodedDataService {
         mimeType: 'video/webm',
         lastModified: DateTime.now().subtract(const Duration(hours: 12)),
         fileExtension: 'webm',
-        sectionType: FileType.video,
+        fileType: FileType.video,
       ),
     ];
   }

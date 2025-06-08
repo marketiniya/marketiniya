@@ -14,11 +14,13 @@ class FileSectionContent extends StatelessWidget {
   const FileSectionContent({
     super.key,
     required this.files,
-    required this.fileType,
+    required this.supportedFileType,
   });
 
   final List<UploadedFile> files;
-  final FileType fileType;
+
+  // Supported upload file type for the section
+  final FileType supportedFileType;
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +44,8 @@ class FileSectionContent extends StatelessWidget {
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: files.length,
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(width: sm),
-                  itemBuilder: (context, index) => FileItem(
-                    file: files[index],
-                    fileType: fileType,
-                  ),
+                  separatorBuilder: (_, index) => const SizedBox(width: sm),
+                  itemBuilder: (_, index) => FileItem(file: files[index]),
                 ),
               ),
             ),
@@ -80,13 +78,13 @@ class FileSectionContent extends StatelessWidget {
 
   Future<void> _pickFiles(BuildContext context) async {
     // Get allowed extensions for this file type
-    final config = FileUploadConfigExtension.forFile(fileType);
+    final config = FileUploadConfigExtension.forFile(supportedFileType);
 
     // Configure file picker based on file type
     picker.FileType pickerType;
     List<String>? allowedExtensions;
 
-    switch (fileType) {
+    switch (supportedFileType) {
       case FileType.image:
         pickerType = picker.FileType.image;
         allowedExtensions = null;
@@ -119,7 +117,7 @@ class FileSectionContent extends StatelessWidget {
       for (final file in result.files) {
         context.read<FileUploadBloc>().add(
               FileUploadEvent.filePicked(
-                fileType: fileType,
+                fileType: supportedFileType,
                 file: file,
               ),
             );

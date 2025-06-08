@@ -15,7 +15,7 @@ class UploadedFile with _$UploadedFile {
     required String mimeType,
     required DateTime lastModified,
     required String fileExtension,
-    required FileType sectionType,
+    required FileType fileType,
     String? tempUrl,
     @JsonKey(includeFromJson: false, includeToJson: false)
     DropzoneFileInterface? fileInterface,

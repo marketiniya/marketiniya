@@ -26,7 +26,7 @@ mixin _$UploadedFile {
   String get mimeType => throw _privateConstructorUsedError;
   DateTime get lastModified => throw _privateConstructorUsedError;
   String get fileExtension => throw _privateConstructorUsedError;
-  FileType get sectionType => throw _privateConstructorUsedError;
+  FileType get fileType => throw _privateConstructorUsedError;
   String? get tempUrl => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   DropzoneFileInterface? get fileInterface =>
@@ -57,7 +57,7 @@ abstract class $UploadedFileCopyWith<$Res> {
       String mimeType,
       DateTime lastModified,
       String fileExtension,
-      FileType sectionType,
+      FileType fileType,
       String? tempUrl,
       @JsonKey(includeFromJson: false, includeToJson: false)
       DropzoneFileInterface? fileInterface,
@@ -86,7 +86,7 @@ class _$UploadedFileCopyWithImpl<$Res, $Val extends UploadedFile>
     Object? mimeType = null,
     Object? lastModified = null,
     Object? fileExtension = null,
-    Object? sectionType = null,
+    Object? fileType = null,
     Object? tempUrl = freezed,
     Object? fileInterface = freezed,
     Object? platformFile = freezed,
@@ -116,9 +116,9 @@ class _$UploadedFileCopyWithImpl<$Res, $Val extends UploadedFile>
           ? _value.fileExtension
           : fileExtension // ignore: cast_nullable_to_non_nullable
               as String,
-      sectionType: null == sectionType
-          ? _value.sectionType
-          : sectionType // ignore: cast_nullable_to_non_nullable
+      fileType: null == fileType
+          ? _value.fileType
+          : fileType // ignore: cast_nullable_to_non_nullable
               as FileType,
       tempUrl: freezed == tempUrl
           ? _value.tempUrl
@@ -151,7 +151,7 @@ abstract class _$$UploadedFileImplCopyWith<$Res>
       String mimeType,
       DateTime lastModified,
       String fileExtension,
-      FileType sectionType,
+      FileType fileType,
       String? tempUrl,
       @JsonKey(includeFromJson: false, includeToJson: false)
       DropzoneFileInterface? fileInterface,
@@ -178,7 +178,7 @@ class __$$UploadedFileImplCopyWithImpl<$Res>
     Object? mimeType = null,
     Object? lastModified = null,
     Object? fileExtension = null,
-    Object? sectionType = null,
+    Object? fileType = null,
     Object? tempUrl = freezed,
     Object? fileInterface = freezed,
     Object? platformFile = freezed,
@@ -208,9 +208,9 @@ class __$$UploadedFileImplCopyWithImpl<$Res>
           ? _value.fileExtension
           : fileExtension // ignore: cast_nullable_to_non_nullable
               as String,
-      sectionType: null == sectionType
-          ? _value.sectionType
-          : sectionType // ignore: cast_nullable_to_non_nullable
+      fileType: null == fileType
+          ? _value.fileType
+          : fileType // ignore: cast_nullable_to_non_nullable
               as FileType,
       tempUrl: freezed == tempUrl
           ? _value.tempUrl
@@ -238,7 +238,7 @@ class _$UploadedFileImpl implements _UploadedFile {
       required this.mimeType,
       required this.lastModified,
       required this.fileExtension,
-      required this.sectionType,
+      required this.fileType,
       this.tempUrl,
       @JsonKey(includeFromJson: false, includeToJson: false) this.fileInterface,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -260,7 +260,7 @@ class _$UploadedFileImpl implements _UploadedFile {
   @override
   final String fileExtension;
   @override
-  final FileType sectionType;
+  final FileType fileType;
   @override
   final String? tempUrl;
   @override
@@ -272,7 +272,7 @@ class _$UploadedFileImpl implements _UploadedFile {
 
   @override
   String toString() {
-    return 'UploadedFile(id: $id, name: $name, size: $size, mimeType: $mimeType, lastModified: $lastModified, fileExtension: $fileExtension, sectionType: $sectionType, tempUrl: $tempUrl, fileInterface: $fileInterface, platformFile: $platformFile)';
+    return 'UploadedFile(id: $id, name: $name, size: $size, mimeType: $mimeType, lastModified: $lastModified, fileExtension: $fileExtension, fileType: $fileType, tempUrl: $tempUrl, fileInterface: $fileInterface, platformFile: $platformFile)';
   }
 
   @override
@@ -289,8 +289,8 @@ class _$UploadedFileImpl implements _UploadedFile {
                 other.lastModified == lastModified) &&
             (identical(other.fileExtension, fileExtension) ||
                 other.fileExtension == fileExtension) &&
-            (identical(other.sectionType, sectionType) ||
-                other.sectionType == sectionType) &&
+            (identical(other.fileType, fileType) ||
+                other.fileType == fileType) &&
             (identical(other.tempUrl, tempUrl) || other.tempUrl == tempUrl) &&
             (identical(other.fileInterface, fileInterface) ||
                 other.fileInterface == fileInterface) &&
@@ -308,7 +308,7 @@ class _$UploadedFileImpl implements _UploadedFile {
       mimeType,
       lastModified,
       fileExtension,
-      sectionType,
+      fileType,
       tempUrl,
       fileInterface,
       platformFile);
@@ -337,7 +337,7 @@ abstract class _UploadedFile implements UploadedFile {
       required final String mimeType,
       required final DateTime lastModified,
       required final String fileExtension,
-      required final FileType sectionType,
+      required final FileType fileType,
       final String? tempUrl,
       @JsonKey(includeFromJson: false, includeToJson: false)
       final DropzoneFileInterface? fileInterface,
@@ -360,7 +360,7 @@ abstract class _UploadedFile implements UploadedFile {
   @override
   String get fileExtension;
   @override
-  FileType get sectionType;
+  FileType get fileType;
   @override
   String? get tempUrl;
   @override
