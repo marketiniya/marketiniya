@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_bloc.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_state.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/content_form.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/header_section.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_bloc.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_state.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/content_form.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/header_section.dart';
 
 class ClientFormPage extends StatefulWidget {
   const ClientFormPage({super.key});

@@ -8,7 +8,7 @@ import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/edit_client_screen.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/client_editor_screen.dart';
 
 class ContentHeader extends StatelessWidget {
   const ContentHeader({super.key});
@@ -81,7 +81,7 @@ class ContentHeader extends StatelessWidget {
                     icon: const Icon(Icons.add),
                     title: 'Добави Клиент',
                     onPressed: () => context.push(
-                      EditClientScreen(
+                      ClientEditorScreen(
                         onClientUpdated: (client) =>
                             context.read<ClientBloc>().add(
                                   ClientEvent.onClientUpdated(client),
