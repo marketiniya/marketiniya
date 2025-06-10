@@ -28,10 +28,6 @@ class FileSection extends StatefulWidget {
 class _FileSectionState extends State<FileSection> {
   late DropzoneViewController _dropzoneController;
 
-  void _onDropzoneCreated(DropzoneViewController controller) {
-    _dropzoneController = controller;
-  }
-
   void _onDropFile(DropzoneFileInterface file) {
     context.read<FileUploadBloc>().add(
           FileUploadEvent.fileDropped(
@@ -152,7 +148,9 @@ class _FileSectionState extends State<FileSection> {
                 SizedBox(
                   height: 100,
                   child: DropzoneView(
-                    onCreated: _onDropzoneCreated,
+                    onCreated: (controller) => {
+                      _dropzoneController = controller,
+                    },
                     onDropFile: _onDropFile,
                     onHover: _onHover,
                     onLeave: _onLeave,

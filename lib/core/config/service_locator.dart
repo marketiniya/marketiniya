@@ -33,10 +33,12 @@ Future<void> initializeDependencyInjection() async {
   getIt.registerLazySingleton<HardcodedDataService>(() => HardcodedDataService());
 
   /// Register file upload BLoC
-  getIt.registerFactory<FileUploadBloc>(() => FileUploadBloc(
-    getIt<FileValidationService>(),
-    getIt<HardcodedDataService>(),
-  ));
+  getIt.registerFactory<FileUploadBloc>(
+    () => FileUploadBloc(
+      getIt<FileValidationService>(),
+      getIt<HardcodedDataService>(),
+    ),
+  );
 
   Log.info('Dependency injection setup completed successfully!');
 }

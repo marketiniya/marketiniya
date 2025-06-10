@@ -19,20 +19,26 @@ class FileValidationService {
 
       // Validate file size
       final sizeError = _validateFileSize(fileSize, config);
-      if (sizeError != null) return sizeError;
+      if (sizeError != null) {
+        return sizeError;
+      }
 
       // Validate file extension
       final extensionError = _validateFileExtension(fileName, config);
-      if (extensionError != null) return extensionError;
+      if (extensionError != null) {
+        return extensionError;
+      }
 
       // Validate file type matches section
       final typeError = _validateFileTypeForSection(fileName, mimeType, config);
-      if (typeError != null) return typeError;
+      if (typeError != null) {
+        return typeError;
+      }
 
       return null; // File is valid
     } catch (e) {
       return FileValidationError(
-        message: 'Error validating file: ${e.toString()}',
+        message: 'Error validating file: $e',
         type: FileValidationErrorType.unknown,
       );
     }
@@ -74,7 +80,9 @@ class FileValidationService {
     String fileName,
     FileUploadConfig config,
   ) {
-    if (config.allowedExtensions.isEmpty) return null;
+    if (config.allowedExtensions.isEmpty) {
+      return null;
+    }
 
     final extension = _getFileExtension(fileName);
     if (!config.allowedExtensions.contains(extension)) {

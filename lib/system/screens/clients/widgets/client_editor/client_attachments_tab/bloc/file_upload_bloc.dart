@@ -82,10 +82,12 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     Emitter<FileUploadState> emit,
   ) async {
     // Clear drag state
-    emit(state.copyWith(
-      isDragOver: false,
-      currentDragSection: null,
-    ));
+    emit(
+      state.copyWith(
+        isDragOver: false,
+        currentDragSection: null,
+      ),
+    );
 
     try {
       // Validate file for section
@@ -98,13 +100,15 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
 
       if (validationError != null) {
         // Update section with error
-        emit(_updateSectionData(
-          state,
-          fileType,
-          Status.error,
-          state.getSectionFiles(fileType),
-          validationError.message,
-        ));
+        emit(
+          _updateSectionData(
+            state,
+            fileType,
+            Status.error,
+            state.getSectionFiles(fileType),
+            validationError.message,
+          ),
+        );
         return;
       }
 
@@ -132,22 +136,26 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
       final currentFiles = state.getSectionFiles(fileType);
       final updatedFiles = [...currentFiles, uploadedFile];
 
-      emit(_updateSectionData(
-        state,
-        fileType,
-        Status.success,
-        updatedFiles,
-        null,
-      ));
+      emit(
+        _updateSectionData(
+          state,
+          fileType,
+          Status.success,
+          updatedFiles,
+          null,
+        ),
+      );
     } catch (e) {
       Log.error('Error processing dropped file: $e');
-      emit(_updateSectionData(
-        state,
-        fileType,
-        Status.error,
-        state.getSectionFiles(fileType),
-        'Failed to upload file: ${e.toString()}',
-      ));
+      emit(
+        _updateSectionData(
+          state,
+          fileType,
+          Status.error,
+          state.getSectionFiles(fileType),
+          'Failed to upload file: $e',
+        ),
+      );
     }
   }
 
@@ -218,10 +226,12 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     FileType fileType,
     Emitter<FileUploadState> emit,
   ) async {
-    emit(state.copyWith(
-      isDragOver: true,
-      currentDragSection: fileType.value,
-    ));
+    emit(
+      state.copyWith(
+        isDragOver: true,
+        currentDragSection: fileType.value,
+      ),
+    );
   }
 
   /// Handle drag leave for specific section
@@ -229,10 +239,12 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     FileType fileType,
     Emitter<FileUploadState> emit,
   ) async {
-    emit(state.copyWith(
-      isDragOver: false,
-      currentDragSection: null,
-    ));
+    emit(
+      state.copyWith(
+        isDragOver: false,
+        currentDragSection: null,
+      ),
+    );
   }
 
   /// Remove file from specific section
@@ -254,22 +266,26 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
       final updatedFiles =
           currentFiles.where((file) => file.id != fileId).toList();
 
-      emit(_updateSectionData(
-        state,
-        fileType,
-        Status.success,
-        updatedFiles,
-        null,
-      ));
+      emit(
+        _updateSectionData(
+          state,
+          fileType,
+          Status.success,
+          updatedFiles,
+          null,
+        ),
+      );
     } catch (e) {
       Log.error('Error removing file: $e');
-      emit(_updateSectionData(
-        state,
-        fileType,
-        Status.error,
-        state.getSectionFiles(fileType),
-        'Failed to remove file: $e',
-      ));
+      emit(
+        _updateSectionData(
+          state,
+          fileType,
+          Status.error,
+          state.getSectionFiles(fileType),
+          'Failed to remove file: $e',
+        ),
+      );
     }
   }
 
