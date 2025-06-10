@@ -6,9 +6,9 @@ import 'package:marketinya/core/design_system/molecules/button/primary_button/pr
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_bloc.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_event.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_state.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_bloc.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_event.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_state.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({

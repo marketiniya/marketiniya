@@ -5,12 +5,12 @@ import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/utils/validators/field_validators.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_bloc.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_event.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/bloc/add_client_state.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/business_sector.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_status.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/priority_level.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_bloc.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_event.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_state.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/business_sector.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/priority_level.dart';
 
 class InformationForm extends StatelessWidget {
   const InformationForm({super.key, required this.state});

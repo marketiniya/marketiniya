@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_tab.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/drawer/drawer_icon_item.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_editor_tab.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/drawer/drawer_icon_item.dart';
 
 class ClientsDrawer extends StatelessWidget {
   const ClientsDrawer({
@@ -39,7 +39,7 @@ class ClientsDrawer extends StatelessWidget {
           child: ListView(
             children: [
               const SizedBox(height: lg),
-              ...ClientTab.values.map(
+              ...ClientEditorTab.values.map(
                 (tab) => Column(
                   children: [
                     DrawerIconItem(

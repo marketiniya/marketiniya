@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/edit_client_screen.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/client_editor_screen.dart';
 import 'package:marketinya/system/screens/clients/widgets/clients_table/clients_table_row.dart';
 
 class ClientsList extends StatelessWidget {
@@ -32,7 +32,7 @@ class ClientsList extends StatelessWidget {
           client: client,
           rowNumber: rowNumber,
           onTap: () => context.push(
-            EditClientScreen(
+            ClientEditorScreen(
               client: client,
               onClientUpdated: (client) => context.read<ClientBloc>().add(
                 ClientEvent.onClientUpdated(client),

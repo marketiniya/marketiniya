@@ -3,9 +3,9 @@ import 'package:injectable/injectable.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/models/social_media_link.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/business_sector.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/client_status.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/enums/priority_level.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/business_sector.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/priority_level.dart';
 
 @injectable
 class ClientRepository {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/models/tags.dart';
-import 'package:marketinya/system/screens/clients/widgets/add_client_screen/widget/tags_widget.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/tags_widget.dart';
 
 class TagsSection extends StatelessWidget {
   const TagsSection({super.key});
