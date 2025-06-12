@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:marketinya/core/config/responsive_layout.dart';
+import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/enums/go_router_paths.dart';
-import 'package:marketinya/core/navigation/widgets/bottom_divider_and_label.dart';
-import 'package:marketinya/core/navigation/widgets/custom_tab_bar.dart';
+import 'package:marketinya/core/navigation/widgets/custom_app_bar_shell.dart';
+import 'package:marketinya/website/widgets/appBar/custom_app_bar_mobile.dart';
 
 class TabNavigationScreen extends StatefulWidget {
-
   const TabNavigationScreen({super.key, required this.child});
+
   final Widget child;
 
   @override
   State<TabNavigationScreen> createState() => _TabNavigationScreenState();
 }
 
-class _TabNavigationScreenState extends State<TabNavigationScreen> with SingleTickerProviderStateMixin {
+class _TabNavigationScreenState extends State<TabNavigationScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   static const double _fontSize = 20;
-  static const double _toolbarHeight = 50; // Reduced from 180 to remove empty space
+  static const double _toolbarHeight =
+      90; 
   static const double _logoHeight = 120; // Increased from 100
   static const double _logoWidth = 150; // Increased from 126
   static const double _dividerHeight = 2;
@@ -78,34 +82,24 @@ class _TabNavigationScreenState extends State<TabNavigationScreen> with SingleTi
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildCustomAppBar(context),
-      body: widget.child, // Let GoRouter handle the content
-    );
-  }
-
-  PreferredSizeWidget _buildCustomAppBar(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      toolbarHeight: _toolbarHeight,
-      bottom: PreferredSize(
-        preferredSize: Size.fromHeight(_logoHeight + 40), // Space for logo + tab bar
-        child: Column(
-          children: [
-            CustomTabBar(
-              tabController: _tabController,
-              onTabTapped: _onTabTapped,
-              logoWidth: _logoWidth,
-              logoHeight: _logoHeight,
-              fontSize: _fontSize,
-            ),
-            const BottomDividerAndLabel(
-              logoWidth: _logoWidth,
-              dividerHeight: _dividerHeight,
-            ),
-          ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(_toolbarHeight + _logoHeight + lg),
+        child: ResponsiveLayout(
+          mobile: const CustomAppBarMobile(
+            activeTab: 'Начало',
+          ),
+          desktop: CustomAppBarShell(
+            tabController: _tabController,
+            onTabTapped: _onTabTapped,
+            logoWidth: _logoWidth,
+            logoHeight: _logoHeight,
+            fontSize: _fontSize,
+            dividerHeight: _dividerHeight,
+            toolbarHeight: _toolbarHeight,
+          ),
         ),
       ),
+      body: widget.child,
     );
   }
-
 }

@@ -13,7 +13,6 @@ class ServiceMobileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBarMobile(activeTab: 'Услуги'),
       body: SingleChildScrollView(
         child: Column(
           children: [

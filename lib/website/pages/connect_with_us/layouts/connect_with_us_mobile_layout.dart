@@ -12,7 +12,6 @@ class ConnectWithUsMobileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBarMobile(activeTab: 'Свържи се с нас'),
       body: SingleChildScrollView(
         child: Column(
           children: [

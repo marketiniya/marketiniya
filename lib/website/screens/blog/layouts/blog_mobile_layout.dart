@@ -13,7 +13,6 @@ class BlogMobileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarMobile(activeTab: 'Блог'),
       body: SingleChildScrollView(
         child: Column(
           children: [
