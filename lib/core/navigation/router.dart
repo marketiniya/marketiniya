@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketinya/core/config/service_locator.dart';
+import 'package:marketinya/core/design_system/molecules/error_state/error_state_view.dart';
 import 'package:marketinya/core/enums/go_router_paths.dart';
 import 'package:marketinya/core/navigation/auth_notifier.dart';
 import 'package:marketinya/core/navigation/tab_navigation_screen_shell.dart';
@@ -19,6 +20,26 @@ final GoRouter router = GoRouter(
   initialLocation: GoRouterPaths.home.path,
   refreshListenable: _authNotifier, // Listen to auth changes
   redirect: _authGuard,
+
+  // Add error handler for non-existent routes
+  errorBuilder: (context, state) {
+    return Scaffold(
+      body: Center(
+        child: ErrorStateView(
+          title: 'Page Not Found',
+          message: 'The page "${state.uri.path}" does not exist.',
+          errorIcon: const Icon(
+            Icons.error_outline,
+            size: 64,
+            color: Colors.red,
+          ),
+          onRetry: () => context.go(GoRouterPaths.home.path),
+          actionLabel: 'Go to Home',
+        ),
+      ),
+    );
+  },
+
   routes: [
     // Public routes with tab navigation shell
     ShellRoute(
