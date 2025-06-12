@@ -41,7 +41,7 @@ class _TabButtonWrapperState extends State<TabButtonWrapper> {
                   ? Colors.green.withOpacity(0.1)
                   : Colors.transparent,
             borderRadius: BorderRadius.circular(
-              widget.isContactButton ? 16 : 8
+              widget.isContactButton ? 16 : 8,
             ),
             border: _isHovered
                 ? Border.all(

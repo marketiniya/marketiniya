@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:marketinya/core/enums/go_router_paths.dart';
 
 import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
@@ -84,7 +86,7 @@ class BusinessOverviewSectionMobile extends StatelessWidget {
     return CustomElevatedButton(
       text: 'Разгледайте услугите ни',
       fontSize: 20,
-      onPressed: () => Navigator.pushNamed(context, Routes.connectWithUs),
+      onPressed: () => context.go(GoRouterPaths.connectWithUs.path),
       borderColor: ColorUtils.lightGray,
       textColor: ColorUtils.lightGray,
       iconColor: ColorUtils.lightGray,
@@ -95,7 +97,7 @@ class BusinessOverviewSectionMobile extends StatelessWidget {
     return CustomElevatedButton(
       text: 'Безплатна консултация',
       fontSize: 20,
-      onPressed: () => Navigator.pushNamed(context, Routes.services),
+      onPressed: () => context.go(GoRouterPaths.services.path),
       borderColor: ColorUtils.lightGray,
       textColor: ColorUtils.charcoal,
       iconColor: ColorUtils.charcoal,

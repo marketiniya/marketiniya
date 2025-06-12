@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/core/utils/routes.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketinya/core/enums/go_router_paths.dart';
 
 class CheckOurServicesSection extends StatelessWidget {
   const CheckOurServicesSection({super.key});
@@ -15,7 +16,7 @@ class CheckOurServicesSection extends StatelessWidget {
           padding: const EdgeInsets.only(top: 16, bottom: 16),
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, Routes.services);
+              context.go(GoRouterPaths.services.path);
             },
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
