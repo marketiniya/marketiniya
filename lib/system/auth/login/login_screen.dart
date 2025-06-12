@@ -9,12 +9,12 @@ import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/marketiniya_colors.dart';
 import 'package:marketinya/core/enums/action_button_size.dart';
 import 'package:marketinya/core/enums/status.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketinya/core/enums/go_router_paths.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
-import 'package:marketinya/core/utils/routes.dart';
 import 'package:marketinya/core/utils/validators/field_validators.dart';
 import 'package:marketinya/system/auth/login/bloc/login_bloc.dart';
-import 'package:marketinya/system/screens/system_layout.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -187,7 +187,7 @@ class _LoginScreenState extends State<_LoginScreen> {
         }
 
         if (state.status == Status.success) {
-          context.pushReplacement(const SystemLayout(), routeName: Routes.systemHome);
+          context.go(GoRouterPaths.systemHome.path);
         }
       },
       builder: (context, state) {

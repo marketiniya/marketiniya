@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketinya/core/enums/go_router_paths.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
-import 'package:marketinya/core/utils/routes.dart';
 
 class BusinessOverviewSection extends StatelessWidget {
   const BusinessOverviewSection({super.key});
@@ -52,7 +53,7 @@ class BusinessOverviewSection extends StatelessWidget {
           width: buttonWidth,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, Routes.services);
+              context.go(GoRouterPaths.services.path);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorUtils.charcoal,
@@ -91,7 +92,7 @@ class BusinessOverviewSection extends StatelessWidget {
           width: buttonWidth,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, Routes.connectWithUs);
+              context.go(GoRouterPaths.connectWithUs.path);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorUtils.lightGray,

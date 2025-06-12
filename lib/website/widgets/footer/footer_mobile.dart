@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketinya/core/enums/go_router_paths.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
-import 'package:marketinya/core/utils/routes.dart';
 
 class FooterMobile extends StatelessWidget {
   const FooterMobile({super.key});
@@ -114,11 +115,11 @@ class FooterMobile extends StatelessWidget {
 
   Widget _buildNavigationLinks(BuildContext context) {
     final links = [
-      {'text': 'За нас', 'route': '/'},
-      {'text': 'Услуги', 'route': Routes.services},
-      {'text': 'Цени', 'route': '/'},
-      {'text': 'Блог', 'route': Routes.blog},
-      {'text': 'Екип', 'route': '/'},
+      {'text': 'За нас', 'route': GoRouterPaths.home.path},
+      {'text': 'Услуги', 'route': GoRouterPaths.services.path},
+      {'text': 'Цени', 'route': GoRouterPaths.home.path},
+      {'text': 'Блог', 'route': GoRouterPaths.blog.path},
+      {'text': 'Екип', 'route': GoRouterPaths.home.path},
     ];
 
     return Column(
@@ -136,7 +137,7 @@ class FooterMobile extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 16),
       child: TextButton(
         onPressed: () {
-          Navigator.pushNamed(context, route);
+          context.go(route);
         },
         child: Text(
           text,

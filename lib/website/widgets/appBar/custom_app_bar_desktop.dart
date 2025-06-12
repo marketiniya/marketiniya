@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketinya/core/enums/go_router_paths.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
-import 'package:marketinya/core/utils/routes.dart';
 import 'package:marketinya/website/widgets/appBar/widgets/marketiniya_logo.dart';
 import 'package:marketinya/website/widgets/appBar/widgets/nav_button.dart';
 
@@ -38,13 +39,13 @@ class CustomAppBarDesktop extends StatelessWidget implements PreferredSizeWidget
         NavButton(
           label: 'Начало',
           activeTab: activeTab,
-          onPressed: () => Navigator.pushNamed(context, Routes.home),
+          onPressed: () => context.go(GoRouterPaths.home.path),
           fontSize: _fontSize,
         ),
         NavButton(
           label: 'Блог',
           activeTab: activeTab,
-          onPressed: () => Navigator.pushNamed(context, Routes.blog),
+          onPressed: () => context.go(GoRouterPaths.blog.path),
           fontSize: _fontSize,
         ),
         const Padding(
@@ -54,7 +55,7 @@ class CustomAppBarDesktop extends StatelessWidget implements PreferredSizeWidget
         NavButton(
           label: 'Услуги',
           activeTab: activeTab,
-          onPressed: () => Navigator.pushNamed(context, Routes.services),
+          onPressed: () => context.go(GoRouterPaths.services.path),
           fontSize: _fontSize,
         ),
         _buildContactButton(context),
@@ -78,7 +79,7 @@ class CustomAppBarDesktop extends StatelessWidget implements PreferredSizeWidget
 
   Widget _buildElevatedButton(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => Navigator.pushNamed(context, Routes.connectWithUs),
+      onPressed: () => context.go(GoRouterPaths.connectWithUs.path),
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

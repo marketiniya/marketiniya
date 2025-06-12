@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:marketinya/core/enums/go_router_paths.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
-import 'package:marketinya/core/utils/routes.dart';
 
 class ExploreServicesSectionMobile extends StatelessWidget {
   const ExploreServicesSectionMobile({super.key});
@@ -19,7 +20,7 @@ class ExploreServicesSectionMobile extends StatelessWidget {
           width: double.infinity,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, Routes.connectWithUs);
+              context.go(GoRouterPaths.connectWithUs.path);
             },
             style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all(ColorUtils.charcoal),

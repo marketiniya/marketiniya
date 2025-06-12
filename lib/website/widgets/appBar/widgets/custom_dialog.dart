@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:marketinya/core/enums/go_router_paths.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
-import 'package:marketinya/core/utils/routes.dart';
 
 class CustomDialog extends StatelessWidget {
   const CustomDialog({super.key, required this.activeTab});
@@ -19,13 +20,13 @@ class CustomDialog extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 24),
-            _navButton(context, activeTab, 'Начало', Routes.home),
+            _navButton(context, activeTab, 'Начало', GoRouterPaths.home.path),
             const SizedBox(height: 24),
-            _navButton(context, activeTab, 'Блог', Routes.blog),
+            _navButton(context, activeTab, 'Блог', GoRouterPaths.blog.path),
             const SizedBox(height: 24),
-            _navButton(context, activeTab, 'Услуги', Routes.services),
+            _navButton(context, activeTab, 'Услуги', GoRouterPaths.services.path),
             const SizedBox(height: 56),
-            _limeGreenButton(context, 'Свържи се с нас', Routes.connectWithUs),
+            _limeGreenButton(context, 'Свържи се с нас', GoRouterPaths.connectWithUs.path),
             const Spacer(),
             _backButton(context),
           ],
@@ -39,7 +40,7 @@ class CustomDialog extends StatelessWidget {
       width: 328,
       height: 55,
       child: ElevatedButton(
-        onPressed: () => Navigator.pushNamed(context, routeName),
+        onPressed: () => context.go(routeName),
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(ColorUtils.charcoal),
           foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
@@ -82,7 +83,7 @@ class CustomDialog extends StatelessWidget {
       width: 328,
       height: 55,
       child: ElevatedButton(
-        onPressed: () => Navigator.pushNamed(context, routeName),
+        onPressed: () => context.go(routeName),
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(ColorUtils.limeGreen),
           foregroundColor: WidgetStateProperty.all(ColorUtils.charcoal),
