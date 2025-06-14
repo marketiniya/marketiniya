@@ -35,10 +35,10 @@ class _TabButtonWrapperState extends State<TabButtonWrapper> {
           decoration: BoxDecoration(
             color: widget.isContactButton
               ? _isHovered
-                  ? Theme.of(context).colorScheme.primary.withOpacity(0.2) // More transparent on hover
-                  : Theme.of(context).colorScheme.secondary.withOpacity(0.9) // Always primary color for contact button
+                  ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.2) // More transparent on hover
+                  : Theme.of(context).colorScheme.secondary.withValues(alpha:0.9) // Always primary color for contact button
               : _isHovered
-                  ? Colors.green.withOpacity(0.1)
+                  ? Colors.green.withValues(alpha:0.1)
                   : Colors.transparent,
             borderRadius: BorderRadius.circular(
               widget.isContactButton ? 16 : 8,
