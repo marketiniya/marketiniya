@@ -20,10 +20,9 @@ class _TabNavigationScreenState extends State<TabNavigationScreen>
   late TabController _tabController;
 
   static const double _fontSize = 20;
-  static const double _toolbarHeight =
-      90; 
-  static const double _logoHeight = 120; // Increased from 100
-  static const double _logoWidth = 150; // Increased from 126
+  static const double _toolbarHeight = 45;
+  static const double _logoHeight = 120;
+  static const double _logoWidth = 150;
   static const double _dividerHeight = 2;
 
   @override
@@ -40,7 +39,7 @@ class _TabNavigationScreenState extends State<TabNavigationScreen>
 
   void _updateTabIndex() {
     final location = GoRouterState.of(context).uri.path;
-    int index = 0;
+    var index = 0;
     if (location.startsWith(GoRouterPaths.home.path)) {
       index = 0;
     } else if (location.startsWith(GoRouterPaths.blog.path)) {
