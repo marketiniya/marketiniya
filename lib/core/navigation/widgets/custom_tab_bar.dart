@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:marketinya/core/enums/go_router_paths.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/navigation/widgets/contact_button.dart';
 import 'package:marketinya/core/navigation/widgets/responsive_tab_button.dart';
 import 'package:marketinya/website/widgets/appBar/widgets/marketiniya_logo.dart';
@@ -27,18 +27,16 @@ class CustomTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        // Calculate responsive values based on screen width
         final screenWidth = constraints.maxWidth;
         final isSmallScreen = screenWidth < 800;
         final isMediumScreen = screenWidth < 1200;
 
         final horizontalPadding = isSmallScreen
-            ? 40.0
+            ? 100.0
             : isMediumScreen
-                ? 80.0
-                : 120.0;
+                ? 180.0
+                : 240.0;
 
-        // Responsive logo size
         final responsiveLogoWidth = isSmallScreen
             ? logoWidth * 0.7
             : isMediumScreen
@@ -51,31 +49,27 @@ class CustomTabBar extends StatelessWidget {
                 ? logoHeight * 0.85
                 : logoHeight;
 
-        // Calculate container height to accommodate bigger buttons
-        final containerHeight = math.max(responsiveLogoHeight + 20,
-            100.0); // Minimum 100px for bigger buttons
+        final containerHeight = math.max(responsiveLogoHeight + 10, 75.0);
 
         return Container(
           height: containerHeight,
           padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            // Center align all elements
             children: [
-              // Left tabs (Начало, Блог)
               Expanded(
-                flex: isSmallScreen ? 3 : 2, // More space on small screens
+                flex: isSmallScreen ? 3 : 2,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Expanded(child: _buildTabButton(context, 'Начало', 0)),
+                    SizedBox(width: isSmallScreen ? 15 : 20), // 1/3 more space between first 2 buttons
                     Expanded(child: _buildTabButton(context, 'Блог', 1)),
                   ],
                 ),
               ),
-              // Logo in center - responsive width
               SizedBox(
-                width: responsiveLogoWidth + (isSmallScreen ? 20 : 40),
+                width: responsiveLogoWidth + (isSmallScreen ? 15 : 25),
                 child: Center(
                   child: MarketiniyaLogo(
                     width: responsiveLogoWidth,
@@ -83,22 +77,38 @@ class CustomTabBar extends StatelessWidget {
                   ),
                 ),
               ),
-              // Right tabs (Услуги, Contact button)
               Expanded(
                 flex: isSmallScreen ? 3 : 2,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Expanded(
+                    Flexible(
+                      flex: 1,
+                      child: Container(),
+                    ),
+                    Flexible(
+                      flex: 6,
                       child: ConstrainedBox(
-                        constraints: const BoxConstraints(
-                          minWidth: 100,
+                        constraints: BoxConstraints(
+                          minWidth: isSmallScreen ? 80 : 100,
+                          maxWidth: isSmallScreen ? 110 : 350,
                         ),
                         child: _buildTabButton(context, 'Услуги', 2),
                       ),
                     ),
-                    _buildContactButton(context),
-                    const SizedBox(width: 35),
+                    Flexible(
+                      flex: 1,
+                      child: Container(),
+                    ),
+                    Flexible(
+                      flex: 7,
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minWidth: isSmallScreen ? 130 : 160,
+                          maxWidth: isSmallScreen ? 170 : 220,
+                        ),
+                        child: _buildContactButton(context),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -121,13 +131,13 @@ class CustomTabBar extends StatelessWidget {
 
   String _getCurrentActiveTab(BuildContext context) {
     final location = GoRouterState.of(context).uri.path;
-    if (location.startsWith(GoRouterPaths.home.path)) {
+    if (location.startsWith(Routes.home.path)) {
       return 'Начало';
-    } else if (location.startsWith(GoRouterPaths.blog.path)) {
+    } else if (location.startsWith(Routes.blog.path)) {
       return 'Блог';
-    } else if (location.startsWith(GoRouterPaths.services.path)) {
+    } else if (location.startsWith(Routes.services.path)) {
       return 'Услуги';
-    } else if (location.startsWith(GoRouterPaths.connectWithUs.path)) {
+    } else if (location.startsWith(Routes.connectWithUs.path)) {
       return 'Свържи се с нас';
     }
     return 'Начало';

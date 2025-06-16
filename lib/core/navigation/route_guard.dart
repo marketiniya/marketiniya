@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/enums/authentication.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
-import 'package:marketinya/core/utils/routes.dart';
 import 'package:marketinya/system/auth/login/login_screen.dart';
 import 'package:marketinya/system/screens/system_layout.dart' as system;
 import 'package:marketinya/website/pages/connect_with_us/connect_with_us_screen.dart';
@@ -23,7 +22,8 @@ class RouteGuard {
     final authRepo = getIt<AuthenticationRepository>();
 
     // Handle routes that require authentication check
-    if (settings.name == Routes.login || settings.name == Routes.systemHome) {
+    if (settings.name == Routes.login.path ||
+        settings.name == Routes.systemHome.path) {
       return _buildAuthRoute(settings, authRepo);
     }
 
@@ -47,7 +47,7 @@ class RouteGuard {
         builder: (context, snapshot) {
           final isAuthenticated =
               snapshot.hasData && snapshot.data == Authentication.authenticated;
-          final isLoginRoute = settings.name == Routes.login;
+          final isLoginRoute = settings.name == Routes.login.path;
 
           // Redirect authenticated users away from login screen
           if (isAuthenticated && isLoginRoute) {
@@ -76,14 +76,19 @@ class RouteGuard {
   /// - Connect with Us
   /// - Website Home
   static Route<dynamic> _buildPublicRoute(RouteSettings settings) {
-    final screen = switch (settings.name) {
-      Routes.blog => const BlogScreen(),
-      Routes.services => const ServiceScreen(),
-      Routes.connectWithUs => const ConnectWithUsScreen(),
-      Routes.home => const website.HomeScreen(),
-      _ => const website
-          .HomeScreen(), // Default to website home for unknown routes
-    };
+    Widget screen;
+
+    if (settings.name == Routes.blog.path) {
+      screen = const BlogScreen();
+    } else if (settings.name == Routes.services.path) {
+      screen = const ServiceScreen();
+    } else if (settings.name == Routes.connectWithUs.path) {
+      screen = const ConnectWithUsScreen();
+    } else if (settings.name == Routes.home.path) {
+      screen = const website.HomeScreen();
+    } else {
+      screen = const website.HomeScreen();
+    }
 
     return MaterialPageRoute(
       settings: settings,
@@ -115,7 +120,7 @@ class _RedirectToSystemHomeState extends State<_RedirectToSystemHome> {
       if (mounted) {
         context.pushReplacement(
           const system.SystemLayout(),
-          routeName: Routes.systemHome,
+          routeName: Routes.systemHome.path,
         );
       }
     });
@@ -148,7 +153,7 @@ class _RedirectToLoginState extends State<_RedirectToLogin> {
       if (mounted) {
         context.pushReplacement(
           const LoginScreen(),
-          routeName: Routes.login,
+          routeName: Routes.login.path,
         );
       }
     });

@@ -23,9 +23,8 @@ class _ContactButtonState extends State<ContactButton> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        // Responsive sizing to match tab buttons
-        final isSmallScreen = constraints.maxWidth < 170;
-        final buttonHeight = isSmallScreen ? 65.0 : 55.0;
+        final isSmallScreen = constraints.maxWidth < 180;
+        final buttonHeight = isSmallScreen ? 45.0 : 52.0;
         final fontSize =
             isSmallScreen ? widget.fontSize * 0.9 : widget.fontSize;
         final horizontalMargin = isSmallScreen ? 6.0 : 12.0;
@@ -37,13 +36,15 @@ class _ContactButtonState extends State<ContactButton> {
             onTap: widget.onPressed,
             child: ConstrainedBox(
               constraints: BoxConstraints(
-                maxWidth: isSmallScreen ? 180 : 280,
+                maxWidth: isSmallScreen ? 200 : 350,
               ),
               child: Container(
                 height: buttonHeight,
-                margin: EdgeInsets.symmetric(
-                  horizontal: horizontalMargin,
-                  vertical: 5,
+                margin: EdgeInsets.only(
+                  left: horizontalMargin,
+                  right: horizontalMargin,
+                  top: 8,
+                  bottom: 0,
                 ),
                 decoration: BoxDecoration(
                   color: _isHovered
@@ -53,7 +54,7 @@ class _ContactButtonState extends State<ContactButton> {
                           .withValues(alpha: 0.8)
                       : Theme.of(context)
                           .colorScheme
-                          .secondary, // Always primary color
+                          .secondary,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Center(

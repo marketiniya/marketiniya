@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:marketinya/core/enums/go_router_paths.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 
 class ExploreServicesSection extends StatelessWidget {
@@ -18,7 +18,7 @@ class ExploreServicesSection extends StatelessWidget {
           height: 55,
           child: ElevatedButton(
             onPressed: () {
-              context.go(GoRouterPaths.services.path);
+              context.go(Routes.services.path);
             },
             style: ElevatedButton.styleFrom(
               overlayColor: ColorUtils.lightGray.withValues(alpha: 0.3),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:marketinya/core/enums/go_router_paths.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 
 class ServiceCard2 extends StatefulWidget {
@@ -194,7 +194,7 @@ class _ServiceCard1State extends State<ServiceCard2> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        context.go(GoRouterPaths.connectWithUs.path);
+                        context.go(Routes.connectWithUs.path);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.lightGreen,

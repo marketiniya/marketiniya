@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
 
 class BottomDividerAndLabel extends StatelessWidget {
@@ -20,7 +21,7 @@ class BottomDividerAndLabel extends StatelessWidget {
     final sideWidth = availableWidth / 2;
 
     return Padding(
-      padding: const EdgeInsets.only(top: 2),
+      padding: const EdgeInsets.only(top: 4), // Reduced padding to bring divider closer to logo
       child: Column(
         children: [
           Row(
@@ -49,9 +50,9 @@ class BottomDividerAndLabel extends StatelessWidget {
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 6),
-            child: Text(
+           Padding(
+            padding: const EdgeInsets.only(top: 2),
+            child: const Text(
               'По-добър маркетинг – по-добри резултати!',
               style: TextStyle(
                 fontSize: 28,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:marketinya/core/enums/go_router_paths.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
 import 'package:marketinya/website/widgets/appBar/widgets/marketiniya_logo.dart';
 import 'package:marketinya/website/widgets/appBar/widgets/nav_button.dart';
@@ -11,9 +11,9 @@ class CustomAppBarDesktop extends StatelessWidget implements PreferredSizeWidget
 
   final String activeTab;
   static const double _fontSize = 20;
-  static const double _toolbarHeight = 180;
-  static const double _logoHeight = 100;
-  static const double _logoWidth = 126;
+  static const double _toolbarHeight = 140;
+  static const double _logoHeight = 90;
+  static const double _logoWidth = 95;
   static const double _dividerHeight = 2;
 
   @override
@@ -39,13 +39,13 @@ class CustomAppBarDesktop extends StatelessWidget implements PreferredSizeWidget
         NavButton(
           label: 'Начало',
           activeTab: activeTab,
-          onPressed: () => context.go(GoRouterPaths.home.path),
+          onPressed: () => context.go(Routes.home.path),
           fontSize: _fontSize,
         ),
         NavButton(
           label: 'Блог',
           activeTab: activeTab,
-          onPressed: () => context.go(GoRouterPaths.blog.path),
+          onPressed: () => context.go(Routes.blog.path),
           fontSize: _fontSize,
         ),
         const Padding(
@@ -55,7 +55,7 @@ class CustomAppBarDesktop extends StatelessWidget implements PreferredSizeWidget
         NavButton(
           label: 'Услуги',
           activeTab: activeTab,
-          onPressed: () => context.go(GoRouterPaths.services.path),
+          onPressed: () => context.go(Routes.services.path),
           fontSize: _fontSize,
         ),
         _buildContactButton(context),
@@ -79,7 +79,7 @@ class CustomAppBarDesktop extends StatelessWidget implements PreferredSizeWidget
 
   Widget _buildElevatedButton(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => context.go(GoRouterPaths.connectWithUs.path),
+      onPressed: () => context.go(Routes.connectWithUs.path),
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

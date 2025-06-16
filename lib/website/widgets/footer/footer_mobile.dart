@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:marketinya/core/enums/go_router_paths.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
 
@@ -115,11 +115,11 @@ class FooterMobile extends StatelessWidget {
 
   Widget _buildNavigationLinks(BuildContext context) {
     final links = [
-      {'text': 'За нас', 'route': GoRouterPaths.home.path},
-      {'text': 'Услуги', 'route': GoRouterPaths.services.path},
-      {'text': 'Цени', 'route': GoRouterPaths.home.path},
-      {'text': 'Блог', 'route': GoRouterPaths.blog.path},
-      {'text': 'Екип', 'route': GoRouterPaths.home.path},
+      {'text': 'За нас', 'route': Routes.home.path},
+      {'text': 'Услуги', 'route': Routes.services.path},
+      {'text': 'Цени', 'route': Routes.home.path},
+      {'text': 'Блог', 'route': Routes.blog.path},
+      {'text': 'Екип', 'route': Routes.home.path},
     ];
 
     return Column(

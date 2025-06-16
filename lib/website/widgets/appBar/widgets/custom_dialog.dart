@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:marketinya/core/enums/go_router_paths.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 
 class CustomDialog extends StatelessWidget {
@@ -20,13 +20,13 @@ class CustomDialog extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 24),
-            _navButton(context, activeTab, 'Начало', GoRouterPaths.home.path),
+            _navButton(context, activeTab, 'Начало', Routes.home.path),
             const SizedBox(height: 24),
-            _navButton(context, activeTab, 'Блог', GoRouterPaths.blog.path),
+            _navButton(context, activeTab, 'Блог', Routes.blog.path),
             const SizedBox(height: 24),
-            _navButton(context, activeTab, 'Услуги', GoRouterPaths.services.path),
+            _navButton(context, activeTab, 'Услуги', Routes.services.path),
             const SizedBox(height: 56),
-            _limeGreenButton(context, 'Свържи се с нас', GoRouterPaths.connectWithUs.path),
+            _limeGreenButton(context, 'Свържи се с нас', Routes.connectWithUs.path),
             const Spacer(),
             _backButton(context),
           ],

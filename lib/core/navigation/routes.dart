@@ -1,4 +1,4 @@
-enum GoRouterPaths {
+enum Routes {
   home('/home'),
   blog('/blog'),
   services('/services'),
@@ -6,7 +6,7 @@ enum GoRouterPaths {
   login('/login'),
   systemHome('/system/clients');
 
-  const GoRouterPaths(this.path);
+  const Routes(this.path);
   final String path;
 
   @override

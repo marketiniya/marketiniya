@@ -7,10 +7,10 @@ import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
-import 'package:marketinya/core/utils/routes.dart';
 import 'package:marketinya/system/auth/bloc/authentication_bloc.dart';
 import 'package:marketinya/system/auth/bloc/authentication_state.dart';
 import 'package:marketinya/system/auth/login/login_screen.dart';
@@ -67,8 +67,11 @@ class TopSection extends StatelessWidget {
                   title: 'Изход',
                   overlayButtonColor: AppColors.lightBeige,
                   onPressed: () {
-                    context.pushReplacement(const LoginScreen(), routeName: Routes.login);
-                    return context.read<AuthenticationBloc>().add(const OnLogout());
+                    context.pushReplacement(const LoginScreen(),
+                        routeName: Routes.login.path,);
+                    return context
+                        .read<AuthenticationBloc>()
+                        .add(const OnLogout());
                   },
                   icon: const Icon(
                     Icons.logout,

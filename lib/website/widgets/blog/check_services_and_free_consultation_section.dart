@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
-import 'package:marketinya/core/enums/go_router_paths.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 
 class CheckServicesAndFreeConsultationSection extends StatelessWidget {
@@ -22,7 +22,7 @@ class CheckServicesAndFreeConsultationSection extends StatelessWidget {
               height: 55,
               child: ElevatedButton(
                 onPressed: () {
-                  context.go(GoRouterPaths.services.path);
+                  context.go(Routes.services.path);
                 },
                 style: ElevatedButton.styleFrom(
                   shadowColor: Colors.black.withValues(alpha: 0.2),
@@ -62,7 +62,7 @@ class CheckServicesAndFreeConsultationSection extends StatelessWidget {
               height: 55,
               child: ElevatedButton(
                 onPressed: () {
-                  context.go(GoRouterPaths.connectWithUs.path);
+                  context.go(Routes.connectWithUs.path);
                 },
                 style: ElevatedButton.styleFrom(
                   overlayColor: ColorUtils.lightGray.withValues(alpha: 0.3),

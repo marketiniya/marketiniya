@@ -28,10 +28,9 @@ class _ResponsiveTabButtonState extends State<ResponsiveTabButton> {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        // Calculate responsive margins based on available width
         final availableWidth = constraints.maxWidth;
-        final maxMargin = availableWidth * 0.15; // 15% of available width
-        final margin = maxMargin.clamp(10.0, 50.0); // Between 10px and 50px
+        final maxMargin = availableWidth * 0.08;
+        final margin = maxMargin.clamp(5.0, 25.0);
 
         return MouseRegion(
           onEnter: (_) => setState(() => isHovered = true),
@@ -44,23 +43,20 @@ class _ResponsiveTabButtonState extends State<ResponsiveTabButton> {
               highlightColor: Colors.transparent,
               child: Container(
                 width: double.infinity,
-                height: 80, // Bigger box height
-                padding: const EdgeInsets.symmetric(
-                    vertical: 12, horizontal: 8), // More padding
+                height: 65,
+                padding: const EdgeInsets.only(
+                    top: 18, bottom: 3, left: 10, right: 10,),
                 child: Row(
                   children: [
-                    // Left hover line - positioned at the start with more height
                     AnimatedContainer(
                       duration: const Duration(milliseconds: 200),
-                      width: isHovered ? 2 : 0, // Thicker line
-                      height: 60, // Bigger border height
+                      width: isHovered ? 2 : 0,
+                      height: 40,
                       color: const Color.fromARGB(55, 158, 158, 158),
                     ),
-                    // Text centered with normal margins
                     Expanded(
                       child: Container(
                         margin: EdgeInsets.symmetric(horizontal: margin),
-                        // Normal margins
                         child: FittedBox(
                           fit: BoxFit.scaleDown,
                           child: Text(
@@ -77,8 +73,8 @@ class _ResponsiveTabButtonState extends State<ResponsiveTabButton> {
                     ),
                     AnimatedContainer(
                       duration: const Duration(milliseconds: 200),
-                      width: isHovered ? 2 : 0, // Thicker line
-                      height: 60, // Bigger border height
+                      width: isHovered ? 2 : 0,
+                      height: 40,
                       color: const Color.fromARGB(55, 158, 158, 158),
                     ),
                   ],

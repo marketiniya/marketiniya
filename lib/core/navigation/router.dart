@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/design_system/molecules/error_state/error_state_view.dart';
-import 'package:marketinya/core/enums/go_router_paths.dart';
 import 'package:marketinya/core/navigation/auth_notifier.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/navigation/tab_navigation_screen_shell.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:marketinya/system/auth/login/login_screen.dart';
@@ -13,15 +13,12 @@ import 'package:marketinya/website/pages/home/home_screen.dart';
 import 'package:marketinya/website/pages/services/service_screen.dart';
 import 'package:marketinya/website/screens/blog/blog_screen.dart';
 
-// Create an AuthNotifier to listen to authentication changes
 final _authNotifier = AuthNotifier(getIt<AuthenticationRepository>());
 
 final GoRouter router = GoRouter(
-  initialLocation: GoRouterPaths.home.path,
-  refreshListenable: _authNotifier, // Listen to auth changes
+  initialLocation: Routes.home.path,
+  refreshListenable: _authNotifier,
   redirect: _authGuard,
-
-  // Add error handler for non-existent routes
   errorBuilder: (context, state) {
     return Scaffold(
       body: Center(
@@ -33,51 +30,47 @@ final GoRouter router = GoRouter(
             size: 64,
             color: Colors.red,
           ),
-          onRetry: () => context.go(GoRouterPaths.home.path),
+          onRetry: () => context.go(Routes.home.path),
           actionLabel: 'Go to Home',
         ),
       ),
     );
   },
-
   routes: [
-    // Public routes with tab navigation shell
     ShellRoute(
       builder: (context, state, child) {
-        return TabNavigationScreen(child: child);
+        return TabNavigationScreenShell(child: child);
       },
       routes: [
         GoRoute(
-          path: GoRouterPaths.home.path,
+          path: Routes.home.path,
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: HomeScreen()),
         ),
         GoRoute(
-          path: GoRouterPaths.blog.path,
+          path: Routes.blog.path,
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: BlogScreen()),
         ),
         GoRoute(
-          path: GoRouterPaths.services.path,
+          path: Routes.services.path,
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: ServiceScreen()),
         ),
         GoRoute(
-          path: GoRouterPaths.connectWithUs.path,
+          path: Routes.connectWithUs.path,
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: ConnectWithUsScreen()),
         ),
       ],
     ),
-    // Authentication routes (no shell)
     GoRoute(
-      path: GoRouterPaths.login.path,
+      path: Routes.login.path,
       pageBuilder: (context, state) =>
           const NoTransitionPage(child: LoginScreen()),
     ),
-    // System routes (no shell)
     GoRoute(
-      path: GoRouterPaths.systemHome.path,
+      path: Routes.systemHome.path,
       pageBuilder: (context, state) =>
           const NoTransitionPage(child: SystemLayout()),
     ),
@@ -86,26 +79,22 @@ final GoRouter router = GoRouter(
 
 /// Authentication guard for protected routes
 String? _authGuard(BuildContext context, GoRouterState state) {
-  final isLoginRoute = state.uri.path == GoRouterPaths.login.path;
-  final isSystemRoute = state.uri.path.startsWith(GoRouterPaths.systemHome.path);
+  final isLoginRoute = state.uri.path == Routes.login.path;
+  final isSystemRoute = state.uri.path.startsWith(Routes.systemHome.path);
 
-  // Only check authentication for login and system routes
   if (!isLoginRoute && !isSystemRoute) {
     return null; // Public routes don't need authentication
   }
 
-  // Get current authentication status from the notifier
   final isAuthenticated = _authNotifier.isAuthenticated;
 
-  // Redirect authenticated users away from login
   if (isAuthenticated && isLoginRoute) {
-    return GoRouterPaths.systemHome.path;
+    return Routes.systemHome.path;
   }
 
-  // Redirect unauthenticated users away from system routes
   if (!isAuthenticated && isSystemRoute) {
-    return GoRouterPaths.login.path;
+    return Routes.login.path;
   }
 
-  return null; // No redirection needed
+  return null;
 }
