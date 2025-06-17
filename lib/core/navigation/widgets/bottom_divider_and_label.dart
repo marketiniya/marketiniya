@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:marketinya/core/design_system/atoms/dimensions.dart';
-import 'package:marketinya/core/utils/image_utils.dart';
+import 'package:marketinya/core/design_system/atoms/spaces.dart';
+import 'package:marketinya/core/navigation/widgets/centered_logo_section.dart';
+import 'package:marketinya/core/navigation/widgets/divider_line.dart';
 
 class BottomDividerAndLabel extends StatelessWidget {
   const BottomDividerAndLabel({
@@ -16,42 +17,23 @@ class BottomDividerAndLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final logoAreaWidth = logoWidth + 40;
+    final logoAreaWidth = logoWidth + lg;
     final availableWidth = screenWidth - logoAreaWidth;
-    final sideWidth = availableWidth / 2;
+    final sideWidth = availableWidth / nano;
 
     return Padding(
-      padding: const EdgeInsets.only(top: 4), // Reduced padding to bring divider closer to logo
+      padding: dimen.top.nano,
       child: Column(
         children: [
           Row(
             children: [
-              // Left divider line
-              Container(
-                width: sideWidth,
-                height: dividerHeight,
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-              // Center area with logo space and label
-              SizedBox(
-                width: logoAreaWidth,
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: SvgPicture.asset(ImageUtils.marketinyaLabelPath),
-                  ),
-                ),
-              ),
-              // Right divider line
-              Container(
-                width: sideWidth,
-                height: dividerHeight,
-                color: Theme.of(context).colorScheme.secondary,
-              ),
+              DividerLine(width: sideWidth, height: dividerHeight),
+              CenteredLogoSection(width: logoAreaWidth),
+              DividerLine(width: sideWidth, height: dividerHeight),
             ],
           ),
            Padding(
-            padding: const EdgeInsets.only(top: 2),
+            padding: dimen.top.nano,
             child: const Text(
               'По-добър маркетинг – по-добри резултати!',
               style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/navigation/widgets/animated_border.dart';
 
 class ResponsiveTabButton extends StatefulWidget {
   const ResponsiveTabButton({
@@ -48,12 +49,7 @@ class _ResponsiveTabButtonState extends State<ResponsiveTabButton> {
                     top: 18, bottom: 3, left: 10, right: 10,),
                 child: Row(
                   children: [
-                    AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      width: isHovered ? 2 : 0,
-                      height: 40,
-                      color: const Color.fromARGB(55, 158, 158, 158),
-                    ),
+                    AnimatedBorder(isVisible: isHovered, height: 40),
                     Expanded(
                       child: Container(
                         margin: EdgeInsets.symmetric(horizontal: margin),
@@ -71,12 +67,7 @@ class _ResponsiveTabButtonState extends State<ResponsiveTabButton> {
                         ),
                       ),
                     ),
-                    AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      width: isHovered ? 2 : 0,
-                      height: 40,
-                      color: const Color.fromARGB(55, 158, 158, 158),
-                    ),
+                    AnimatedBorder(isVisible: isHovered, height: 40),
                   ],
                 ),
               ),

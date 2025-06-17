@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketinya/core/config/service_locator.dart';
-import 'package:marketinya/core/design_system/molecules/error_state/error_state_view.dart';
 import 'package:marketinya/core/navigation/auth_notifier.dart';
 import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/navigation/tab_navigation_screen_shell.dart';
@@ -20,21 +19,10 @@ final GoRouter router = GoRouter(
   refreshListenable: _authNotifier,
   redirect: _authGuard,
   errorBuilder: (context, state) {
-    return Scaffold(
-      body: Center(
-        child: ErrorStateView(
-          title: 'Page Not Found',
-          message: 'The page "${state.uri.path}" does not exist.',
-          errorIcon: const Icon(
-            Icons.error_outline,
-            size: 64,
-            color: Colors.red,
-          ),
-          onRetry: () => context.go(Routes.home.path),
-          actionLabel: 'Go to Home',
-        ),
-      ),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.go(Routes.home.path);
+    });
+    return const SizedBox.shrink();
   },
   routes: [
     ShellRoute(
@@ -83,7 +71,7 @@ String? _authGuard(BuildContext context, GoRouterState state) {
   final isSystemRoute = state.uri.path.startsWith(Routes.systemHome.path);
 
   if (!isLoginRoute && !isSystemRoute) {
-    return null; // Public routes don't need authentication
+    return null;
   }
 
   final isAuthenticated = _authNotifier.isAuthenticated;
