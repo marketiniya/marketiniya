@@ -27,8 +27,8 @@ class FileItem extends StatelessWidget {
                   child: FileTypeIcons.getIcon(file.fileExtension, size: lg),
                 ),
                 Positioned(
-                  top: 0,
-                  right: 0,
+                  top: none,
+                  right: none,
                   child: IconButton(
                     onPressed: () => _removeFile(context),
                     icon: const Icon(

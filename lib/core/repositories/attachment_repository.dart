@@ -57,7 +57,10 @@ class AttachmentRepository {
     String? tempUrl,
   }) async {
     try {
-      final fileExtension = _getFileExtension(fileName);
+      final getFileName = await generateFileNameWithIncrementPrefix(
+          clientId, fileType, fileName);
+
+      final fileExtension = _getFileExtension(getFileName);
       final fileId = UuidGenerator.instance.v1();
       final storagePath = FirebaseStorageService.generateStoragePath(
         clientId: clientId,
@@ -74,7 +77,7 @@ class AttachmentRepository {
 
       final uploadedFile = UploadedFile(
         id: fileId,
-        name: fileName,
+        name: getFileName,
         size: fileSize,
         mimeType: mimeType,
         lastModified: lastModified,
@@ -123,8 +126,6 @@ class AttachmentRepository {
             .doc(fileId)
             .delete();
       }
-
-      Log.info('File removed successfully: $fileId');
     } catch (e) {
       Log.error('Error removing file: $e');
       rethrow;
@@ -142,6 +143,43 @@ class AttachmentRepository {
         .collection(_attachmentsSubcollection)
         .doc(file.id)
         .set(file.toJson());
+  }
+
+  Future<String> generateFileNameWithIncrementPrefix(
+    String clientId,
+    FileType fileType,
+    String originalName,
+  ) async {
+    if (!await _documentExists(clientId, fileType, originalName)) {
+      return originalName;
+    }
+
+    var counter = 1;
+    String newName;
+
+    do {
+      newName = '($counter)$originalName';
+      counter++;
+    } while (await _documentExists(clientId, fileType, newName));
+
+    return newName;
+  }
+
+  Future<bool> _documentExists(
+    String clientId,
+    FileType fileType,
+    String fileName,
+  ) async {
+    final querySnapshot = await _firestoreService
+        .getCollection(_clientsCollection)
+        .doc(clientId)
+        .collection(_attachmentsSubcollection)
+        .where(_fileTypeField, isEqualTo: fileType.value)
+        .where('name', isEqualTo: fileName)
+        .limit(1)
+        .get();
+
+    return querySnapshot.docs.isNotEmpty;
   }
 
   /// Helper method to get file extension
