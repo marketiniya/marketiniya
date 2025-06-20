@@ -87,13 +87,16 @@ class FileSectionContent extends StatelessWidget {
     switch (supportedFileType) {
       case FileType.image:
         pickerType = picker.FileType.image;
-        allowedExtensions = null;
+        allowedExtensions = config.allowedExtensions;
         break;
       case FileType.video:
         pickerType = picker.FileType.video;
-        allowedExtensions = null;
+        allowedExtensions = config.allowedExtensions;
         break;
       case FileType.pdf:
+        pickerType = picker.FileType.custom;
+        allowedExtensions = config.allowedExtensions;
+        break;
       case FileType.txt:
         pickerType = picker.FileType.custom;
         allowedExtensions = config.allowedExtensions;
@@ -105,7 +108,7 @@ class FileSectionContent extends StatelessWidget {
       type: pickerType,
       allowedExtensions: allowedExtensions,
       allowMultiple: true,
-      withData: false, // We don't need the bytes for web
+      withData: true,
       withReadStream: false,
     );
 

@@ -6,18 +6,18 @@ import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketinya/core/config/log.dart';
 import 'package:marketinya/core/enums/status.dart';
+import 'package:marketinya/core/repositories/attachment_repository.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/bloc/file_upload_event.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/bloc/file_upload_state.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/enums/file_type.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/models/uploaded_file.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/services/file_validation_service.dart';
-import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/services/hardcoded_data_service.dart';
 
-@Injectable()
 class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
   FileUploadBloc(
+    this._attachmentRepository,
     this._fileValidationService,
-    this._hardcodedDataService,
+    @factoryParam this.clientId,
   ) : super(const FileUploadState()) {
     on<FileUploadEvent>((event, emit) async {
       await event.when(
@@ -35,8 +35,9 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     add(const FileUploadEvent.loadAllSections());
   }
 
+  final AttachmentRepository _attachmentRepository;
   final FileValidationService _fileValidationService;
-  final HardcodedDataService _hardcodedDataService;
+  final String clientId;
 
   /// Load all sections when tab opens
   Future<void> _onLoadAllSections(
@@ -66,12 +67,27 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     FileType fileType,
     Emitter<FileUploadState> emit,
   ) async {
-    emit(_updateSectionStatus(state, fileType, Status.loading));
+    try {
+      emit(_updateSectionStatus(state, fileType, Status.loading));
 
-    final files = await _hardcodedDataService.getFilesForSection(fileType.value);
+      final files = await _attachmentRepository.loadAttachments(
+        clientId: clientId,
+        fileType: fileType,
+      );
 
-    // Update section with success
-    emit(_updateSectionData(state, fileType, Status.success, files, null));
+      emit(_updateSectionData(state, fileType, Status.success, files, null));
+    } catch (e) {
+      Log.error('Error loading files for ${fileType.value}: $e');
+      emit(
+        _updateSectionData(
+          state,
+          fileType,
+          Status.error,
+          [],
+          'Failed to load files: $e',
+        ),
+      );
+    }
   }
 
   /// Handle file dropped in specific section
@@ -81,16 +97,18 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     DropzoneViewController controller,
     Emitter<FileUploadState> emit,
   ) async {
-    // Clear drag state
     emit(
-      state.copyWith(
-        isDragOver: false,
-        currentDragSection: null,
+      _updateSectionStatus(
+        state.copyWith(
+          isDragOver: false,
+          currentDragSection: null,
+        ),
+        fileType,
+        Status.loading,
       ),
     );
 
     try {
-      // Validate file for section
       final config = FileUploadConfigExtension.forFile(fileType);
       final validationError = await _fileValidationService.validateFile(
         file,
@@ -99,40 +117,27 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
       );
 
       if (validationError != null) {
-        // Update section with error
-        emit(
-          _updateSectionData(
-            state,
-            fileType,
-            Status.error,
-            state.getSectionFiles(fileType),
-            validationError.message,
-          ),
-        );
-        return;
+        throw Exception(validationError.message);
       }
 
-      // Extract file information
       final fileName = await controller.getFilename(file);
       final fileSize = await controller.getFileSize(file);
       final mimeType = await controller.getFileMIME(file);
       final lastModified = await controller.getFileLastModified(file);
       final tempUrl = await controller.createFileUrl(file);
+      final fileData = await controller.getFileData(file);
 
-      // Create uploaded file
-      final uploadedFile = UploadedFile(
-        id: '${fileName}_${DateTime.now().millisecondsSinceEpoch}',
-        name: fileName,
-        size: fileSize,
+      final uploadedFile = await _attachmentRepository.uploadFile(
+        clientId: clientId,
+        fileType: fileType,
+        fileName: fileName,
+        fileSize: fileSize,
         mimeType: mimeType,
         lastModified: lastModified,
-        fileExtension: _getFileExtension(fileName),
-        fileType: fileType,
+        fileData: fileData,
         tempUrl: tempUrl,
-        fileInterface: file,
       );
 
-      // Add file to section
       final currentFiles = state.getSectionFiles(fileType);
       final updatedFiles = [...currentFiles, uploadedFile];
 
@@ -146,14 +151,14 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
         ),
       );
     } catch (e) {
-      Log.error('Error processing dropped file: $e');
+      Log.error('Error uploading dropped file: $e');
       emit(
         _updateSectionData(
           state,
           fileType,
           Status.error,
           state.getSectionFiles(fileType),
-          'Failed to upload file: $e',
+          e.toString(),
         ),
       );
     }
@@ -165,60 +170,51 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     picker.PlatformFile file,
     Emitter<FileUploadState> emit,
   ) async {
-    final config = FileUploadConfigExtension.forFile(fileType);
+    try {
+      emit(_updateSectionStatus(state, fileType, Status.loading));
 
-    if (file.size > config.maxFileSize) {
+      final config = FileUploadConfigExtension.forFile(fileType);
+      _validateFileSize(file, config);
+
+      final fileBytes = file.bytes;
+      if (fileBytes == null) {
+        throw Exception('Failed to read file data');
+      }
+
+      final uploadedFile = await _attachmentRepository.uploadFile(
+        clientId: clientId,
+        fileType: fileType,
+        fileName: file.name,
+        fileSize: file.size,
+        mimeType: _getMimeTypeFromExtension(_getFileExtension(file.name)),
+        lastModified: DateTime.now(),
+        fileData: fileBytes,
+      );
+
+      final currentFiles = state.getSectionFiles(fileType);
+      final updatedFiles = [...currentFiles, uploadedFile];
+
+      emit(
+        _updateSectionData(
+          state,
+          fileType,
+          Status.success,
+          updatedFiles,
+          null,
+        ),
+      );
+    } catch (e) {
+      Log.error('Error uploading file: $e');
       emit(
         _updateSectionData(
           state,
           fileType,
           Status.error,
           state.getSectionFiles(fileType),
-          'File size exceeds maximum allowed size of ${config.maxFileSize ~/ (1024 * 1024)}MB',
+          e.toString(),
         ),
       );
-      return;
     }
-
-    final fileExtension = _getFileExtension(file.name);
-    if (!config.allowedExtensions.contains(fileExtension)) {
-      emit(
-        _updateSectionData(
-          state,
-          fileType,
-          Status.error,
-          state.getSectionFiles(fileType),
-          'File type not allowed. Allowed types: ${config.allowedExtensions.join(', ')}',
-        ),
-      );
-      return;
-    }
-
-    final uploadedFile = UploadedFile(
-      id: '${file.name}_${DateTime.now().millisecondsSinceEpoch}',
-      name: file.name,
-      size: file.size,
-      mimeType: _getMimeTypeFromExtension(fileExtension),
-      lastModified: DateTime.now(),
-      fileExtension: fileExtension,
-      fileType: fileType,
-      tempUrl: file.path,
-      platformFile: file, // Store the PlatformFile for later use
-    );
-
-    // Add file to section
-    final currentFiles = state.getSectionFiles(fileType);
-    final updatedFiles = [...currentFiles, uploadedFile];
-
-    emit(
-      _updateSectionData(
-        state,
-        fileType,
-        Status.success,
-        updatedFiles,
-        null,
-      ),
-    );
   }
 
   /// Handle drag enter for specific section
@@ -253,16 +249,16 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
     String fileId,
     Emitter<FileUploadState> emit,
   ) async {
+    emit(_updateSectionStatus(state, fileType, Status.loading));
+
     try {
+      await _attachmentRepository.removeFile(
+        clientId: clientId,
+        fileType: fileType,
+        fileId: fileId,
+      );
+
       final currentFiles = state.getSectionFiles(fileType);
-      final fileToRemove = currentFiles.firstWhere((file) => file.id == fileId);
-
-      // Release temporary URL if it exists
-      if (fileToRemove.tempUrl != null) {
-        // Note: We would need the controller here, but for now we'll skip cleanup
-        // This should be handled by the widget's dispose method
-      }
-
       final updatedFiles =
           currentFiles.where((file) => file.id != fileId).toList();
 
@@ -283,7 +279,7 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
           fileType,
           Status.error,
           state.getSectionFiles(fileType),
-          'Failed to remove file: $e',
+          e.toString(),
         ),
       );
     }
@@ -362,6 +358,22 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
   /// Public method to reload a specific file type (for retry operations)
   void reloadFileType(FileType fileType) {
     add(FileUploadEvent.loadSection(fileType));
+  }
+
+  /// Validate file against configuration
+  void _validateFileSize(picker.PlatformFile file, FileUploadConfig config) {
+    if (file.size > config.maxFileSize) {
+      throw Exception(
+        'File size exceeds maximum allowed size of ${config.maxFileSize ~/ (1024 * 1024)}MB',
+      );
+    }
+
+    final fileExtension = _getFileExtension(file.name);
+    if (!config.allowedExtensions.contains(fileExtension)) {
+      throw Exception(
+        'File type not allowed. Allowed types: ${config.allowedExtensions.join(', ')}',
+      );
+    }
   }
 
   /// Helper method to get file extension

@@ -17,10 +17,8 @@ class UploadedFile with _$UploadedFile {
     required String fileExtension,
     required FileType fileType,
     String? tempUrl,
-    @JsonKey(includeFromJson: false, includeToJson: false)
-    DropzoneFileInterface? fileInterface,
-    @JsonKey(includeFromJson: false, includeToJson: false)
-    picker.PlatformFile? platformFile,
+    String? downloadUrl, // Firebase Storage download URL
+    String? storagePath, // Firebase Storage path for deletion
   }) = _UploadedFile;
 
   factory UploadedFile.fromJson(Map<String, dynamic> json) =>
