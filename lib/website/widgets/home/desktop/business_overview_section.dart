@@ -17,13 +17,13 @@ class BusinessOverviewSection extends StatelessWidget {
             top: 110,
             child: Image.asset(ImageUtils.socialMediaBackgroundPath),
           ),
-          SingleChildScrollView(
+          const SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _businessPromotionColumn(context),
-                _pcImageStack(),
+                BusinessPromotionColumn(),
+                BusinessPcImageStack(),
               ],
             ),
           ),
@@ -32,14 +32,70 @@ class BusinessOverviewSection extends StatelessWidget {
     );
   }
 
-  Column _businessPromotionColumn(BuildContext context) {
+}
+
+class BusinessPcImageStack extends StatelessWidget {
+  const BusinessPcImageStack({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Positioned(
+          top: 380,
+          left: 50,
+          child: Image.asset(ImageUtils.laptopShadowImage),
+        ),
+        Image.asset(
+          ImageUtils.laptopImage,
+          fit: BoxFit.cover,
+        ),
+        Positioned(
+          top: 96,
+          left: 243,
+          child: Image.asset(
+            ImageUtils.desktopImage,
+            width: 457,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class BusinessTransformationHeader extends StatelessWidget {
+  const BusinessTransformationHeader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.only(top: 124, bottom: 32),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          "Трансформирайте вашия бизнес",
+          style: TextStyle(
+            fontSize: 36,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BusinessPromotionColumn extends StatelessWidget {
+  const BusinessPromotionColumn({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     const buttonWidth = 318.0;
     const buttonHeight = 60.0;
-
-    return Column(
+      return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _businessTransformationHeader(),
+        const BusinessTransformationHeader(),
         const Text(
           "Увеличете продажбите с\nпомощта на правилно\nпозиционирани\nреĸламни ĸампании.",
           style: TextStyle(
@@ -67,8 +123,7 @@ class BusinessOverviewSection extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               splashFactory: InkRipple.splashFactory,
               overlayColor: ColorUtils.lightGray.withValues(alpha: 0.3),
-              shadowColor:
-              Colors.black.withValues(alpha: 0.2),
+              shadowColor: Colors.black.withValues(alpha: 0.2),
             ),
             child: const Row(
               children: [
@@ -121,44 +176,6 @@ class BusinessOverviewSection extends StatelessWidget {
         const Text(
           'Какво можем да предложим?',
           style: TextStyle(fontSize: 36, fontWeight: FontWeight.w400),
-        ),
-      ],
-    );
-  }
-
-  Padding _businessTransformationHeader() {
-    return const Padding(
-      padding: EdgeInsets.only(top: 124, bottom: 32),
-      child: FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Text(
-          "Трансформирайте вашия бизнес",
-          style: TextStyle(
-            fontSize: 36,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Stack _pcImageStack() {
-    return Stack(
-      children: [
-        Positioned(
-          top: 380,
-          left: 50,
-          child: Image.asset(ImageUtils.laptopShadowImage),
-        ),
-        Image.asset(ImageUtils.laptopImage, fit: BoxFit.cover),
-        Positioned(
-          top: 96,
-          left: 243,
-          child: Image.asset(
-            ImageUtils.desktopImage,
-            width: 457,
-            fit: BoxFit.cover,
-          ),
         ),
       ],
     );

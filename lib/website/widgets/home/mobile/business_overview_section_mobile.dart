@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/navigation/routes.dart';
-
 import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
 import 'package:marketinya/website/widgets/common/custom_elevated_button.dart';
@@ -26,24 +25,27 @@ class BusinessOverviewSectionMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        _backgroundImage(),
+        const BusinessOverviewBackgroundImage(),
         Positioned(
           top: isBlog ? 50 : 60,
           left: _horizontalPadding,
           right: _horizontalPadding,
-          child: _buildText(text1, fontSize: isBlog ? 30 : 26),
+          child: BusinessOverviewCustomText(text:text1, fontSize: isBlog ? 30 : 26),
         ),
         Positioned(
           top: isBlog ? 130 : 175,
           left: _horizontalPadding,
           right: _horizontalPadding,
-          child: _buildText(text2, fontSize: isBlog ? 20 : 22),
+          child: BusinessOverviewCustomText(text:text2, fontSize: isBlog ? 20 : 22),
         ),
         Positioned(
           top: isBlog ? 280 : 350,
           left: _horizontalPadding,
           right: _horizontalPadding,
-          child: _button1(context),
+          child: BusinessOverviewElevatedButton(
+            text: 'Разгледайте услугите ни',
+            onPressed: (context) => context.go(Routes.services.path),
+          ),
         ),
         Padding(
           padding: EdgeInsets.only(
@@ -51,13 +53,84 @@ class BusinessOverviewSectionMobile extends StatelessWidget {
             left: _horizontalPadding,
             right: _horizontalPadding,
           ),
-          child: _button2(context),
+          child: BusinessOverviewElevatedButton(
+            text: 'Безплатна консултация',
+            onPressed: (context) => context.go(Routes.connectWithUs.path),
+          ),
         ),
       ],
     );
   }
+}
 
-  SizedBox _backgroundImage() {
+class BusinessOverviewElevatedButton extends StatelessWidget {
+  const BusinessOverviewElevatedButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    this.fontSize = 20,
+    this.borderColor,
+    this.textColor,
+    this.iconColor,
+    this.isFilled = false,
+  });
+
+  final String text;
+  final void Function(BuildContext) onPressed;
+  final double fontSize;
+  final Color? borderColor;
+  final Color? textColor;
+  final Color? iconColor;
+  final bool isFilled;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomElevatedButton(
+      text: text,
+      fontSize: fontSize,
+      onPressed: () => onPressed(context),
+      borderColor: ColorUtils.lightGray,
+      textColor: ColorUtils.charcoal,
+      iconColor: ColorUtils.charcoal,
+      isFilled: isFilled,
+    );
+  }
+}
+
+class BusinessOverviewCustomText extends StatelessWidget {
+  const BusinessOverviewCustomText({
+    super.key,
+    required this.text,
+    required this.fontSize,
+    this.color = ColorUtils.lightGray,
+    this.fontWeight = FontWeight.w400,
+  });
+
+  final String text;
+  final double fontSize;
+  final Color color;
+  final FontWeight fontWeight;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: GoogleFonts.roboto(
+        textStyle: TextStyle(
+          color: color,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+        ),
+      ),
+    );
+  }
+}
+
+class BusinessOverviewBackgroundImage extends StatelessWidget {
+  const BusinessOverviewBackgroundImage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       height: 414,
@@ -65,42 +138,6 @@ class BusinessOverviewSectionMobile extends StatelessWidget {
         ImageUtils.socialMediaBackgroundPath,
         fit: BoxFit.cover,
       ),
-    );
-  }
-
-  Widget _buildText(String text, {required double fontSize}) {
-    return Text(
-      text,
-      style: GoogleFonts.roboto(
-        textStyle: TextStyle(
-          color: ColorUtils.lightGray,
-          fontSize: fontSize,
-          fontWeight: FontWeight.w400,
-        ),
-      ),
-    );
-  }
-
-  Widget _button1(BuildContext context) {
-    return CustomElevatedButton(
-      text: 'Разгледайте услугите ни',
-      fontSize: 20,
-      onPressed: () => context.go(Routes.connectWithUs.path),
-      borderColor: ColorUtils.lightGray,
-      textColor: ColorUtils.lightGray,
-      iconColor: ColorUtils.lightGray,
-    );
-  }
-
-  Widget _button2(BuildContext context) {
-    return CustomElevatedButton(
-      text: 'Безплатна консултация',
-      fontSize: 20,
-      onPressed: () => context.go(Routes.services.path),
-      borderColor: ColorUtils.lightGray,
-      textColor: ColorUtils.charcoal,
-      iconColor: ColorUtils.charcoal,
-      isFilled: true,
     );
   }
 }
