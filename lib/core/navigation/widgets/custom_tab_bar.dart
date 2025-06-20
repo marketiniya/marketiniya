@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/navigation/widgets/tab_bar_content.dart';
 
 class CustomTabBar extends StatelessWidget {

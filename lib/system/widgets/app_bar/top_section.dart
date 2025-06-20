@@ -7,7 +7,6 @@ import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
-import 'package:marketinya/core/enums/authentication.dart';
 import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
@@ -27,64 +26,58 @@ class TopSection extends StatelessWidget {
         userRepository: getIt<UserRepository>(),
         authenticationRepository: getIt<AuthenticationRepository>(),
       )..add(const OnRefresh()),
-      child: BlocListener<AuthenticationBloc, AuthenticationState>(
-        listener: (context, state) {
-          if (state.status == Authentication.unauthenticated) {
-            context.go(Routes.login.path);
-          }
+      child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+          return Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: screenSize.width <= 1344
+                  ? screenSize.width * 0.10
+                  : screenSize.width * 0.15,
+              vertical: screenSize.height * 0.01,
+            ),
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  ImageUtils.marketinyaLogoPath,
+                  semanticsLabel: 'Marketinya logo',
+                  width: xl + nano,
+                  height: lg,
+                ),
+                const SizedBox(width: xxsPlus),
+                SvgPicture.asset(
+                  ImageUtils.marketinyaLabelPath,
+                  semanticsLabel: 'Marketinya logo',
+                  colorFilter: const ColorFilter.mode(
+                    Colors.black,
+                    BlendMode.srcIn,
+                  ),
+                  height: 20,
+                ),
+                const Spacer(),
+                Text(
+                  'Потребител: ${state.user?.firstName ?? ''} ${state.user?.lastName ?? ''}',
+                  style: GoogleFonts.roboto(
+                    color: Colors.black,
+                    textStyle: const TextStyle(fontSize: xxsPlus + nano),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                PrimaryButton.responsive(
+                  title: 'Изход',
+                  overlayButtonColor: AppColors.lightBeige,
+                  onPressed: () {
+                    context.go(Routes.login.path);
+                    return context.read<AuthenticationBloc>().add(const OnLogout());
+                  },
+                  icon: const Icon(
+                    Icons.logout,
+                    size: xs + nano,
+                  ),
+                ),
+              ],
+            ),
+          );
         },
-        child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-          builder: (context, state) {
-            return Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: screenSize.width <= 1344
-                    ? screenSize.width * 0.10
-                    : screenSize.width * 0.15,
-                vertical: screenSize.height * 0.01,
-              ),
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    ImageUtils.marketinyaLogoPath,
-                    semanticsLabel: 'Marketinya logo',
-                    width: xl + nano,
-                    height: lg,
-                  ),
-                  const SizedBox(width: xxsPlus),
-                  SvgPicture.asset(
-                    ImageUtils.marketinyaLabelPath,
-                    semanticsLabel: 'Marketinya logo',
-                    colorFilter: const ColorFilter.mode(
-                      Colors.black,
-                      BlendMode.srcIn,
-                    ),
-                    height: 20,
-                  ),
-                  const Spacer(),
-                  Text(
-                    'Потребител: ${state.user?.firstName ?? ''} ${state.user?.lastName ?? ''}',
-                    style: GoogleFonts.roboto(
-                      color: Colors.black,
-                      textStyle: const TextStyle(fontSize: xxsPlus + nano),
-                    ),
-                  ),
-                  const SizedBox(width: xs),
-                  PrimaryButton.responsive(
-                    title: 'Изход',
-                    overlayButtonColor: AppColors.lightBeige,
-                    onPressed: () {
-                      context.read<AuthenticationBloc>().add(const OnLogout());
-                    },
-                    icon: const Icon(
-                      Icons.logout,
-                      size: xs + nano,
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
       ),
     );
   }

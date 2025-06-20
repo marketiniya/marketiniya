@@ -60,9 +60,14 @@ class _LoginScreenState extends State<_LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _buildLogoSection(colors),
+                LoginLogoSection(colors:colors),
                 const SizedBox(height: sm),
-                _buildLoginCard(colors, context),
+                LoginCard(
+                  colors: colors,
+                  emailFocusNode: _emailFocusNode,
+                  passwordFocusNode: _passwordFocusNode,
+                  validateAndSubmit: _validateAndSubmit,
+                ),
               ],
             ),
           ),
@@ -71,115 +76,28 @@ class _LoginScreenState extends State<_LoginScreen> {
     );
   }
 
-  Widget _buildLogoSection(MarketiniyaColors colors) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            MarketiniyaImages.marketiniyaLogo(width: xl, height: lg),
-            const SizedBox(width: xxs),
-            MarketiniyaImages.marketiniyaLabelBacl(
-              width: imageWidth,
-              height: sm - micro,
-              color: colors.backgrounds.black,
-            ),
-          ],
-        ),
-      ],
-    );
-  }
+  void _validateAndSubmit(BuildContext context) {
+    FocusScope.of(context).unfocus();
 
-  Widget _buildLoginCard(MarketiniyaColors colors, BuildContext context) {
-    return SizedBox(
-      height: imageWidth + xxxl,
-      width: 350,
-      child: Card(
-        elevation: xxs,
-        child: Padding(
-          padding: dimen.all.sm,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildEmailField(colors, context),
-              _buildPasswordField(colors, context),
-              _buildActionButtons(colors, context),
-            ],
-          ),
-        ),
-      ),
-    );
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      context.read<LoginBloc>().add(const LoginEvent.onSubmitted());
+    }
   }
+}
 
-  Widget _buildEmailField(MarketiniyaColors colors, BuildContext context) {
-    return CustomTextFormField(
-      padding: dimen.bottom.xxs,
-      labelText: 'Емайл',
-      helperText: 'Въведи потребителско име',
-      filledColor: colors.backgrounds.standard,
-      suffixIcon: Icons.cancel_outlined,
-      focusNode: _emailFocusNode,
-      validator: FieldValidators.combine([
-        FieldValidators.notEmpty(),
-        FieldValidators.email(),
-      ]),
-      onSaved: (value) {
-        if (value != null) {
-          context.read<LoginBloc>().add(LoginEvent.onEmailChanged(value));
-        }
-      },
-    );
-  }
+class LoginButton extends StatelessWidget {
+  const LoginButton({
+    super.key,
+    required this.colors,
+    required this.validateAndSubmit,
+  });
 
-  Widget _buildPasswordField(MarketiniyaColors colors, BuildContext context) {
-    return CustomTextFormField(
-      padding: dimen.bottom.sm,
-      labelText: 'Парола',
-      helperText: 'Въведи парола',
-      filledColor: colors.backgrounds.standard,
-      suffixIcon: Icons.lock_outline,
-      focusNode: _passwordFocusNode,
-      obscureText: true,
-      validator: FieldValidators.combine([
-        FieldValidators.notEmpty(),
-      ]),
-      onSaved: (value) {
-        if (value != null) {
-          context.read<LoginBloc>().add(LoginEvent.onPasswordChanged(value));
-        }
-      },
-    );
-  }
+  final MarketiniyaColors colors;
+  final void Function(BuildContext context) validateAndSubmit;
 
-  Widget _buildActionButtons(MarketiniyaColors colors, BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _buildBackButton(colors),
-        const SizedBox(width: xs),
-        _buildLoginButton(colors, context),
-      ],
-    );
-  }
-
-  Widget _buildBackButton(MarketiniyaColors colors) {
-    return Expanded(
-      child: PortalActionButton(
-        title: 'Назад',
-        icon: const Icon(Icons.arrow_back),
-        onPressed: () {},
-        activeTitleColor: colors.buttons.primary,
-        disabledTitleColor: colors.texts.disabled,
-        loaderColor: colors.buttons.loader,
-        buttonType: ActionButtonSize.responsive,
-        buttonColor: colors.buttons.secondary,
-        borderColor: colors.buttons.primary,
-        overlayButtonColor: colors.buttons.secondaryOverlay,
-      ),
-    );
-  }
-
-  Widget _buildLoginButton(MarketiniyaColors colors, BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     return BlocConsumer<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.status == Status.error) {
@@ -196,7 +114,7 @@ class _LoginScreenState extends State<_LoginScreen> {
             title: 'Влез',
             isLoading: state.status == Status.loading,
             icon: const Icon(Icons.login),
-            onPressed: () => _validateAndSubmit(context),
+            onPressed: () => validateAndSubmit(context),
             activeTitleColor: colors.buttons.secondary,
             disabledTitleColor: colors.texts.disabled,
             loaderColor: colors.buttons.loader,
@@ -208,13 +126,194 @@ class _LoginScreenState extends State<_LoginScreen> {
       },
     );
   }
+}
 
-  void _validateAndSubmit(BuildContext context) {
-    FocusScope.of(context).unfocus();
+class LoginBackButton extends StatelessWidget {
+  const LoginBackButton({
+    super.key,
+    required this.colors,
+  });
 
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      context.read<LoginBloc>().add(const LoginEvent.onSubmitted());
-    }
+  final MarketiniyaColors colors;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: PortalActionButton(
+        title: 'Назад',
+        icon: const Icon(Icons.arrow_back),
+        activeTitleColor: colors.buttons.primary,
+        onPressed: () => GoRouterHelper(context).pop(),
+        disabledTitleColor: colors.texts.disabled,
+        loaderColor: colors.buttons.loader,
+        buttonType: ActionButtonSize.responsive,
+        buttonColor: colors.buttons.secondary,
+        borderColor: colors.buttons.primary,
+        overlayButtonColor: colors.buttons.secondaryOverlay,
+      ),
+    );
+  }
+}
+
+class ActionButtonsRow extends StatelessWidget {
+  const ActionButtonsRow({
+    super.key,
+    required this.colors,
+    required this.validateAndSubmit,
+  });
+
+  final MarketiniyaColors colors;
+  final void Function(BuildContext) validateAndSubmit;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        LoginBackButton(colors: colors),
+        const SizedBox(width: xs),
+        LoginButton(
+          colors: colors,
+          validateAndSubmit: validateAndSubmit,
+        ),
+      ],
+    );
+  }
+}
+
+class LoginTextField extends StatelessWidget {
+  const LoginTextField({
+    super.key,
+    required this.colors,
+    required this.focusNode,
+    required this.labelText,
+    required this.helperText,
+    required this.suffixIcon,
+    this.padding,
+    this.obscureText = false,
+    this.validator,
+    this.onSaved,
+  });
+
+  final MarketiniyaColors colors;
+  final FocusNode focusNode;
+  final String labelText;
+  final EdgeInsetsGeometry? padding;
+  final String helperText;
+  final IconData suffixIcon;
+  final bool obscureText;
+  final String? Function(String?)? validator;
+  final void Function(String?)? onSaved;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      labelText: labelText,
+      helperText: helperText,
+      filledColor: colors.backgrounds.standard,
+      suffixIcon: suffixIcon,
+      focusNode: focusNode,
+      obscureText: obscureText,
+      validator: validator,
+      onSaved: onSaved,
+    );
+  }
+}
+
+class LoginCard extends StatelessWidget {
+  const LoginCard({
+    super.key,
+    required this.colors,
+    required this.emailFocusNode,
+    required this.passwordFocusNode,
+    required this.validateAndSubmit,
+  });
+
+  final MarketiniyaColors colors;
+  final FocusNode emailFocusNode;
+  final FocusNode passwordFocusNode;
+  final void Function(BuildContext) validateAndSubmit;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: imageWidth + xxxl,
+      width: 350,
+      child: Card(
+        elevation: xxs,
+        child: Padding(
+          padding: dimen.all.sm,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              LoginTextField(
+                colors: colors,
+                focusNode: emailFocusNode,
+                labelText: 'Емайл',
+                helperText: 'Въведи потребителско име',
+                suffixIcon: Icons.cancel_outlined,
+                validator: FieldValidators.combine([
+                  FieldValidators.notEmpty(),
+                  FieldValidators.email(),
+                ]),
+                onSaved: (value) {
+                  if (value != null) {
+                    context
+                        .read<LoginBloc>()
+                        .add(LoginEvent.onEmailChanged(value));
+                  }
+                },
+              ),
+              LoginTextField(
+                colors: colors,
+                focusNode: passwordFocusNode,
+                labelText: 'Парола',
+                helperText: 'Въведи парола',
+                suffixIcon: Icons.lock_outline,
+                obscureText: true,
+                validator:
+                    FieldValidators.combine([FieldValidators.notEmpty()]),
+                onSaved: (value) {
+                  if (value != null) {
+                    context
+                        .read<LoginBloc>()
+                        .add(LoginEvent.onPasswordChanged(value));
+                  }
+                },
+              ),
+              ActionButtonsRow(
+                colors: colors,
+                validateAndSubmit: validateAndSubmit,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+class LoginLogoSection extends StatelessWidget {
+
+  const LoginLogoSection({super.key, required this.colors});
+  final MarketiniyaColors colors;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MarketiniyaImages.marketiniyaLogo(width: xl, height: lg),
+            const SizedBox(width: xxs),
+            MarketiniyaImages.marketiniyaLabelBacl(
+              width: imageWidth,
+              height: sm - micro,
+              color: colors.backgrounds.black,
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
