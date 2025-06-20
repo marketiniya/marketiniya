@@ -58,7 +58,10 @@ class AttachmentRepository {
   }) async {
     try {
       final getFileName = await generateFileNameWithIncrementPrefix(
-          clientId, fileType, fileName);
+        clientId,
+        fileType,
+        fileName,
+      );
 
       final fileExtension = _getFileExtension(getFileName);
       final fileId = UuidGenerator.instance.v1();

@@ -87,11 +87,9 @@ class FileSectionContent extends StatelessWidget {
     switch (supportedFileType) {
       case FileType.image:
         pickerType = picker.FileType.image;
-        allowedExtensions = config.allowedExtensions;
         break;
       case FileType.video:
         pickerType = picker.FileType.video;
-        allowedExtensions = config.allowedExtensions;
         break;
       case FileType.pdf:
         pickerType = picker.FileType.custom;
