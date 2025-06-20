@@ -31,9 +31,12 @@ extension UploadedFileExtension on UploadedFile {
       return '${size}B';
     }
     if (size < 1024 * 1024) {
-      return '${(size / 1024).toStringAsFixed(1)}KB';
+      return '${(size / 1024).ceil()}KB';
     }
-    return '${(size / (1024 * 1024)).toStringAsFixed(1)}MB';
+    if (size < 1024 * 1024 * 1024) {
+      return '${(size / (1024 * 1024)).ceil()}MB';
+    }
+    return '${(size / (1024 * 1024 * 1024)).ceil()}GB';
   }
 
   bool get isImage =>
