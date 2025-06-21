@@ -11,4 +11,26 @@ enum Routes {
 
   @override
   String toString() => path;
+
+  static final List<Routes> tabRoutes = [
+    home,
+    blog,
+    services,
+    connectWithUs,
+  ];
+
+  // Get tab index (or null if not a tab)
+  int? get tabIndex => tabRoutes.contains(this) ? tabRoutes.indexOf(this) : null;
+
+  // Convert a path string to a Routes enum value
+  static Routes fromPath(String path) {
+    // Handle exact matches first
+    for (final route in Routes.values) {
+      if (route.path == path) {
+        return route;
+      }
+    }
+    // Default to home if no match found
+    return Routes.home;
+  }
 }

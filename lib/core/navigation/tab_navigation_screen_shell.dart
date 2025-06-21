@@ -39,36 +39,16 @@ class _TabNavigationScreenShellState extends State<TabNavigationScreenShell>
 
   void _updateTabIndex() {
     final location = GoRouterState.of(context).uri.path;
-    var index = 0;
-    if (location.startsWith(Routes.home.path)) {
-      index = 0;
-    } else if (location.startsWith(Routes.blog.path)) {
-      index = 1;
-    } else if (location.startsWith(Routes.services.path)) {
-      index = 2;
-    } else if (location.startsWith(Routes.connectWithUs.path)) {
-      index = 3;
-    }
+    final route = Routes.fromPath(location);
 
-    if (_tabController.index != index) {
-      _tabController.index = index;
+    if (route.tabIndex != null && _tabController.index != route.tabIndex!) {
+      _tabController.index = route.tabIndex!;
     }
   }
 
   void _onTabTapped(int index) {
-    switch (index) {
-      case 0:
-        context.go(Routes.home.path);
-        break;
-      case 1:
-        context.go(Routes.blog.path);
-        break;
-      case 2:
-        context.go(Routes.services.path);
-        break;
-      case 3:
-        context.go(Routes.connectWithUs.path);
-        break;
+    if (index >= 0 && index < Routes.tabRoutes.length) {
+      context.go(Routes.tabRoutes[index].path);
     }
   }
 
