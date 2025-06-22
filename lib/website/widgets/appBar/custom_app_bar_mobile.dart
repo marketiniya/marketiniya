@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marketinya/core/design_system/atoms/images/marketiniya_images.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
 import 'package:marketinya/website/widgets/appBar/widgets/custom_dialog.dart';
-import 'package:marketinya/website/widgets/appBar/widgets/marketiniya_logo.dart';
 
 class CustomAppBarMobile extends StatelessWidget implements PreferredSizeWidget{
   const CustomAppBarMobile({super.key, required this.activeTab});
@@ -20,7 +20,7 @@ class CustomAppBarMobile extends StatelessWidget implements PreferredSizeWidget{
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const MarketiniyaLogo(width: 37, height: 30),
+              MarketiniyaImages.marketiniyaLogo(width: 37, height: 30),
               SvgPicture.asset(ImageUtils.marketinyaLabelPath),
               IconButton(
                 icon: const Icon(Icons.menu),

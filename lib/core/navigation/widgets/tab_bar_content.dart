@@ -1,11 +1,9 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:marketinya/core/design_system/atoms/images/marketiniya_images.dart';
 import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/navigation/widgets/contact_button.dart';
 import 'package:marketinya/core/navigation/widgets/responsive_tab_button.dart';
-import 'package:marketinya/website/widgets/appBar/widgets/marketiniya_logo.dart';
 
 class TabBarContent extends StatelessWidget {
   const TabBarContent({
@@ -15,9 +13,6 @@ class TabBarContent extends StatelessWidget {
     required this.logoWidth,
     required this.logoHeight,
     required this.fontSize,
-    required this.isSmallScreen,
-    required this.isMediumScreen,
-    required this.horizontalPadding,
   });
 
   final TabController tabController;
@@ -25,52 +20,39 @@ class TabBarContent extends StatelessWidget {
   final double logoWidth;
   final double logoHeight;
   final double fontSize;
-  final bool isSmallScreen;
-  final bool isMediumScreen;
-  final double horizontalPadding;
+
+  // Tab labels as constants
+  static const String homeTab = 'Начало';
+  static const String blogTab = 'Блог';
+  static const String servicesTab = 'Услуги';
+  static const String contactTab = 'Свържи се с нас';
 
   @override
   Widget build(BuildContext context) {
-    final responsiveLogoWidth = isSmallScreen
-        ? logoWidth * 0.7
-        : isMediumScreen
-            ? logoWidth * 0.85
-            : logoWidth;
-
-    final responsiveLogoHeight = isSmallScreen
-        ? logoHeight * 0.7
-        : isMediumScreen
-            ? logoHeight * 0.85
-            : logoHeight;
-
-    final containerHeight = math.max(responsiveLogoHeight + 10, 75.0);
-
     return Container(
-      height: containerHeight,
-      padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: 240),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            flex: isSmallScreen ? 3 : 2,
+            flex: 2,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
                   child: ResponsiveTabButton(
                     key: const ValueKey('tab_button_${0}'),
-                    label: "Начало",
-                    activeTab: _getCurrentActiveTab(context),
+                    label: homeTab,
+                    isActive: _isTabActive(context, homeTab),
                     onPressed: () => onTabTapped(0),
                     fontSize: fontSize,
                   ),
                 ),
-                SizedBox(width: isSmallScreen ? 15 : 20),
                 Expanded(
                   child: ResponsiveTabButton(
                     key: const ValueKey('tab_button_${1}'),
-                    label: "Блог",
-                    activeTab: _getCurrentActiveTab(context),
+                    label: blogTab,
+                    isActive: _isTabActive(context, blogTab),
                     onPressed: () => onTabTapped(1),
                     fontSize: fontSize,
                   ),
@@ -78,59 +60,25 @@ class TabBarContent extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            width: responsiveLogoWidth + (isSmallScreen ? 15 : 25),
-            child: Center(
-              child: MarketiniyaLogo(
-                width: responsiveLogoWidth,
-                height: responsiveLogoHeight,
-              ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 45),
+            child: MarketiniyaImages.marketiniyaLogo(width: logoWidth, height: logoHeight),
+          ),
+          Expanded(
+            child: ResponsiveTabButton(
+              key: const ValueKey('tab_button_${2}'),
+              label: servicesTab,
+              isActive: _isTabActive(context, servicesTab),
+              onPressed: () => onTabTapped(2),
+              fontSize: fontSize,
             ),
           ),
           Expanded(
-            flex: isSmallScreen ? 3 : 2,
-            child: Row(
-              children: [
-                Flexible(
-                  flex: 1,
-                  child: Container(),
-                ),
-                Flexible(
-                  flex: 6,
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minWidth: isSmallScreen ? 80 : 100,
-                      maxWidth: isSmallScreen ? 110 : 350,
-                    ),
-                    child: ResponsiveTabButton(
-                      key: const ValueKey('tab_button_${2}'),
-                      label: "Услуги",
-                      activeTab: _getCurrentActiveTab(context),
-                      onPressed: () => onTabTapped(2),
-                      fontSize: fontSize,
-                    ),
-                  ),
-                ),
-                Flexible(
-                  flex: 1,
-                  child: Container(),
-                ),
-                Flexible(
-                  flex: 7,
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minWidth: isSmallScreen ? 130 : 160,
-                      maxWidth: isSmallScreen ? 170 : 220,
-                    ),
-                    child: ContactButton(
-                      key: const ValueKey('contact_button'),
-                      isActive: tabController.index == 3,
-                      onPressed: () => onTabTapped(3),
-                      fontSize: fontSize,
-                    ),
-                  ),
-                ),
-              ],
+            child: ContactButton(
+              key: const ValueKey('contact_button'),
+              isActive: _isTabActive(context, contactTab),
+              onPressed: () => onTabTapped(3),
+              fontSize: fontSize,
             ),
           ),
         ],
@@ -138,17 +86,19 @@ class TabBarContent extends StatelessWidget {
     );
   }
 
-  String _getCurrentActiveTab(BuildContext context) {
+  bool _isTabActive(BuildContext context, String tabName) {
     final location = GoRouterState.of(context).uri.path;
-    if (location.startsWith(Routes.home.path)) {
-      return 'Начало';
-    } else if (location.startsWith(Routes.blog.path)) {
-      return 'Блог';
-    } else if (location.startsWith(Routes.services.path)) {
-      return 'Услуги';
-    } else if (location.startsWith(Routes.connectWithUs.path)) {
-      return 'Свържи се с нас';
+    switch (tabName) {
+      case homeTab:
+        return location.startsWith(Routes.home.path);
+      case blogTab:
+        return location.startsWith(Routes.blog.path);
+      case servicesTab:
+        return location.startsWith(Routes.services.path);
+      case contactTab:
+        return location.startsWith(Routes.connectWithUs.path);
+      default:
+        return false;
     }
-    return 'Начало';
   }
 }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/navigation/widgets/bottom_divider_and_label.dart';
-import 'package:marketinya/core/navigation/widgets/custom_tab_bar.dart';
+import 'package:marketinya/core/navigation/widgets/tab_bar_content.dart';
 
-class CustomAppBarShell extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBarShell extends StatelessWidget {
   const CustomAppBarShell({
     super.key,
     required this.tabController,
@@ -24,31 +23,21 @@ class CustomAppBarShell extends StatelessWidget implements PreferredSizeWidget {
   final double toolbarHeight;
 
   @override
-  Size get preferredSize => Size.fromHeight(toolbarHeight + logoHeight + lg);
-
-  @override
   Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      toolbarHeight: toolbarHeight,
-      bottom: PreferredSize(
-        preferredSize: Size.fromHeight(logoHeight + lg),
-        child: Column(
-          children: [
-            CustomTabBar(
-              tabController: tabController,
-              onTabTapped: onTabTapped,
-              logoWidth: logoWidth,
-              logoHeight: logoHeight,
-              fontSize: fontSize,
-            ),
-            BottomDividerAndLabel(
-              logoWidth: logoWidth,
-              dividerHeight: dividerHeight,
-            ),
-          ],
+    return Column(
+      children: [
+        TabBarContent(
+          tabController: tabController,
+          onTabTapped: onTabTapped,
+          logoWidth: logoWidth,
+          logoHeight: logoHeight,
+          fontSize: fontSize,
         ),
-      ),
+        BottomDividerAndLabel(
+          logoWidth: logoWidth,
+          dividerHeight: dividerHeight,
+        ),
+      ],
     );
   }
 }

@@ -33,7 +33,7 @@ class BottomDividerAndLabel extends StatelessWidget {
             ],
           ),
            Padding(
-            padding: dimen.top.nano,
+            padding: dimen.top.xxsPlus,
             child: const Text(
               'По-добър маркетинг – по-добри резултати!',
               style: TextStyle(

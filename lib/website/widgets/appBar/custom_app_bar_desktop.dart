@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:marketinya/core/design_system/atoms/images/marketiniya_images.dart';
 import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
-import 'package:marketinya/website/widgets/appBar/widgets/marketiniya_logo.dart';
 import 'package:marketinya/website/widgets/appBar/widgets/nav_button.dart';
 
 class CustomAppBarDesktop extends StatelessWidget implements PreferredSizeWidget {
@@ -48,9 +48,12 @@ class CustomAppBarDesktop extends StatelessWidget implements PreferredSizeWidget
           onPressed: () => context.go(Routes.blog.path),
           fontSize: _fontSize,
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: MarketiniyaLogo(width: _logoWidth, height: _logoHeight),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: MarketiniyaImages.marketiniyaLogo(
+            width: _logoWidth,
+            height: _logoHeight,
+          ),
         ),
         NavButton(
           label: 'Услуги',

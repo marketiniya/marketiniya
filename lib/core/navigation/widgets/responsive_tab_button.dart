@@ -5,13 +5,13 @@ class ResponsiveTabButton extends StatefulWidget {
   const ResponsiveTabButton({
     super.key,
     required this.label,
-    required this.activeTab,
+    required this.isActive,
     required this.onPressed,
     required this.fontSize,
   });
 
   final String label;
-  final String activeTab;
+  final bool isActive;
   final VoidCallback onPressed;
   final double fontSize;
 
@@ -25,7 +25,6 @@ class _ResponsiveTabButtonState extends State<ResponsiveTabButton> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final isActive = widget.label == widget.activeTab;
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -59,7 +58,7 @@ class _ResponsiveTabButtonState extends State<ResponsiveTabButton> {
                             widget.label,
                             style: TextStyle(
                               fontSize: widget.fontSize,
-                              color: _getButtonColor(isActive, colorScheme),
+                              color: _getButtonColor(widget.isActive, colorScheme),
                             ),
                             textAlign: TextAlign.center,
                             maxLines: 1,

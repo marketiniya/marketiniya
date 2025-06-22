@@ -62,7 +62,7 @@ class _TabNavigationScreenShellState extends State<TabNavigationScreenShell>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(_toolbarHeight + _logoHeight + lg),
+        preferredSize: const Size.fromHeight(128),
         child: ResponsiveLayout(
           mobile: const CustomAppBarMobile(
             activeTab: 'Начало',
@@ -70,9 +70,9 @@ class _TabNavigationScreenShellState extends State<TabNavigationScreenShell>
           desktop: CustomAppBarShell(
             tabController: _tabController,
             onTabTapped: _onTabTapped,
-            logoWidth: _logoWidth,
-            logoHeight: _logoHeight,
-            fontSize: _fontSize,
+            logoWidth: 126,
+            logoHeight: 100,
+            fontSize: 20,
             dividerHeight: _dividerHeight,
             toolbarHeight: _toolbarHeight,
           ),

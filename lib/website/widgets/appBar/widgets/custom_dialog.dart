@@ -20,7 +20,7 @@ class CustomDialog extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 24),
-            _navButton(context, activeTab, 'Начало', Routes.home.path),
+            _navButton(context, activeTab, 'Начало KUR', Routes.home.path),
             const SizedBox(height: 24),
             _navButton(context, activeTab, 'Блог', Routes.blog.path),
             const SizedBox(height: 24),
