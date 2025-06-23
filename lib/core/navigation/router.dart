@@ -18,12 +18,6 @@ final GoRouter router = GoRouter(
   initialLocation: Routes.home.path,
   refreshListenable: _authNotifier,
   redirect: _authGuard,
-  errorBuilder: (context, state) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.go(Routes.home.path);
-    });
-    return const SizedBox.shrink();
-  },
   routes: [
     ShellRoute(
       builder: (context, state, child) {
@@ -68,7 +62,18 @@ final GoRouter router = GoRouter(
 /// Authentication guard for protected routes
 String? _authGuard(BuildContext context, GoRouterState state) {
   final isLoginRoute = state.uri.path == Routes.login.path;
-  final isSystemRoute = state.uri.path.startsWith(Routes.systemHome.path);
+  final isSystemRoute = state.uri.path.startsWith('/system');
+
+  final pathExists = Routes.values.any(
+    (route) =>
+        route.path == state.uri.path ||
+        (state.uri.path.startsWith(route.path) &&
+            route.path != Routes.home.path),
+  );
+
+  if (!pathExists) {
+    return Routes.home.path;
+  }
 
   if (!isLoginRoute && !isSystemRoute) {
     return null;

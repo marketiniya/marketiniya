@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketinya/core/config/responsive_layout.dart';
-import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/navigation/widgets/custom_app_bar_shell.dart';
 import 'package:marketinya/website/widgets/appBar/custom_app_bar_mobile.dart';
@@ -12,18 +11,13 @@ class TabNavigationScreenShell extends StatefulWidget {
   final Widget child;
 
   @override
-  State<TabNavigationScreenShell> createState() => _TabNavigationScreenShellState();
+  State<TabNavigationScreenShell> createState() =>
+      _TabNavigationScreenShellState();
 }
 
 class _TabNavigationScreenShellState extends State<TabNavigationScreenShell>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-
-  static const double _fontSize = 18;
-  static const double _toolbarHeight = 40;
-  static const double _logoHeight = 90;
-  static const double _logoWidth = 135;
-  static const double _dividerHeight = 2;
 
   @override
   void initState() {
@@ -47,8 +41,8 @@ class _TabNavigationScreenShellState extends State<TabNavigationScreenShell>
   }
 
   void _onTabTapped(int index) {
-    if (index >= 0 && index < Routes.tabRoutes.length) {
-      context.go(Routes.tabRoutes[index].path);
+    if (index >= 0 && index < Routes.publicTabRoutes.length) {
+      context.go(Routes.publicTabRoutes[index].path);
     }
   }
 
@@ -73,8 +67,8 @@ class _TabNavigationScreenShellState extends State<TabNavigationScreenShell>
             logoWidth: 126,
             logoHeight: 100,
             fontSize: 20,
-            dividerHeight: _dividerHeight,
-            toolbarHeight: _toolbarHeight,
+            dividerHeight: 2,
+            toolbarHeight: 40,
           ),
         ),
       ),

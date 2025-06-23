@@ -25,26 +25,55 @@ class BusinessOverviewSectionMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        const BusinessOverviewBackgroundImage(),
+        SizedBox(
+          width: double.infinity,
+          height: 414,
+          child: Image.asset(
+            ImageUtils.socialMediaBackgroundPath,
+            fit: BoxFit.cover,
+          ),
+        ),
         Positioned(
           top: isBlog ? 50 : 60,
           left: _horizontalPadding,
           right: _horizontalPadding,
-          child: BusinessOverviewCustomText(text:text1, fontSize: isBlog ? 30 : 26),
+          child: Text(
+            text1,
+            style: GoogleFonts.roboto(
+              textStyle: TextStyle(
+                color: ColorUtils.lightGray,
+                fontSize: isBlog ? 30 : 26,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
         ),
         Positioned(
           top: isBlog ? 130 : 175,
           left: _horizontalPadding,
           right: _horizontalPadding,
-          child: BusinessOverviewCustomText(text:text2, fontSize: isBlog ? 20 : 22),
+          child: Text(
+            text2,
+            style: GoogleFonts.roboto(
+              textStyle: TextStyle(
+                color: ColorUtils.lightGray,
+                fontSize: isBlog ? 20 : 22,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
         ),
         Positioned(
           top: isBlog ? 280 : 350,
           left: _horizontalPadding,
           right: _horizontalPadding,
-          child: BusinessOverviewElevatedButton(
+          child: CustomElevatedButton(
             text: 'Разгледайте услугите ни',
-            onPressed: (context) => context.go(Routes.services.path),
+            fontSize: 20,
+            onPressed: () => context.go(Routes.connectWithUs.path),
+            borderColor: ColorUtils.lightGray,
+            textColor: ColorUtils.lightGray,
+            iconColor: ColorUtils.lightGray,
           ),
         ),
         Padding(
@@ -53,91 +82,17 @@ class BusinessOverviewSectionMobile extends StatelessWidget {
             left: _horizontalPadding,
             right: _horizontalPadding,
           ),
-          child: BusinessOverviewElevatedButton(
+          child: CustomElevatedButton(
             text: 'Безплатна консултация',
-            onPressed: (context) => context.go(Routes.connectWithUs.path),
+            fontSize: 20,
+            onPressed: () => context.go(Routes.services.path),
+            borderColor: ColorUtils.lightGray,
+            textColor: ColorUtils.charcoal,
+            iconColor: ColorUtils.charcoal,
+            isFilled: true,
           ),
         ),
       ],
-    );
-  }
-}
-
-class BusinessOverviewElevatedButton extends StatelessWidget {
-  const BusinessOverviewElevatedButton({
-    super.key,
-    required this.text,
-    required this.onPressed,
-    this.fontSize = 20,
-    this.borderColor,
-    this.textColor,
-    this.iconColor,
-    this.isFilled = false,
-  });
-
-  final String text;
-  final void Function(BuildContext) onPressed;
-  final double fontSize;
-  final Color? borderColor;
-  final Color? textColor;
-  final Color? iconColor;
-  final bool isFilled;
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomElevatedButton(
-      text: text,
-      fontSize: fontSize,
-      onPressed: () => onPressed(context),
-      borderColor: ColorUtils.lightGray,
-      textColor: ColorUtils.charcoal,
-      iconColor: ColorUtils.charcoal,
-      isFilled: isFilled,
-    );
-  }
-}
-
-class BusinessOverviewCustomText extends StatelessWidget {
-  const BusinessOverviewCustomText({
-    super.key,
-    required this.text,
-    required this.fontSize,
-    this.color = ColorUtils.lightGray,
-    this.fontWeight = FontWeight.w400,
-  });
-
-  final String text;
-  final double fontSize;
-  final Color color;
-  final FontWeight fontWeight;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: GoogleFonts.roboto(
-        textStyle: TextStyle(
-          color: color,
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-        ),
-      ),
-    );
-  }
-}
-
-class BusinessOverviewBackgroundImage extends StatelessWidget {
-  const BusinessOverviewBackgroundImage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 414,
-      child: Image.asset(
-        ImageUtils.socialMediaBackgroundPath,
-        fit: BoxFit.cover,
-      ),
     );
   }
 }

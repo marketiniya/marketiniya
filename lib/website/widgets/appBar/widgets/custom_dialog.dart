@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 
@@ -19,23 +20,58 @@ class CustomDialog extends StatelessWidget {
         color: Theme.of(context).primaryColor,
         child: Column(
           children: [
-            const SizedBox(height: 24),
-            _navButton(context, activeTab, 'Начало KUR', Routes.home.path),
-            const SizedBox(height: 24),
-            _navButton(context, activeTab, 'Блог', Routes.blog.path),
-            const SizedBox(height: 24),
-            _navButton(context, activeTab, 'Услуги', Routes.services.path),
+            const SizedBox(height: sm),
+            CustomDialogNavButton(
+              activeTab: activeTab,
+              label: 'Начало KUR',
+              routeName: Routes.home.path,
+            ),
+            const SizedBox(height: sm),
+            CustomDialogNavButton(
+              activeTab: activeTab,
+              label: 'Блог',
+              routeName: Routes.blog.path,
+            ),
+            const SizedBox(height: sm),
+            CustomDialogNavButton(
+              activeTab: activeTab,
+              label: 'Услуги',
+              routeName: Routes.services.path,
+            ),
             const SizedBox(height: 56),
-            _limeGreenButton(context, 'Свържи се с нас', Routes.connectWithUs.path),
+            LimeGreenButton(
+                label: 'Свържи се с нас', routeName: Routes.connectWithUs.path),
             const Spacer(),
-            _backButton(context),
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_upward,
+                color: Colors.grey.shade700,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget _navButton(BuildContext context, String activeTab, String label, String routeName) {
+class CustomDialogNavButton extends StatelessWidget {
+  const CustomDialogNavButton({
+    super.key,
+    required this.activeTab,
+    required this.label,
+    required this.routeName,
+  });
+
+  final String activeTab;
+  final String label;
+  final String routeName;
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       width: 328,
       height: 55,
@@ -44,7 +80,8 @@ class CustomDialog extends StatelessWidget {
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(ColorUtils.charcoal),
           foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
-            if (states.contains(WidgetState.hovered) || states.contains(WidgetState.pressed)) {
+            if (states.contains(WidgetState.hovered) ||
+                states.contains(WidgetState.pressed)) {
               return Colors.grey;
             }
             if (activeTab == label) {
@@ -56,7 +93,8 @@ class CustomDialog extends StatelessWidget {
             return RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
               side: BorderSide(
-                color: states.contains(WidgetState.hovered) || states.contains(WidgetState.pressed)
+                color: states.contains(WidgetState.hovered) ||
+                        states.contains(WidgetState.pressed)
                     ? Colors.grey
                     : activeTab == label
                         ? ColorUtils.limeGreen
@@ -77,8 +115,20 @@ class CustomDialog extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _limeGreenButton(BuildContext context, String label, String routeName) {
+class LimeGreenButton extends StatelessWidget {
+  const LimeGreenButton({
+    super.key,
+    required this.label,
+    required this.routeName,
+  });
+
+  final String label;
+  final String routeName;
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       width: 328,
       height: 55,
@@ -102,18 +152,6 @@ class CustomDialog extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  IconButton _backButton(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      icon: Icon(
-        Icons.arrow_upward,
-        color: Colors.grey.shade700,
       ),
     );
   }

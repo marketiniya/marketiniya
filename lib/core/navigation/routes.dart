@@ -7,12 +7,13 @@ enum Routes {
   systemHome('/system/clients');
 
   const Routes(this.path);
+
   final String path;
 
   @override
   String toString() => path;
 
-  static final List<Routes> tabRoutes = [
+  static final List<Routes> publicTabRoutes = [
     home,
     blog,
     services,
@@ -20,7 +21,8 @@ enum Routes {
   ];
 
   // Get tab index (or null if not a tab)
-  int? get tabIndex => tabRoutes.contains(this) ? tabRoutes.indexOf(this) : null;
+  int? get tabIndex =>
+      publicTabRoutes.contains(this) ? publicTabRoutes.indexOf(this) : null;
 
   // Convert a path string to a Routes enum value
   static Routes fromPath(String path) {

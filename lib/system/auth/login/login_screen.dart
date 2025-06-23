@@ -60,7 +60,7 @@ class _LoginScreenState extends State<_LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                LoginLogoSection(colors:colors),
+                LoginLogoSection(colors: colors),
                 const SizedBox(height: sm),
                 LoginCard(
                   colors: colors,
@@ -143,7 +143,7 @@ class LoginBackButton extends StatelessWidget {
         title: 'Назад',
         icon: const Icon(Icons.arrow_back),
         activeTitleColor: colors.buttons.primary,
-        onPressed: () => GoRouterHelper(context).pop(),
+        onPressed: () => context.go(Routes.home.path),
         disabledTitleColor: colors.texts.disabled,
         loaderColor: colors.buttons.loader,
         buttonType: ActionButtonSize.responsive,
@@ -181,45 +181,6 @@ class ActionButtonsRow extends StatelessWidget {
   }
 }
 
-class LoginTextField extends StatelessWidget {
-  const LoginTextField({
-    super.key,
-    required this.colors,
-    required this.focusNode,
-    required this.labelText,
-    required this.helperText,
-    required this.suffixIcon,
-    this.padding,
-    this.obscureText = false,
-    this.validator,
-    this.onSaved,
-  });
-
-  final MarketiniyaColors colors;
-  final FocusNode focusNode;
-  final String labelText;
-  final EdgeInsetsGeometry? padding;
-  final String helperText;
-  final IconData suffixIcon;
-  final bool obscureText;
-  final String? Function(String?)? validator;
-  final void Function(String?)? onSaved;
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomTextFormField(
-      labelText: labelText,
-      helperText: helperText,
-      filledColor: colors.backgrounds.standard,
-      suffixIcon: suffixIcon,
-      focusNode: focusNode,
-      obscureText: obscureText,
-      validator: validator,
-      onSaved: onSaved,
-    );
-  }
-}
-
 class LoginCard extends StatelessWidget {
   const LoginCard({
     super.key,
@@ -246,12 +207,13 @@ class LoginCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              LoginTextField(
-                colors: colors,
-                focusNode: emailFocusNode,
+              CustomTextFormField(
+                padding: dimen.bottom.xxs,
                 labelText: 'Емайл',
                 helperText: 'Въведи потребителско име',
+                filledColor: colors.backgrounds.standard,
                 suffixIcon: Icons.cancel_outlined,
+                focusNode: emailFocusNode,
                 validator: FieldValidators.combine([
                   FieldValidators.notEmpty(),
                   FieldValidators.email(),
@@ -264,20 +226,22 @@ class LoginCard extends StatelessWidget {
                   }
                 },
               ),
-              LoginTextField(
-                colors: colors,
-                focusNode: passwordFocusNode,
+              CustomTextFormField(
+                padding: dimen.bottom.sm,
                 labelText: 'Парола',
                 helperText: 'Въведи парола',
+                filledColor: colors.backgrounds.standard,
                 suffixIcon: Icons.lock_outline,
+                focusNode: passwordFocusNode,
                 obscureText: true,
-                validator:
-                    FieldValidators.combine([FieldValidators.notEmpty()]),
+                validator: FieldValidators.combine([
+                  FieldValidators.notEmpty(),
+                ]),
                 onSaved: (value) {
                   if (value != null) {
-                    context
-                        .read<LoginBloc>()
-                        .add(LoginEvent.onPasswordChanged(value));
+                    context.read<LoginBloc>().add(
+                          LoginEvent.onPasswordChanged(value),
+                        );
                   }
                 },
               ),
@@ -292,9 +256,10 @@ class LoginCard extends StatelessWidget {
     );
   }
 }
-class LoginLogoSection extends StatelessWidget {
 
+class LoginLogoSection extends StatelessWidget {
   const LoginLogoSection({super.key, required this.colors});
+
   final MarketiniyaColors colors;
 
   @override
