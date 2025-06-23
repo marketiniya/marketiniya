@@ -105,7 +105,7 @@ class FileItem extends StatelessWidget {
           ),
           actions: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
                   width: 120,
