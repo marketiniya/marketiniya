@@ -7,18 +7,17 @@ import 'package:marketinya/core/navigation/widgets/divider_line.dart';
 class BottomDividerAndLabel extends StatelessWidget {
   const BottomDividerAndLabel({
     super.key,
-    required this.logoWidth,
+    required this.labelLogoWidth,
     required this.dividerHeight,
   });
 
-  final double logoWidth;
+  final double labelLogoWidth;
   final double dividerHeight;
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final logoAreaWidth = logoWidth + lg;
-    final availableWidth = screenWidth - logoAreaWidth;
+    final availableWidth = screenWidth - labelLogoWidth;
     final sideWidth = availableWidth / nano;
 
     return Padding(
@@ -28,11 +27,11 @@ class BottomDividerAndLabel extends StatelessWidget {
           Row(
             children: [
               DividerLine(width: sideWidth, height: dividerHeight),
-              CenteredLogoSection(width: logoAreaWidth),
+              CenteredLogoSection(width: labelLogoWidth),
               DividerLine(width: sideWidth, height: dividerHeight),
             ],
           ),
-           Padding(
+          Padding(
             padding: dimen.top.xxsPlus,
             child: const Text(
               'По-добър маркетинг – по-добри резултати!',

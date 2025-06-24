@@ -8,6 +8,7 @@ class CustomAppBarShell extends StatelessWidget {
     required this.tabController,
     required this.onTabTapped,
     required this.logoWidth,
+    required this.labelLogoWidth,
     required this.logoHeight,
     required this.fontSize,
     required this.dividerHeight,
@@ -17,6 +18,7 @@ class CustomAppBarShell extends StatelessWidget {
   final TabController tabController;
   final void Function(int) onTabTapped;
   final double logoWidth;
+  final double labelLogoWidth;
   final double logoHeight;
   final double fontSize;
   final double dividerHeight;
@@ -34,7 +36,7 @@ class CustomAppBarShell extends StatelessWidget {
           fontSize: fontSize,
         ),
         BottomDividerAndLabel(
-          logoWidth: logoWidth,
+          labelLogoWidth: labelLogoWidth,
           dividerHeight: dividerHeight,
         ),
       ],

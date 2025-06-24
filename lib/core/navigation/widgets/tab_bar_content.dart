@@ -30,7 +30,7 @@ class TabBarContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 240),
+      padding: const EdgeInsets.symmetric(horizontal: 180),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -61,8 +61,12 @@ class TabBarContent extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 45),
-            child: MarketiniyaImages.marketiniyaLogo(width: logoWidth, height: logoHeight),
+            padding:
+                const EdgeInsets.only(left: 45, right: 45, top: 8, bottom: 8),
+            child: MarketiniyaImages.marketiniyaLogo(
+              width: logoWidth,
+              height: logoHeight,
+            ),
           ),
           Expanded(
             child: ResponsiveTabButton(

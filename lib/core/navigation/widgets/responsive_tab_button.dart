@@ -25,55 +25,42 @@ class _ResponsiveTabButtonState extends State<ResponsiveTabButton> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final availableWidth = constraints.maxWidth;
-        final maxMargin = availableWidth * 0.08;
-        final margin = maxMargin.clamp(5.0, 25.0);
-
-        return MouseRegion(
-          onEnter: (_) => setState(() => isHovered = true),
-          onExit: (_) => setState(() => isHovered = false),
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: widget.onPressed,
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              child: Container(
-                width: double.infinity,
-                height: 65,
-                padding: const EdgeInsets.only(
-                    top: 18, bottom: 3, left: 10, right: 10,),
-                child: Row(
-                  children: [
-                    AnimatedBorder(isVisible: isHovered, height: 40),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: margin),
-                        child: FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Text(
-                            widget.label,
-                            style: TextStyle(
-                              fontSize: widget.fontSize,
-                              color: _getButtonColor(widget.isActive, colorScheme),
-                            ),
-                            textAlign: TextAlign.center,
-                            maxLines: 1,
-                          ),
-                        ),
-                      ),
+    return MouseRegion(
+      onEnter: (_) => setState(() => isHovered = true),
+      onExit: (_) => setState(() => isHovered = false),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: widget.onPressed,
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          child: Container(
+            padding: const EdgeInsets.only(
+              top: 18,
+              bottom: 3,
+              left: 10,
+              right: 10,
+            ),
+            child: Row(
+              children: [
+                AnimatedBorder(isVisible: isHovered, height: 75),
+                Expanded(
+                  child: Text(
+                    widget.label,
+                    style: TextStyle(
+                      fontSize: widget.fontSize,
+                      color: _getButtonColor(widget.isActive, colorScheme),
                     ),
-                    AnimatedBorder(isVisible: isHovered, height: 40),
-                  ],
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                  ),
                 ),
-              ),
+                AnimatedBorder(isVisible: isHovered, height: 75),
+              ],
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 
