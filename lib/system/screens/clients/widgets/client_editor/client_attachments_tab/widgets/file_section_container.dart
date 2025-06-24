@@ -17,9 +17,9 @@ class FileSectionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 114,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(xxs),
         border: Border.all(
           color: isDragOver
               ? AppColors.oliveGreen
@@ -35,11 +35,11 @@ class FileSectionContainer extends StatelessWidget {
                 : null,
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(xxs),
         child: CustomPaint(
           painter: _StripePainter(),
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(xxsPlus),
             child: child,
           ),
         ),

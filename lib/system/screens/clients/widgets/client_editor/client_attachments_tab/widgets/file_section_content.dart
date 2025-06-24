@@ -26,27 +26,25 @@ class FileSectionContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Center(
-          child: Text(
-            'Drag and drop files',
-            style: TextStyle(
-              fontSize: xxsPlus,
-              color: Colors.grey.shade400,
-              fontWeight: FontWeight.w500,
+        if (files.length < 6)
+          Center(
+            child: Text(
+              'Drag and drop files',
+              style: TextStyle(
+                fontSize: xxsPlus,
+                color: Colors.grey.shade400,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
-        ),
         Row(
           children: [
             Expanded(
-              child: SizedBox(
-                height: 76,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: files.length,
-                  separatorBuilder: (_, index) => const SizedBox(width: sm),
-                  itemBuilder: (_, index) => FileItem(file: files[index]),
-                ),
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: files.length,
+                separatorBuilder: (_, index) => const SizedBox(width: sm),
+                itemBuilder: (_, index) => FileItem(file: files[index]),
               ),
             ),
             Padding(

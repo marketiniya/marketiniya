@@ -26,8 +26,41 @@ class FileItem extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                Center(
-                  child: FileTypeIcons.getIcon(file.fileExtension, size: lg),
+                IconButton(
+                  onPressed: () {},
+                  icon: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      FileTypeIcons.getIcon(file.fileExtension, size: lg),
+                      const SizedBox(height: xs),
+                      Text(
+                        file.name,
+                        style: const TextStyle(
+                          fontSize: xxsPlus,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        file.formattedSize,
+                        style: const TextStyle(
+                          fontSize: xxs,
+                          color: Colors.grey,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                  tooltip: 'Download',
+                  style: IconButton.styleFrom(
+                    //backgroundColor: Colors.transparent,
+                    overlayColor: Colors.transparent,
+                    padding: EdgeInsets.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                 ),
                 Positioned(
                   top: none,
@@ -49,26 +82,6 @@ class FileItem extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: xs),
-          Text(
-            file.name,
-            style: const TextStyle(
-              fontSize: xxsPlus,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
-            ),
-            textAlign: TextAlign.center,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          Text(
-            file.formattedSize,
-            style: const TextStyle(
-              fontSize: xxs,
-              color: Colors.grey,
-            ),
-            textAlign: TextAlign.center,
           ),
         ],
       ),

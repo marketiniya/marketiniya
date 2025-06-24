@@ -156,7 +156,6 @@ class _FileSectionState extends State<FileSection> {
                     onLeave: _onLeave,
                   ),
                 ),
-                // Content overlay with container styling
                 FileSectionContainer(
                   isDragOver: isDragOver,
                   hasError: error != null,
