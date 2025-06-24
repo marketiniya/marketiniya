@@ -69,7 +69,6 @@ class _TabNavigationScreenShellState extends State<TabNavigationScreenShell>
             logoHeight: 100,
             fontSize: 20,
             dividerHeight: 2,
-            toolbarHeight: 40,
           ),
         ),
       ),

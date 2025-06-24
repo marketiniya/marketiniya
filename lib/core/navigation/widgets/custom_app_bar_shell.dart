@@ -12,7 +12,6 @@ class CustomAppBarShell extends StatelessWidget {
     required this.logoHeight,
     required this.fontSize,
     required this.dividerHeight,
-    this.toolbarHeight = kToolbarHeight,
   });
 
   final TabController tabController;
@@ -22,7 +21,6 @@ class CustomAppBarShell extends StatelessWidget {
   final double logoHeight;
   final double fontSize;
   final double dividerHeight;
-  final double toolbarHeight;
 
   @override
   Widget build(BuildContext context) {
