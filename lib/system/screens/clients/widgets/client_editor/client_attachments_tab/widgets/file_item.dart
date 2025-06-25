@@ -9,7 +9,7 @@ import 'package:marketinya/system/screens/clients/widgets/client_editor/client_a
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/bloc/file_upload_event.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/models/uploaded_file.dart';
 
-class FileItem extends StatelessWidget {
+class FileItem extends StatefulWidget {
   const FileItem({
     super.key,
     required this.file,
@@ -18,70 +18,49 @@ class FileItem extends StatelessWidget {
   final UploadedFile file;
 
   @override
+  State<FileItem> createState() => _FileItemState();
+}
+
+class _FileItemState extends State<FileItem> {
+  bool _isHovered = false;
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 100,
       child: Column(
         children: [
-          Expanded(
-            child: Stack(
-              children: [
-                IconButton(
+          Stack(
+            children: [
+              MouseRegion(
+                onEnter: (_) => setState(() => _isHovered = true),
+                onExit: (_) => setState(() => _isHovered = false),
+                child: FileIconButton(
+                  file: widget.file,
+                  isHovered: _isHovered,
                   onPressed: () {},
-                  icon: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      FileTypeIcons.getIcon(file.fileExtension, size: lg),
-                      const SizedBox(height: xs),
-                      Text(
-                        file.name,
-                        style: const TextStyle(
-                          fontSize: xxsPlus,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                        ),
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        file.formattedSize,
-                        style: const TextStyle(
-                          fontSize: xxs,
-                          color: Colors.grey,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                ),
+              ),
+              Positioned(
+                top: none,
+                right: none,
+                child: IconButton(
+                  onPressed: () => _deleteConfirmationDialog(context),
+                  icon: const Icon(
+                    Icons.close,
+                    color: Colors.white,
+                    size: xxsPlus,
                   ),
-                  tooltip: 'Download',
+                  tooltip: 'Delete',
                   style: IconButton.styleFrom(
-                    //backgroundColor: Colors.transparent,
-                    overlayColor: Colors.transparent,
+                    backgroundColor: Colors.red,
+                    minimumSize: const Size(xs, xs),
                     padding: EdgeInsets.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
                 ),
-                Positioned(
-                  top: none,
-                  right: none,
-                  child: IconButton(
-                    onPressed: () => _deleteConfirmationDialog(context),
-                    icon: const Icon(
-                      Icons.close,
-                      color: Colors.white,
-                      size: xxsPlus,
-                    ),
-                    style: IconButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      minimumSize: const Size(xs, xs),
-                      padding: EdgeInsets.zero,
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
@@ -105,7 +84,7 @@ class FileItem extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           content: Text(
-            file.name,
+            widget.file.name,
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 14,
@@ -132,8 +111,8 @@ class FileItem extends StatelessWidget {
                       Navigator.of(context).pop();
                       bloc.add(
                         FileUploadEvent.fileRemoved(
-                          fileType: file.fileType,
-                          fileId: file.id,
+                          fileType: widget.file.fileType,
+                          fileId: widget.file.id,
                         ),
                       );
                     },
@@ -156,6 +135,76 @@ class FileItem extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class FileIconButton extends StatelessWidget {
+  const FileIconButton({
+    super.key,
+    required this.file,
+    required this.isHovered,
+    required this.onPressed,
+  });
+
+  final UploadedFile file;
+  final bool isHovered;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    final baseIcon = FileTypeIcons.getIcon(file.fileExtension, size: lg);
+    final decoratedIcon = isHovered
+        ? ColorFiltered(
+            colorFilter: const ColorFilter.mode(
+              Colors.black26,
+              BlendMode.srcATop,
+            ),
+            child: baseIcon,
+          )
+        : baseIcon;
+
+    return IconButton(
+      onPressed: onPressed,
+      icon: ConstrainedBox(
+        constraints: const BoxConstraints(
+          minWidth: 100,
+          maxWidth: 100,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            decoratedIcon,
+            const SizedBox(height: xs),
+            Text(
+              file.name,
+              style: const TextStyle(
+                fontSize: xxsPlus,
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Text(
+              file.formattedSize,
+              style: const TextStyle(
+                fontSize: xxs,
+                color: Colors.grey,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+      tooltip: 'Download',
+      style: IconButton.styleFrom(
+        backgroundColor: Colors.transparent,
+        overlayColor: Colors.transparent,
+        padding: EdgeInsets.zero,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
     );
   }
 }
