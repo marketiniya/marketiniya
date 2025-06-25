@@ -9,20 +9,13 @@ import 'package:marketinya/system/screens/clients/widgets/client_editor/client_a
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/bloc/file_upload_event.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/models/uploaded_file.dart';
 
-class FileItem extends StatefulWidget {
+class FileItem extends StatelessWidget {
   const FileItem({
     super.key,
     required this.file,
   });
 
   final UploadedFile file;
-
-  @override
-  State<FileItem> createState() => _FileItemState();
-}
-
-class _FileItemState extends State<FileItem> {
-  bool _isHovered = false;
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +25,9 @@ class _FileItemState extends State<FileItem> {
         children: [
           Stack(
             children: [
-              MouseRegion(
-                onEnter: (_) => setState(() => _isHovered = true),
-                onExit: (_) => setState(() => _isHovered = false),
-                child: FileIconButton(
-                  file: widget.file,
-                  isHovered: _isHovered,
-                  onPressed: () {},
-                ),
+              FileIconButton(
+                file: file,
+                onPressed: () {},
               ),
               Positioned(
                 top: none,
@@ -84,7 +72,7 @@ class _FileItemState extends State<FileItem> {
             textAlign: TextAlign.center,
           ),
           content: Text(
-            widget.file.name,
+            file.name,
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 14,
@@ -111,8 +99,8 @@ class _FileItemState extends State<FileItem> {
                       Navigator.of(context).pop();
                       bloc.add(
                         FileUploadEvent.fileRemoved(
-                          fileType: widget.file.fileType,
-                          fileId: widget.file.id,
+                          fileType: file.fileType,
+                          fileId: file.id,
                         ),
                       );
                     },
@@ -139,22 +127,27 @@ class _FileItemState extends State<FileItem> {
   }
 }
 
-class FileIconButton extends StatelessWidget {
+class FileIconButton extends StatefulWidget {
   const FileIconButton({
     super.key,
     required this.file,
-    required this.isHovered,
     required this.onPressed,
   });
 
   final UploadedFile file;
-  final bool isHovered;
   final VoidCallback onPressed;
 
   @override
+  State<FileIconButton> createState() => _FileIconButtonState();
+}
+
+class _FileIconButtonState extends State<FileIconButton> {
+  bool _isHovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    final baseIcon = FileTypeIcons.getIcon(file.fileExtension, size: lg);
-    final decoratedIcon = isHovered
+    final baseIcon = FileTypeIcons.getIcon(widget.file.fileExtension, size: lg);
+    final decoratedIcon = _isHovered
         ? ColorFiltered(
             colorFilter: const ColorFilter.mode(
               Colors.black26,
@@ -164,46 +157,50 @@ class FileIconButton extends StatelessWidget {
           )
         : baseIcon;
 
-    return IconButton(
-      onPressed: onPressed,
-      icon: ConstrainedBox(
-        constraints: const BoxConstraints(
-          minWidth: 100,
-          maxWidth: 100,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            decoratedIcon,
-            const SizedBox(height: xs),
-            Text(
-              file.name,
-              style: const TextStyle(
-                fontSize: xxsPlus,
-                fontWeight: FontWeight.w500,
-                color: Colors.black,
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: IconButton(
+        onPressed: widget.onPressed,
+        icon: ConstrainedBox(
+          constraints: const BoxConstraints(
+            minWidth: 100,
+            maxWidth: 100,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              decoratedIcon,
+              const SizedBox(height: xs),
+              Text(
+                widget.file.name,
+                style: const TextStyle(
+                  fontSize: xxsPlus,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Text(
-              file.formattedSize,
-              style: const TextStyle(
-                fontSize: xxs,
-                color: Colors.grey,
+              Text(
+                widget.file.formattedSize,
+                style: const TextStyle(
+                  fontSize: xxs,
+                  color: Colors.grey,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-      tooltip: 'Download',
-      style: IconButton.styleFrom(
-        backgroundColor: Colors.transparent,
-        overlayColor: Colors.transparent,
-        padding: EdgeInsets.zero,
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        tooltip: 'Download',
+        style: IconButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          overlayColor: Colors.transparent,
+          padding: EdgeInsets.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
       ),
     );
   }
