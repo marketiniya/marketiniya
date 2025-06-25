@@ -56,7 +56,9 @@ class _TabNavigationScreenShellState extends State<TabNavigationScreenShell>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(186),
+        preferredSize: Size.fromHeight(
+          MediaQuery.of(context).size.width >= 1265 ? 186 : 65,
+        ),
         child: ResponsiveLayout(
           mobile: const CustomAppBarMobile(
             activeTab: 'Начало',
