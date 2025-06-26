@@ -1,6 +1,9 @@
 import 'dart:async';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
 
 import 'package:file_picker/file_picker.dart' as picker;
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:injectable/injectable.dart';
@@ -29,6 +32,7 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
         dragLeft: (fileType) => _onDragLeft(fileType, emit),
         fileRemoved: (fileType, fileId) => _onFileRemoved(fileType, fileId, emit),
         errorCleared: (fileType) => _onErrorCleared(fileType, emit),
+        fileOpen: (fileId, fileName, downloadUrl) => _onFileOpen(fileId, fileName, downloadUrl, emit),
       );
     });
 
@@ -404,6 +408,21 @@ class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
         return 'video/quicktime';
       default:
         return 'application/octet-stream';
+    }
+  }
+
+  Future<void> _onFileOpen(
+    String fileId,
+    String fileName,
+    String downloadUrl,
+    Emitter<FileUploadState> emit,) async {
+    try {
+      if (kIsWeb) {
+        // Open URL in new tab
+        html.window.open(downloadUrl, '_blank');
+      }
+    } catch (e) {
+      Log.error('Failed to open file: $e');
     }
   }
 }

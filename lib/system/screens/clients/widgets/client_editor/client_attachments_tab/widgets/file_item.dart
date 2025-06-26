@@ -27,7 +27,7 @@ class FileItem extends StatelessWidget {
             children: [
               FileIconButton(
                 file: file,
-                onPressed: () {},
+                onPressed: () => _openFile(context),
               ),
               Positioned(
                 top: none,
@@ -125,6 +125,20 @@ class FileItem extends StatelessWidget {
       },
     );
   }
+
+  void _openFile(BuildContext context) {
+    final bloc = context.read<FileUploadBloc>();
+
+    if (file.downloadUrl != null) {
+      bloc.add(
+        FileUploadEvent.fileOpen(
+          fileId: file.id,
+          fileName: file.name,
+          downloadUrl: file.downloadUrl!,
+        ),
+      );
+    }
+  }
 }
 
 class FileIconButton extends StatefulWidget {
@@ -194,7 +208,7 @@ class _FileIconButtonState extends State<FileIconButton> {
             ],
           ),
         ),
-        tooltip: 'Download',
+        tooltip: 'Open',
         style: IconButton.styleFrom(
           backgroundColor: Colors.transparent,
           overlayColor: Colors.transparent,

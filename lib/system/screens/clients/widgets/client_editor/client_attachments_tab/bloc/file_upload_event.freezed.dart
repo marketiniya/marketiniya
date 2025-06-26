@@ -29,6 +29,9 @@ mixin _$FileUploadEvent {
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
     required TResult Function(FileType fileType) errorCleared,
+    required TResult Function(
+            String fileId, String fileName, String downloadUrl)
+        fileOpen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,6 +46,8 @@ mixin _$FileUploadEvent {
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
     TResult? Function(FileType fileType)? errorCleared,
+    TResult? Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,8 @@ mixin _$FileUploadEvent {
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
     TResult Function(FileType fileType)? errorCleared,
+    TResult Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,6 +77,7 @@ mixin _$FileUploadEvent {
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
     required TResult Function(_ErrorCleared value) errorCleared,
+    required TResult Function(_FileDownload value) fileOpen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,6 +90,7 @@ mixin _$FileUploadEvent {
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
     TResult? Function(_ErrorCleared value)? errorCleared,
+    TResult? Function(_FileDownload value)? fileOpen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,6 +103,7 @@ mixin _$FileUploadEvent {
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
     TResult Function(_ErrorCleared value)? errorCleared,
+    TResult Function(_FileDownload value)? fileOpen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -172,6 +182,9 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
     required TResult Function(FileType fileType) errorCleared,
+    required TResult Function(
+            String fileId, String fileName, String downloadUrl)
+        fileOpen,
   }) {
     return loadAllSections();
   }
@@ -189,6 +202,8 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
     TResult? Function(FileType fileType)? errorCleared,
+    TResult? Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
   }) {
     return loadAllSections?.call();
   }
@@ -206,6 +221,8 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
     TResult Function(FileType fileType)? errorCleared,
+    TResult Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
     required TResult orElse(),
   }) {
     if (loadAllSections != null) {
@@ -225,6 +242,7 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
     required TResult Function(_ErrorCleared value) errorCleared,
+    required TResult Function(_FileDownload value) fileOpen,
   }) {
     return loadAllSections(this);
   }
@@ -240,6 +258,7 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
     TResult? Function(_ErrorCleared value)? errorCleared,
+    TResult? Function(_FileDownload value)? fileOpen,
   }) {
     return loadAllSections?.call(this);
   }
@@ -255,6 +274,7 @@ class _$LoadAllSectionsImpl implements _LoadAllSections {
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
     TResult Function(_ErrorCleared value)? errorCleared,
+    TResult Function(_FileDownload value)? fileOpen,
     required TResult orElse(),
   }) {
     if (loadAllSections != null) {
@@ -348,6 +368,9 @@ class _$LoadSectionImpl implements _LoadSection {
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
     required TResult Function(FileType fileType) errorCleared,
+    required TResult Function(
+            String fileId, String fileName, String downloadUrl)
+        fileOpen,
   }) {
     return loadSection(fileType);
   }
@@ -365,6 +388,8 @@ class _$LoadSectionImpl implements _LoadSection {
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
     TResult? Function(FileType fileType)? errorCleared,
+    TResult? Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
   }) {
     return loadSection?.call(fileType);
   }
@@ -382,6 +407,8 @@ class _$LoadSectionImpl implements _LoadSection {
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
     TResult Function(FileType fileType)? errorCleared,
+    TResult Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
     required TResult orElse(),
   }) {
     if (loadSection != null) {
@@ -401,6 +428,7 @@ class _$LoadSectionImpl implements _LoadSection {
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
     required TResult Function(_ErrorCleared value) errorCleared,
+    required TResult Function(_FileDownload value) fileOpen,
   }) {
     return loadSection(this);
   }
@@ -416,6 +444,7 @@ class _$LoadSectionImpl implements _LoadSection {
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
     TResult? Function(_ErrorCleared value)? errorCleared,
+    TResult? Function(_FileDownload value)? fileOpen,
   }) {
     return loadSection?.call(this);
   }
@@ -431,6 +460,7 @@ class _$LoadSectionImpl implements _LoadSection {
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
     TResult Function(_ErrorCleared value)? errorCleared,
+    TResult Function(_FileDownload value)? fileOpen,
     required TResult orElse(),
   }) {
     if (loadSection != null) {
@@ -553,6 +583,9 @@ class _$FileDroppedImpl implements _FileDropped {
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
     required TResult Function(FileType fileType) errorCleared,
+    required TResult Function(
+            String fileId, String fileName, String downloadUrl)
+        fileOpen,
   }) {
     return fileDropped(fileType, file, controller);
   }
@@ -570,6 +603,8 @@ class _$FileDroppedImpl implements _FileDropped {
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
     TResult? Function(FileType fileType)? errorCleared,
+    TResult? Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
   }) {
     return fileDropped?.call(fileType, file, controller);
   }
@@ -587,6 +622,8 @@ class _$FileDroppedImpl implements _FileDropped {
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
     TResult Function(FileType fileType)? errorCleared,
+    TResult Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
     required TResult orElse(),
   }) {
     if (fileDropped != null) {
@@ -606,6 +643,7 @@ class _$FileDroppedImpl implements _FileDropped {
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
     required TResult Function(_ErrorCleared value) errorCleared,
+    required TResult Function(_FileDownload value) fileOpen,
   }) {
     return fileDropped(this);
   }
@@ -621,6 +659,7 @@ class _$FileDroppedImpl implements _FileDropped {
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
     TResult? Function(_ErrorCleared value)? errorCleared,
+    TResult? Function(_FileDownload value)? fileOpen,
   }) {
     return fileDropped?.call(this);
   }
@@ -636,6 +675,7 @@ class _$FileDroppedImpl implements _FileDropped {
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
     TResult Function(_ErrorCleared value)? errorCleared,
+    TResult Function(_FileDownload value)? fileOpen,
     required TResult orElse(),
   }) {
     if (fileDropped != null) {
@@ -750,6 +790,9 @@ class _$FilePickedImpl implements _FilePicked {
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
     required TResult Function(FileType fileType) errorCleared,
+    required TResult Function(
+            String fileId, String fileName, String downloadUrl)
+        fileOpen,
   }) {
     return filePicked(fileType, file);
   }
@@ -767,6 +810,8 @@ class _$FilePickedImpl implements _FilePicked {
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
     TResult? Function(FileType fileType)? errorCleared,
+    TResult? Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
   }) {
     return filePicked?.call(fileType, file);
   }
@@ -784,6 +829,8 @@ class _$FilePickedImpl implements _FilePicked {
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
     TResult Function(FileType fileType)? errorCleared,
+    TResult Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
     required TResult orElse(),
   }) {
     if (filePicked != null) {
@@ -803,6 +850,7 @@ class _$FilePickedImpl implements _FilePicked {
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
     required TResult Function(_ErrorCleared value) errorCleared,
+    required TResult Function(_FileDownload value) fileOpen,
   }) {
     return filePicked(this);
   }
@@ -818,6 +866,7 @@ class _$FilePickedImpl implements _FilePicked {
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
     TResult? Function(_ErrorCleared value)? errorCleared,
+    TResult? Function(_FileDownload value)? fileOpen,
   }) {
     return filePicked?.call(this);
   }
@@ -833,6 +882,7 @@ class _$FilePickedImpl implements _FilePicked {
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
     TResult Function(_ErrorCleared value)? errorCleared,
+    TResult Function(_FileDownload value)? fileOpen,
     required TResult orElse(),
   }) {
     if (filePicked != null) {
@@ -937,6 +987,9 @@ class _$DragEnteredImpl implements _DragEntered {
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
     required TResult Function(FileType fileType) errorCleared,
+    required TResult Function(
+            String fileId, String fileName, String downloadUrl)
+        fileOpen,
   }) {
     return dragEntered(fileType);
   }
@@ -954,6 +1007,8 @@ class _$DragEnteredImpl implements _DragEntered {
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
     TResult? Function(FileType fileType)? errorCleared,
+    TResult? Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
   }) {
     return dragEntered?.call(fileType);
   }
@@ -971,6 +1026,8 @@ class _$DragEnteredImpl implements _DragEntered {
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
     TResult Function(FileType fileType)? errorCleared,
+    TResult Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
     required TResult orElse(),
   }) {
     if (dragEntered != null) {
@@ -990,6 +1047,7 @@ class _$DragEnteredImpl implements _DragEntered {
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
     required TResult Function(_ErrorCleared value) errorCleared,
+    required TResult Function(_FileDownload value) fileOpen,
   }) {
     return dragEntered(this);
   }
@@ -1005,6 +1063,7 @@ class _$DragEnteredImpl implements _DragEntered {
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
     TResult? Function(_ErrorCleared value)? errorCleared,
+    TResult? Function(_FileDownload value)? fileOpen,
   }) {
     return dragEntered?.call(this);
   }
@@ -1020,6 +1079,7 @@ class _$DragEnteredImpl implements _DragEntered {
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
     TResult Function(_ErrorCleared value)? errorCleared,
+    TResult Function(_FileDownload value)? fileOpen,
     required TResult orElse(),
   }) {
     if (dragEntered != null) {
@@ -1121,6 +1181,9 @@ class _$DragLeftImpl implements _DragLeft {
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
     required TResult Function(FileType fileType) errorCleared,
+    required TResult Function(
+            String fileId, String fileName, String downloadUrl)
+        fileOpen,
   }) {
     return dragLeft(fileType);
   }
@@ -1138,6 +1201,8 @@ class _$DragLeftImpl implements _DragLeft {
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
     TResult? Function(FileType fileType)? errorCleared,
+    TResult? Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
   }) {
     return dragLeft?.call(fileType);
   }
@@ -1155,6 +1220,8 @@ class _$DragLeftImpl implements _DragLeft {
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
     TResult Function(FileType fileType)? errorCleared,
+    TResult Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
     required TResult orElse(),
   }) {
     if (dragLeft != null) {
@@ -1174,6 +1241,7 @@ class _$DragLeftImpl implements _DragLeft {
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
     required TResult Function(_ErrorCleared value) errorCleared,
+    required TResult Function(_FileDownload value) fileOpen,
   }) {
     return dragLeft(this);
   }
@@ -1189,6 +1257,7 @@ class _$DragLeftImpl implements _DragLeft {
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
     TResult? Function(_ErrorCleared value)? errorCleared,
+    TResult? Function(_FileDownload value)? fileOpen,
   }) {
     return dragLeft?.call(this);
   }
@@ -1204,6 +1273,7 @@ class _$DragLeftImpl implements _DragLeft {
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
     TResult Function(_ErrorCleared value)? errorCleared,
+    TResult Function(_FileDownload value)? fileOpen,
     required TResult orElse(),
   }) {
     if (dragLeft != null) {
@@ -1313,6 +1383,9 @@ class _$FileRemovedImpl implements _FileRemoved {
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
     required TResult Function(FileType fileType) errorCleared,
+    required TResult Function(
+            String fileId, String fileName, String downloadUrl)
+        fileOpen,
   }) {
     return fileRemoved(fileType, fileId);
   }
@@ -1330,6 +1403,8 @@ class _$FileRemovedImpl implements _FileRemoved {
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
     TResult? Function(FileType fileType)? errorCleared,
+    TResult? Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
   }) {
     return fileRemoved?.call(fileType, fileId);
   }
@@ -1347,6 +1422,8 @@ class _$FileRemovedImpl implements _FileRemoved {
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
     TResult Function(FileType fileType)? errorCleared,
+    TResult Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
     required TResult orElse(),
   }) {
     if (fileRemoved != null) {
@@ -1366,6 +1443,7 @@ class _$FileRemovedImpl implements _FileRemoved {
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
     required TResult Function(_ErrorCleared value) errorCleared,
+    required TResult Function(_FileDownload value) fileOpen,
   }) {
     return fileRemoved(this);
   }
@@ -1381,6 +1459,7 @@ class _$FileRemovedImpl implements _FileRemoved {
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
     TResult? Function(_ErrorCleared value)? errorCleared,
+    TResult? Function(_FileDownload value)? fileOpen,
   }) {
     return fileRemoved?.call(this);
   }
@@ -1396,6 +1475,7 @@ class _$FileRemovedImpl implements _FileRemoved {
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
     TResult Function(_ErrorCleared value)? errorCleared,
+    TResult Function(_FileDownload value)? fileOpen,
     required TResult orElse(),
   }) {
     if (fileRemoved != null) {
@@ -1500,6 +1580,9 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     required TResult Function(FileType fileType) dragLeft,
     required TResult Function(FileType fileType, String fileId) fileRemoved,
     required TResult Function(FileType fileType) errorCleared,
+    required TResult Function(
+            String fileId, String fileName, String downloadUrl)
+        fileOpen,
   }) {
     return errorCleared(fileType);
   }
@@ -1517,6 +1600,8 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     TResult? Function(FileType fileType)? dragLeft,
     TResult? Function(FileType fileType, String fileId)? fileRemoved,
     TResult? Function(FileType fileType)? errorCleared,
+    TResult? Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
   }) {
     return errorCleared?.call(fileType);
   }
@@ -1534,6 +1619,8 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     TResult Function(FileType fileType)? dragLeft,
     TResult Function(FileType fileType, String fileId)? fileRemoved,
     TResult Function(FileType fileType)? errorCleared,
+    TResult Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
     required TResult orElse(),
   }) {
     if (errorCleared != null) {
@@ -1553,6 +1640,7 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     required TResult Function(_DragLeft value) dragLeft,
     required TResult Function(_FileRemoved value) fileRemoved,
     required TResult Function(_ErrorCleared value) errorCleared,
+    required TResult Function(_FileDownload value) fileOpen,
   }) {
     return errorCleared(this);
   }
@@ -1568,6 +1656,7 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     TResult? Function(_DragLeft value)? dragLeft,
     TResult? Function(_FileRemoved value)? fileRemoved,
     TResult? Function(_ErrorCleared value)? errorCleared,
+    TResult? Function(_FileDownload value)? fileOpen,
   }) {
     return errorCleared?.call(this);
   }
@@ -1583,6 +1672,7 @@ class _$ErrorClearedImpl implements _ErrorCleared {
     TResult Function(_DragLeft value)? dragLeft,
     TResult Function(_FileRemoved value)? fileRemoved,
     TResult Function(_ErrorCleared value)? errorCleared,
+    TResult Function(_FileDownload value)? fileOpen,
     required TResult orElse(),
   }) {
     if (errorCleared != null) {
@@ -1601,5 +1691,224 @@ abstract class _ErrorCleared implements FileUploadEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorClearedImplCopyWith<_$ErrorClearedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FileDownloadImplCopyWith<$Res> {
+  factory _$$FileDownloadImplCopyWith(
+          _$FileDownloadImpl value, $Res Function(_$FileDownloadImpl) then) =
+      __$$FileDownloadImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String fileId, String fileName, String downloadUrl});
+}
+
+/// @nodoc
+class __$$FileDownloadImplCopyWithImpl<$Res>
+    extends _$FileUploadEventCopyWithImpl<$Res, _$FileDownloadImpl>
+    implements _$$FileDownloadImplCopyWith<$Res> {
+  __$$FileDownloadImplCopyWithImpl(
+      _$FileDownloadImpl _value, $Res Function(_$FileDownloadImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FileUploadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fileId = null,
+    Object? fileName = null,
+    Object? downloadUrl = null,
+  }) {
+    return _then(_$FileDownloadImpl(
+      fileId: null == fileId
+          ? _value.fileId
+          : fileId // ignore: cast_nullable_to_non_nullable
+              as String,
+      fileName: null == fileName
+          ? _value.fileName
+          : fileName // ignore: cast_nullable_to_non_nullable
+              as String,
+      downloadUrl: null == downloadUrl
+          ? _value.downloadUrl
+          : downloadUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FileDownloadImpl implements _FileDownload {
+  const _$FileDownloadImpl(
+      {required this.fileId,
+      required this.fileName,
+      required this.downloadUrl});
+
+  @override
+  final String fileId;
+  @override
+  final String fileName;
+  @override
+  final String downloadUrl;
+
+  @override
+  String toString() {
+    return 'FileUploadEvent.fileOpen(fileId: $fileId, fileName: $fileName, downloadUrl: $downloadUrl)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FileDownloadImpl &&
+            (identical(other.fileId, fileId) || other.fileId == fileId) &&
+            (identical(other.fileName, fileName) ||
+                other.fileName == fileName) &&
+            (identical(other.downloadUrl, downloadUrl) ||
+                other.downloadUrl == downloadUrl));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, fileId, fileName, downloadUrl);
+
+  /// Create a copy of FileUploadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FileDownloadImplCopyWith<_$FileDownloadImpl> get copyWith =>
+      __$$FileDownloadImplCopyWithImpl<_$FileDownloadImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAllSections,
+    required TResult Function(FileType fileType) loadSection,
+    required TResult Function(FileType fileType, DropzoneFileInterface file,
+            DropzoneViewController controller)
+        fileDropped,
+    required TResult Function(FileType fileType, picker.PlatformFile file)
+        filePicked,
+    required TResult Function(FileType fileType) dragEntered,
+    required TResult Function(FileType fileType) dragLeft,
+    required TResult Function(FileType fileType, String fileId) fileRemoved,
+    required TResult Function(FileType fileType) errorCleared,
+    required TResult Function(
+            String fileId, String fileName, String downloadUrl)
+        fileOpen,
+  }) {
+    return fileOpen(fileId, fileName, downloadUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadAllSections,
+    TResult? Function(FileType fileType)? loadSection,
+    TResult? Function(FileType fileType, DropzoneFileInterface file,
+            DropzoneViewController controller)?
+        fileDropped,
+    TResult? Function(FileType fileType, picker.PlatformFile file)? filePicked,
+    TResult? Function(FileType fileType)? dragEntered,
+    TResult? Function(FileType fileType)? dragLeft,
+    TResult? Function(FileType fileType, String fileId)? fileRemoved,
+    TResult? Function(FileType fileType)? errorCleared,
+    TResult? Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
+  }) {
+    return fileOpen?.call(fileId, fileName, downloadUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAllSections,
+    TResult Function(FileType fileType)? loadSection,
+    TResult Function(FileType fileType, DropzoneFileInterface file,
+            DropzoneViewController controller)?
+        fileDropped,
+    TResult Function(FileType fileType, picker.PlatformFile file)? filePicked,
+    TResult Function(FileType fileType)? dragEntered,
+    TResult Function(FileType fileType)? dragLeft,
+    TResult Function(FileType fileType, String fileId)? fileRemoved,
+    TResult Function(FileType fileType)? errorCleared,
+    TResult Function(String fileId, String fileName, String downloadUrl)?
+        fileOpen,
+    required TResult orElse(),
+  }) {
+    if (fileOpen != null) {
+      return fileOpen(fileId, fileName, downloadUrl);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadAllSections value) loadAllSections,
+    required TResult Function(_LoadSection value) loadSection,
+    required TResult Function(_FileDropped value) fileDropped,
+    required TResult Function(_FilePicked value) filePicked,
+    required TResult Function(_DragEntered value) dragEntered,
+    required TResult Function(_DragLeft value) dragLeft,
+    required TResult Function(_FileRemoved value) fileRemoved,
+    required TResult Function(_ErrorCleared value) errorCleared,
+    required TResult Function(_FileDownload value) fileOpen,
+  }) {
+    return fileOpen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadAllSections value)? loadAllSections,
+    TResult? Function(_LoadSection value)? loadSection,
+    TResult? Function(_FileDropped value)? fileDropped,
+    TResult? Function(_FilePicked value)? filePicked,
+    TResult? Function(_DragEntered value)? dragEntered,
+    TResult? Function(_DragLeft value)? dragLeft,
+    TResult? Function(_FileRemoved value)? fileRemoved,
+    TResult? Function(_ErrorCleared value)? errorCleared,
+    TResult? Function(_FileDownload value)? fileOpen,
+  }) {
+    return fileOpen?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadAllSections value)? loadAllSections,
+    TResult Function(_LoadSection value)? loadSection,
+    TResult Function(_FileDropped value)? fileDropped,
+    TResult Function(_FilePicked value)? filePicked,
+    TResult Function(_DragEntered value)? dragEntered,
+    TResult Function(_DragLeft value)? dragLeft,
+    TResult Function(_FileRemoved value)? fileRemoved,
+    TResult Function(_ErrorCleared value)? errorCleared,
+    TResult Function(_FileDownload value)? fileOpen,
+    required TResult orElse(),
+  }) {
+    if (fileOpen != null) {
+      return fileOpen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FileDownload implements FileUploadEvent {
+  const factory _FileDownload(
+      {required final String fileId,
+      required final String fileName,
+      required final String downloadUrl}) = _$FileDownloadImpl;
+
+  String get fileId;
+  String get fileName;
+  String get downloadUrl;
+
+  /// Create a copy of FileUploadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FileDownloadImplCopyWith<_$FileDownloadImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
