@@ -10,22 +10,18 @@ class TabBarContent extends StatelessWidget {
     super.key,
     required this.tabController,
     required this.onTabTapped,
-    required this.logoWidth,
-    required this.logoHeight,
-    required this.fontSize,
   });
 
   final TabController tabController;
   final Function(int) onTabTapped;
-  final double logoWidth;
-  final double logoHeight;
-  final double fontSize;
 
-  // Tab labels as constants
   static const String homeTab = 'Начало';
   static const String blogTab = 'Блог';
   static const String servicesTab = 'Услуги';
   static const String contactTab = 'Свържи се с нас';
+  static const double logoWidth = 126;
+  static const double logoHeight = 100;
+  static const double fontSize = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -77,13 +73,11 @@ class TabBarContent extends StatelessWidget {
               fontSize: fontSize,
             ),
           ),
-          Expanded(
-            child: ContactButton(
-              key: const ValueKey('contact_button'),
-              isActive: _isTabActive(context, contactTab),
-              onPressed: () => onTabTapped(3),
-              fontSize: fontSize,
-            ),
+          ContactButton(
+            key: const ValueKey('contact_button'),
+            isActive: _isTabActive(context, contactTab),
+            onPressed: () => onTabTapped(3),
+            fontSize: fontSize,
           ),
         ],
       ),

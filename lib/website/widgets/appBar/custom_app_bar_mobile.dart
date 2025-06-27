@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:marketinya/core/design_system/atoms/images/marketiniya_images.dart';
-import 'package:marketinya/core/utils/image_utils.dart';
 import 'package:marketinya/website/widgets/appBar/widgets/custom_dialog.dart';
 
 class CustomAppBarMobile extends StatelessWidget
@@ -23,7 +21,11 @@ class CustomAppBarMobile extends StatelessWidget
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MarketiniyaImages.marketiniyaLogo(width: 37, height: 30),
-              SvgPicture.asset(ImageUtils.marketinyaLabelPath),
+              MarketiniyaImages.marketiniyaLabelBacl(
+                width: 156,
+                height: 15,
+                color: Colors.white,
+              ),
               IconButton(
                 icon: const Icon(Icons.menu),
                 color: Colors.white,

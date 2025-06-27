@@ -23,7 +23,7 @@ class CustomDialog extends StatelessWidget {
             const SizedBox(height: sm),
             CustomDialogNavButton(
               activeTab: activeTab,
-              label: 'Начало KUR',
+              label: 'Начало',
               routeName: Routes.home.path,
             ),
             const SizedBox(height: sm),
@@ -40,7 +40,9 @@ class CustomDialog extends StatelessWidget {
             ),
             const SizedBox(height: 56),
             LimeGreenButton(
-                label: 'Свържи се с нас', routeName: Routes.connectWithUs.path),
+              label: 'Свържи се с нас',
+              routeName: Routes.connectWithUs.path,
+            ),
             const Spacer(),
             IconButton(
               onPressed: () {

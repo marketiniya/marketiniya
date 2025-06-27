@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 
 class ContactButton extends StatefulWidget {
   const ContactButton({
@@ -28,25 +29,18 @@ class _ContactButtonState extends State<ContactButton> {
         onTap: widget.onPressed,
         child: ConstrainedBox(
           constraints: const BoxConstraints(
-            maxWidth: 350,
+            maxWidth: 220,
           ),
           child: Container(
-            height: 52.0,
-            margin: const EdgeInsets.only(
-              left: 12.0,
-              right: 12.0,
-              top: 8,
-              bottom: 0,
-            ),
+            height: 55.0,
+            margin: dimen.vertical.xxsPlus + dimen.top.xxs + dimen.bottom.none,
             decoration: BoxDecoration(
               color: _isHovered
                   ? Theme.of(context)
                       .colorScheme
                       .secondary
                       .withValues(alpha: 0.8)
-                  : Theme.of(context)
-                      .colorScheme
-                      .secondary,
+                  : Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(16),
             ),
             child: Center(

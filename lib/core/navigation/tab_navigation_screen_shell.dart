@@ -57,7 +57,7 @@ class _TabNavigationScreenShellState extends State<TabNavigationScreenShell>
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(
-          MediaQuery.of(context).size.width >= 1265 ? 186 : 65,
+          MediaQuery.sizeOf(context).width >= 1265 ? 186 : 65,
         ),
         child: ResponsiveLayout(
           mobile: const CustomAppBarMobile(
@@ -66,11 +66,6 @@ class _TabNavigationScreenShellState extends State<TabNavigationScreenShell>
           desktop: CustomAppBarShell(
             tabController: _tabController,
             onTabTapped: _onTabTapped,
-            logoWidth: 126,
-            labelLogoWidth: 216,
-            logoHeight: 100,
-            fontSize: 20,
-            dividerHeight: 2,
           ),
         ),
       ),

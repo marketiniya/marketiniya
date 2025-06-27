@@ -7,12 +7,10 @@ import 'package:marketinya/core/navigation/widgets/divider_line.dart';
 class BottomDividerAndLabel extends StatelessWidget {
   const BottomDividerAndLabel({
     super.key,
-    required this.labelLogoWidth,
-    required this.dividerHeight,
   });
 
-  final double labelLogoWidth;
-  final double dividerHeight;
+  static const double labelLogoWidth = 216;
+  static const double dividerHeight = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class BottomDividerAndLabel extends StatelessWidget {
           Row(
             children: [
               DividerLine(width: sideWidth, height: dividerHeight),
-              CenteredLogoSection(width: labelLogoWidth),
+              const CenteredLogoSection(width: labelLogoWidth),
               DividerLine(width: sideWidth, height: dividerHeight),
             ],
           ),
