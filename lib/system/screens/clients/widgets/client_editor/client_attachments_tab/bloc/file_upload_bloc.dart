@@ -1,6 +1,4 @@
 import 'dart:async';
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
 
 import 'package:file_picker/file_picker.dart' as picker;
 import 'package:flutter/foundation.dart';
@@ -15,6 +13,7 @@ import 'package:marketinya/system/screens/clients/widgets/client_editor/client_a
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/enums/file_type.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/models/uploaded_file.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/services/file_validation_service.dart';
+import 'package:web/web.dart' as html;
 
 class FileUploadBloc extends Bloc<FileUploadEvent, FileUploadState> {
   FileUploadBloc(
