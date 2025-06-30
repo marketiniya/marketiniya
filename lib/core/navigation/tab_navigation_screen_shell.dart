@@ -60,8 +60,8 @@ class _TabNavigationScreenShellState extends State<TabNavigationScreenShell>
           MediaQuery.sizeOf(context).width >= 1265 ? 186 : 65,
         ),
         child: ResponsiveLayout(
-          mobile: const CustomAppBarMobile(
-            activeTab: 'Начало',
+          mobile: CustomAppBarMobile(
+            onTabTapped: _onTabTapped,
           ),
           desktop: CustomAppBarShell(
             tabController: _tabController,

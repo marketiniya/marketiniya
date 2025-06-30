@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 
-class CustomDialog extends StatelessWidget {
-  const CustomDialog({super.key, required this.activeTab});
+class CustomDialog extends StatefulWidget {
+  const CustomDialog({
+    super.key,
+    required this.onTabTapped,
+    required this.currentRoute,
+  });
 
-  final String activeTab;
+  static const String homeTab = 'Начало';
+  static const String blogTab = 'Блог';
+  static const String servicesTab = 'Услуги';
+  static const String contactTab = 'Свържи се с нас';
+  final void Function(int) onTabTapped;
+  final String currentRoute;
 
+  @override
+  State<CustomDialog> createState() => _CustomDialogState();
+}
+
+class _CustomDialogState extends State<CustomDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -22,26 +35,38 @@ class CustomDialog extends StatelessWidget {
           children: [
             const SizedBox(height: sm),
             CustomDialogNavButton(
-              activeTab: activeTab,
-              label: 'Начало',
-              routeName: Routes.home.path,
+              isActive: _isTabActive(CustomDialog.homeTab),
+              onPressed: () {
+                widget.onTabTapped(0);
+                Navigator.pop(context);
+              },
+              label: CustomDialog.homeTab,
             ),
             const SizedBox(height: sm),
             CustomDialogNavButton(
-              activeTab: activeTab,
-              label: 'Блог',
-              routeName: Routes.blog.path,
+              isActive: _isTabActive(CustomDialog.blogTab),
+              onPressed: () {
+                widget.onTabTapped(1);
+                Navigator.pop(context);
+              },
+              label: CustomDialog.blogTab,
             ),
             const SizedBox(height: sm),
             CustomDialogNavButton(
-              activeTab: activeTab,
-              label: 'Услуги',
-              routeName: Routes.services.path,
+              isActive: _isTabActive(CustomDialog.servicesTab),
+              onPressed: () {
+                widget.onTabTapped(2);
+                Navigator.pop(context);
+              },
+              label: CustomDialog.servicesTab,
             ),
             const SizedBox(height: 56),
             LimeGreenButton(
-              label: 'Свържи се с нас',
-              routeName: Routes.connectWithUs.path,
+              label: CustomDialog.contactTab,
+              onPressed: () {
+                widget.onTabTapped(3);
+                Navigator.pop(context);
+              },
             ),
             const Spacer(),
             IconButton(
@@ -58,27 +83,45 @@ class CustomDialog extends StatelessWidget {
       ),
     );
   }
+
+  bool _isTabActive(String tabName) {
+    switch (tabName) {
+      case CustomDialog.homeTab:
+        return widget.currentRoute.startsWith(Routes.home.path);
+      case CustomDialog.blogTab:
+        return widget.currentRoute.startsWith(Routes.blog.path);
+      case CustomDialog.servicesTab:
+        return widget.currentRoute.startsWith(Routes.services.path);
+      default:
+        return false;
+    }
+  }
 }
 
-class CustomDialogNavButton extends StatelessWidget {
+class CustomDialogNavButton extends StatefulWidget {
   const CustomDialogNavButton({
     super.key,
-    required this.activeTab,
+    required this.isActive,
+    required this.onPressed,
     required this.label,
-    required this.routeName,
   });
 
-  final String activeTab;
+  final bool isActive;
+  final VoidCallback onPressed;
   final String label;
-  final String routeName;
 
+  @override
+  State<CustomDialogNavButton> createState() => _CustomDialogNavButtonState();
+}
+
+class _CustomDialogNavButtonState extends State<CustomDialogNavButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 328,
       height: 55,
       child: ElevatedButton(
-        onPressed: () => context.go(routeName),
+        onPressed: widget.onPressed,
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(ColorUtils.charcoal),
           foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
@@ -86,10 +129,11 @@ class CustomDialogNavButton extends StatelessWidget {
                 states.contains(WidgetState.pressed)) {
               return Colors.grey;
             }
-            if (activeTab == label) {
+            if (widget.isActive) {
               return ColorUtils.limeGreen;
+            } else {
+              return ColorUtils.lightGray;
             }
-            return ColorUtils.lightGray;
           }),
           shape: WidgetStateProperty.resolveWith<OutlinedBorder>((states) {
             return RoundedRectangleBorder(
@@ -98,7 +142,7 @@ class CustomDialogNavButton extends StatelessWidget {
                 color: states.contains(WidgetState.hovered) ||
                         states.contains(WidgetState.pressed)
                     ? Colors.grey
-                    : activeTab == label
+                    : widget.isActive
                         ? ColorUtils.limeGreen
                         : ColorUtils.lightGray,
                 width: 1,
@@ -107,7 +151,7 @@ class CustomDialogNavButton extends StatelessWidget {
           }),
         ),
         child: Text(
-          label,
+          widget.label,
           style: GoogleFonts.roboto(
             textStyle: const TextStyle(
               fontSize: 20,
@@ -123,11 +167,11 @@ class LimeGreenButton extends StatelessWidget {
   const LimeGreenButton({
     super.key,
     required this.label,
-    required this.routeName,
+    required this.onPressed,
   });
 
   final String label;
-  final String routeName;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +179,7 @@ class LimeGreenButton extends StatelessWidget {
       width: 328,
       height: 55,
       child: ElevatedButton(
-        onPressed: () => context.go(routeName),
+        onPressed: () => onPressed(),
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(ColorUtils.limeGreen),
           foregroundColor: WidgetStateProperty.all(ColorUtils.charcoal),

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketinya/core/design_system/atoms/images/marketiniya_images.dart';
 import 'package:marketinya/website/widgets/appBar/widgets/custom_dialog.dart';
 
 class CustomAppBarMobile extends StatelessWidget
     implements PreferredSizeWidget {
-  const CustomAppBarMobile({super.key, required this.activeTab});
+  const CustomAppBarMobile({
+    super.key,
+    required this.onTabTapped,
+  });
 
-  final String activeTab;
+  final void Function(int) onTabTapped;
 
   @override
   Size get preferredSize => const Size.fromHeight(65);
@@ -47,6 +51,8 @@ class CustomAppBarMobile extends StatelessWidget
   }
 
   void _showFallingDialog(BuildContext context) {
+    final currentRoute = GoRouterState.of(context).uri.path;
+
     showGeneralDialog(
       context: context,
       barrierColor: Colors.transparent,
@@ -64,7 +70,10 @@ class CustomAppBarMobile extends StatelessWidget
       },
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) {
-        return CustomDialog(activeTab: activeTab);
+        return CustomDialog(
+          onTabTapped: onTabTapped,
+          currentRoute: currentRoute,
+        );
       },
     );
   }
