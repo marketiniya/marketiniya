@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
+import 'package:marketinya/core/utils/website_tab_constants.dart';
 
 class CustomDialog extends StatelessWidget {
   const CustomDialog({
@@ -12,10 +13,6 @@ class CustomDialog extends StatelessWidget {
     required this.currentRoute,
   });
 
-  static const String homeTab = 'Начало';
-  static const String blogTab = 'Блог';
-  static const String servicesTab = 'Услуги';
-  static const String contactTab = 'Свържи се с нас';
   final void Function(int) onTabTapped;
   final String currentRoute;
 
@@ -31,34 +28,34 @@ class CustomDialog extends StatelessWidget {
           children: [
             const SizedBox(height: sm),
             CustomDialogNavButton(
-              isActive: _isTabActive(homeTab),
+              isActive: _isTabActive(WebsiteTabConstants.homeTab),
               onPressed: () {
                 onTabTapped(0);
                 context.pop();
               },
-              label: homeTab,
+              label: WebsiteTabConstants.homeTab,
             ),
             const SizedBox(height: sm),
             CustomDialogNavButton(
-              isActive: _isTabActive(blogTab),
+              isActive: _isTabActive(WebsiteTabConstants.blogTab),
               onPressed: () {
                 onTabTapped(1);
                 context.pop();
               },
-              label: blogTab,
+              label: WebsiteTabConstants.blogTab,
             ),
             const SizedBox(height: sm),
             CustomDialogNavButton(
-              isActive: _isTabActive(servicesTab),
+              isActive: _isTabActive(WebsiteTabConstants.servicesTab),
               onPressed: () {
                 onTabTapped(2);
                 context.pop();
               },
-              label: servicesTab,
+              label: WebsiteTabConstants.servicesTab,
             ),
             const SizedBox(height: 56),
             LimeGreenButton(
-              label: contactTab,
+              label: WebsiteTabConstants.contactTab,
               onPressed: () {
                 onTabTapped(3);
                 context.pop();
@@ -82,11 +79,11 @@ class CustomDialog extends StatelessWidget {
 
   bool _isTabActive(String tabName) {
     switch (tabName) {
-      case homeTab:
+      case WebsiteTabConstants.homeTab:
         return currentRoute.startsWith(Routes.home.path);
-      case blogTab:
+      case WebsiteTabConstants.blogTab:
         return currentRoute.startsWith(Routes.blog.path);
-      case servicesTab:
+      case WebsiteTabConstants.servicesTab:
         return currentRoute.startsWith(Routes.services.path);
       default:
         return false;
