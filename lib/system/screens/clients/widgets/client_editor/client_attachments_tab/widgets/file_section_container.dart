@@ -17,7 +17,7 @@ class FileSectionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 114,
+      constraints: const BoxConstraints(maxHeight: 114),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(xxs),
         border: Border.all(

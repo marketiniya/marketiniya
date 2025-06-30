@@ -88,7 +88,7 @@ class _ClientEditorScreenState extends State<ClientEditorScreen>
                 controller: _tabController,
                 physics: const NeverScrollableScrollPhysics(),
                 children: _availableTabs.map((tab) => Padding(
-                  padding: const EdgeInsets.only(left: 180, top: xl, bottom: xl),
+                  padding: const EdgeInsets.symmetric(vertical: xl, horizontal: 180),
                   child: switch (tab) {
                     ClientEditorTab.information => const ClientFormPage(),
                     ClientEditorTab.attachments => ClientFilesPage(clientId: widget.client!.id)

@@ -31,16 +31,13 @@ class ClientFilesPage extends StatelessWidget {
           const ClientFilesHeader(),
           const SizedBox(height: lg),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 180),
-              child: ListView(
-                children: const [
-                  FileSection(supportedFileType: FileType.pdf),
-                  FileSection(supportedFileType: FileType.txt),
-                  FileSection(supportedFileType: FileType.image),
-                  FileSection(supportedFileType: FileType.video),
-                ],
-              ),
+            child: ListView.separated(
+              itemCount: FileType.values.length,
+              separatorBuilder: (context, index) => const SizedBox(height: xxsPlus),
+              itemBuilder: (context, index) {
+                final fileType = FileType.values[index];
+                return FileSection(supportedFileType: fileType);
+              },
             ),
           ),
         ],

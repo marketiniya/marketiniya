@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
-import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/enums/status.dart';
@@ -82,16 +81,6 @@ class _FileSectionState extends State<FileSection> {
                   ),
                 ),
               ),
-              if (widget.supportedFileType != FileType.video) ...[
-                Padding(
-                  padding: dimen.top.xs + dimen.bottom.xs,
-                  child: const Divider(
-                    height: 1,
-                    thickness: 1,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
             ],
           );
         }
@@ -116,16 +105,6 @@ class _FileSectionState extends State<FileSection> {
                   fileType: widget.supportedFileType,
                 ),
               ),
-              if (widget.supportedFileType != FileType.video) ...[
-                Padding(
-                  padding: dimen.top.xs + dimen.bottom.xs,
-                  child: const Divider(
-                    height: 1,
-                    thickness: 1,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
             ],
           );
         }
@@ -166,18 +145,6 @@ class _FileSectionState extends State<FileSection> {
                 ),
               ],
             ),
-
-            // Always show divider except for last section
-            if (widget.supportedFileType != FileType.video) ...[
-              Padding(
-                padding: dimen.top.xs + dimen.bottom.xs,
-                child: const Divider(
-                  height: 1,
-                  thickness: 1,
-                  color: Colors.black,
-                ),
-              ),
-            ],
           ],
         );
       },
