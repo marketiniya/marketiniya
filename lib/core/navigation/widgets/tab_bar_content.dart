@@ -73,11 +73,13 @@ class TabBarContent extends StatelessWidget {
               fontSize: fontSize,
             ),
           ),
-          ContactButton(
-            key: const ValueKey('contact_button'),
-            isActive: _isTabActive(context, contactTab),
-            onPressed: () => onTabTapped(3),
-            fontSize: fontSize,
+          Expanded(
+            child: ContactButton(
+              key: const ValueKey('contact_button'),
+              isActive: _isTabActive(context, contactTab),
+              onPressed: () => onTabTapped(3),
+              fontSize: fontSize,
+            ),
           ),
         ],
       ),

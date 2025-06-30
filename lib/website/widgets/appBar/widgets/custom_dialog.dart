@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 
-class CustomDialog extends StatefulWidget {
+class CustomDialog extends StatelessWidget {
   const CustomDialog({
     super.key,
     required this.onTabTapped,
@@ -19,11 +20,6 @@ class CustomDialog extends StatefulWidget {
   final String currentRoute;
 
   @override
-  State<CustomDialog> createState() => _CustomDialogState();
-}
-
-class _CustomDialogState extends State<CustomDialog> {
-  @override
   Widget build(BuildContext context) {
     return Dialog(
       insetPadding: EdgeInsets.zero,
@@ -35,43 +31,43 @@ class _CustomDialogState extends State<CustomDialog> {
           children: [
             const SizedBox(height: sm),
             CustomDialogNavButton(
-              isActive: _isTabActive(CustomDialog.homeTab),
+              isActive: _isTabActive(homeTab),
               onPressed: () {
-                widget.onTabTapped(0);
-                Navigator.pop(context);
+                onTabTapped(0);
+                context.pop();
               },
-              label: CustomDialog.homeTab,
+              label: homeTab,
             ),
             const SizedBox(height: sm),
             CustomDialogNavButton(
-              isActive: _isTabActive(CustomDialog.blogTab),
+              isActive: _isTabActive(blogTab),
               onPressed: () {
-                widget.onTabTapped(1);
-                Navigator.pop(context);
+                onTabTapped(1);
+                context.pop();
               },
-              label: CustomDialog.blogTab,
+              label: blogTab,
             ),
             const SizedBox(height: sm),
             CustomDialogNavButton(
-              isActive: _isTabActive(CustomDialog.servicesTab),
+              isActive: _isTabActive(servicesTab),
               onPressed: () {
-                widget.onTabTapped(2);
-                Navigator.pop(context);
+                onTabTapped(2);
+                context.pop();
               },
-              label: CustomDialog.servicesTab,
+              label: servicesTab,
             ),
             const SizedBox(height: 56),
             LimeGreenButton(
-              label: CustomDialog.contactTab,
+              label: contactTab,
               onPressed: () {
-                widget.onTabTapped(3);
-                Navigator.pop(context);
+                onTabTapped(3);
+                context.pop();
               },
             ),
             const Spacer(),
             IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                context.pop();
               },
               icon: Icon(
                 Icons.arrow_upward,
@@ -86,12 +82,12 @@ class _CustomDialogState extends State<CustomDialog> {
 
   bool _isTabActive(String tabName) {
     switch (tabName) {
-      case CustomDialog.homeTab:
-        return widget.currentRoute.startsWith(Routes.home.path);
-      case CustomDialog.blogTab:
-        return widget.currentRoute.startsWith(Routes.blog.path);
-      case CustomDialog.servicesTab:
-        return widget.currentRoute.startsWith(Routes.services.path);
+      case homeTab:
+        return currentRoute.startsWith(Routes.home.path);
+      case blogTab:
+        return currentRoute.startsWith(Routes.blog.path);
+      case servicesTab:
+        return currentRoute.startsWith(Routes.services.path);
       default:
         return false;
     }
