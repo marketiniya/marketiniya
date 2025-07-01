@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/website/widgets/appBar/custom_app_bar_mobile.dart';
 import 'package:marketinya/website/widgets/blog/blog_cards_mobile.dart';
 import 'package:marketinya/website/widgets/common/lime_contact_form_mobile.dart';
 import 'package:marketinya/website/widgets/common/subscription_form_mobile.dart';
@@ -13,7 +12,6 @@ class BlogMobileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarMobile(activeTab: 'Блог'),
       body: SingleChildScrollView(
         child: Column(
           children: [

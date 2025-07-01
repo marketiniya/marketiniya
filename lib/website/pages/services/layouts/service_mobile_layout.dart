@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/website/widgets/appBar/custom_app_bar_mobile.dart';
 import 'package:marketinya/website/widgets/common/subscription_form_mobile.dart';
 import 'package:marketinya/website/widgets/footer/footer_mobile.dart';
 import 'package:marketinya/website/widgets/home/mobile/business_info_section.dart';
@@ -13,7 +12,6 @@ class ServiceMobileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBarMobile(activeTab: 'Услуги'),
       body: SingleChildScrollView(
         child: Column(
           children: [

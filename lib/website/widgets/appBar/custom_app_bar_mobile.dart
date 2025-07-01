@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:marketinya/core/utils/image_utils.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketinya/core/design_system/atoms/images/marketiniya_images.dart';
 import 'package:marketinya/website/widgets/appBar/widgets/custom_dialog.dart';
-import 'package:marketinya/website/widgets/appBar/widgets/marketiniya_logo.dart';
 
-class CustomAppBarMobile extends StatelessWidget implements PreferredSizeWidget{
-  const CustomAppBarMobile({super.key, required this.activeTab});
+class CustomAppBarMobile extends StatelessWidget
+    implements PreferredSizeWidget {
+  const CustomAppBarMobile({
+    super.key,
+    required this.onTabTapped,
+  });
 
-  final String activeTab;
+  final void Function(int) onTabTapped;
+
   @override
-  Size get preferredSize => const Size.fromHeight(69);
+  Size get preferredSize => const Size.fromHeight(65);
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +24,12 @@ class CustomAppBarMobile extends StatelessWidget implements PreferredSizeWidget{
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const MarketiniyaLogo(width: 37, height: 30),
-              SvgPicture.asset(ImageUtils.marketinyaLabelPath),
+              MarketiniyaImages.marketiniyaLogo(width: 37, height: 30),
+              MarketiniyaImages.marketiniyaLabelBacl(
+                width: 156,
+                height: 15,
+                color: Colors.white,
+              ),
               IconButton(
                 icon: const Icon(Icons.menu),
                 color: Colors.white,
@@ -43,6 +51,8 @@ class CustomAppBarMobile extends StatelessWidget implements PreferredSizeWidget{
   }
 
   void _showFallingDialog(BuildContext context) {
+    final currentRoute = GoRouterState.of(context).uri.path;
+
     showGeneralDialog(
       context: context,
       barrierColor: Colors.transparent,
@@ -60,7 +70,10 @@ class CustomAppBarMobile extends StatelessWidget implements PreferredSizeWidget{
       },
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) {
-        return CustomDialog(activeTab: activeTab);
+        return CustomDialog(
+          onTabTapped: onTabTapped,
+          currentRoute: currentRoute,
+        );
       },
     );
   }

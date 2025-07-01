@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
-import 'package:marketinya/core/utils/routes.dart';
 import 'package:marketinya/website/widgets/common/custom_elevated_button.dart';
 
 class BusinessOverviewSectionMobile extends StatelessWidget {
@@ -25,24 +25,56 @@ class BusinessOverviewSectionMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        _backgroundImage(),
+        SizedBox(
+          width: double.infinity,
+          height: 414,
+          child: Image.asset(
+            ImageUtils.socialMediaBackgroundPath,
+            fit: BoxFit.cover,
+          ),
+        ),
         Positioned(
           top: isBlog ? 50 : 60,
           left: _horizontalPadding,
           right: _horizontalPadding,
-          child: _buildText(text1, fontSize: isBlog ? 30 : 26),
+          child: Text(
+            text1,
+            style: GoogleFonts.roboto(
+              textStyle: TextStyle(
+                color: ColorUtils.lightGray,
+                fontSize: isBlog ? 30 : 26,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
         ),
         Positioned(
           top: isBlog ? 130 : 175,
           left: _horizontalPadding,
           right: _horizontalPadding,
-          child: _buildText(text2, fontSize: isBlog ? 20 : 22),
+          child: Text(
+            text2,
+            style: GoogleFonts.roboto(
+              textStyle: TextStyle(
+                color: ColorUtils.lightGray,
+                fontSize: isBlog ? 20 : 22,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
         ),
         Positioned(
           top: isBlog ? 280 : 350,
           left: _horizontalPadding,
           right: _horizontalPadding,
-          child: _button1(context),
+          child: CustomElevatedButton(
+            text: 'Разгледайте услугите ни',
+            fontSize: 20,
+            onPressed: () => context.go(Routes.connectWithUs.path),
+            borderColor: ColorUtils.lightGray,
+            textColor: ColorUtils.lightGray,
+            iconColor: ColorUtils.lightGray,
+          ),
         ),
         Padding(
           padding: EdgeInsets.only(
@@ -50,56 +82,17 @@ class BusinessOverviewSectionMobile extends StatelessWidget {
             left: _horizontalPadding,
             right: _horizontalPadding,
           ),
-          child: _button2(context),
+          child: CustomElevatedButton(
+            text: 'Безплатна консултация',
+            fontSize: 20,
+            onPressed: () => context.go(Routes.services.path),
+            borderColor: ColorUtils.lightGray,
+            textColor: ColorUtils.charcoal,
+            iconColor: ColorUtils.charcoal,
+            isFilled: true,
+          ),
         ),
       ],
-    );
-  }
-
-  SizedBox _backgroundImage() {
-    return SizedBox(
-      width: double.infinity,
-      height: 414,
-      child: Image.asset(
-        ImageUtils.socialMediaBackgroundPath,
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-
-  Widget _buildText(String text, {required double fontSize}) {
-    return Text(
-      text,
-      style: GoogleFonts.roboto(
-        textStyle: TextStyle(
-          color: ColorUtils.lightGray,
-          fontSize: fontSize,
-          fontWeight: FontWeight.w400,
-        ),
-      ),
-    );
-  }
-
-  Widget _button1(BuildContext context) {
-    return CustomElevatedButton(
-      text: 'Разгледайте услугите ни',
-      fontSize: 20,
-      onPressed: () => Navigator.pushNamed(context, Routes.connectWithUs),
-      borderColor: ColorUtils.lightGray,
-      textColor: ColorUtils.lightGray,
-      iconColor: ColorUtils.lightGray,
-    );
-  }
-
-  Widget _button2(BuildContext context) {
-    return CustomElevatedButton(
-      text: 'Безплатна консултация',
-      fontSize: 20,
-      onPressed: () => Navigator.pushNamed(context, Routes.services),
-      borderColor: ColorUtils.lightGray,
-      textColor: ColorUtils.charcoal,
-      iconColor: ColorUtils.charcoal,
-      isFilled: true,
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
-import 'package:marketinya/core/utils/routes.dart';
 
 
 class FreeConsultationSection extends StatelessWidget {
@@ -18,7 +19,7 @@ class FreeConsultationSection extends StatelessWidget {
           height: 55,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, Routes.connectWithUs);
+              context.go(Routes.connectWithUs.path);
             },
             style: ElevatedButton.styleFrom(
               overlayColor: ColorUtils.lightGray.withValues(alpha: 0.3),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/website/widgets/appBar/custom_app_bar_desktop.dart';
 import 'package:marketinya/website/widgets/blog/blog_cards.dart';
 import 'package:marketinya/website/widgets/blog/check_services_and_free_consultation_section.dart';
 import 'package:marketinya/website/widgets/common/lime_contact_form.dart';
@@ -13,9 +12,6 @@ class BlogDesktopLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarDesktop(
-        activeTab: 'Блог',
-      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
