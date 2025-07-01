@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/utils/color_utils.dart';
 import 'package:marketinya/core/utils/image_utils.dart';
-import 'package:marketinya/core/utils/routes.dart';
 
 class Footer extends StatelessWidget {
   const Footer({super.key});
@@ -87,11 +88,11 @@ class Footer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _footerTextButton(context, 'За нас', '/'),
-          _footerTextButton(context, 'Услуги', Routes.services),
-          _footerTextButton(context, 'Цени', '/'),
-          _footerTextButton(context, 'Блог', Routes.blog),
-          _footerTextButton(context, 'Екип', '/'),
+          _footerTextButton(context, 'За нас', Routes.home.path),
+          _footerTextButton(context, 'Услуги', Routes.services.path),
+          _footerTextButton(context, 'Цени', Routes.home.path),
+          _footerTextButton(context, 'Блог', Routes.blog.path),
+          _footerTextButton(context, 'Екип', Routes.home.path),
         ],
       ),
     );
@@ -102,7 +103,7 @@ class Footer extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 16),
       child: TextButton(
         onPressed: () {
-          Navigator.pushNamed(context, route);
+          context.go(route);
         },
         child: Text(
           text,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/website/widgets/appBar/custom_app_bar_desktop.dart';
 import 'package:marketinya/website/widgets/common/subscription_form.dart';
 import 'package:marketinya/website/widgets/footer/footer.dart';
 import 'package:marketinya/website/widgets/home/features_with_images_section.dart';
@@ -13,9 +12,6 @@ class ServiceDesktopLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarDesktop(
-        activeTab: 'Услуги',
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
