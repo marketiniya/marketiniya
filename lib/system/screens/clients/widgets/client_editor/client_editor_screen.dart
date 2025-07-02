@@ -31,17 +31,19 @@ class ClientEditorScreen extends StatefulWidget {
 class _ClientEditorScreenState extends State<ClientEditorScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-
-  static final List<Widget> _tabs = [
-    const ClientFormPage(),
-    const ClientFilesPage(),
-  ];
+  late List<ClientEditorTab> _availableTabs;
 
   @override
   void initState() {
     super.initState();
-    _tabController =
-        TabController(length: ClientEditorTab.values.length, vsync: this);
+
+    /// Define available tabs
+    _availableTabs = [
+      ClientEditorTab.information,
+      if (widget.client != null) ClientEditorTab.attachments,
+    ];
+
+    _tabController = TabController(length: _availableTabs.length, vsync: this);
     _tabController.addListener(_handleTabChange);
   }
 
@@ -77,6 +79,7 @@ class _ClientEditorScreenState extends State<ClientEditorScreen>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClientsDrawer(
+              availableTabs: _availableTabs,
               onItemSelected: _onDrawerItemTap,
               selectedIndex: _tabController.index,
             ),
@@ -84,12 +87,13 @@ class _ClientEditorScreenState extends State<ClientEditorScreen>
               child: TabBarView(
                 controller: _tabController,
                 physics: const NeverScrollableScrollPhysics(),
-                children: _tabs.map((tab) {
-                  return Padding(
-                    padding: const EdgeInsets.only(left: 180, top: xl, bottom: xl),
-                    child: tab,
-                  );
-                }).toList(),
+                children: _availableTabs.map((tab) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: xl, horizontal: 180),
+                  child: switch (tab) {
+                    ClientEditorTab.information => const ClientFormPage(),
+                    ClientEditorTab.attachments => ClientFilesPage(clientId: widget.client!.id)
+                  },
+                ),).toList(),
               ),
             ),
           ],

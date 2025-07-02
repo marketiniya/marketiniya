@@ -40,4 +40,11 @@ class FileUploadEvent with _$FileUploadEvent {
 
   /// Clear error for specific section
   const factory FileUploadEvent.errorCleared(FileType fileType) = _ErrorCleared;
+
+  /// Download a file
+  const factory FileUploadEvent.fileOpen({
+    required String fileId,
+    required String fileName,
+    required String downloadUrl,
+  }) = _FileDownload;
 }

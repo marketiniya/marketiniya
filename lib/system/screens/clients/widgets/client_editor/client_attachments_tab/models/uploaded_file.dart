@@ -1,10 +1,13 @@
-import 'package:file_picker/file_picker.dart' as picker;
-import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/enums/file_type.dart';
 
 part 'uploaded_file.freezed.dart';
 part 'uploaded_file.g.dart';
+
+// File size constants - reused throughout the file
+const int _bytesPerKB = 1024;
+const int _bytesPerMB = 1024 * 1024;
+const int _bytesPerGB = 1024 * 1024 * 1024;
 
 @freezed
 class UploadedFile with _$UploadedFile {
@@ -17,10 +20,8 @@ class UploadedFile with _$UploadedFile {
     required String fileExtension,
     required FileType fileType,
     String? tempUrl,
-    @JsonKey(includeFromJson: false, includeToJson: false)
-    DropzoneFileInterface? fileInterface,
-    @JsonKey(includeFromJson: false, includeToJson: false)
-    picker.PlatformFile? platformFile,
+    String? downloadUrl, // Firebase Storage download URL
+    String? storagePath, // Firebase Storage path for deletion
   }) = _UploadedFile;
 
   factory UploadedFile.fromJson(Map<String, dynamic> json) =>
@@ -29,13 +30,15 @@ class UploadedFile with _$UploadedFile {
 
 extension UploadedFileExtension on UploadedFile {
   String get formattedSize {
-    if (size < 1024) {
+    if (size < _bytesPerKB) {
       return '${size}B';
+    } else if (size < _bytesPerMB) {
+      return '${(size / _bytesPerKB).ceil()}KB';
+    } else if (size < _bytesPerGB) {
+      return '${(size / _bytesPerMB).ceil()}MB';
+    } else {
+      return '${(size / _bytesPerGB).ceil()}GB';
     }
-    if (size < 1024 * 1024) {
-      return '${(size / 1024).toStringAsFixed(1)}KB';
-    }
-    return '${(size / (1024 * 1024)).toStringAsFixed(1)}MB';
   }
 
   bool get isImage =>
@@ -87,25 +90,25 @@ extension FileUploadConfigExtension on FileUploadConfig {
       case FileType.pdf:
         return const FileUploadConfig(
           fileType: FileType.pdf,
-          maxFileSize: 50 * 1024 * 1024, // 50MB
+          maxFileSize: 50 * _bytesPerMB, // 50MB
           allowedExtensions: ['pdf'],
         );
       case FileType.txt:
         return const FileUploadConfig(
           fileType: FileType.txt,
-          maxFileSize: 10 * 1024 * 1024, // 10MB
+          maxFileSize: 10 * _bytesPerMB, // 10MB
           allowedExtensions: ['txt', 'doc', 'docx'],
         );
       case FileType.image:
         return const FileUploadConfig(
           fileType: FileType.image,
-          maxFileSize: 20 * 1024 * 1024, // 20MB
+          maxFileSize: 20 * _bytesPerMB, // 20MB
           allowedExtensions: ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg'],
         );
       case FileType.video:
         return const FileUploadConfig(
           fileType: FileType.video,
-          maxFileSize: 100 * 1024 * 1024, // 100MB
+          maxFileSize: 100 * _bytesPerMB, // 100MB
           allowedExtensions: ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm'],
         );
     }

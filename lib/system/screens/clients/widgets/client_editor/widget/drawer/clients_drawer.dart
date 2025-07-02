@@ -8,10 +8,12 @@ import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/d
 class ClientsDrawer extends StatelessWidget {
   const ClientsDrawer({
     super.key,
+    required this.availableTabs,
     this.onItemSelected,
     this.selectedIndex = 0,
   });
 
+  final List<ClientEditorTab> availableTabs;
   final void Function(int index)? onItemSelected;
   final int selectedIndex;
 
@@ -20,7 +22,7 @@ class ClientsDrawer extends StatelessWidget {
     return Padding(
       padding: dimen.top.sm,
       child: Drawer(
-        elevation: 15,
+        elevation: xs,
         shadowColor: Colors.black.withValues(alpha: 3),
         surfaceTintColor: Colors.transparent,
         width: lg + lg,
@@ -39,19 +41,23 @@ class ClientsDrawer extends StatelessWidget {
           child: ListView(
             children: [
               const SizedBox(height: lg),
-              ...ClientEditorTab.values.map(
-                (tab) => Column(
-                  children: [
-                    DrawerIconItem(
-                      icon: tab.icon,
-                      label: tab.label,
-                      index: tab.tabIndex,
-                      selected: selectedIndex == tab.tabIndex,
-                      onTap: onItemSelected,
-                    ),
-                    const SizedBox(height: xs),
-                  ],
-                ),
+              ...availableTabs.asMap().entries.map(
+                (tabEntry) {
+                  final index = tabEntry.key;
+                  final tab = tabEntry.value;
+                  return Column(
+                    children: [
+                      DrawerIconItem(
+                        index: index,
+                        icon: tab.icon,
+                        label: tab.label,
+                        selected: selectedIndex == index,
+                        onTap: onItemSelected,
+                      ),
+                      const SizedBox(height: xs),
+                    ],
+                  );
+                },
               ),
             ],
           ),

@@ -1,34 +1,35 @@
 name: Semgrep
 
 on:
-  pull_request:
-    branches: ["master"]
   push:
-    branches: ["master"]
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   semgrep:
     name: Semgrep-Scan
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     container:
-      image: returntocorp/semgrep:latest
+      image: semgrep/semgrep:latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-      - name: Semgrep Dependency Scan
+
+      - name: Run Semgrep Supply Chain Scan
         run: semgrep ci --supply-chain
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
-        shell: bash
-      - name: Run Code Scan on push
-        if: github.event_name == 'push'
-        run: semgrep ci --code || true
+
+      - name: Run Semgrep Code Scan
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            semgrep ci --code
+          else
+            semgrep ci --code || true
+          fi
         env:
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
-        shell: bash
-      - name: Run Code scan on pull
-        if: github.event_name == 'pull_request'
-        run: semgrep ci --code
-        env:
-          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
-        shell: bash
