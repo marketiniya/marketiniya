@@ -160,16 +160,16 @@ class _FileIconButtonState extends State<FileIconButton> {
 
   @override
   Widget build(BuildContext context) {
-    final baseIcon = FileTypeIcons.getIcon(widget.file.fileExtension, size: lg);
+    final icon = FileTypeIcons.getIcon(widget.file.fileExtension, size: md);
     final decoratedIcon = _isHovered
         ? ColorFiltered(
             colorFilter: const ColorFilter.mode(
               Colors.black26,
               BlendMode.srcATop,
             ),
-            child: baseIcon,
+            child: icon,
           )
-        : baseIcon;
+        : icon;
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
@@ -177,10 +177,7 @@ class _FileIconButtonState extends State<FileIconButton> {
       child: IconButton(
         onPressed: widget.onPressed,
         icon: ConstrainedBox(
-          constraints: const BoxConstraints(
-            minWidth: 100,
-            maxWidth: 100,
-          ),
+          constraints: const BoxConstraints(minWidth: 100),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

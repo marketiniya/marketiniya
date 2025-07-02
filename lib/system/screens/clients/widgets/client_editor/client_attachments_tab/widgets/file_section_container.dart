@@ -17,7 +17,7 @@ class FileSectionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(maxHeight: 114),
+      constraints: const BoxConstraints(maxHeight: 103),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(xxs),
         border: Border.all(
@@ -56,7 +56,7 @@ class _StripePainter extends CustomPainter {
       ..color = Colors.grey.withValues(alpha: 0.1)
       ..style = PaintingStyle.fill;
 
-    const stripeWidth = micro;
+    const stripeWidth = nano;
     const stripeSpacing = xxs;
 
     for (var i = -size.height;
