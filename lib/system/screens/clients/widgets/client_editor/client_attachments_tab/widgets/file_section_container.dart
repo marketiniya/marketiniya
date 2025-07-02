@@ -17,9 +17,9 @@ class FileSectionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      constraints: const BoxConstraints(maxHeight: 103),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(xxs),
         border: Border.all(
           color: isDragOver
               ? AppColors.oliveGreen
@@ -35,11 +35,11 @@ class FileSectionContainer extends StatelessWidget {
                 : null,
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(xxs),
         child: CustomPaint(
           painter: _StripePainter(),
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(xxsPlus),
             child: child,
           ),
         ),
@@ -56,7 +56,7 @@ class _StripePainter extends CustomPainter {
       ..color = Colors.grey.withValues(alpha: 0.1)
       ..style = PaintingStyle.fill;
 
-    const stripeWidth = micro;
+    const stripeWidth = nano;
     const stripeSpacing = xxs;
 
     for (var i = -size.height;

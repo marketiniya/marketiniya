@@ -26,27 +26,25 @@ class FileSectionContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Center(
-          child: Text(
-            'Drag and drop files',
-            style: TextStyle(
-              fontSize: xxsPlus,
-              color: Colors.grey.shade400,
-              fontWeight: FontWeight.w500,
+        if (files.length < 6)
+          Center(
+            child: Text(
+              'Drag and drop files',
+              style: TextStyle(
+                fontSize: xxsPlus,
+                color: Colors.grey.shade400,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
-        ),
         Row(
           children: [
             Expanded(
-              child: SizedBox(
-                height: 76,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: files.length,
-                  separatorBuilder: (_, index) => const SizedBox(width: sm),
-                  itemBuilder: (_, index) => FileItem(file: files[index]),
-                ),
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: files.length,
+                separatorBuilder: (_, index) => const SizedBox(width: sm),
+                itemBuilder: (_, index) => FileItem(file: files[index]),
               ),
             ),
             Padding(
@@ -87,13 +85,14 @@ class FileSectionContent extends StatelessWidget {
     switch (supportedFileType) {
       case FileType.image:
         pickerType = picker.FileType.image;
-        allowedExtensions = null;
         break;
       case FileType.video:
         pickerType = picker.FileType.video;
-        allowedExtensions = null;
         break;
       case FileType.pdf:
+        pickerType = picker.FileType.custom;
+        allowedExtensions = config.allowedExtensions;
+        break;
       case FileType.txt:
         pickerType = picker.FileType.custom;
         allowedExtensions = config.allowedExtensions;
@@ -105,7 +104,7 @@ class FileSectionContent extends StatelessWidget {
       type: pickerType,
       allowedExtensions: allowedExtensions,
       allowMultiple: true,
-      withData: false, // We don't need the bytes for web
+      withData: true,
       withReadStream: false,
     );
 

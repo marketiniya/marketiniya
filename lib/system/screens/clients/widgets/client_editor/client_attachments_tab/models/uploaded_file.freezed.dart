@@ -28,11 +28,9 @@ mixin _$UploadedFile {
   String get fileExtension => throw _privateConstructorUsedError;
   FileType get fileType => throw _privateConstructorUsedError;
   String? get tempUrl => throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  DropzoneFileInterface? get fileInterface =>
-      throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  picker.PlatformFile? get platformFile => throw _privateConstructorUsedError;
+  String? get downloadUrl =>
+      throw _privateConstructorUsedError; // Firebase Storage download URL
+  String? get storagePath => throw _privateConstructorUsedError;
 
   /// Serializes this UploadedFile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -59,10 +57,8 @@ abstract class $UploadedFileCopyWith<$Res> {
       String fileExtension,
       FileType fileType,
       String? tempUrl,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      DropzoneFileInterface? fileInterface,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      picker.PlatformFile? platformFile});
+      String? downloadUrl,
+      String? storagePath});
 }
 
 /// @nodoc
@@ -88,8 +84,8 @@ class _$UploadedFileCopyWithImpl<$Res, $Val extends UploadedFile>
     Object? fileExtension = null,
     Object? fileType = null,
     Object? tempUrl = freezed,
-    Object? fileInterface = freezed,
-    Object? platformFile = freezed,
+    Object? downloadUrl = freezed,
+    Object? storagePath = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -124,14 +120,14 @@ class _$UploadedFileCopyWithImpl<$Res, $Val extends UploadedFile>
           ? _value.tempUrl
           : tempUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      fileInterface: freezed == fileInterface
-          ? _value.fileInterface
-          : fileInterface // ignore: cast_nullable_to_non_nullable
-              as DropzoneFileInterface?,
-      platformFile: freezed == platformFile
-          ? _value.platformFile
-          : platformFile // ignore: cast_nullable_to_non_nullable
-              as picker.PlatformFile?,
+      downloadUrl: freezed == downloadUrl
+          ? _value.downloadUrl
+          : downloadUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      storagePath: freezed == storagePath
+          ? _value.storagePath
+          : storagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -153,10 +149,8 @@ abstract class _$$UploadedFileImplCopyWith<$Res>
       String fileExtension,
       FileType fileType,
       String? tempUrl,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      DropzoneFileInterface? fileInterface,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      picker.PlatformFile? platformFile});
+      String? downloadUrl,
+      String? storagePath});
 }
 
 /// @nodoc
@@ -180,8 +174,8 @@ class __$$UploadedFileImplCopyWithImpl<$Res>
     Object? fileExtension = null,
     Object? fileType = null,
     Object? tempUrl = freezed,
-    Object? fileInterface = freezed,
-    Object? platformFile = freezed,
+    Object? downloadUrl = freezed,
+    Object? storagePath = freezed,
   }) {
     return _then(_$UploadedFileImpl(
       id: null == id
@@ -216,14 +210,14 @@ class __$$UploadedFileImplCopyWithImpl<$Res>
           ? _value.tempUrl
           : tempUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      fileInterface: freezed == fileInterface
-          ? _value.fileInterface
-          : fileInterface // ignore: cast_nullable_to_non_nullable
-              as DropzoneFileInterface?,
-      platformFile: freezed == platformFile
-          ? _value.platformFile
-          : platformFile // ignore: cast_nullable_to_non_nullable
-              as picker.PlatformFile?,
+      downloadUrl: freezed == downloadUrl
+          ? _value.downloadUrl
+          : downloadUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      storagePath: freezed == storagePath
+          ? _value.storagePath
+          : storagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -240,9 +234,8 @@ class _$UploadedFileImpl implements _UploadedFile {
       required this.fileExtension,
       required this.fileType,
       this.tempUrl,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.fileInterface,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      this.platformFile});
+      this.downloadUrl,
+      this.storagePath});
 
   factory _$UploadedFileImpl.fromJson(Map<String, dynamic> json) =>
       _$$UploadedFileImplFromJson(json);
@@ -264,15 +257,14 @@ class _$UploadedFileImpl implements _UploadedFile {
   @override
   final String? tempUrl;
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final DropzoneFileInterface? fileInterface;
+  final String? downloadUrl;
+// Firebase Storage download URL
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final picker.PlatformFile? platformFile;
+  final String? storagePath;
 
   @override
   String toString() {
-    return 'UploadedFile(id: $id, name: $name, size: $size, mimeType: $mimeType, lastModified: $lastModified, fileExtension: $fileExtension, fileType: $fileType, tempUrl: $tempUrl, fileInterface: $fileInterface, platformFile: $platformFile)';
+    return 'UploadedFile(id: $id, name: $name, size: $size, mimeType: $mimeType, lastModified: $lastModified, fileExtension: $fileExtension, fileType: $fileType, tempUrl: $tempUrl, downloadUrl: $downloadUrl, storagePath: $storagePath)';
   }
 
   @override
@@ -292,26 +284,16 @@ class _$UploadedFileImpl implements _UploadedFile {
             (identical(other.fileType, fileType) ||
                 other.fileType == fileType) &&
             (identical(other.tempUrl, tempUrl) || other.tempUrl == tempUrl) &&
-            (identical(other.fileInterface, fileInterface) ||
-                other.fileInterface == fileInterface) &&
-            (identical(other.platformFile, platformFile) ||
-                other.platformFile == platformFile));
+            (identical(other.downloadUrl, downloadUrl) ||
+                other.downloadUrl == downloadUrl) &&
+            (identical(other.storagePath, storagePath) ||
+                other.storagePath == storagePath));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      size,
-      mimeType,
-      lastModified,
-      fileExtension,
-      fileType,
-      tempUrl,
-      fileInterface,
-      platformFile);
+  int get hashCode => Object.hash(runtimeType, id, name, size, mimeType,
+      lastModified, fileExtension, fileType, tempUrl, downloadUrl, storagePath);
 
   /// Create a copy of UploadedFile
   /// with the given fields replaced by the non-null parameter values.
@@ -339,10 +321,8 @@ abstract class _UploadedFile implements UploadedFile {
       required final String fileExtension,
       required final FileType fileType,
       final String? tempUrl,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final DropzoneFileInterface? fileInterface,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final picker.PlatformFile? platformFile}) = _$UploadedFileImpl;
+      final String? downloadUrl,
+      final String? storagePath}) = _$UploadedFileImpl;
 
   factory _UploadedFile.fromJson(Map<String, dynamic> json) =
       _$UploadedFileImpl.fromJson;
@@ -364,11 +344,9 @@ abstract class _UploadedFile implements UploadedFile {
   @override
   String? get tempUrl;
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  DropzoneFileInterface? get fileInterface;
+  String? get downloadUrl; // Firebase Storage download URL
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  picker.PlatformFile? get platformFile;
+  String? get storagePath;
 
   /// Create a copy of UploadedFile
   /// with the given fields replaced by the non-null parameter values.

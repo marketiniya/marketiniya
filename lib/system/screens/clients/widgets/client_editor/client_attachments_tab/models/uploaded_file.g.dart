@@ -16,6 +16,8 @@ _$UploadedFileImpl _$$UploadedFileImplFromJson(Map<String, dynamic> json) =>
       fileExtension: json['fileExtension'] as String,
       fileType: $enumDecode(_$FileTypeEnumMap, json['fileType']),
       tempUrl: json['tempUrl'] as String?,
+      downloadUrl: json['downloadUrl'] as String?,
+      storagePath: json['storagePath'] as String?,
     );
 
 Map<String, dynamic> _$$UploadedFileImplToJson(_$UploadedFileImpl instance) =>
@@ -28,6 +30,8 @@ Map<String, dynamic> _$$UploadedFileImplToJson(_$UploadedFileImpl instance) =>
       'fileExtension': instance.fileExtension,
       'fileType': _$FileTypeEnumMap[instance.fileType]!,
       'tempUrl': instance.tempUrl,
+      'downloadUrl': instance.downloadUrl,
+      'storagePath': instance.storagePath,
     };
 
 const _$FileTypeEnumMap = {
