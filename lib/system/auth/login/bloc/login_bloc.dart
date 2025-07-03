@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:marketinya/core/utils/firebase_utils.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 part 'login_bloc.freezed.dart';
 
@@ -17,12 +18,24 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc(
     this._authenticationRepository,
   ) : super(LoginState()) {
+    on<_OnLoad>(_onLoad);
     on<_OnEmailChanged>(_onEmailChanged);
     on<_OnPasswordChanged>(_onPasswordChanged);
     on<_OnSubmitted>(_onSubmitted);
+
+    add(const LoginEvent.onLoad());
   }
 
   final AuthenticationRepository _authenticationRepository;
+
+  Future<void> _onLoad(_OnLoad event, Emitter<LoginState> emit) async {
+    try {
+      final packageInfo = await PackageInfo.fromPlatform();
+      emit(state.copyWith(appVersion: packageInfo.version));
+    } catch (e) {
+      emit(state.copyWith(appVersion: 'Unknown'));
+    }
+  }
 
   Future<void> _onEmailChanged(
     _OnEmailChanged event,

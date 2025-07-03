@@ -8,4 +8,6 @@ class LoginEvent with _$LoginEvent {
       _OnPasswordChanged;
 
   const factory LoginEvent.onSubmitted() = _OnSubmitted;
+
+  const factory LoginEvent.onLoad() = _OnLoad;
 }

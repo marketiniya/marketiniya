@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/images/marketiniya_images.dart';
@@ -67,6 +68,21 @@ class _LoginScreenState extends State<_LoginScreen> {
                   emailFocusNode: _emailFocusNode,
                   passwordFocusNode: _passwordFocusNode,
                   validateAndSubmit: _validateAndSubmit,
+                ),
+                Padding(
+                  padding: dimen.top.xxs,
+                  child: BlocBuilder<LoginBloc, LoginState>(
+                    builder: (context, state) {
+                      return Text(
+                        'Version: ${state.appVersion}',
+                        style: GoogleFonts.roboto(
+                          color: colors.texts.tertiary,
+                          fontWeight: FontWeight.w500,
+                          textStyle: const TextStyle(fontSize: xxsPlus),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
