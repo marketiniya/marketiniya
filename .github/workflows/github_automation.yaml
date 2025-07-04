@@ -1,4 +1,4 @@
-name: github automation
+name: github
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -16,7 +16,7 @@ permissions:
   issues: write
 
 jobs:
-  github_automation:
+  workflow_automation:
     runs-on: ubuntu-latest
     steps:
       - name: 📚 Git Checkout
@@ -45,17 +45,30 @@ jobs:
           echo "All reviewers: ${ALL_REVIEWERS[*]}"
           echo "Assigning reviewers: $REVIEWERS_JSON"
 
-          curl -X POST \
+          curl -s -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers \
-            -d "{\"reviewers\":$REVIEWERS_JSON}"
+            -d "{\"reviewers\":$REVIEWERS_JSON}" > /dev/null
 
           echo "✅ Reviewers assigned successfully"
+
+      - name: 👤 Auto-assign PR to author
+        run: |
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+          echo "Assigning PR to author: $PR_AUTHOR"
+
+          curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/assignees \
+            -d "{\"assignees\":[\"$PR_AUTHOR\"]}" > /dev/null
+
+          echo "✅ PR assigned to author successfully"
 
       - name: ✅ Workflow Complete
         run: |
           echo "🎉 GitHub automation completed successfully!"
           echo "✅ Reviewers have been automatically assigned"
-          echo "💡 To link this PR to an issue, add 'Closes #123' to the PR description"
-          echo "🔗 GitHub will automatically link and close the issue when PR is merged"
+          echo "👤 PR has been assigned to the author"
+          echo "💡 To link this PR to an issue, add 'Closes #issueId' to the PR description"
