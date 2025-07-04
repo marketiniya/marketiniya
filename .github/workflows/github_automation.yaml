@@ -24,13 +24,34 @@ jobs:
 
       - name: 👥 Auto-assign PR reviewer(s)
         run: |
-          # Assign reviewers, GitHub will automatically exclude the PR author
+          # Define all potential reviewers here - ADD NEW USERS TO THIS LIST
+          ALL_REVIEWERS=("GalinDochev" "HristoPetkov94")
+
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+          echo "PR Author: $PR_AUTHOR"
+
+          # Filter out PR author from reviewers list
+          FILTERED_REVIEWERS=()
+          for reviewer in "${ALL_REVIEWERS[@]}"; do
+            if [ "$reviewer" != "$PR_AUTHOR" ]; then
+              FILTERED_REVIEWERS+=("$reviewer")
+            fi
+          done
+
+          # Convert to JSON array
+          REVIEWERS_JSON=$(printf '"%s",' "${FILTERED_REVIEWERS[@]}" | sed 's/,$//')
+          REVIEWERS_JSON="[$REVIEWERS_JSON]"
+
+          echo "All reviewers: ${ALL_REVIEWERS[*]}"
+          echo "Assigning reviewers: $REVIEWERS_JSON"
+
           curl -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers \
-            -d '{"reviewers":["GalinDochev","HristoPetkov94"]}' || true
-          echo "✅ Reviewers assigned (GitHub automatically excludes PR author)"
+            -d "{\"reviewers\":$REVIEWERS_JSON}"
+
+          echo "✅ Reviewers assigned successfully"
 
       - name: ✅ Workflow Complete
         run: |
