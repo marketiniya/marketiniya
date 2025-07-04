@@ -24,6 +24,7 @@ jobs:
 
       - name: 👥 Auto-assign PR reviewer(s)
         run: |
+          set -e  # Exit on any error
           # Define all potential reviewers here - ADD NEW USERS TO THIS LIST
           ALL_REVIEWERS=("GalinDochev" "HristoPetkov94")
 
@@ -45,29 +46,45 @@ jobs:
           echo "All reviewers: ${ALL_REVIEWERS[*]}"
           echo "Assigning reviewers: $REVIEWERS_JSON"
 
-          curl -s -X POST \
+          RESPONSE=$(curl -s -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers \
-            -d "{\"reviewers\":$REVIEWERS_JSON}" > /dev/null
+            -d "{\"reviewers\":$REVIEWERS_JSON}")
 
-          echo "✅ Reviewers assigned successfully"
+          # Check if reviewer assignment was successful
+          if echo "$RESPONSE" | jq -e '.requested_reviewers' > /dev/null 2>&1; then
+            echo "✅ Reviewers assigned successfully"
+          else
+            echo "❌ Failed to assign reviewers"
+            echo "Response: $RESPONSE"
+            exit 1
+          fi
 
       - name: 👤 Auto-assign PR to author
         run: |
+          set -e  # Exit on any error
           PR_AUTHOR="${{ github.event.pull_request.user.login }}"
           echo "Assigning PR to author: $PR_AUTHOR"
 
-          curl -s -X POST \
+          RESPONSE=$(curl -s -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/assignees \
-            -d "{\"assignees\":[\"$PR_AUTHOR\"]}" > /dev/null
+            -d "{\"assignees\":[\"$PR_AUTHOR\"]}")
 
-          echo "✅ PR assigned to author successfully"
+          # Check if assignment was successful
+          if echo "$RESPONSE" | jq -e '.assignees' > /dev/null 2>&1; then
+            echo "✅ PR assigned to author successfully"
+          else
+            echo "❌ Failed to assign PR to author"
+            echo "Response: $RESPONSE"
+            exit 1
+          fi
 
       - name: 🔗 Auto-link Issue to Development Section
         run: |
+          set -e  # Exit on any error
           PR_TITLE="${{ github.event.pull_request.title }}"
           PR_BODY="${{ github.event.pull_request.body }}"
           echo "Searching for matching issue for PR: $PR_TITLE"
