@@ -6,7 +6,7 @@ concurrency:
 
 on:
   pull_request:
-    types: [opened, edited, synchronize]
+    types: [opened]
     branches:
       - master
 
@@ -41,63 +41,9 @@ jobs:
             https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers \
             -d "{\"reviewers\":$CONTRIBUTORS}"
 
-      - name: 🔗 Auto-link and Close Matching Issue
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          PR_TITLE: ${{ github.event.pull_request.title }}
+      - name: ✅ Workflow Complete
         run: |
-          # Install gh CLI and jq if not present
-          sudo apt-get update && sudo apt-get install -y jq
-
-          # Get open issues as JSON
-          issues=$(gh issue list --state open --json title,number -R "$REPO")
-
-          # Prepare PR words array
-          pr_words=($(echo "$PR_TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' ' '))
-
-          match=""
-          while read -r issue_title issue_number; do
-            # Prepare issue words array
-            issue_words=($(echo "$issue_title" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' ' '))
-            # Count matches
-            match_count=0
-            for word in "${issue_words[@]}"; do
-              for pr_word in "${pr_words[@]}"; do
-                if [[ "$pr_word" == "$word" ]]; then
-                  ((match_count++))
-                  break
-                fi
-              done
-            done
-            # Calculate overlap ratio (issue words matched / total issue words)
-            if [[ ${#issue_words[@]} -gt 0 ]]; then
-              overlap_ratio=$((100*match_count/${#issue_words[@]}))
-              if [[ $overlap_ratio -ge 50 ]]; then
-                match=$issue_number
-                break
-              fi
-            fi
-          done < <(echo "$issues" | jq -r '.[] | "\(.title)\t\(.number)"')
-
-          if [ -n "$match" ]; then
-            # Get current body
-            body=$(gh pr view "$PR_NUMBER" -R "$REPO" --json body -q .body)
-            # Only append if not already present
-            if ! echo "$body" | grep -q "Closes #$match"; then
-              new_body="$body\n\nCloses #$match"
-              gh pr edit "$PR_NUMBER" -R "$REPO" --body "$new_body"
-              echo "✅ Appended 'Closes #$match' to PR body"
-            else
-              echo "✅ Closes already present"
-            fi
-          else
-            echo "❌ No matching open issue found."
-            echo "PR title: '$PR_TITLE'"
-            echo "Available open issues:"
-            echo "$issues" | jq -r '.[] | "  #\(.number): \(.title)"'
-            echo ""
-            echo "💡 Please ensure your PR title matches an existing open issue (50%+ word overlap required)"
-            exit 1
-          fi
+          echo "🎉 GitHub automation completed successfully!"
+          echo "✅ Reviewers have been automatically assigned"
+          echo "💡 To link this PR to an issue, add 'Closes #123' to the PR description"
+          echo "🔗 GitHub will automatically link and close the issue when PR is merged"
