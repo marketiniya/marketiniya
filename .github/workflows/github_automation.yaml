@@ -16,7 +16,7 @@ permissions:
   issues: write
 
 jobs:
-  workflow_automation:
+  pr_automation:
     runs-on: ubuntu-latest
     steps:
       - name: 📚 Git Checkout
@@ -138,10 +138,3 @@ jobs:
           else
             echo "ℹ️ No matching issue found for automatic linking"
           fi
-
-      - name: ✅ Workflow Complete
-        run: |
-          echo "🎉 GitHub automation completed successfully!"
-          echo "✅ Reviewers have been automatically assigned"
-          echo "👤 PR has been assigned to the author"
-          echo "💡 To link this PR to an issue, add 'Closes #issueId' to the PR description"
