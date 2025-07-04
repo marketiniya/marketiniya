@@ -1,4 +1,4 @@
-name: github_automation
+name: github automation
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -16,7 +16,7 @@ permissions:
   issues: write
 
 jobs:
-  auto-assign-reviewer-and-project:
+  github_automation:
     runs-on: ubuntu-latest
     steps:
       - name: 📚 Git Checkout
