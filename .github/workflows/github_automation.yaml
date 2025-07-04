@@ -5,11 +5,8 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  push:
-    branches:
-      - 24-enable-pr-auto-reviewer-assignment-project-linking-via-github-actions
   pull_request:
-    types: [opened]
+    types: [opened, synchronize]
     branches:
       - master
 
