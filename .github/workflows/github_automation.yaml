@@ -1,0 +1,140 @@
+name: github
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - master
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  pr_automation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 👥 Auto-assign PR reviewer(s)
+        run: |
+          set -e  # Exit on any error
+          # Define all potential reviewers here - ADD NEW USERS TO THIS LIST
+          ALL_REVIEWERS=("GalinDochev" "HristoPetkov94")
+
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+          echo "PR Author: $PR_AUTHOR"
+
+          # Filter out PR author from reviewers list
+          FILTERED_REVIEWERS=()
+          for reviewer in "${ALL_REVIEWERS[@]}"; do
+            if [ "$reviewer" != "$PR_AUTHOR" ]; then
+              FILTERED_REVIEWERS+=("$reviewer")
+            fi
+          done
+
+          # Convert to JSON array
+          REVIEWERS_JSON=$(printf '"%s",' "${FILTERED_REVIEWERS[@]}" | sed 's/,$//')
+          REVIEWERS_JSON="[$REVIEWERS_JSON]"
+
+          echo "All reviewers: ${ALL_REVIEWERS[*]}"
+          echo "Assigning reviewers: $REVIEWERS_JSON"
+
+          RESPONSE=$(curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers \
+            -d "{\"reviewers\":$REVIEWERS_JSON}")
+
+          # Check if reviewer assignment was successful
+          if echo "$RESPONSE" | jq -e '.requested_reviewers' > /dev/null 2>&1; then
+            echo "✅ Reviewers assigned successfully"
+          else
+            echo "❌ Failed to assign reviewers"
+            echo "Response: $RESPONSE"
+            exit 1
+          fi
+
+      - name: 👤 Auto-assign PR to author
+        run: |
+          set -e  # Exit on any error
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+          echo "Assigning PR to author: $PR_AUTHOR"
+
+          RESPONSE=$(curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/assignees \
+            -d "{\"assignees\":[\"$PR_AUTHOR\"]}")
+
+          # Check if assignment was successful
+          if echo "$RESPONSE" | jq -e '.assignees' > /dev/null 2>&1; then
+            echo "✅ PR assigned to author successfully"
+          else
+            echo "❌ Failed to assign PR to author"
+            echo "Response: $RESPONSE"
+            exit 1
+          fi
+
+      - name: 🔗 Auto-link Issue to Development Section
+        run: |
+          set -e  # Exit on any error
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_BODY="${{ github.event.pull_request.body }}"
+          echo "Searching for matching issue for PR: $PR_TITLE"
+
+          # Check if PR already has "Closes #" in description
+          if echo "$PR_BODY" | grep -qi "closes #\|fixes #\|resolves #"; then
+            echo "✅ PR already has issue linking in description"
+            exit 0
+          fi
+
+          # Get open issues and find matching one
+          ISSUES=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/issues?state=open&per_page=50")
+
+          # Simple word matching to find related issue
+          MATCHED_ISSUE=$(echo "$ISSUES" | jq -r --arg title "$PR_TITLE" '
+            .[] |
+            select(.pull_request == null) |
+            select(
+              ($title | ascii_downcase | split(" ")) as $pr_words |
+              (.title | ascii_downcase | split(" ")) as $issue_words |
+              ([$pr_words[] as $pw | $issue_words[] | select(. == $pw)] | length) >= 2
+            ) |
+            .number
+          ' | head -1)
+
+          if [ "$MATCHED_ISSUE" != "null" ] && [ -n "$MATCHED_ISSUE" ]; then
+            echo "Found matching issue #$MATCHED_ISSUE"
+
+            # Update PR description to include "Closes #123"
+            NEW_BODY="$PR_BODY"$'\n\n'"Closes #$MATCHED_ISSUE"
+
+            # Escape JSON properly
+            ESCAPED_BODY=$(echo "$NEW_BODY" | jq -Rs .)
+
+            echo "Updating PR description..."
+            RESPONSE=$(curl -s -X PATCH \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }} \
+              -d "{\"body\":$ESCAPED_BODY}")
+
+            # Check if update was successful
+            if echo "$RESPONSE" | jq -e '.body' > /dev/null 2>&1; then
+              echo "✅ Added 'Closes #$MATCHED_ISSUE' to PR description"
+              echo "🔗 Issue will appear in Development section automatically"
+            else
+              echo "❌ Failed to update PR description"
+              echo "Response: $RESPONSE"
+            fi
+          else
+            echo "ℹ️ No matching issue found for automatic linking"
+          fi
