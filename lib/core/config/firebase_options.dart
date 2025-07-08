@@ -2,6 +2,8 @@
 // ignore_for_file: type=lint
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:marketinya/core/models/secrets_response.dart';
+import 'package:marketinya/core/repositories/vault_repository.dart';
 
 enum FirebaseEnvironment { wip, prod }
 
@@ -15,50 +17,46 @@ class DefaultFirebaseOptions {
   static FirebaseEnvironment get currentEnvironment => _environment;
 
   static FirebaseOptions get currentPlatform {
-    switch (_environment) {
-      case FirebaseEnvironment.wip:
-        return _getWipOptions();
-      case FirebaseEnvironment.prod:
-        return _getProdOptions();
+    if (!kIsWeb) {
+      throw UnsupportedError('Only web platform is supported');
     }
+
+    final secrets = _getSecrets();
+
+    return switch (_environment) {
+      FirebaseEnvironment.wip => _createWipOptions(secrets),
+      FirebaseEnvironment.prod => _createProdOptions(secrets),
+    };
   }
 
-  static FirebaseOptions _getWipOptions() {
-    if (kIsWeb) {
-      return wipWeb;
+  static SecretsResponse _getSecrets() {
+    final secrets = VaultRepository.secrets;
+    if (secrets == null) {
+      throw Exception('Vault secrets not loaded');
     }
-    throw UnsupportedError(
-      'WIP environment only supports web platform. '
-      'Use PROD environment for mobile platforms or add WIP mobile configuration.',
+    return secrets;
+  }
+
+  static FirebaseOptions _createWipOptions(SecretsResponse secrets) {
+    return FirebaseOptions(
+      apiKey: secrets.wipWebFirebaseApiKey,
+      appId: secrets.wipWebFirebaseAppId,
+      messagingSenderId: secrets.wipWebFirebaseMessagingSenderId,
+      projectId: secrets.wipWebFirebaseProjectId,
+      authDomain: secrets.wipWebFirebaseAuthDomain,
+      storageBucket: secrets.wipWebFirebaseStorageBucket,
+      measurementId: secrets.wipWebFirebaseMeasurementId,
     );
   }
 
-  static FirebaseOptions _getProdOptions() {
-    if (kIsWeb) {
-      return prodWeb;
-    }
-    throw UnsupportedError(
-      'PROD environment only supports web platform. '
-      'Android, iOS, macOS, and Windows apps have been deleted from Firebase.',
+  static FirebaseOptions _createProdOptions(SecretsResponse secrets) {
+    return FirebaseOptions(
+      apiKey: secrets.prodWebFirebaseApiKey,
+      appId: secrets.prodWebFirebaseAppId,
+      messagingSenderId: secrets.prodWebFirebaseMessagingSenderId,
+      projectId: secrets.prodWebFirebaseProjectId,
+      authDomain: secrets.prodWebFirebaseAuthDomain,
+      storageBucket: secrets.prodWebFirebaseStorageBucket,
     );
   }
-
-  static const FirebaseOptions wipWeb = FirebaseOptions(
-    apiKey: 'AIzaSyCPbj5wmHpfzRCYofkrA-C_3xq8dpHhki0',
-    appId: '1:234284642167:web:6add026728671005d83b72',
-    messagingSenderId: '234284642167',
-    projectId: 'marketiniya-wip',
-    authDomain: 'marketiniya-wip.firebaseapp.com',
-    storageBucket: 'marketiniya-wip.firebasestorage.app',
-    measurementId: 'G-VNFXXGWGE0',
-  );
-
-  static const FirebaseOptions prodWeb = FirebaseOptions(
-    apiKey: 'AIzaSyCGk6jQHDk0RRXoE3wcwlz6N8ckVAZ_1WM',
-    appId: '1:1083783475549:web:a56c6759983cb1ebcbf8b4',
-    messagingSenderId: '1083783475549',
-    projectId: 'marketinya-a4876',
-    authDomain: 'marketinya-a4876.firebaseapp.com',
-    storageBucket: 'marketinya-a4876.appspot.com',
-  );
 }
