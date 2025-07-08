@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marketinya/core/extensions/context_extension.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketinya/core/models/client.dart';
+import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
-import 'package:marketinya/system/screens/clients/widgets/client_editor/client_editor_screen.dart';
 import 'package:marketinya/system/screens/clients/widgets/clients_table/clients_table_row.dart';
 
 class ClientsList extends StatelessWidget {
@@ -31,14 +31,19 @@ class ClientsList extends StatelessWidget {
         return ClientsTableRow(
           client: client,
           rowNumber: rowNumber,
-          onTap: () => context.push(
-            ClientEditorScreen(
-              client: client,
-              onClientUpdated: (client) => context.read<ClientBloc>().add(
-                ClientEvent.onClientUpdated(client),
-              ),
-            ),
-          ),
+          onTap: () {
+            context.push(
+              Routes.editClient.path,
+              extra: {
+                'client': client,
+                'onClientUpdated': (Client updatedClient) {
+                  context.read<ClientBloc>().add(
+                        ClientEvent.onClientUpdated(updatedClient),
+                      );
+                },
+              },
+            );
+          },
         );
       },
     );
