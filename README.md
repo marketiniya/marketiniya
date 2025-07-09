@@ -84,7 +84,7 @@ When you run the application, check the console output to verify the environment
 **PROD Environment:**
 ```
 🔥 Firebase Environment: PROD
-🔥 Project ID: ***REMOVED***
+🔥 Project ID: marketinya-a4876
 ```
 
 ## 📁 Project Structure

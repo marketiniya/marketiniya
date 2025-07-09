@@ -22,14 +22,14 @@ https://www.marketiniya.com/home
 **Setup (once):**
 ```bash
 
-firebase target:apply hosting prod ***REMOVED*** --project ***REMOVED***
+firebase target:apply hosting prod marketinya-a4876 --project marketinya-a4876
 ```
 
 **Deploy:**
 ```bash
 
 flutter build web --dart-define=environment=prod
-firebase deploy --project ***REMOVED*** --only hosting:prod
+firebase deploy --project marketinya-a4876 --only hosting:prod
 ```
 
 ## 📋 Quick Reference
@@ -37,7 +37,7 @@ firebase deploy --project ***REMOVED*** --only hosting:prod
 | Environment | Build | Deploy |
 |-------------|-------|--------|
 | **WIP** | `flutter build web --dart-define=environment=wip` | `firebase deploy --project marketiniya-wip --only hosting:wip` |
-| **PROD** | `flutter build web --dart-define=environment=prod` | `firebase deploy --project ***REMOVED*** --only hosting:prod` |
+| **PROD** | `flutter build web --dart-define=environment=prod` | `firebase deploy --project marketinya-a4876 --only hosting:prod` |
 
 ## 🔧 Troubleshooting
 
@@ -45,7 +45,7 @@ firebase deploy --project ***REMOVED*** --only hosting:prod
 ```bash
 
 firebase target --project marketiniya-wip
-firebase target --project ***REMOVED***
+firebase target --project marketinya-a4876
 ```
 
 **List projects:**

@@ -14,6 +14,7 @@ class FirebaseUtils {
       'invalid-email': 'The email address is not valid.',
       'too-many-requests': 'The number of requests exceeds the maximum allowed.',
       'error-null-user': 'User creation failed.',
+      'api-key-not-valid.-please-pass-a-valid-api-key.': 'Unable to authenticate: the provided API key is incorrect.',
     };
 
     return errorMessages[error.code] ?? error.message ?? 'An unknown error occurred';
