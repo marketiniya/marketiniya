@@ -9,10 +9,7 @@ part of 'vault_api.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
 class _VaultApi implements VaultApi {
-  _VaultApi(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??=
-        'https://marketiniya-vault-311217329392.europe-central2.run.app';
-  }
+  _VaultApi(this._dio, {this.baseUrl, this.errorLogger});
 
   final Dio _dio;
 
@@ -21,27 +18,13 @@ class _VaultApi implements VaultApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<SecretsResponse> getSecrets(
-    String apiKey, {
-    String accept = 'application/json',
-    String contentType = 'application/json',
-  }) async {
+  Future<SecretsResponse> getSecrets() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{
-      r'X-API-Key': apiKey,
-      r'Accept': accept,
-      r'Content-Type': contentType,
-    };
-    _headers.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<SecretsResponse>(
-      Options(
-        method: 'GET',
-        headers: _headers,
-        extra: _extra,
-        contentType: contentType,
-      )
+      Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
             '/api/vault/secrets',
