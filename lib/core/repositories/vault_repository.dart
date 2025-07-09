@@ -7,16 +7,17 @@ class VaultRepository {
 
   final VaultApi _vaultApi;
 
-  static SecretsResponse? _secrets;
+  SecretsResponse? _cachedSecrets;
 
-  static SecretsResponse? get secrets => _secrets;
+  SecretsResponse? get secrets => _cachedSecrets;
 
   Future<void> loadSecrets() async {
     try {
-      _secrets = await _vaultApi.getSecrets();
+      _cachedSecrets = await _vaultApi.getSecrets();
       Log.info('🔐 Secrets loaded successfully from vault.');
     } catch (e) {
       Log.error('❌ Failed to load secrets from vault: $e');
+      _cachedSecrets = null;
     }
   }
 }

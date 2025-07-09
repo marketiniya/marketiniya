@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:marketinya/core/config/log.dart';
 
 // ignore_for_file: do_not_use_environment
 class VaultApiConfig {
@@ -32,6 +33,9 @@ class VaultApiConfig {
 
     if (_apiKey.isNotEmpty) {
       headers['X-API-Key'] = _apiKey;
+    } else {
+      Log.warning('🚧 VAULT_API_KEY is required but not provided. '
+          'Use --dart-define=VAULT_API_KEY=api_key_here');
     }
 
     return headers;

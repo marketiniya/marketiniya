@@ -2,6 +2,7 @@
 // ignore_for_file: type=lint
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/models/secrets_response.dart';
 import 'package:marketinya/core/repositories/vault_repository.dart';
 
@@ -29,14 +30,6 @@ class DefaultFirebaseOptions {
     };
   }
 
-  static SecretsResponse _getSecrets() {
-    final secrets = VaultRepository.secrets;
-    if (secrets == null) {
-      throw Exception('Vault secrets not loaded');
-    }
-    return secrets;
-  }
-
   static FirebaseOptions _createWipOptions(SecretsResponse secrets) {
     return FirebaseOptions(
       apiKey: secrets.wipWebFirebaseApiKey,
@@ -58,5 +51,14 @@ class DefaultFirebaseOptions {
       authDomain: secrets.prodWebFirebaseAuthDomain,
       storageBucket: secrets.prodWebFirebaseStorageBucket,
     );
+  }
+
+  static SecretsResponse _getSecrets() {
+    final vaultRepository = getIt<VaultRepository>();
+    final secrets = vaultRepository.secrets;
+    if (secrets == null) {
+      throw Exception('Vault secrets not loaded');
+    }
+    return secrets;
   }
 }

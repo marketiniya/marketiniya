@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:marketinya/core/api/vault/config/vault_api_config.dart';
 import 'package:marketinya/core/api/vault/vault_api.dart';
 import 'package:marketinya/core/config/log.dart';
-import 'package:marketinya/core/api/vault/config/vault_api_config.dart';
 import 'package:marketinya/core/repositories/attachment_repository.dart';
 import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
@@ -24,9 +24,9 @@ Future<void> initializeDependencyInjection() async {
   getIt.registerLazySingleton<VaultApi>(() => VaultApi(getIt<Dio>()));
 
   // Register services
+  getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
   getIt.registerLazySingleton<FirestoreService>(() => FirestoreService.instance);
   getIt.registerLazySingleton<FirebaseStorageService>(() => FirebaseStorageService());
-  getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
   getIt.registerLazySingleton<FileValidationService>(() => FileValidationService());
 
   // Register repositories
