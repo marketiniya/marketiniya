@@ -22,7 +22,7 @@ class DefaultFirebaseOptions {
       throw UnsupportedError('Only web platform is supported');
     }
 
-    final secrets = _getSecrets();
+    final secrets = getIt<VaultRepository>().secrets;
 
     return switch (_environment) {
       FirebaseEnvironment.wip => _createWipOptions(secrets),
@@ -30,35 +30,26 @@ class DefaultFirebaseOptions {
     };
   }
 
-  static FirebaseOptions _createWipOptions(SecretsResponse secrets) {
+  static FirebaseOptions _createWipOptions(SecretsResponse? secrets) {
     return FirebaseOptions(
-      apiKey: secrets.wipWebFirebaseApiKey,
-      appId: secrets.wipWebFirebaseAppId,
-      messagingSenderId: secrets.wipWebFirebaseMessagingSenderId,
-      projectId: secrets.wipWebFirebaseProjectId,
-      authDomain: secrets.wipWebFirebaseAuthDomain,
-      storageBucket: secrets.wipWebFirebaseStorageBucket,
-      measurementId: secrets.wipWebFirebaseMeasurementId,
+      apiKey: secrets?.wipWebFirebaseApiKey ?? 'apiKey',
+      appId: secrets?.wipWebFirebaseAppId ?? 'appId',
+      messagingSenderId: secrets?.wipWebFirebaseMessagingSenderId ?? 'senderId',
+      projectId: secrets?.wipWebFirebaseProjectId ?? 'projectId',
+      authDomain: secrets?.wipWebFirebaseAuthDomain,
+      storageBucket: secrets?.wipWebFirebaseStorageBucket,
+      measurementId: secrets?.wipWebFirebaseMeasurementId,
     );
   }
 
-  static FirebaseOptions _createProdOptions(SecretsResponse secrets) {
+  static FirebaseOptions _createProdOptions(SecretsResponse? secrets) {
     return FirebaseOptions(
-      apiKey: secrets.prodWebFirebaseApiKey,
-      appId: secrets.prodWebFirebaseAppId,
-      messagingSenderId: secrets.prodWebFirebaseMessagingSenderId,
-      projectId: secrets.prodWebFirebaseProjectId,
-      authDomain: secrets.prodWebFirebaseAuthDomain,
-      storageBucket: secrets.prodWebFirebaseStorageBucket,
+      apiKey: secrets?.prodWebFirebaseApiKey ?? 'apiKey',
+      appId: secrets?.prodWebFirebaseAppId ?? 'appId',
+      messagingSenderId: secrets?.prodWebFirebaseMessagingSenderId ?? 'senderId',
+      projectId: secrets?.prodWebFirebaseProjectId ?? 'projectId',
+      authDomain: secrets?.prodWebFirebaseAuthDomain,
+      storageBucket: secrets?.prodWebFirebaseStorageBucket,
     );
-  }
-
-  static SecretsResponse _getSecrets() {
-    final vaultRepository = getIt<VaultRepository>();
-    final secrets = vaultRepository.secrets;
-    if (secrets == null) {
-      throw Exception('Vault secrets not loaded');
-    }
-    return secrets;
   }
 }
