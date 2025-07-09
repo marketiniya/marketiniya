@@ -21,6 +21,7 @@ mixin _$LoginEvent {
     required TResult Function(String email) onEmailChanged,
     required TResult Function(String password) onPasswordChanged,
     required TResult Function() onSubmitted,
+    required TResult Function() onLoad,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$LoginEvent {
     TResult? Function(String email)? onEmailChanged,
     TResult? Function(String password)? onPasswordChanged,
     TResult? Function()? onSubmitted,
+    TResult? Function()? onLoad,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$LoginEvent {
     TResult Function(String email)? onEmailChanged,
     TResult Function(String password)? onPasswordChanged,
     TResult Function()? onSubmitted,
+    TResult Function()? onLoad,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$LoginEvent {
     required TResult Function(_OnEmailChanged value) onEmailChanged,
     required TResult Function(_OnPasswordChanged value) onPasswordChanged,
     required TResult Function(_OnSubmitted value) onSubmitted,
+    required TResult Function(_OnLoad value) onLoad,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$LoginEvent {
     TResult? Function(_OnEmailChanged value)? onEmailChanged,
     TResult? Function(_OnPasswordChanged value)? onPasswordChanged,
     TResult? Function(_OnSubmitted value)? onSubmitted,
+    TResult? Function(_OnLoad value)? onLoad,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$LoginEvent {
     TResult Function(_OnEmailChanged value)? onEmailChanged,
     TResult Function(_OnPasswordChanged value)? onPasswordChanged,
     TResult Function(_OnSubmitted value)? onSubmitted,
+    TResult Function(_OnLoad value)? onLoad,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +161,7 @@ class _$OnEmailChangedImpl implements _OnEmailChanged {
     required TResult Function(String email) onEmailChanged,
     required TResult Function(String password) onPasswordChanged,
     required TResult Function() onSubmitted,
+    required TResult Function() onLoad,
   }) {
     return onEmailChanged(email);
   }
@@ -165,6 +172,7 @@ class _$OnEmailChangedImpl implements _OnEmailChanged {
     TResult? Function(String email)? onEmailChanged,
     TResult? Function(String password)? onPasswordChanged,
     TResult? Function()? onSubmitted,
+    TResult? Function()? onLoad,
   }) {
     return onEmailChanged?.call(email);
   }
@@ -175,6 +183,7 @@ class _$OnEmailChangedImpl implements _OnEmailChanged {
     TResult Function(String email)? onEmailChanged,
     TResult Function(String password)? onPasswordChanged,
     TResult Function()? onSubmitted,
+    TResult Function()? onLoad,
     required TResult orElse(),
   }) {
     if (onEmailChanged != null) {
@@ -189,6 +198,7 @@ class _$OnEmailChangedImpl implements _OnEmailChanged {
     required TResult Function(_OnEmailChanged value) onEmailChanged,
     required TResult Function(_OnPasswordChanged value) onPasswordChanged,
     required TResult Function(_OnSubmitted value) onSubmitted,
+    required TResult Function(_OnLoad value) onLoad,
   }) {
     return onEmailChanged(this);
   }
@@ -199,6 +209,7 @@ class _$OnEmailChangedImpl implements _OnEmailChanged {
     TResult? Function(_OnEmailChanged value)? onEmailChanged,
     TResult? Function(_OnPasswordChanged value)? onPasswordChanged,
     TResult? Function(_OnSubmitted value)? onSubmitted,
+    TResult? Function(_OnLoad value)? onLoad,
   }) {
     return onEmailChanged?.call(this);
   }
@@ -209,6 +220,7 @@ class _$OnEmailChangedImpl implements _OnEmailChanged {
     TResult Function(_OnEmailChanged value)? onEmailChanged,
     TResult Function(_OnPasswordChanged value)? onPasswordChanged,
     TResult Function(_OnSubmitted value)? onSubmitted,
+    TResult Function(_OnLoad value)? onLoad,
     required TResult orElse(),
   }) {
     if (onEmailChanged != null) {
@@ -303,6 +315,7 @@ class _$OnPasswordChangedImpl implements _OnPasswordChanged {
     required TResult Function(String email) onEmailChanged,
     required TResult Function(String password) onPasswordChanged,
     required TResult Function() onSubmitted,
+    required TResult Function() onLoad,
   }) {
     return onPasswordChanged(password);
   }
@@ -313,6 +326,7 @@ class _$OnPasswordChangedImpl implements _OnPasswordChanged {
     TResult? Function(String email)? onEmailChanged,
     TResult? Function(String password)? onPasswordChanged,
     TResult? Function()? onSubmitted,
+    TResult? Function()? onLoad,
   }) {
     return onPasswordChanged?.call(password);
   }
@@ -323,6 +337,7 @@ class _$OnPasswordChangedImpl implements _OnPasswordChanged {
     TResult Function(String email)? onEmailChanged,
     TResult Function(String password)? onPasswordChanged,
     TResult Function()? onSubmitted,
+    TResult Function()? onLoad,
     required TResult orElse(),
   }) {
     if (onPasswordChanged != null) {
@@ -337,6 +352,7 @@ class _$OnPasswordChangedImpl implements _OnPasswordChanged {
     required TResult Function(_OnEmailChanged value) onEmailChanged,
     required TResult Function(_OnPasswordChanged value) onPasswordChanged,
     required TResult Function(_OnSubmitted value) onSubmitted,
+    required TResult Function(_OnLoad value) onLoad,
   }) {
     return onPasswordChanged(this);
   }
@@ -347,6 +363,7 @@ class _$OnPasswordChangedImpl implements _OnPasswordChanged {
     TResult? Function(_OnEmailChanged value)? onEmailChanged,
     TResult? Function(_OnPasswordChanged value)? onPasswordChanged,
     TResult? Function(_OnSubmitted value)? onSubmitted,
+    TResult? Function(_OnLoad value)? onLoad,
   }) {
     return onPasswordChanged?.call(this);
   }
@@ -357,6 +374,7 @@ class _$OnPasswordChangedImpl implements _OnPasswordChanged {
     TResult Function(_OnEmailChanged value)? onEmailChanged,
     TResult Function(_OnPasswordChanged value)? onPasswordChanged,
     TResult Function(_OnSubmitted value)? onSubmitted,
+    TResult Function(_OnLoad value)? onLoad,
     required TResult orElse(),
   }) {
     if (onPasswordChanged != null) {
@@ -423,6 +441,7 @@ class _$OnSubmittedImpl implements _OnSubmitted {
     required TResult Function(String email) onEmailChanged,
     required TResult Function(String password) onPasswordChanged,
     required TResult Function() onSubmitted,
+    required TResult Function() onLoad,
   }) {
     return onSubmitted();
   }
@@ -433,6 +452,7 @@ class _$OnSubmittedImpl implements _OnSubmitted {
     TResult? Function(String email)? onEmailChanged,
     TResult? Function(String password)? onPasswordChanged,
     TResult? Function()? onSubmitted,
+    TResult? Function()? onLoad,
   }) {
     return onSubmitted?.call();
   }
@@ -443,6 +463,7 @@ class _$OnSubmittedImpl implements _OnSubmitted {
     TResult Function(String email)? onEmailChanged,
     TResult Function(String password)? onPasswordChanged,
     TResult Function()? onSubmitted,
+    TResult Function()? onLoad,
     required TResult orElse(),
   }) {
     if (onSubmitted != null) {
@@ -457,6 +478,7 @@ class _$OnSubmittedImpl implements _OnSubmitted {
     required TResult Function(_OnEmailChanged value) onEmailChanged,
     required TResult Function(_OnPasswordChanged value) onPasswordChanged,
     required TResult Function(_OnSubmitted value) onSubmitted,
+    required TResult Function(_OnLoad value) onLoad,
   }) {
     return onSubmitted(this);
   }
@@ -467,6 +489,7 @@ class _$OnSubmittedImpl implements _OnSubmitted {
     TResult? Function(_OnEmailChanged value)? onEmailChanged,
     TResult? Function(_OnPasswordChanged value)? onPasswordChanged,
     TResult? Function(_OnSubmitted value)? onSubmitted,
+    TResult? Function(_OnLoad value)? onLoad,
   }) {
     return onSubmitted?.call(this);
   }
@@ -477,6 +500,7 @@ class _$OnSubmittedImpl implements _OnSubmitted {
     TResult Function(_OnEmailChanged value)? onEmailChanged,
     TResult Function(_OnPasswordChanged value)? onPasswordChanged,
     TResult Function(_OnSubmitted value)? onSubmitted,
+    TResult Function(_OnLoad value)? onLoad,
     required TResult orElse(),
   }) {
     if (onSubmitted != null) {
@@ -491,11 +515,129 @@ abstract class _OnSubmitted implements LoginEvent {
 }
 
 /// @nodoc
+abstract class _$$OnLoadImplCopyWith<$Res> {
+  factory _$$OnLoadImplCopyWith(
+          _$OnLoadImpl value, $Res Function(_$OnLoadImpl) then) =
+      __$$OnLoadImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OnLoadImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$OnLoadImpl>
+    implements _$$OnLoadImplCopyWith<$Res> {
+  __$$OnLoadImplCopyWithImpl(
+      _$OnLoadImpl _value, $Res Function(_$OnLoadImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$OnLoadImpl implements _OnLoad {
+  const _$OnLoadImpl();
+
+  @override
+  String toString() {
+    return 'LoginEvent.onLoad()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OnLoadImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) onEmailChanged,
+    required TResult Function(String password) onPasswordChanged,
+    required TResult Function() onSubmitted,
+    required TResult Function() onLoad,
+  }) {
+    return onLoad();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? onEmailChanged,
+    TResult? Function(String password)? onPasswordChanged,
+    TResult? Function()? onSubmitted,
+    TResult? Function()? onLoad,
+  }) {
+    return onLoad?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? onEmailChanged,
+    TResult Function(String password)? onPasswordChanged,
+    TResult Function()? onSubmitted,
+    TResult Function()? onLoad,
+    required TResult orElse(),
+  }) {
+    if (onLoad != null) {
+      return onLoad();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnEmailChanged value) onEmailChanged,
+    required TResult Function(_OnPasswordChanged value) onPasswordChanged,
+    required TResult Function(_OnSubmitted value) onSubmitted,
+    required TResult Function(_OnLoad value) onLoad,
+  }) {
+    return onLoad(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnEmailChanged value)? onEmailChanged,
+    TResult? Function(_OnPasswordChanged value)? onPasswordChanged,
+    TResult? Function(_OnSubmitted value)? onSubmitted,
+    TResult? Function(_OnLoad value)? onLoad,
+  }) {
+    return onLoad?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnEmailChanged value)? onEmailChanged,
+    TResult Function(_OnPasswordChanged value)? onPasswordChanged,
+    TResult Function(_OnSubmitted value)? onSubmitted,
+    TResult Function(_OnLoad value)? onLoad,
+    required TResult orElse(),
+  }) {
+    if (onLoad != null) {
+      return onLoad(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnLoad implements LoginEvent {
+  const factory _OnLoad() = _$OnLoadImpl;
+}
+
+/// @nodoc
 mixin _$LoginState {
   Status get status => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  String get appVersion => throw _privateConstructorUsedError;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -511,7 +653,11 @@ abstract class $LoginStateCopyWith<$Res> {
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
   $Res call(
-      {Status status, String email, String password, String? errorMessage});
+      {Status status,
+      String email,
+      String password,
+      String? errorMessage,
+      String appVersion});
 }
 
 /// @nodoc
@@ -533,6 +679,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
     Object? email = null,
     Object? password = null,
     Object? errorMessage = freezed,
+    Object? appVersion = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -551,6 +698,10 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      appVersion: null == appVersion
+          ? _value.appVersion
+          : appVersion // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -564,7 +715,11 @@ abstract class _$$LoginStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Status status, String email, String password, String? errorMessage});
+      {Status status,
+      String email,
+      String password,
+      String? errorMessage,
+      String appVersion});
 }
 
 /// @nodoc
@@ -584,6 +739,7 @@ class __$$LoginStateImplCopyWithImpl<$Res>
     Object? email = null,
     Object? password = null,
     Object? errorMessage = freezed,
+    Object? appVersion = null,
   }) {
     return _then(_$LoginStateImpl(
       status: null == status
@@ -602,6 +758,10 @@ class __$$LoginStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      appVersion: null == appVersion
+          ? _value.appVersion
+          : appVersion // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -613,7 +773,8 @@ class _$LoginStateImpl implements _LoginState {
       {this.status = Status.initial,
       this.email = '',
       this.password = '',
-      this.errorMessage});
+      this.errorMessage,
+      this.appVersion = ''});
 
   @override
   @JsonKey()
@@ -626,10 +787,13 @@ class _$LoginStateImpl implements _LoginState {
   final String password;
   @override
   final String? errorMessage;
+  @override
+  @JsonKey()
+  final String appVersion;
 
   @override
   String toString() {
-    return 'LoginState(status: $status, email: $email, password: $password, errorMessage: $errorMessage)';
+    return 'LoginState(status: $status, email: $email, password: $password, errorMessage: $errorMessage, appVersion: $appVersion)';
   }
 
   @override
@@ -642,12 +806,14 @@ class _$LoginStateImpl implements _LoginState {
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.appVersion, appVersion) ||
+                other.appVersion == appVersion));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, email, password, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, status, email, password, errorMessage, appVersion);
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -663,7 +829,8 @@ abstract class _LoginState implements LoginState {
       {final Status status,
       final String email,
       final String password,
-      final String? errorMessage}) = _$LoginStateImpl;
+      final String? errorMessage,
+      final String appVersion}) = _$LoginStateImpl;
 
   @override
   Status get status;
@@ -673,6 +840,8 @@ abstract class _LoginState implements LoginState {
   String get password;
   @override
   String? get errorMessage;
+  @override
+  String get appVersion;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.

@@ -7,5 +7,6 @@ class LoginState with _$LoginState {
     @Default('') String email,
     @Default('') String password,
     String? errorMessage,
+    @Default('') String appVersion,
   }) = _LoginState;
 }
