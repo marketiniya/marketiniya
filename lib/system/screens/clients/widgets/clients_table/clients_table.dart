@@ -23,7 +23,19 @@ class _ContentTableState extends State<ContentTable> {
   int _currentPage = 1;
 
   List<Client> get _paginatedClients {
-    final clients = context.read<ClientBloc>().state.clients;
+    final clients = context.read<ClientBloc>().state.filteredClients;
+
+    // Reset to page 1 if current page is invalid for filtered results
+    if (clients.isNotEmpty && (_currentPage - 1) * _itemsPerPage >= clients.length) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        setState(() {
+          _currentPage = 1;
+        });
+      });
+
+      return clients.take(_itemsPerPage).toList();
+    }
+
     final startIndex = (_currentPage - 1) * _itemsPerPage;
     final endIndex = startIndex + _itemsPerPage;
     return clients.sublist(
@@ -33,7 +45,10 @@ class _ContentTableState extends State<ContentTable> {
   }
 
   int get _totalPages {
-    final clients = context.read<ClientBloc>().state.clients;
+    final clients = context.read<ClientBloc>().state.filteredClients;
+    if (clients.isEmpty) {
+      return 0;
+    }
     return (clients.length / _itemsPerPage).ceil();
   }
 
@@ -75,13 +90,16 @@ class _ContentTableState extends State<ContentTable> {
           );
         }
 
-        if (state.clients.isEmpty) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(vertical: imageWidth),
+        if (state.filteredClients.isEmpty) {
+          final message = state.searchQuery.isEmpty
+              ? 'Няма добавени клиенти..'
+              : 'Няма намерени резултати за "${state.searchQuery}"..';
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: imageWidth),
             child: Center(
               child: Text(
-                'Няма намерени резултати..',
-                style: TextStyle(color: Colors.black),
+                message,
+                style: const TextStyle(color: Colors.black),
               ),
             ),
           );
@@ -94,10 +112,14 @@ class _ContentTableState extends State<ContentTable> {
             children: [
               const ClientsTableHeader(),
               const SizedBox(height: xxs),
-              ClientsList(
-                clients: _paginatedClients,
-                currentPage: _currentPage,
-                itemsPerPage: _itemsPerPage,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: ClientsList(
+                    clients: _paginatedClients,
+                    currentPage: _currentPage,
+                    itemsPerPage: _itemsPerPage,
+                  ),
+                ),
               ),
               if (_totalPages > 0) ...[
                 const SizedBox(height: xs),
@@ -108,7 +130,7 @@ class _ContentTableState extends State<ContentTable> {
                   onPageChanged: _onPageChanged,
                   onRowsPerPageChanged: _onRowsPerPageChanged,
                 ),
-                const SizedBox(height: xs),
+                const SizedBox(height: sm),
               ],
             ],
           ),

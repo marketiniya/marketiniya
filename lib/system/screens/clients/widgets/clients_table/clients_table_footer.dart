@@ -18,7 +18,7 @@ class ClientsTableFooter extends StatelessWidget {
   final ValueChanged<int> onPageChanged;
   final ValueChanged<int?> onRowsPerPageChanged;
 
-  static const List<int> _availableRowsPerPage = [10, 15, 25, 50, 100];
+  static const List<int> _availableRowsPerPage = [10, 15, 20, 50, 100];
   static const _rowTextStyle = TextStyle(
     color: Colors.black87,
     fontSize: xxsPlus,

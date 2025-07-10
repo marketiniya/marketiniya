@@ -21,6 +21,7 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
       (event, emit) => event.map(
         onLoad: (_) => _onLoad(emit),
         onClientUpdated: (e) => _onClientUpdated(emit, e),
+        onSearch: (e) => _onSearch(emit, e),
       ),
     );
 
@@ -76,5 +77,9 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
     }
 
     emit(state.copyWith(clients: updatedClients));
+  }
+
+  void _onSearch(Emitter<ClientState> emit, _OnSearch event) {
+    emit(state.copyWith(searchQuery: event.query));
   }
 }

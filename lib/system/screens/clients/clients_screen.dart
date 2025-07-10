@@ -21,16 +21,13 @@ class ClientsScreen extends StatelessWidget {
       ),
       child: const Scaffold(
         backgroundColor: AppColors.background,
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: xl),
-              ContentHeader(),
-              ContentTable(),
-            ],
-          ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: xl),
+            ContentHeader(),
+            Expanded(child: ContentTable()),
+          ],
         ),
       ),
     );

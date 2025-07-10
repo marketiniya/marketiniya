@@ -20,18 +20,21 @@ mixin _$ClientEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() onLoad,
     required TResult Function(Client client) onClientUpdated,
+    required TResult Function(String query) onSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onLoad,
     TResult? Function(Client client)? onClientUpdated,
+    TResult? Function(String query)? onSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onLoad,
     TResult Function(Client client)? onClientUpdated,
+    TResult Function(String query)? onSearch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ClientEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_OnLoad value) onLoad,
     required TResult Function(_OnClientUpdated value) onClientUpdated,
+    required TResult Function(_OnSearch value) onSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_OnLoad value)? onLoad,
     TResult? Function(_OnClientUpdated value)? onClientUpdated,
+    TResult? Function(_OnSearch value)? onSearch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OnLoad value)? onLoad,
     TResult Function(_OnClientUpdated value)? onClientUpdated,
+    TResult Function(_OnSearch value)? onSearch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +126,7 @@ class _$OnLoadImpl implements _OnLoad {
   TResult when<TResult extends Object?>({
     required TResult Function() onLoad,
     required TResult Function(Client client) onClientUpdated,
+    required TResult Function(String query) onSearch,
   }) {
     return onLoad();
   }
@@ -129,6 +136,7 @@ class _$OnLoadImpl implements _OnLoad {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onLoad,
     TResult? Function(Client client)? onClientUpdated,
+    TResult? Function(String query)? onSearch,
   }) {
     return onLoad?.call();
   }
@@ -138,6 +146,7 @@ class _$OnLoadImpl implements _OnLoad {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onLoad,
     TResult Function(Client client)? onClientUpdated,
+    TResult Function(String query)? onSearch,
     required TResult orElse(),
   }) {
     if (onLoad != null) {
@@ -151,6 +160,7 @@ class _$OnLoadImpl implements _OnLoad {
   TResult map<TResult extends Object?>({
     required TResult Function(_OnLoad value) onLoad,
     required TResult Function(_OnClientUpdated value) onClientUpdated,
+    required TResult Function(_OnSearch value) onSearch,
   }) {
     return onLoad(this);
   }
@@ -160,6 +170,7 @@ class _$OnLoadImpl implements _OnLoad {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_OnLoad value)? onLoad,
     TResult? Function(_OnClientUpdated value)? onClientUpdated,
+    TResult? Function(_OnSearch value)? onSearch,
   }) {
     return onLoad?.call(this);
   }
@@ -169,6 +180,7 @@ class _$OnLoadImpl implements _OnLoad {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OnLoad value)? onLoad,
     TResult Function(_OnClientUpdated value)? onClientUpdated,
+    TResult Function(_OnSearch value)? onSearch,
     required TResult orElse(),
   }) {
     if (onLoad != null) {
@@ -265,6 +277,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
   TResult when<TResult extends Object?>({
     required TResult Function() onLoad,
     required TResult Function(Client client) onClientUpdated,
+    required TResult Function(String query) onSearch,
   }) {
     return onClientUpdated(client);
   }
@@ -274,6 +287,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onLoad,
     TResult? Function(Client client)? onClientUpdated,
+    TResult? Function(String query)? onSearch,
   }) {
     return onClientUpdated?.call(client);
   }
@@ -283,6 +297,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onLoad,
     TResult Function(Client client)? onClientUpdated,
+    TResult Function(String query)? onSearch,
     required TResult orElse(),
   }) {
     if (onClientUpdated != null) {
@@ -296,6 +311,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
   TResult map<TResult extends Object?>({
     required TResult Function(_OnLoad value) onLoad,
     required TResult Function(_OnClientUpdated value) onClientUpdated,
+    required TResult Function(_OnSearch value) onSearch,
   }) {
     return onClientUpdated(this);
   }
@@ -305,6 +321,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_OnLoad value)? onLoad,
     TResult? Function(_OnClientUpdated value)? onClientUpdated,
+    TResult? Function(_OnSearch value)? onSearch,
   }) {
     return onClientUpdated?.call(this);
   }
@@ -314,6 +331,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OnLoad value)? onLoad,
     TResult Function(_OnClientUpdated value)? onClientUpdated,
+    TResult Function(_OnSearch value)? onSearch,
     required TResult orElse(),
   }) {
     if (onClientUpdated != null) {
@@ -332,5 +350,151 @@ abstract class _OnClientUpdated implements ClientEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnClientUpdatedImplCopyWith<_$OnClientUpdatedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnSearchImplCopyWith<$Res> {
+  factory _$$OnSearchImplCopyWith(
+          _$OnSearchImpl value, $Res Function(_$OnSearchImpl) then) =
+      __$$OnSearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$OnSearchImplCopyWithImpl<$Res>
+    extends _$ClientEventCopyWithImpl<$Res, _$OnSearchImpl>
+    implements _$$OnSearchImplCopyWith<$Res> {
+  __$$OnSearchImplCopyWithImpl(
+      _$OnSearchImpl _value, $Res Function(_$OnSearchImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$OnSearchImpl(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnSearchImpl implements _OnSearch {
+  const _$OnSearchImpl(this.query);
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'ClientEvent.onSearch(query: $query)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnSearchImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnSearchImplCopyWith<_$OnSearchImpl> get copyWith =>
+      __$$OnSearchImplCopyWithImpl<_$OnSearchImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onLoad,
+    required TResult Function(Client client) onClientUpdated,
+    required TResult Function(String query) onSearch,
+  }) {
+    return onSearch(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onLoad,
+    TResult? Function(Client client)? onClientUpdated,
+    TResult? Function(String query)? onSearch,
+  }) {
+    return onSearch?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onLoad,
+    TResult Function(Client client)? onClientUpdated,
+    TResult Function(String query)? onSearch,
+    required TResult orElse(),
+  }) {
+    if (onSearch != null) {
+      return onSearch(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnLoad value) onLoad,
+    required TResult Function(_OnClientUpdated value) onClientUpdated,
+    required TResult Function(_OnSearch value) onSearch,
+  }) {
+    return onSearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnLoad value)? onLoad,
+    TResult? Function(_OnClientUpdated value)? onClientUpdated,
+    TResult? Function(_OnSearch value)? onSearch,
+  }) {
+    return onSearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnLoad value)? onLoad,
+    TResult Function(_OnClientUpdated value)? onClientUpdated,
+    TResult Function(_OnSearch value)? onSearch,
+    required TResult orElse(),
+  }) {
+    if (onSearch != null) {
+      return onSearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnSearch implements ClientEvent {
+  const factory _OnSearch(final String query) = _$OnSearchImpl;
+
+  String get query;
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnSearchImplCopyWith<_$OnSearchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

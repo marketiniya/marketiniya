@@ -54,6 +54,9 @@ class ContentHeader extends StatelessWidget {
                       suffixIcon: Icons.search,
                       borderRadius: lg,
                       filledColor: AppColors.dustyOlive,
+                      onChanged: (query) => context.read<ClientBloc>().add(
+                        ClientEvent.onSearch(query),
+                      ),
                     ),
                   ),
                 ),
