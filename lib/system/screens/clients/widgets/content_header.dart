@@ -9,6 +9,7 @@ import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_editor_screen.dart';
+import 'package:marketinya/system/screens/clients/widgets/filter_pop_menu_button.dart';
 
 class ContentHeader extends StatelessWidget {
   const ContentHeader({super.key});
@@ -61,22 +62,7 @@ class ContentHeader extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: sm),
-                Transform.translate(
-                  offset: const Offset(none, _verticalOffset),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.oliveGreen,
-                      borderRadius: BorderRadius.circular(xxsPlus),
-                    ),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.filter_alt_outlined,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                const FilterPopMenuButton(),
                 const SizedBox(width: xxl),
                 Transform.translate(
                   offset: const Offset(none, _verticalOffset),
