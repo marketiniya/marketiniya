@@ -22,6 +22,8 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
         onLoad: (_) => _onLoad(emit),
         onClientUpdated: (e) => _onClientUpdated(emit, e),
         onSearch: (e) => _onSearch(emit, e),
+        onPageChanged: (e) => _onPageChanged(emit, e),
+        onItemsPerPageChanged: (e) => _onItemsPerPageChanged(emit, e),
       ),
     );
 
@@ -76,10 +78,40 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
       }
     }
 
-    emit(state.copyWith(clients: updatedClients));
+    final newState = state.copyWith(clients: updatedClients);
+    emit(newState);
+
+    // Fix pagination if current page is empty
+    _resetPageIfOutOfBounds(emit, newState);
   }
 
   void _onSearch(Emitter<ClientState> emit, _OnSearch event) {
-    emit(state.copyWith(searchQuery: event.query));
+    emit(
+      state.copyWith(
+        searchQuery: event.query,
+        currentPage: 1,
+      ),
+    );
+  }
+
+  void _onPageChanged(Emitter<ClientState> emit, _OnPageChanged event) {
+    emit(state.copyWith(currentPage: event.page));
+  }
+
+  void _onItemsPerPageChanged(Emitter<ClientState> emit, _OnItemsPerPageChanged event) {
+    // Reset to page 1 when changing page size
+    emit(
+      state.copyWith(
+        itemsPerPage: event.itemsPerPage,
+        currentPage: 1,
+      ),
+    );
+  }
+
+  /// Reset to page 1 if current page has no data
+  void _resetPageIfOutOfBounds(Emitter<ClientState> emit, ClientState newState) {
+    if (newState.isCurrentPageOutOfBounds) {
+      emit(newState.copyWith(currentPage: 1));
+    }
   }
 }

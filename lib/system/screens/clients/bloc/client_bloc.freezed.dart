@@ -21,6 +21,8 @@ mixin _$ClientEvent {
     required TResult Function() onLoad,
     required TResult Function(Client client) onClientUpdated,
     required TResult Function(String query) onSearch,
+    required TResult Function(int page) onPageChanged,
+    required TResult Function(int itemsPerPage) onItemsPerPageChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +30,8 @@ mixin _$ClientEvent {
     TResult? Function()? onLoad,
     TResult? Function(Client client)? onClientUpdated,
     TResult? Function(String query)? onSearch,
+    TResult? Function(int page)? onPageChanged,
+    TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +39,8 @@ mixin _$ClientEvent {
     TResult Function()? onLoad,
     TResult Function(Client client)? onClientUpdated,
     TResult Function(String query)? onSearch,
+    TResult Function(int page)? onPageChanged,
+    TResult Function(int itemsPerPage)? onItemsPerPageChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +49,9 @@ mixin _$ClientEvent {
     required TResult Function(_OnLoad value) onLoad,
     required TResult Function(_OnClientUpdated value) onClientUpdated,
     required TResult Function(_OnSearch value) onSearch,
+    required TResult Function(_OnPageChanged value) onPageChanged,
+    required TResult Function(_OnItemsPerPageChanged value)
+        onItemsPerPageChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +59,8 @@ mixin _$ClientEvent {
     TResult? Function(_OnLoad value)? onLoad,
     TResult? Function(_OnClientUpdated value)? onClientUpdated,
     TResult? Function(_OnSearch value)? onSearch,
+    TResult? Function(_OnPageChanged value)? onPageChanged,
+    TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +68,8 @@ mixin _$ClientEvent {
     TResult Function(_OnLoad value)? onLoad,
     TResult Function(_OnClientUpdated value)? onClientUpdated,
     TResult Function(_OnSearch value)? onSearch,
+    TResult Function(_OnPageChanged value)? onPageChanged,
+    TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +140,8 @@ class _$OnLoadImpl implements _OnLoad {
     required TResult Function() onLoad,
     required TResult Function(Client client) onClientUpdated,
     required TResult Function(String query) onSearch,
+    required TResult Function(int page) onPageChanged,
+    required TResult Function(int itemsPerPage) onItemsPerPageChanged,
   }) {
     return onLoad();
   }
@@ -137,6 +152,8 @@ class _$OnLoadImpl implements _OnLoad {
     TResult? Function()? onLoad,
     TResult? Function(Client client)? onClientUpdated,
     TResult? Function(String query)? onSearch,
+    TResult? Function(int page)? onPageChanged,
+    TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
   }) {
     return onLoad?.call();
   }
@@ -147,6 +164,8 @@ class _$OnLoadImpl implements _OnLoad {
     TResult Function()? onLoad,
     TResult Function(Client client)? onClientUpdated,
     TResult Function(String query)? onSearch,
+    TResult Function(int page)? onPageChanged,
+    TResult Function(int itemsPerPage)? onItemsPerPageChanged,
     required TResult orElse(),
   }) {
     if (onLoad != null) {
@@ -161,6 +180,9 @@ class _$OnLoadImpl implements _OnLoad {
     required TResult Function(_OnLoad value) onLoad,
     required TResult Function(_OnClientUpdated value) onClientUpdated,
     required TResult Function(_OnSearch value) onSearch,
+    required TResult Function(_OnPageChanged value) onPageChanged,
+    required TResult Function(_OnItemsPerPageChanged value)
+        onItemsPerPageChanged,
   }) {
     return onLoad(this);
   }
@@ -171,6 +193,8 @@ class _$OnLoadImpl implements _OnLoad {
     TResult? Function(_OnLoad value)? onLoad,
     TResult? Function(_OnClientUpdated value)? onClientUpdated,
     TResult? Function(_OnSearch value)? onSearch,
+    TResult? Function(_OnPageChanged value)? onPageChanged,
+    TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
   }) {
     return onLoad?.call(this);
   }
@@ -181,6 +205,8 @@ class _$OnLoadImpl implements _OnLoad {
     TResult Function(_OnLoad value)? onLoad,
     TResult Function(_OnClientUpdated value)? onClientUpdated,
     TResult Function(_OnSearch value)? onSearch,
+    TResult Function(_OnPageChanged value)? onPageChanged,
+    TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
     required TResult orElse(),
   }) {
     if (onLoad != null) {
@@ -278,6 +304,8 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     required TResult Function() onLoad,
     required TResult Function(Client client) onClientUpdated,
     required TResult Function(String query) onSearch,
+    required TResult Function(int page) onPageChanged,
+    required TResult Function(int itemsPerPage) onItemsPerPageChanged,
   }) {
     return onClientUpdated(client);
   }
@@ -288,6 +316,8 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     TResult? Function()? onLoad,
     TResult? Function(Client client)? onClientUpdated,
     TResult? Function(String query)? onSearch,
+    TResult? Function(int page)? onPageChanged,
+    TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
   }) {
     return onClientUpdated?.call(client);
   }
@@ -298,6 +328,8 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     TResult Function()? onLoad,
     TResult Function(Client client)? onClientUpdated,
     TResult Function(String query)? onSearch,
+    TResult Function(int page)? onPageChanged,
+    TResult Function(int itemsPerPage)? onItemsPerPageChanged,
     required TResult orElse(),
   }) {
     if (onClientUpdated != null) {
@@ -312,6 +344,9 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     required TResult Function(_OnLoad value) onLoad,
     required TResult Function(_OnClientUpdated value) onClientUpdated,
     required TResult Function(_OnSearch value) onSearch,
+    required TResult Function(_OnPageChanged value) onPageChanged,
+    required TResult Function(_OnItemsPerPageChanged value)
+        onItemsPerPageChanged,
   }) {
     return onClientUpdated(this);
   }
@@ -322,6 +357,8 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     TResult? Function(_OnLoad value)? onLoad,
     TResult? Function(_OnClientUpdated value)? onClientUpdated,
     TResult? Function(_OnSearch value)? onSearch,
+    TResult? Function(_OnPageChanged value)? onPageChanged,
+    TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
   }) {
     return onClientUpdated?.call(this);
   }
@@ -332,6 +369,8 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     TResult Function(_OnLoad value)? onLoad,
     TResult Function(_OnClientUpdated value)? onClientUpdated,
     TResult Function(_OnSearch value)? onSearch,
+    TResult Function(_OnPageChanged value)? onPageChanged,
+    TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
     required TResult orElse(),
   }) {
     if (onClientUpdated != null) {
@@ -424,6 +463,8 @@ class _$OnSearchImpl implements _OnSearch {
     required TResult Function() onLoad,
     required TResult Function(Client client) onClientUpdated,
     required TResult Function(String query) onSearch,
+    required TResult Function(int page) onPageChanged,
+    required TResult Function(int itemsPerPage) onItemsPerPageChanged,
   }) {
     return onSearch(query);
   }
@@ -434,6 +475,8 @@ class _$OnSearchImpl implements _OnSearch {
     TResult? Function()? onLoad,
     TResult? Function(Client client)? onClientUpdated,
     TResult? Function(String query)? onSearch,
+    TResult? Function(int page)? onPageChanged,
+    TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
   }) {
     return onSearch?.call(query);
   }
@@ -444,6 +487,8 @@ class _$OnSearchImpl implements _OnSearch {
     TResult Function()? onLoad,
     TResult Function(Client client)? onClientUpdated,
     TResult Function(String query)? onSearch,
+    TResult Function(int page)? onPageChanged,
+    TResult Function(int itemsPerPage)? onItemsPerPageChanged,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -458,6 +503,9 @@ class _$OnSearchImpl implements _OnSearch {
     required TResult Function(_OnLoad value) onLoad,
     required TResult Function(_OnClientUpdated value) onClientUpdated,
     required TResult Function(_OnSearch value) onSearch,
+    required TResult Function(_OnPageChanged value) onPageChanged,
+    required TResult Function(_OnItemsPerPageChanged value)
+        onItemsPerPageChanged,
   }) {
     return onSearch(this);
   }
@@ -468,6 +516,8 @@ class _$OnSearchImpl implements _OnSearch {
     TResult? Function(_OnLoad value)? onLoad,
     TResult? Function(_OnClientUpdated value)? onClientUpdated,
     TResult? Function(_OnSearch value)? onSearch,
+    TResult? Function(_OnPageChanged value)? onPageChanged,
+    TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
   }) {
     return onSearch?.call(this);
   }
@@ -478,6 +528,8 @@ class _$OnSearchImpl implements _OnSearch {
     TResult Function(_OnLoad value)? onLoad,
     TResult Function(_OnClientUpdated value)? onClientUpdated,
     TResult Function(_OnSearch value)? onSearch,
+    TResult Function(_OnPageChanged value)? onPageChanged,
+    TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -497,4 +549,326 @@ abstract class _OnSearch implements ClientEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnSearchImplCopyWith<_$OnSearchImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnPageChangedImplCopyWith<$Res> {
+  factory _$$OnPageChangedImplCopyWith(
+          _$OnPageChangedImpl value, $Res Function(_$OnPageChangedImpl) then) =
+      __$$OnPageChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int page});
+}
+
+/// @nodoc
+class __$$OnPageChangedImplCopyWithImpl<$Res>
+    extends _$ClientEventCopyWithImpl<$Res, _$OnPageChangedImpl>
+    implements _$$OnPageChangedImplCopyWith<$Res> {
+  __$$OnPageChangedImplCopyWithImpl(
+      _$OnPageChangedImpl _value, $Res Function(_$OnPageChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? page = null,
+  }) {
+    return _then(_$OnPageChangedImpl(
+      null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnPageChangedImpl implements _OnPageChanged {
+  const _$OnPageChangedImpl(this.page);
+
+  @override
+  final int page;
+
+  @override
+  String toString() {
+    return 'ClientEvent.onPageChanged(page: $page)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnPageChangedImpl &&
+            (identical(other.page, page) || other.page == page));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, page);
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnPageChangedImplCopyWith<_$OnPageChangedImpl> get copyWith =>
+      __$$OnPageChangedImplCopyWithImpl<_$OnPageChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onLoad,
+    required TResult Function(Client client) onClientUpdated,
+    required TResult Function(String query) onSearch,
+    required TResult Function(int page) onPageChanged,
+    required TResult Function(int itemsPerPage) onItemsPerPageChanged,
+  }) {
+    return onPageChanged(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onLoad,
+    TResult? Function(Client client)? onClientUpdated,
+    TResult? Function(String query)? onSearch,
+    TResult? Function(int page)? onPageChanged,
+    TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
+  }) {
+    return onPageChanged?.call(page);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onLoad,
+    TResult Function(Client client)? onClientUpdated,
+    TResult Function(String query)? onSearch,
+    TResult Function(int page)? onPageChanged,
+    TResult Function(int itemsPerPage)? onItemsPerPageChanged,
+    required TResult orElse(),
+  }) {
+    if (onPageChanged != null) {
+      return onPageChanged(page);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnLoad value) onLoad,
+    required TResult Function(_OnClientUpdated value) onClientUpdated,
+    required TResult Function(_OnSearch value) onSearch,
+    required TResult Function(_OnPageChanged value) onPageChanged,
+    required TResult Function(_OnItemsPerPageChanged value)
+        onItemsPerPageChanged,
+  }) {
+    return onPageChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnLoad value)? onLoad,
+    TResult? Function(_OnClientUpdated value)? onClientUpdated,
+    TResult? Function(_OnSearch value)? onSearch,
+    TResult? Function(_OnPageChanged value)? onPageChanged,
+    TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+  }) {
+    return onPageChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnLoad value)? onLoad,
+    TResult Function(_OnClientUpdated value)? onClientUpdated,
+    TResult Function(_OnSearch value)? onSearch,
+    TResult Function(_OnPageChanged value)? onPageChanged,
+    TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    required TResult orElse(),
+  }) {
+    if (onPageChanged != null) {
+      return onPageChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnPageChanged implements ClientEvent {
+  const factory _OnPageChanged(final int page) = _$OnPageChangedImpl;
+
+  int get page;
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnPageChangedImplCopyWith<_$OnPageChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnItemsPerPageChangedImplCopyWith<$Res> {
+  factory _$$OnItemsPerPageChangedImplCopyWith(
+          _$OnItemsPerPageChangedImpl value,
+          $Res Function(_$OnItemsPerPageChangedImpl) then) =
+      __$$OnItemsPerPageChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int itemsPerPage});
+}
+
+/// @nodoc
+class __$$OnItemsPerPageChangedImplCopyWithImpl<$Res>
+    extends _$ClientEventCopyWithImpl<$Res, _$OnItemsPerPageChangedImpl>
+    implements _$$OnItemsPerPageChangedImplCopyWith<$Res> {
+  __$$OnItemsPerPageChangedImplCopyWithImpl(_$OnItemsPerPageChangedImpl _value,
+      $Res Function(_$OnItemsPerPageChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? itemsPerPage = null,
+  }) {
+    return _then(_$OnItemsPerPageChangedImpl(
+      null == itemsPerPage
+          ? _value.itemsPerPage
+          : itemsPerPage // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnItemsPerPageChangedImpl implements _OnItemsPerPageChanged {
+  const _$OnItemsPerPageChangedImpl(this.itemsPerPage);
+
+  @override
+  final int itemsPerPage;
+
+  @override
+  String toString() {
+    return 'ClientEvent.onItemsPerPageChanged(itemsPerPage: $itemsPerPage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnItemsPerPageChangedImpl &&
+            (identical(other.itemsPerPage, itemsPerPage) ||
+                other.itemsPerPage == itemsPerPage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, itemsPerPage);
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnItemsPerPageChangedImplCopyWith<_$OnItemsPerPageChangedImpl>
+      get copyWith => __$$OnItemsPerPageChangedImplCopyWithImpl<
+          _$OnItemsPerPageChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onLoad,
+    required TResult Function(Client client) onClientUpdated,
+    required TResult Function(String query) onSearch,
+    required TResult Function(int page) onPageChanged,
+    required TResult Function(int itemsPerPage) onItemsPerPageChanged,
+  }) {
+    return onItemsPerPageChanged(itemsPerPage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onLoad,
+    TResult? Function(Client client)? onClientUpdated,
+    TResult? Function(String query)? onSearch,
+    TResult? Function(int page)? onPageChanged,
+    TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
+  }) {
+    return onItemsPerPageChanged?.call(itemsPerPage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onLoad,
+    TResult Function(Client client)? onClientUpdated,
+    TResult Function(String query)? onSearch,
+    TResult Function(int page)? onPageChanged,
+    TResult Function(int itemsPerPage)? onItemsPerPageChanged,
+    required TResult orElse(),
+  }) {
+    if (onItemsPerPageChanged != null) {
+      return onItemsPerPageChanged(itemsPerPage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnLoad value) onLoad,
+    required TResult Function(_OnClientUpdated value) onClientUpdated,
+    required TResult Function(_OnSearch value) onSearch,
+    required TResult Function(_OnPageChanged value) onPageChanged,
+    required TResult Function(_OnItemsPerPageChanged value)
+        onItemsPerPageChanged,
+  }) {
+    return onItemsPerPageChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnLoad value)? onLoad,
+    TResult? Function(_OnClientUpdated value)? onClientUpdated,
+    TResult? Function(_OnSearch value)? onSearch,
+    TResult? Function(_OnPageChanged value)? onPageChanged,
+    TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+  }) {
+    return onItemsPerPageChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnLoad value)? onLoad,
+    TResult Function(_OnClientUpdated value)? onClientUpdated,
+    TResult Function(_OnSearch value)? onSearch,
+    TResult Function(_OnPageChanged value)? onPageChanged,
+    TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    required TResult orElse(),
+  }) {
+    if (onItemsPerPageChanged != null) {
+      return onItemsPerPageChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnItemsPerPageChanged implements ClientEvent {
+  const factory _OnItemsPerPageChanged(final int itemsPerPage) =
+      _$OnItemsPerPageChangedImpl;
+
+  int get itemsPerPage;
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnItemsPerPageChangedImplCopyWith<_$OnItemsPerPageChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
