@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
@@ -25,7 +26,8 @@ class HeaderSection extends StatelessWidget {
     return BlocListener<AddClientBloc, AddClientState>(
       listener: (context, state) {
         if (state.status == Status.error) {
-          context.showFailureSnackBar(state.errorMessage ?? 'An error occurred');
+          context
+              .showFailureSnackBar(state.errorMessage ?? 'An error occurred');
           return;
         }
         if (state.status == Status.success) {
@@ -34,7 +36,7 @@ class HeaderSection extends StatelessWidget {
               : 'Client created successfully';
 
           context.showSuccessSnackBar(message);
-          Navigator.of(context).pop();
+          context.pop();
         }
       },
       child: Column(

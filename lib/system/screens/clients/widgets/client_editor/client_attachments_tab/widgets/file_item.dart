@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:marketinya/core/design_system/atoms/icons/file_type_icons.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
@@ -94,9 +95,10 @@ class FileItem extends StatelessWidget {
                     icon: const Icon(Icons.check, size: xs),
                     backgroundColor: AppColors.oliveGreen,
                     activeTitleColor: Colors.white,
-                    overlayButtonColor: AppColors.oliveGreen.withValues(alpha: 0.8),
+                    overlayButtonColor:
+                        AppColors.oliveGreen.withValues(alpha: 0.8),
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      context.pop();
                       bloc.add(
                         FileUploadEvent.fileRemoved(
                           fileType: file.fileType,
@@ -115,7 +117,7 @@ class FileItem extends StatelessWidget {
                     activeTitleColor: AppColors.oliveGreen,
                     borderColor: Colors.grey.shade400,
                     overlayButtonColor: AppColors.lightBeige,
-                    onPressed: () => Navigator.of(context).pop(),
+                    onPressed: () => context.pop(),
                   ),
                 ),
               ],

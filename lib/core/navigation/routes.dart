@@ -4,7 +4,9 @@ enum Routes {
   services('/services'),
   connectWithUs('/connect-with-us'),
   login('/login'),
-  systemHome('/system/clients');
+  systemHome('/system/clients'),
+  addClient('/system/clients/add'),
+  editClient('/system/clients/edit');
 
   const Routes(this.path);
 
