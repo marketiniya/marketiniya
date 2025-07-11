@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/models/client.dart';
+import 'package:marketinya/system/screens/clients/widgets/filter_multi_dropdown.dart';
 
 part 'client_state.freezed.dart';
 
@@ -12,6 +13,7 @@ class ClientState with _$ClientState {
     @Default('') String searchQuery,
     @Default(1) int currentPage,
     @Default(15) int itemsPerPage,
+    @Default(Filter.defaultSelected) List<Filter> selectedFilters,
     String? errorMessage,
   }) = _ClientState;
 }
@@ -24,11 +26,19 @@ extension ClientStateExtension on ClientState {
 
     final query = searchQuery.toLowerCase();
     return clients.where((client) {
-      return client.companyName.toLowerCase().contains(query) ||
-          client.name.toLowerCase().contains(query) ||
-          client.phone.toLowerCase().contains(query) ||
-          client.personalId.toLowerCase().contains(query) ||
-          client.companyId.toLowerCase().contains(query);
+      final filterChecks = {
+        Filter.company: () => client.companyName.toLowerCase().contains(query),
+        Filter.name: () => client.name.toLowerCase().contains(query),
+        Filter.phone: () => client.phone.toLowerCase().contains(query),
+        Filter.companyId: () => client.companyId.toLowerCase().contains(query),
+        Filter.sector: () => client.businessSector.label.toLowerCase().contains(query),
+        Filter.status: () => client.status.label.toLowerCase().contains(query),
+        Filter.priority: () => client.priorityLevel.label.toLowerCase().contains(query),
+      };
+
+      return selectedFilters.any(
+        (filter) => filterChecks.containsKey(filter) && filterChecks[filter]!(),
+      );
     }).toList();
   }
 

@@ -11,4 +11,6 @@ class ClientEvent with _$ClientEvent {
   const factory ClientEvent.onPageChanged(int page) = _OnPageChanged;
 
   const factory ClientEvent.onItemsPerPageChanged(int itemsPerPage) = _OnItemsPerPageChanged;
+
+  const factory ClientEvent.onFilterChanged(List<Filter> selectedFilters) = _OnFilterChanged;
 }

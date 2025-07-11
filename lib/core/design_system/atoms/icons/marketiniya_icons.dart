@@ -11,4 +11,12 @@ class MarketiniyaIcons {
         height: height,
         color: color,
       );
+
+  static Widget filter({Color? color, double? width, double? height}) =>
+      SvgImage.asset(
+        'assets/icons/filter.svg',
+        width: width,
+        height: height,
+        color: color,
+      );
 }

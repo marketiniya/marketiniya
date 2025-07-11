@@ -21,6 +21,7 @@ mixin _$ClientState {
   String get searchQuery => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
   int get itemsPerPage => throw _privateConstructorUsedError;
+  List<Filter> get selectedFilters => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   /// Create a copy of ClientState
@@ -42,6 +43,7 @@ abstract class $ClientStateCopyWith<$Res> {
       String searchQuery,
       int currentPage,
       int itemsPerPage,
+      List<Filter> selectedFilters,
       String? errorMessage});
 }
 
@@ -65,6 +67,7 @@ class _$ClientStateCopyWithImpl<$Res, $Val extends ClientState>
     Object? searchQuery = null,
     Object? currentPage = null,
     Object? itemsPerPage = null,
+    Object? selectedFilters = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -88,6 +91,10 @@ class _$ClientStateCopyWithImpl<$Res, $Val extends ClientState>
           ? _value.itemsPerPage
           : itemsPerPage // ignore: cast_nullable_to_non_nullable
               as int,
+      selectedFilters: null == selectedFilters
+          ? _value.selectedFilters
+          : selectedFilters // ignore: cast_nullable_to_non_nullable
+              as List<Filter>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -110,6 +117,7 @@ abstract class _$$ClientStateImplCopyWith<$Res>
       String searchQuery,
       int currentPage,
       int itemsPerPage,
+      List<Filter> selectedFilters,
       String? errorMessage});
 }
 
@@ -131,6 +139,7 @@ class __$$ClientStateImplCopyWithImpl<$Res>
     Object? searchQuery = null,
     Object? currentPage = null,
     Object? itemsPerPage = null,
+    Object? selectedFilters = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$ClientStateImpl(
@@ -154,6 +163,10 @@ class __$$ClientStateImplCopyWithImpl<$Res>
           ? _value.itemsPerPage
           : itemsPerPage // ignore: cast_nullable_to_non_nullable
               as int,
+      selectedFilters: null == selectedFilters
+          ? _value._selectedFilters
+          : selectedFilters // ignore: cast_nullable_to_non_nullable
+              as List<Filter>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -171,8 +184,10 @@ class _$ClientStateImpl implements _ClientState {
       this.searchQuery = '',
       this.currentPage = 1,
       this.itemsPerPage = 15,
+      final List<Filter> selectedFilters = Filter.defaultSelected,
       this.errorMessage})
-      : _clients = clients;
+      : _clients = clients,
+        _selectedFilters = selectedFilters;
 
   @override
   @JsonKey()
@@ -195,12 +210,21 @@ class _$ClientStateImpl implements _ClientState {
   @override
   @JsonKey()
   final int itemsPerPage;
+  final List<Filter> _selectedFilters;
+  @override
+  @JsonKey()
+  List<Filter> get selectedFilters {
+    if (_selectedFilters is EqualUnmodifiableListView) return _selectedFilters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedFilters);
+  }
+
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'ClientState(status: $status, clients: $clients, searchQuery: $searchQuery, currentPage: $currentPage, itemsPerPage: $itemsPerPage, errorMessage: $errorMessage)';
+    return 'ClientState(status: $status, clients: $clients, searchQuery: $searchQuery, currentPage: $currentPage, itemsPerPage: $itemsPerPage, selectedFilters: $selectedFilters, errorMessage: $errorMessage)';
   }
 
   @override
@@ -216,6 +240,8 @@ class _$ClientStateImpl implements _ClientState {
                 other.currentPage == currentPage) &&
             (identical(other.itemsPerPage, itemsPerPage) ||
                 other.itemsPerPage == itemsPerPage) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedFilters, _selectedFilters) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -228,6 +254,7 @@ class _$ClientStateImpl implements _ClientState {
       searchQuery,
       currentPage,
       itemsPerPage,
+      const DeepCollectionEquality().hash(_selectedFilters),
       errorMessage);
 
   /// Create a copy of ClientState
@@ -246,6 +273,7 @@ abstract class _ClientState implements ClientState {
       final String searchQuery,
       final int currentPage,
       final int itemsPerPage,
+      final List<Filter> selectedFilters,
       final String? errorMessage}) = _$ClientStateImpl;
 
   @override
@@ -258,6 +286,8 @@ abstract class _ClientState implements ClientState {
   int get currentPage;
   @override
   int get itemsPerPage;
+  @override
+  List<Filter> get selectedFilters;
   @override
   String? get errorMessage;
 

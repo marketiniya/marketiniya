@@ -7,6 +7,7 @@ import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_state.dart';
+import 'package:marketinya/system/screens/clients/widgets/filter_multi_dropdown.dart';
 
 part 'client_bloc.freezed.dart';
 part 'client_event.dart';
@@ -24,6 +25,7 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
         onSearch: (e) => _onSearch(emit, e),
         onPageChanged: (e) => _onPageChanged(emit, e),
         onItemsPerPageChanged: (e) => _onItemsPerPageChanged(emit, e),
+        onFilterChanged: (e) => _onFilterChanged(emit, e),
       ),
     );
 
@@ -103,6 +105,16 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
     emit(
       state.copyWith(
         itemsPerPage: event.itemsPerPage,
+        currentPage: 1,
+      ),
+    );
+  }
+
+  void _onFilterChanged(Emitter<ClientState> emit, _OnFilterChanged event) {
+    // Reset to page 1 when changing filters to avoid empty pages
+    emit(
+      state.copyWith(
+        selectedFilters: event.selectedFilters,
         currentPage: 1,
       ),
     );
