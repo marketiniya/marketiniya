@@ -45,6 +45,7 @@ class FilterMultiDropdown extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 20),
           child: SizedBox(
             width: imageWidth,
+            height: 45,
             child: Stack(
               children: [
                 MultiDropdown<Filter>(

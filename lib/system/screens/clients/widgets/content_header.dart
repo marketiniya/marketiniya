@@ -43,20 +43,26 @@ class ContentHeader extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Transform.translate(
-                  offset: const Offset(none, _verticalOffset),
-                  child: SizedBox(
-                    width: _searchFieldWidth,
-                    child: CustomTextFormField(
-                      labelText: 'Търси',
-                      contentPadding: dimen.horizontal.sm,
-                      floatingLabelBehavior: FloatingLabelBehavior.never,
-                      keyboardType: TextInputType.name,
-                      suffixIcon: Icons.search,
-                      borderRadius: lg,
-                      filledColor: AppColors.dustyOlive,
-                      onChanged: (query) => context.read<ClientBloc>().add(
-                        ClientEvent.onSearch(query),
+                Flexible(
+                  flex: 2,
+                  child: Transform.translate(
+                    offset: const Offset(none, _verticalOffset),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        minWidth: 200,
+                        maxWidth: _searchFieldWidth,
+                      ),
+                      child: CustomTextFormField(
+                        labelText: 'Търси',
+                        contentPadding: dimen.horizontal.sm,
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        keyboardType: TextInputType.name,
+                        suffixIcon: Icons.search,
+                        borderRadius: lg,
+                        filledColor: AppColors.dustyOlive,
+                        onChanged: (query) => context.read<ClientBloc>().add(
+                          ClientEvent.onSearch(query),
+                        ),
                       ),
                     ),
                   ),
