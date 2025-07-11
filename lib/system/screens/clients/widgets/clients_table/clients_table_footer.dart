@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
+import 'package:marketinya/system/screens/clients/widgets/clients_table/clients_table_constants.dart';
 import 'package:marketinya/system/screens/clients/widgets/pagination.dart';
 
 class ClientsTableFooter extends StatelessWidget {
@@ -18,7 +19,7 @@ class ClientsTableFooter extends StatelessWidget {
   final ValueChanged<int> onPageChanged;
   final ValueChanged<int?> onRowsPerPageChanged;
 
-  static const List<int> _availableRowsPerPage = [10, 15, 25, 50, 100];
+  static const List<int> _availableRowsPerPage = ClientsTableConstants.availableItemsPerPage;
   static const _rowTextStyle = TextStyle(
     color: Colors.black87,
     fontSize: xxsPlus,

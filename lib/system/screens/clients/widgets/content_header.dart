@@ -9,6 +9,7 @@ import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
 import 'package:marketinya/system/screens/clients/bloc/client_bloc.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_editor_screen.dart';
+import 'package:marketinya/system/screens/clients/widgets/filter_multi_dropdown.dart';
 
 class ContentHeader extends StatelessWidget {
   const ContentHeader({super.key});
@@ -42,38 +43,32 @@ class ContentHeader extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Transform.translate(
-                  offset: const Offset(none, _verticalOffset),
-                  child: SizedBox(
-                    width: _searchFieldWidth,
-                    child: CustomTextFormField(
-                      labelText: 'Търси',
-                      contentPadding: dimen.horizontal.sm,
-                      floatingLabelBehavior: FloatingLabelBehavior.never,
-                      keyboardType: TextInputType.name,
-                      suffixIcon: Icons.search,
-                      borderRadius: lg,
-                      filledColor: AppColors.dustyOlive,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: sm),
-                Transform.translate(
-                  offset: const Offset(none, _verticalOffset),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.oliveGreen,
-                      borderRadius: BorderRadius.circular(xxsPlus),
-                    ),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.filter_alt_outlined,
-                        color: Colors.white,
+                Flexible(
+                  flex: 2,
+                  child: Transform.translate(
+                    offset: const Offset(none, _verticalOffset),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        minWidth: 200,
+                        maxWidth: _searchFieldWidth,
+                      ),
+                      child: CustomTextFormField(
+                        labelText: 'Търси',
+                        contentPadding: dimen.horizontal.sm,
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        keyboardType: TextInputType.name,
+                        suffixIcon: Icons.search,
+                        borderRadius: lg,
+                        filledColor: AppColors.dustyOlive,
+                        onChanged: (query) => context.read<ClientBloc>().add(
+                          ClientEvent.onSearch(query),
+                        ),
                       ),
                     ),
                   ),
                 ),
+                const SizedBox(width: sm),
+                const FilterMultiDropdown(),
                 const SizedBox(width: xxl),
                 Transform.translate(
                   offset: const Offset(none, _verticalOffset),
