@@ -23,6 +23,7 @@ mixin _$ClientEvent {
     required TResult Function(String query) onSearch,
     required TResult Function(int page) onPageChanged,
     required TResult Function(int itemsPerPage) onItemsPerPageChanged,
+    required TResult Function(List<Filter> selectedFilters) onFilterChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$ClientEvent {
     TResult? Function(String query)? onSearch,
     TResult? Function(int page)? onPageChanged,
     TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult? Function(List<Filter> selectedFilters)? onFilterChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$ClientEvent {
     TResult Function(String query)? onSearch,
     TResult Function(int page)? onPageChanged,
     TResult Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult Function(List<Filter> selectedFilters)? onFilterChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +55,7 @@ mixin _$ClientEvent {
     required TResult Function(_OnPageChanged value) onPageChanged,
     required TResult Function(_OnItemsPerPageChanged value)
         onItemsPerPageChanged,
+    required TResult Function(_OnFilterChanged value) onFilterChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +65,7 @@ mixin _$ClientEvent {
     TResult? Function(_OnSearch value)? onSearch,
     TResult? Function(_OnPageChanged value)? onPageChanged,
     TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult? Function(_OnFilterChanged value)? onFilterChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +75,7 @@ mixin _$ClientEvent {
     TResult Function(_OnSearch value)? onSearch,
     TResult Function(_OnPageChanged value)? onPageChanged,
     TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult Function(_OnFilterChanged value)? onFilterChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +148,7 @@ class _$OnLoadImpl implements _OnLoad {
     required TResult Function(String query) onSearch,
     required TResult Function(int page) onPageChanged,
     required TResult Function(int itemsPerPage) onItemsPerPageChanged,
+    required TResult Function(List<Filter> selectedFilters) onFilterChanged,
   }) {
     return onLoad();
   }
@@ -154,6 +161,7 @@ class _$OnLoadImpl implements _OnLoad {
     TResult? Function(String query)? onSearch,
     TResult? Function(int page)? onPageChanged,
     TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult? Function(List<Filter> selectedFilters)? onFilterChanged,
   }) {
     return onLoad?.call();
   }
@@ -166,6 +174,7 @@ class _$OnLoadImpl implements _OnLoad {
     TResult Function(String query)? onSearch,
     TResult Function(int page)? onPageChanged,
     TResult Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult Function(List<Filter> selectedFilters)? onFilterChanged,
     required TResult orElse(),
   }) {
     if (onLoad != null) {
@@ -183,6 +192,7 @@ class _$OnLoadImpl implements _OnLoad {
     required TResult Function(_OnPageChanged value) onPageChanged,
     required TResult Function(_OnItemsPerPageChanged value)
         onItemsPerPageChanged,
+    required TResult Function(_OnFilterChanged value) onFilterChanged,
   }) {
     return onLoad(this);
   }
@@ -195,6 +205,7 @@ class _$OnLoadImpl implements _OnLoad {
     TResult? Function(_OnSearch value)? onSearch,
     TResult? Function(_OnPageChanged value)? onPageChanged,
     TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult? Function(_OnFilterChanged value)? onFilterChanged,
   }) {
     return onLoad?.call(this);
   }
@@ -207,6 +218,7 @@ class _$OnLoadImpl implements _OnLoad {
     TResult Function(_OnSearch value)? onSearch,
     TResult Function(_OnPageChanged value)? onPageChanged,
     TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult Function(_OnFilterChanged value)? onFilterChanged,
     required TResult orElse(),
   }) {
     if (onLoad != null) {
@@ -306,6 +318,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     required TResult Function(String query) onSearch,
     required TResult Function(int page) onPageChanged,
     required TResult Function(int itemsPerPage) onItemsPerPageChanged,
+    required TResult Function(List<Filter> selectedFilters) onFilterChanged,
   }) {
     return onClientUpdated(client);
   }
@@ -318,6 +331,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     TResult? Function(String query)? onSearch,
     TResult? Function(int page)? onPageChanged,
     TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult? Function(List<Filter> selectedFilters)? onFilterChanged,
   }) {
     return onClientUpdated?.call(client);
   }
@@ -330,6 +344,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     TResult Function(String query)? onSearch,
     TResult Function(int page)? onPageChanged,
     TResult Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult Function(List<Filter> selectedFilters)? onFilterChanged,
     required TResult orElse(),
   }) {
     if (onClientUpdated != null) {
@@ -347,6 +362,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     required TResult Function(_OnPageChanged value) onPageChanged,
     required TResult Function(_OnItemsPerPageChanged value)
         onItemsPerPageChanged,
+    required TResult Function(_OnFilterChanged value) onFilterChanged,
   }) {
     return onClientUpdated(this);
   }
@@ -359,6 +375,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     TResult? Function(_OnSearch value)? onSearch,
     TResult? Function(_OnPageChanged value)? onPageChanged,
     TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult? Function(_OnFilterChanged value)? onFilterChanged,
   }) {
     return onClientUpdated?.call(this);
   }
@@ -371,6 +388,7 @@ class _$OnClientUpdatedImpl implements _OnClientUpdated {
     TResult Function(_OnSearch value)? onSearch,
     TResult Function(_OnPageChanged value)? onPageChanged,
     TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult Function(_OnFilterChanged value)? onFilterChanged,
     required TResult orElse(),
   }) {
     if (onClientUpdated != null) {
@@ -465,6 +483,7 @@ class _$OnSearchImpl implements _OnSearch {
     required TResult Function(String query) onSearch,
     required TResult Function(int page) onPageChanged,
     required TResult Function(int itemsPerPage) onItemsPerPageChanged,
+    required TResult Function(List<Filter> selectedFilters) onFilterChanged,
   }) {
     return onSearch(query);
   }
@@ -477,6 +496,7 @@ class _$OnSearchImpl implements _OnSearch {
     TResult? Function(String query)? onSearch,
     TResult? Function(int page)? onPageChanged,
     TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult? Function(List<Filter> selectedFilters)? onFilterChanged,
   }) {
     return onSearch?.call(query);
   }
@@ -489,6 +509,7 @@ class _$OnSearchImpl implements _OnSearch {
     TResult Function(String query)? onSearch,
     TResult Function(int page)? onPageChanged,
     TResult Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult Function(List<Filter> selectedFilters)? onFilterChanged,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -506,6 +527,7 @@ class _$OnSearchImpl implements _OnSearch {
     required TResult Function(_OnPageChanged value) onPageChanged,
     required TResult Function(_OnItemsPerPageChanged value)
         onItemsPerPageChanged,
+    required TResult Function(_OnFilterChanged value) onFilterChanged,
   }) {
     return onSearch(this);
   }
@@ -518,6 +540,7 @@ class _$OnSearchImpl implements _OnSearch {
     TResult? Function(_OnSearch value)? onSearch,
     TResult? Function(_OnPageChanged value)? onPageChanged,
     TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult? Function(_OnFilterChanged value)? onFilterChanged,
   }) {
     return onSearch?.call(this);
   }
@@ -530,6 +553,7 @@ class _$OnSearchImpl implements _OnSearch {
     TResult Function(_OnSearch value)? onSearch,
     TResult Function(_OnPageChanged value)? onPageChanged,
     TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult Function(_OnFilterChanged value)? onFilterChanged,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -624,6 +648,7 @@ class _$OnPageChangedImpl implements _OnPageChanged {
     required TResult Function(String query) onSearch,
     required TResult Function(int page) onPageChanged,
     required TResult Function(int itemsPerPage) onItemsPerPageChanged,
+    required TResult Function(List<Filter> selectedFilters) onFilterChanged,
   }) {
     return onPageChanged(page);
   }
@@ -636,6 +661,7 @@ class _$OnPageChangedImpl implements _OnPageChanged {
     TResult? Function(String query)? onSearch,
     TResult? Function(int page)? onPageChanged,
     TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult? Function(List<Filter> selectedFilters)? onFilterChanged,
   }) {
     return onPageChanged?.call(page);
   }
@@ -648,6 +674,7 @@ class _$OnPageChangedImpl implements _OnPageChanged {
     TResult Function(String query)? onSearch,
     TResult Function(int page)? onPageChanged,
     TResult Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult Function(List<Filter> selectedFilters)? onFilterChanged,
     required TResult orElse(),
   }) {
     if (onPageChanged != null) {
@@ -665,6 +692,7 @@ class _$OnPageChangedImpl implements _OnPageChanged {
     required TResult Function(_OnPageChanged value) onPageChanged,
     required TResult Function(_OnItemsPerPageChanged value)
         onItemsPerPageChanged,
+    required TResult Function(_OnFilterChanged value) onFilterChanged,
   }) {
     return onPageChanged(this);
   }
@@ -677,6 +705,7 @@ class _$OnPageChangedImpl implements _OnPageChanged {
     TResult? Function(_OnSearch value)? onSearch,
     TResult? Function(_OnPageChanged value)? onPageChanged,
     TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult? Function(_OnFilterChanged value)? onFilterChanged,
   }) {
     return onPageChanged?.call(this);
   }
@@ -689,6 +718,7 @@ class _$OnPageChangedImpl implements _OnPageChanged {
     TResult Function(_OnSearch value)? onSearch,
     TResult Function(_OnPageChanged value)? onPageChanged,
     TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult Function(_OnFilterChanged value)? onFilterChanged,
     required TResult orElse(),
   }) {
     if (onPageChanged != null) {
@@ -786,6 +816,7 @@ class _$OnItemsPerPageChangedImpl implements _OnItemsPerPageChanged {
     required TResult Function(String query) onSearch,
     required TResult Function(int page) onPageChanged,
     required TResult Function(int itemsPerPage) onItemsPerPageChanged,
+    required TResult Function(List<Filter> selectedFilters) onFilterChanged,
   }) {
     return onItemsPerPageChanged(itemsPerPage);
   }
@@ -798,6 +829,7 @@ class _$OnItemsPerPageChangedImpl implements _OnItemsPerPageChanged {
     TResult? Function(String query)? onSearch,
     TResult? Function(int page)? onPageChanged,
     TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult? Function(List<Filter> selectedFilters)? onFilterChanged,
   }) {
     return onItemsPerPageChanged?.call(itemsPerPage);
   }
@@ -810,6 +842,7 @@ class _$OnItemsPerPageChangedImpl implements _OnItemsPerPageChanged {
     TResult Function(String query)? onSearch,
     TResult Function(int page)? onPageChanged,
     TResult Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult Function(List<Filter> selectedFilters)? onFilterChanged,
     required TResult orElse(),
   }) {
     if (onItemsPerPageChanged != null) {
@@ -827,6 +860,7 @@ class _$OnItemsPerPageChangedImpl implements _OnItemsPerPageChanged {
     required TResult Function(_OnPageChanged value) onPageChanged,
     required TResult Function(_OnItemsPerPageChanged value)
         onItemsPerPageChanged,
+    required TResult Function(_OnFilterChanged value) onFilterChanged,
   }) {
     return onItemsPerPageChanged(this);
   }
@@ -839,6 +873,7 @@ class _$OnItemsPerPageChangedImpl implements _OnItemsPerPageChanged {
     TResult? Function(_OnSearch value)? onSearch,
     TResult? Function(_OnPageChanged value)? onPageChanged,
     TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult? Function(_OnFilterChanged value)? onFilterChanged,
   }) {
     return onItemsPerPageChanged?.call(this);
   }
@@ -851,6 +886,7 @@ class _$OnItemsPerPageChangedImpl implements _OnItemsPerPageChanged {
     TResult Function(_OnSearch value)? onSearch,
     TResult Function(_OnPageChanged value)? onPageChanged,
     TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult Function(_OnFilterChanged value)? onFilterChanged,
     required TResult orElse(),
   }) {
     if (onItemsPerPageChanged != null) {
@@ -871,4 +907,179 @@ abstract class _OnItemsPerPageChanged implements ClientEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnItemsPerPageChangedImplCopyWith<_$OnItemsPerPageChangedImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnFilterChangedImplCopyWith<$Res> {
+  factory _$$OnFilterChangedImplCopyWith(_$OnFilterChangedImpl value,
+          $Res Function(_$OnFilterChangedImpl) then) =
+      __$$OnFilterChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Filter> selectedFilters});
+}
+
+/// @nodoc
+class __$$OnFilterChangedImplCopyWithImpl<$Res>
+    extends _$ClientEventCopyWithImpl<$Res, _$OnFilterChangedImpl>
+    implements _$$OnFilterChangedImplCopyWith<$Res> {
+  __$$OnFilterChangedImplCopyWithImpl(
+      _$OnFilterChangedImpl _value, $Res Function(_$OnFilterChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedFilters = null,
+  }) {
+    return _then(_$OnFilterChangedImpl(
+      null == selectedFilters
+          ? _value._selectedFilters
+          : selectedFilters // ignore: cast_nullable_to_non_nullable
+              as List<Filter>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnFilterChangedImpl implements _OnFilterChanged {
+  const _$OnFilterChangedImpl(final List<Filter> selectedFilters)
+      : _selectedFilters = selectedFilters;
+
+  final List<Filter> _selectedFilters;
+  @override
+  List<Filter> get selectedFilters {
+    if (_selectedFilters is EqualUnmodifiableListView) return _selectedFilters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedFilters);
+  }
+
+  @override
+  String toString() {
+    return 'ClientEvent.onFilterChanged(selectedFilters: $selectedFilters)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnFilterChangedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._selectedFilters, _selectedFilters));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_selectedFilters));
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnFilterChangedImplCopyWith<_$OnFilterChangedImpl> get copyWith =>
+      __$$OnFilterChangedImplCopyWithImpl<_$OnFilterChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onLoad,
+    required TResult Function(Client client) onClientUpdated,
+    required TResult Function(String query) onSearch,
+    required TResult Function(int page) onPageChanged,
+    required TResult Function(int itemsPerPage) onItemsPerPageChanged,
+    required TResult Function(List<Filter> selectedFilters) onFilterChanged,
+  }) {
+    return onFilterChanged(selectedFilters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onLoad,
+    TResult? Function(Client client)? onClientUpdated,
+    TResult? Function(String query)? onSearch,
+    TResult? Function(int page)? onPageChanged,
+    TResult? Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult? Function(List<Filter> selectedFilters)? onFilterChanged,
+  }) {
+    return onFilterChanged?.call(selectedFilters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onLoad,
+    TResult Function(Client client)? onClientUpdated,
+    TResult Function(String query)? onSearch,
+    TResult Function(int page)? onPageChanged,
+    TResult Function(int itemsPerPage)? onItemsPerPageChanged,
+    TResult Function(List<Filter> selectedFilters)? onFilterChanged,
+    required TResult orElse(),
+  }) {
+    if (onFilterChanged != null) {
+      return onFilterChanged(selectedFilters);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnLoad value) onLoad,
+    required TResult Function(_OnClientUpdated value) onClientUpdated,
+    required TResult Function(_OnSearch value) onSearch,
+    required TResult Function(_OnPageChanged value) onPageChanged,
+    required TResult Function(_OnItemsPerPageChanged value)
+        onItemsPerPageChanged,
+    required TResult Function(_OnFilterChanged value) onFilterChanged,
+  }) {
+    return onFilterChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnLoad value)? onLoad,
+    TResult? Function(_OnClientUpdated value)? onClientUpdated,
+    TResult? Function(_OnSearch value)? onSearch,
+    TResult? Function(_OnPageChanged value)? onPageChanged,
+    TResult? Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult? Function(_OnFilterChanged value)? onFilterChanged,
+  }) {
+    return onFilterChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnLoad value)? onLoad,
+    TResult Function(_OnClientUpdated value)? onClientUpdated,
+    TResult Function(_OnSearch value)? onSearch,
+    TResult Function(_OnPageChanged value)? onPageChanged,
+    TResult Function(_OnItemsPerPageChanged value)? onItemsPerPageChanged,
+    TResult Function(_OnFilterChanged value)? onFilterChanged,
+    required TResult orElse(),
+  }) {
+    if (onFilterChanged != null) {
+      return onFilterChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnFilterChanged implements ClientEvent {
+  const factory _OnFilterChanged(final List<Filter> selectedFilters) =
+      _$OnFilterChangedImpl;
+
+  List<Filter> get selectedFilters;
+
+  /// Create a copy of ClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnFilterChangedImplCopyWith<_$OnFilterChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

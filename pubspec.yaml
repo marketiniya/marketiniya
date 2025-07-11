@@ -55,6 +55,7 @@ dependencies:
   json_annotation: ^4.9.0
   logger: ^2.5.0
   meta: ^1.15.0
+  multi_dropdown: ^3.0.1
   package_info_plus: ^8.3.0
   path_provider: ^2.1.5
   retrofit: ^4.5.0
