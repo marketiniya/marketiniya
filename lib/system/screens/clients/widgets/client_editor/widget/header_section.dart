@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
+import 'package:marketinya/core/design_system/molecules/dialogs.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/extensions/context_extension.dart';
@@ -77,6 +78,17 @@ class HeaderSection extends StatelessWidget {
                   onPressed: () => context.pop(),
                 ),
               ),
+              const Spacer(),
+              SizedBox(
+                child: PrimaryButton.responsive(
+                  icon: const Icon(Icons.delete),
+                  title: 'Изтрий профил',
+                  activeTitleColor: Colors.red,
+                  borderColor: Colors.red,
+                  overlayButtonColor: Colors.red.withValues(alpha: 200),
+                  onPressed: () => _deleteConfirmationDialog(context),
+                ),
+              ),
             ],
           ),
           const SizedBox(height: lg),
@@ -101,6 +113,20 @@ class HeaderSection extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void _deleteConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CustomAlertDialog.deleteConfirmation(
+          onConfirm: () {
+            Navigator.of(context).pop();
+          },
+          onCancel: () => Navigator.of(context).pop(),
+        );
+      },
     );
   }
 }

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketinya/core/design_system/atoms/icons/file_type_icons.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
-import 'package:marketinya/core/design_system/molecules/button/primary_button/primary_button.dart';
 import 'package:marketinya/core/design_system/molecules/dialogs.dart';
-import 'package:marketinya/core/design_system/themes/app_colors.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/bloc/file_upload_bloc.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/bloc/file_upload_event.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/models/uploaded_file.dart';
@@ -61,16 +59,7 @@ class FileItem extends StatelessWidget {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return CustomAlertDialog(
-          title: const Text(
-            'Сигурни ли сте, че искате да изтриете?',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
-            ),
-            textAlign: TextAlign.center,
-          ),
+        return CustomAlertDialog.deleteConfirmation(
           content: Text(
             file.name,
             textAlign: TextAlign.center,
@@ -83,44 +72,16 @@ class FileItem extends StatelessWidget {
             softWrap: true,
             overflow: TextOverflow.ellipsis,
           ),
-          actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  width: 120,
-                  child: PrimaryButton.responsive(
-                    title: 'Да',
-                    icon: const Icon(Icons.check, size: xs),
-                    backgroundColor: AppColors.oliveGreen,
-                    activeTitleColor: Colors.white,
-                    overlayButtonColor: AppColors.oliveGreen.withValues(alpha: 0.8),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      bloc.add(
-                        FileUploadEvent.fileRemoved(
-                          fileType: file.fileType,
-                          fileId: file.id,
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: 120,
-                  child: PrimaryButton.responsive(
-                    title: 'Не',
-                    icon: const Icon(Icons.close, size: xs),
-                    backgroundColor: Colors.white,
-                    activeTitleColor: AppColors.oliveGreen,
-                    borderColor: Colors.grey.shade400,
-                    overlayButtonColor: AppColors.lightBeige,
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                ),
-              ],
-            ),
-          ],
+          onConfirm: () {
+            Navigator.of(context).pop();
+            bloc.add(
+              FileUploadEvent.fileRemoved(
+                fileType: file.fileType,
+                fileId: file.id,
+              ),
+            );
+          },
+          onCancel: () => Navigator.of(context).pop(),
         );
       },
     );
