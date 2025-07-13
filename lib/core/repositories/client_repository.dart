@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/models/social_media_link.dart';
+import 'package:marketinya/core/services/firebase_storage_service.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/business_sector.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
@@ -9,11 +10,16 @@ import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/pr
 
 @injectable
 class ClientRepository {
-  ClientRepository(this._firestore);
+  ClientRepository(
+    this._firestore,
+    this._storageService,
+  );
 
   final FirestoreService _firestore;
+  final FirebaseStorageService _storageService;
 
   static const String _clients = 'clients';
+  static const String _attachmentsSubcollection = 'attachments';
 
   Future<List<Client>> getClientsForUser(DocumentReference userRef) async {
     final querySnapshot = await _firestore
@@ -160,5 +166,19 @@ class ClientRepository {
     );
 
     return updatedClient;
+  }
+
+  Future<void> deleteClient(String clientId) async {
+    final subcollectionRef = _firestore
+        .getCollection(_clients)
+        .doc(clientId)
+        .collection(_attachmentsSubcollection);
+
+    await _firestore.deleteSubcollection(subcollectionRef);
+
+    final storageFolderPath = '$_attachmentsSubcollection/$clientId';
+    await _storageService.deleteFolder(storageFolderPath);
+
+    await _firestore.deleteCollection(_clients, clientId);
   }
 }

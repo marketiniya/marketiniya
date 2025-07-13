@@ -34,7 +34,7 @@ Future<void> initializeDependencyInjection() async {
   getIt.registerLazySingleton<AuthenticationRepository>(() => AuthenticationRepository());
   getIt.registerLazySingleton<UserRepository>(() => UserRepository(getIt<FirestoreService>(), getIt<SharedPreferences>()));
   getIt.registerLazySingleton<ContactRepository>(() => ContactRepository(getIt<FirestoreService>()));
-  getIt.registerLazySingleton<ClientRepository>(() => ClientRepository(getIt<FirestoreService>()));
+  getIt.registerLazySingleton<ClientRepository>(() => ClientRepository(getIt<FirestoreService>(), getIt<FirebaseStorageService>()));
   getIt.registerLazySingleton<AttachmentRepository>(
     () => AttachmentRepository(
       getIt<FirebaseStorageService>(),

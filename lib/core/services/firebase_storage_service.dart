@@ -47,4 +47,23 @@ class FirebaseStorageService {
   }) {
     return '$_baseAttachmentsPath/$clientId/$fileType/$fileId.$extension';
   }
+
+  /// Delete a folder and all its contents from Firebase Storage
+  Future<void> deleteFolder(String folderPath) async {
+    try {
+      final ref = _storage.ref().child(folderPath);
+      final result = await ref.listAll();
+
+      for (final item in result.items) {
+        await item.delete();
+      }
+
+      for (final prefix in result.prefixes) {
+        await deleteFolder('$folderPath/${prefix.name}');
+      }
+    } catch (e) {
+      Log.error('Failed to delete folder: $e');
+      throw Exception('Failed to delete folder: $e');
+    }
+  }
 }

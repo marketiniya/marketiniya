@@ -44,4 +44,6 @@ class AddClientEvent with _$AddClientEvent {
   const factory AddClientEvent.save() = _SaveClient;
 
   const factory AddClientEvent.update() = _UpdateClient;
+
+  const factory AddClientEvent.delete() = _UpdateClient;
 }
