@@ -11,7 +11,8 @@ part 'add_client_state.freezed.dart';
 class AddClientState with _$AddClientState {
   factory AddClientState({
     @Default(Status.initial) Status status,
-    @Default(false) bool isUpdateMode, // True when updating an existing client.
+    @Default(false) bool isUpdateMode,
+    @Default(false) bool shouldRedirectToHome,
     @Default('') String companyName,
     @Default('') String name,
     @Default('') String dateOfBirth,

@@ -35,6 +35,7 @@ _$ClientImpl _$$ClientImplFromJson(Map<String, dynamic> json) => _$ClientImpl(
               ?.map((e) => SocialMediaLink.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      isDeleted: json['isDeleted'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
@@ -59,6 +60,7 @@ Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
       'assignedToId': instance.assignedToId,
       'tagIds': instance.tagIds,
       'socialLinks': instance.socialLinks,
+      'isDeleted': instance.isDeleted,
     };
 
 const _$BusinessSectorEnumMap = {

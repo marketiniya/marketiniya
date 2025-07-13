@@ -117,12 +117,14 @@ class HeaderSection extends StatelessWidget {
   }
 
   void _deleteConfirmationDialog(BuildContext context) {
+    final bloc = context.read<AddClientBloc>();
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return CustomAlertDialog.deleteConfirmation(
           onConfirm: () {
             Navigator.of(context).pop();
+            bloc.add(const AddClientEvent.delete());
           },
           onCancel: () => Navigator.of(context).pop(),
         );

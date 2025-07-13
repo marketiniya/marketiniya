@@ -42,6 +42,7 @@ mixin _$Client {
   String get assignedToId => throw _privateConstructorUsedError;
   List<String> get tagIds => throw _privateConstructorUsedError;
   List<SocialMediaLink> get socialLinks => throw _privateConstructorUsedError;
+  bool get isDeleted => throw _privateConstructorUsedError;
 
   /// Serializes this Client to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -75,7 +76,8 @@ abstract class $ClientCopyWith<$Res> {
       @DocumentReferenceConverter() List<DocumentReference<Object?>> tags,
       String assignedToId,
       List<String> tagIds,
-      List<SocialMediaLink> socialLinks});
+      List<SocialMediaLink> socialLinks,
+      bool isDeleted});
 }
 
 /// @nodoc
@@ -111,6 +113,7 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
     Object? assignedToId = null,
     Object? tagIds = null,
     Object? socialLinks = null,
+    Object? isDeleted = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -185,6 +188,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
           ? _value.socialLinks
           : socialLinks // ignore: cast_nullable_to_non_nullable
               as List<SocialMediaLink>,
+      isDeleted: null == isDeleted
+          ? _value.isDeleted
+          : isDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -214,7 +221,8 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       @DocumentReferenceConverter() List<DocumentReference<Object?>> tags,
       String assignedToId,
       List<String> tagIds,
-      List<SocialMediaLink> socialLinks});
+      List<SocialMediaLink> socialLinks,
+      bool isDeleted});
 }
 
 /// @nodoc
@@ -248,6 +256,7 @@ class __$$ClientImplCopyWithImpl<$Res>
     Object? assignedToId = null,
     Object? tagIds = null,
     Object? socialLinks = null,
+    Object? isDeleted = null,
   }) {
     return _then(_$ClientImpl(
       id: null == id
@@ -322,6 +331,10 @@ class __$$ClientImplCopyWithImpl<$Res>
           ? _value._socialLinks
           : socialLinks // ignore: cast_nullable_to_non_nullable
               as List<SocialMediaLink>,
+      isDeleted: null == isDeleted
+          ? _value.isDeleted
+          : isDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -348,7 +361,8 @@ class _$ClientImpl implements _Client {
       required final List<DocumentReference<Object?>> tags,
       this.assignedToId = '',
       final List<String> tagIds = const [],
-      final List<SocialMediaLink> socialLinks = const []})
+      final List<SocialMediaLink> socialLinks = const [],
+      this.isDeleted = false})
       : _tags = tags,
         _tagIds = tagIds,
         _socialLinks = socialLinks;
@@ -416,8 +430,12 @@ class _$ClientImpl implements _Client {
   }
 
   @override
+  @JsonKey()
+  final bool isDeleted;
+
+  @override
   String toString() {
-    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds, socialLinks: $socialLinks)';
+    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds, socialLinks: $socialLinks, isDeleted: $isDeleted)';
   }
 
   @override
@@ -454,31 +472,35 @@ class _$ClientImpl implements _Client {
                 other.assignedToId == assignedToId) &&
             const DeepCollectionEquality().equals(other._tagIds, _tagIds) &&
             const DeepCollectionEquality()
-                .equals(other._socialLinks, _socialLinks));
+                .equals(other._socialLinks, _socialLinks) &&
+            (identical(other.isDeleted, isDeleted) ||
+                other.isDeleted == isDeleted));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      companyName,
-      name,
-      dateOfBirth,
-      businessSector,
-      companyId,
-      personalId,
-      phone,
-      status,
-      priorityLevel,
-      description,
-      createdAt,
-      updatedAt,
-      assignedTo,
-      const DeepCollectionEquality().hash(_tags),
-      assignedToId,
-      const DeepCollectionEquality().hash(_tagIds),
-      const DeepCollectionEquality().hash(_socialLinks));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        companyName,
+        name,
+        dateOfBirth,
+        businessSector,
+        companyId,
+        personalId,
+        phone,
+        status,
+        priorityLevel,
+        description,
+        createdAt,
+        updatedAt,
+        assignedTo,
+        const DeepCollectionEquality().hash(_tags),
+        assignedToId,
+        const DeepCollectionEquality().hash(_tagIds),
+        const DeepCollectionEquality().hash(_socialLinks),
+        isDeleted
+      ]);
 
   /// Create a copy of Client
   /// with the given fields replaced by the non-null parameter values.
@@ -517,7 +539,8 @@ abstract class _Client implements Client {
       required final List<DocumentReference<Object?>> tags,
       final String assignedToId,
       final List<String> tagIds,
-      final List<SocialMediaLink> socialLinks}) = _$ClientImpl;
+      final List<SocialMediaLink> socialLinks,
+      final bool isDeleted}) = _$ClientImpl;
 
   factory _Client.fromJson(Map<String, dynamic> json) = _$ClientImpl.fromJson;
 
@@ -559,6 +582,8 @@ abstract class _Client implements Client {
   List<String> get tagIds;
   @override
   List<SocialMediaLink> get socialLinks;
+  @override
+  bool get isDeleted;
 
   /// Create a copy of Client
   /// with the given fields replaced by the non-null parameter values.

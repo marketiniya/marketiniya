@@ -91,7 +91,7 @@ mixin _$AddClientEvent {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -110,7 +110,7 @@ mixin _$AddClientEvent {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -129,7 +129,7 @@ mixin _$AddClientEvent {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -281,7 +281,7 @@ class _$LoadImpl implements _Load {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return load(this);
   }
@@ -303,7 +303,7 @@ class _$LoadImpl implements _Load {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return load?.call(this);
   }
@@ -325,7 +325,7 @@ class _$LoadImpl implements _Load {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -493,7 +493,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return companyNameChanged(this);
   }
@@ -515,7 +515,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return companyNameChanged?.call(this);
   }
@@ -537,7 +537,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (companyNameChanged != null) {
@@ -713,7 +713,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return nameChanged(this);
   }
@@ -735,7 +735,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return nameChanged?.call(this);
   }
@@ -757,7 +757,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (nameChanged != null) {
@@ -933,7 +933,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return dateOfBirthChanged(this);
   }
@@ -955,7 +955,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return dateOfBirthChanged?.call(this);
   }
@@ -977,7 +977,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (dateOfBirthChanged != null) {
@@ -1155,7 +1155,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return businessSectorChanged(this);
   }
@@ -1177,7 +1177,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return businessSectorChanged?.call(this);
   }
@@ -1199,7 +1199,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (businessSectorChanged != null) {
@@ -1376,7 +1376,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return companyIdChanged(this);
   }
@@ -1398,7 +1398,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return companyIdChanged?.call(this);
   }
@@ -1420,7 +1420,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (companyIdChanged != null) {
@@ -1596,7 +1596,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return personalIdChanged(this);
   }
@@ -1618,7 +1618,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return personalIdChanged?.call(this);
   }
@@ -1640,7 +1640,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (personalIdChanged != null) {
@@ -1816,7 +1816,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return phoneChanged(this);
   }
@@ -1838,7 +1838,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return phoneChanged?.call(this);
   }
@@ -1860,7 +1860,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (phoneChanged != null) {
@@ -2036,7 +2036,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return clientStatusChanged(this);
   }
@@ -2058,7 +2058,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return clientStatusChanged?.call(this);
   }
@@ -2080,7 +2080,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (clientStatusChanged != null) {
@@ -2258,7 +2258,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return priorityLevelChanged(this);
   }
@@ -2280,7 +2280,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return priorityLevelChanged?.call(this);
   }
@@ -2302,7 +2302,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (priorityLevelChanged != null) {
@@ -2479,7 +2479,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return descriptionChanged(this);
   }
@@ -2501,7 +2501,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return descriptionChanged?.call(this);
   }
@@ -2523,7 +2523,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -2707,7 +2707,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return socialLinksChanged(this);
   }
@@ -2729,7 +2729,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return socialLinksChanged?.call(this);
   }
@@ -2751,7 +2751,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (socialLinksChanged != null) {
@@ -2900,7 +2900,7 @@ class _$SaveClientImpl implements _SaveClient {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return save(this);
   }
@@ -2922,7 +2922,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return save?.call(this);
   }
@@ -2944,7 +2944,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -3084,7 +3084,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return update(this);
   }
@@ -3106,7 +3106,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return update?.call(this);
   }
@@ -3128,7 +3128,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (update != null) {
@@ -3143,18 +3143,18 @@ abstract class _UpdateClient implements AddClientEvent {
 }
 
 /// @nodoc
-abstract class _$$UpdateClientImplCopyWith<$Res> {
-  factory _$$UpdateClientImplCopyWith(
-          _$UpdateClientImpl value, $Res Function(_$UpdateClientImpl) then) =
-      __$$UpdateClientImplCopyWithImpl<$Res>;
+abstract class _$$DeleteClientImplCopyWith<$Res> {
+  factory _$$DeleteClientImplCopyWith(
+          _$DeleteClientImpl value, $Res Function(_$DeleteClientImpl) then) =
+      __$$DeleteClientImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UpdateClientImplCopyWithImpl<$Res>
-    extends _$AddClientEventCopyWithImpl<$Res, _$UpdateClientImpl>
-    implements _$$UpdateClientImplCopyWith<$Res> {
-  __$$UpdateClientImplCopyWithImpl(
-      _$UpdateClientImpl _value, $Res Function(_$UpdateClientImpl) _then)
+class __$$DeleteClientImplCopyWithImpl<$Res>
+    extends _$AddClientEventCopyWithImpl<$Res, _$DeleteClientImpl>
+    implements _$$DeleteClientImplCopyWith<$Res> {
+  __$$DeleteClientImplCopyWithImpl(
+      _$DeleteClientImpl _value, $Res Function(_$DeleteClientImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AddClientEvent
@@ -3163,8 +3163,8 @@ class __$$UpdateClientImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UpdateClientImpl implements _UpdateClient {
-  const _$UpdateClientImpl();
+class _$DeleteClientImpl implements _DeleteClient {
+  const _$DeleteClientImpl();
 
   @override
   String toString() {
@@ -3174,7 +3174,7 @@ class _$UpdateClientImpl implements _UpdateClient {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UpdateClientImpl);
+        (other.runtimeType == runtimeType && other is _$DeleteClientImpl);
   }
 
   @override
@@ -3268,7 +3268,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
-    required TResult Function(_UpdateClient value) delete,
+    required TResult Function(_DeleteClient value) delete,
   }) {
     return delete(this);
   }
@@ -3290,7 +3290,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
-    TResult? Function(_UpdateClient value)? delete,
+    TResult? Function(_DeleteClient value)? delete,
   }) {
     return delete?.call(this);
   }
@@ -3312,7 +3312,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
-    TResult Function(_UpdateClient value)? delete,
+    TResult Function(_DeleteClient value)? delete,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -3322,6 +3322,6 @@ class _$UpdateClientImpl implements _UpdateClient {
   }
 }
 
-abstract class _UpdateClient implements AddClientEvent {
-  const factory _UpdateClient() = _$UpdateClientImpl;
+abstract class _DeleteClient implements AddClientEvent {
+  const factory _DeleteClient() = _$DeleteClientImpl;
 }

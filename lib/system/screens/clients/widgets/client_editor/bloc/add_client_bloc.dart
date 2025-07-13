@@ -147,25 +147,36 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
     emit(state.copyWith(status: Status.loading));
 
     if (_client == null) {
-      emit(state.copyWith(
-        status: Status.error,
-        errorMessage: 'Cannot delete: no client data found.',
-      ));
+      emit(
+        state.copyWith(
+          status: Status.error,
+          errorMessage: 'Cannot delete: no client data found.',
+        ),
+      );
       Log.error('Delete attempt failed: no existing client data provided.');
       return;
     }
 
     try {
       await _clientRepository.deleteClient(_client.id);
-      emit(state.copyWith(status: Status.success));
+
+      // Notify the callback that client was deleted
+      _onClientUpdated(_client.copyWith(isDeleted: true));
+
+      emit(state.copyWith(
+        status: Status.success,
+        shouldRedirectToHome: true,
+      ),);
     } catch (e, stackTrace) {
       Log.error('Delete failed for client ID: ${_client.id}', error: e);
       Log.error('Stack trace: $stackTrace');
 
-      emit(state.copyWith(
-        status: Status.error,
-        errorMessage: 'Failed to delete the client. Please try again later.',
-      ));
+      emit(
+        state.copyWith(
+          status: Status.error,
+          errorMessage: 'Failed to delete the client. Please try again later.',
+        ),
+      );
     }
   }
 
