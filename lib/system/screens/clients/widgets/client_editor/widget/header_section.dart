@@ -120,13 +120,36 @@ class HeaderSection extends StatelessWidget {
     final bloc = context.read<AddClientBloc>();
     showDialog(
       context: context,
-      builder: (BuildContext context) {
-        return CustomAlertDialog.deleteConfirmation(
-          onConfirm: () {
-            Navigator.of(context).pop();
-            bloc.add(const AddClientEvent.delete());
-          },
-          onCancel: () => Navigator.of(context).pop(),
+      barrierDismissible: false, // Prevent closing dialog by clicking outside
+      builder: (BuildContext dialogContext) {
+        return BlocProvider.value(
+          value: bloc, // Provide the existing bloc to the dialog
+          child: BlocConsumer<AddClientBloc, AddClientState>(
+            listener: (context, state) {
+              if (state.status == Status.success &&
+                  state.shouldRedirectToHome) {
+                Navigator.of(dialogContext).pop();
+              }
+              if (state.status == Status.error) {
+                Navigator.of(dialogContext).pop();
+                context.showFailureSnackBar(
+                  state.errorMessage ?? 'Failed to delete client',
+                );
+              }
+            },
+            builder: (context, state) {
+              final isLoading = state.status == Status.loading;
+
+              return CustomAlertDialog.deleteConfirmation(
+                onConfirm: isLoading
+                    ? null
+                    : () => bloc.add(const AddClientEvent.delete()),
+                onCancel:
+                    isLoading ? null : () => Navigator.of(dialogContext).pop(),
+                isLoading: isLoading,
+              );
+            },
+          ),
         );
       },
     );
