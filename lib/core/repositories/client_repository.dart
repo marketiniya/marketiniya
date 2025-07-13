@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
+import 'package:marketinya/core/config/log.dart';
 import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/models/social_media_link.dart';
 import 'package:marketinya/core/services/firebase_storage_service.dart';
@@ -169,15 +170,26 @@ class ClientRepository {
   }
 
   Future<void> deleteClient(String clientId) async {
-    final subcollectionRef = _firestore
-        .getCollection(_clients)
-        .doc(clientId)
-        .collection(_attachmentsSubcollection);
+    if (clientId.isEmpty) {
+      throw ArgumentError('Client ID cannot be empty');
+    }
 
-    await _firestore.deleteSubcollection(subcollectionRef);
+    try {
+      final subcollectionRef = _firestore
+          .getCollection(_clients)
+          .doc(clientId)
+          .collection(_attachmentsSubcollection);
+      await _firestore.deleteSubcollection(subcollectionRef);
+    } catch (e) {
+      Log.error('Failed to delete subcollection for client $clientId: $e');
+    }
 
-    final storageFolderPath = '$_attachmentsSubcollection/$clientId';
-    await _storageService.deleteFolder(storageFolderPath);
+    try {
+      final storageFolderPath = '$_attachmentsSubcollection/$clientId';
+      await _storageService.deleteFolder(storageFolderPath);
+    } catch (e) {
+      Log.error('Failed to delete storage for client $clientId: $e');
+    }
 
     await _firestore.deleteCollection(_clients, clientId);
   }

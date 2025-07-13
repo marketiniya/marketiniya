@@ -49,7 +49,16 @@ class FirebaseStorageService {
   }
 
   /// Delete a folder and all its contents from Firebase Storage
-  Future<void> deleteFolder(String folderPath) async {
+  Future<void> deleteFolder(String folderPath, [int currentDepth = 0]) async {
+    const maxAllowedDepth = 5;
+
+    if (currentDepth > maxAllowedDepth) {
+      Log.warning(
+        'Folder deletion stopped at maximum depth ($maxAllowedDepth) for path: $folderPath',
+      );
+      return;
+    }
+
     try {
       final ref = _storage.ref().child(folderPath);
       final result = await ref.listAll();
@@ -59,11 +68,10 @@ class FirebaseStorageService {
       }
 
       for (final prefix in result.prefixes) {
-        await deleteFolder('$folderPath/${prefix.name}');
+        await deleteFolder('$folderPath/${prefix.name}', currentDepth + 1);
       }
     } catch (e) {
       Log.error('Failed to delete folder: $e');
-      throw Exception('Failed to delete folder: $e');
     }
   }
 }
