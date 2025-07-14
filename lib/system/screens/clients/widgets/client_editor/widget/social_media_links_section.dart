@@ -199,7 +199,7 @@ class _SocialMediaLinksSectionState extends State<SocialMediaLinksSection> {
                                   FieldValidators.notEmpty(),
                                   FieldValidators.url(),
                                 ]),
-                                borderRadius: micro,
+                                borderRadius: xs,
                                 borderColor: AppColors.oliveGreen,
                               ),
                             ),

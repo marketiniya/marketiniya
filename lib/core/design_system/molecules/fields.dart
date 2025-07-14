@@ -213,9 +213,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(borderRadius),
-      borderSide: color != null
-          ? BorderSide(color: color)
-          : const BorderSide(),
+      borderSide: color != null ? BorderSide(color: color) : const BorderSide(),
     );
   }
 
@@ -262,6 +260,10 @@ class CustomDropdownMenu<T> extends StatelessWidget {
     required this.labelBuilder,
     this.width = 360.0,
     this.contentPadding,
+    required this.borderRadius,
+    required this.borderColor,
+    required this.isFilled,
+    this.fillColor,
   });
 
   final T value;
@@ -271,6 +273,10 @@ class CustomDropdownMenu<T> extends StatelessWidget {
   final String Function(T) labelBuilder;
   final double width;
   final EdgeInsetsGeometry? contentPadding;
+  final double borderRadius;
+  final Color borderColor;
+  final bool isFilled;
+  final Color? fillColor;
 
   @override
   Widget build(BuildContext context) {
@@ -282,21 +288,21 @@ class CustomDropdownMenu<T> extends StatelessWidget {
       textStyle: const TextStyle(color: Colors.black),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: contentPadding,
-        filled: true,
-        fillColor: AppColors.lightOlive,
+        filled: isFilled,
+        fillColor: fillColor,
         labelStyle: const TextStyle(color: Colors.black),
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(lg),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: borderColor),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(lg),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: borderColor),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(lg),
-          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(color: borderColor),
         ),
       ),
       menuStyle: MenuStyle(
