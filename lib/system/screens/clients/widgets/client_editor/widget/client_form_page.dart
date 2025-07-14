@@ -22,7 +22,7 @@ class _ClientFormPageState extends State<ClientFormPage> {
       builder: (context, state) {
         return Form(
           key: _formKey,
-          child: Column(
+          child: ListView(
             children: [
               HeaderSection(formKey: _formKey),
               const SizedBox(height: lg),
