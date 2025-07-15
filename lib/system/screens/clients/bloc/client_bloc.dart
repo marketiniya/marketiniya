@@ -61,10 +61,18 @@ class ClientBloc extends Bloc<ClientEvent, ClientState> {
 
     final clientExists = index != -1;
 
-    if (clientExists) {
-      updatedClients[index] = client;
+    // If client is marked as deleted, remove it from the list
+    if (client.isDeleted) {
+      if (clientExists) {
+        updatedClients.removeAt(index);
+      }
     } else {
-      updatedClients.add(client);
+      // Normal update/add logic for non-deleted clients
+      if (clientExists) {
+        updatedClients[index] = client;
+      } else {
+        updatedClients.add(client);
+      }
     }
 
     emit(state.copyWith(clients: updatedClients));

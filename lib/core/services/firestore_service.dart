@@ -44,4 +44,34 @@ class FirestoreService {
   CollectionReference<Map<String, dynamic>> getCollection(String collection) {
     return _firestore.collection(collection);
   }
+
+  Future<void> deleteCollection(String collection, String docId) async {
+    try {
+      await _firestore.collection(collection).doc(docId).delete();
+    } catch (e) {
+      throw Exception('Failed to delete document: $e');
+    }
+  }
+
+  Future<void> deleteSubcollection(
+    CollectionReference subRef, {
+    int batchSize = 500,
+  }) async {
+    try {
+      while (true) {
+        final snap = await subRef.limit(batchSize).get();
+        if (snap.docs.isEmpty) {
+          break;
+        }
+
+        final batch = FirebaseFirestore.instance.batch();
+        for (final doc in snap.docs) {
+          batch.delete(doc.reference);
+        }
+        await batch.commit();
+      }
+    } catch (e) {
+      throw Exception('Failed to delete subcollection: $e');
+    }
+  }
 }

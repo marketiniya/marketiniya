@@ -30,6 +30,7 @@ class Client with _$Client {
     @Default('') String assignedToId,
     @Default([]) List<String> tagIds,
     @Default([]) List<SocialMediaLink> socialLinks,
+    @Default(false) bool isDeleted,
   }) = _Client;
 
   factory Client.fromJson(Map<String, dynamic> json) => _$ClientFromJson(json);

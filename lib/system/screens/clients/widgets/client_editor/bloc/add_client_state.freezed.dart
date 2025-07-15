@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AddClientState {
   Status get status => throw _privateConstructorUsedError;
-  bool get isUpdateMode =>
-      throw _privateConstructorUsedError; // True when updating an existing client.
+  bool get isUpdateMode => throw _privateConstructorUsedError;
+  bool get shouldRedirectToHome => throw _privateConstructorUsedError;
   String get companyName => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get dateOfBirth => throw _privateConstructorUsedError;
@@ -48,6 +48,7 @@ abstract class $AddClientStateCopyWith<$Res> {
   $Res call(
       {Status status,
       bool isUpdateMode,
+      bool shouldRedirectToHome,
       String companyName,
       String name,
       String dateOfBirth,
@@ -79,6 +80,7 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
   $Res call({
     Object? status = null,
     Object? isUpdateMode = null,
+    Object? shouldRedirectToHome = null,
     Object? companyName = null,
     Object? name = null,
     Object? dateOfBirth = null,
@@ -100,6 +102,10 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
       isUpdateMode: null == isUpdateMode
           ? _value.isUpdateMode
           : isUpdateMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      shouldRedirectToHome: null == shouldRedirectToHome
+          ? _value.shouldRedirectToHome
+          : shouldRedirectToHome // ignore: cast_nullable_to_non_nullable
               as bool,
       companyName: null == companyName
           ? _value.companyName
@@ -164,6 +170,7 @@ abstract class _$$AddClientStateImplCopyWith<$Res>
   $Res call(
       {Status status,
       bool isUpdateMode,
+      bool shouldRedirectToHome,
       String companyName,
       String name,
       String dateOfBirth,
@@ -193,6 +200,7 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? isUpdateMode = null,
+    Object? shouldRedirectToHome = null,
     Object? companyName = null,
     Object? name = null,
     Object? dateOfBirth = null,
@@ -214,6 +222,10 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
       isUpdateMode: null == isUpdateMode
           ? _value.isUpdateMode
           : isUpdateMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      shouldRedirectToHome: null == shouldRedirectToHome
+          ? _value.shouldRedirectToHome
+          : shouldRedirectToHome // ignore: cast_nullable_to_non_nullable
               as bool,
       companyName: null == companyName
           ? _value.companyName
@@ -273,6 +285,7 @@ class _$AddClientStateImpl implements _AddClientState {
   _$AddClientStateImpl(
       {this.status = Status.initial,
       this.isUpdateMode = false,
+      this.shouldRedirectToHome = false,
       this.companyName = '',
       this.name = '',
       this.dateOfBirth = '',
@@ -293,7 +306,9 @@ class _$AddClientStateImpl implements _AddClientState {
   @override
   @JsonKey()
   final bool isUpdateMode;
-// True when updating an existing client.
+  @override
+  @JsonKey()
+  final bool shouldRedirectToHome;
   @override
   @JsonKey()
   final String companyName;
@@ -338,7 +353,7 @@ class _$AddClientStateImpl implements _AddClientState {
 
   @override
   String toString() {
-    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, clientStatus: $clientStatus, priorityLevel: $priorityLevel, description: $description, socialLinks: $socialLinks, errorMessage: $errorMessage)';
+    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, shouldRedirectToHome: $shouldRedirectToHome, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, clientStatus: $clientStatus, priorityLevel: $priorityLevel, description: $description, socialLinks: $socialLinks, errorMessage: $errorMessage)';
   }
 
   @override
@@ -349,6 +364,8 @@ class _$AddClientStateImpl implements _AddClientState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.isUpdateMode, isUpdateMode) ||
                 other.isUpdateMode == isUpdateMode) &&
+            (identical(other.shouldRedirectToHome, shouldRedirectToHome) ||
+                other.shouldRedirectToHome == shouldRedirectToHome) &&
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
             (identical(other.name, name) || other.name == name) &&
@@ -378,6 +395,7 @@ class _$AddClientStateImpl implements _AddClientState {
       runtimeType,
       status,
       isUpdateMode,
+      shouldRedirectToHome,
       companyName,
       name,
       dateOfBirth,
@@ -405,6 +423,7 @@ abstract class _AddClientState implements AddClientState {
   factory _AddClientState(
       {final Status status,
       final bool isUpdateMode,
+      final bool shouldRedirectToHome,
       final String companyName,
       final String name,
       final String dateOfBirth,
@@ -421,7 +440,9 @@ abstract class _AddClientState implements AddClientState {
   @override
   Status get status;
   @override
-  bool get isUpdateMode; // True when updating an existing client.
+  bool get isUpdateMode;
+  @override
+  bool get shouldRedirectToHome;
   @override
   String get companyName;
   @override
