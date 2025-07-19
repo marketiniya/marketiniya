@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketinya/core/design_system/atoms/icons/klinik_icons.dart';
+import 'package:marketinya/core/design_system/atoms/icons/marketiniya_icons.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/button/tertiary_button.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
