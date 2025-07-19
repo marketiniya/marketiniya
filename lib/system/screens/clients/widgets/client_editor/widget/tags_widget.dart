@@ -40,26 +40,30 @@ class TagsWidget extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        for (var i = 0; i < tags.length ~/ 2; i++) ...[
-                          _buildTag(tags[i]),
-                          const SizedBox(height: xs),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for (var i = 0; i < tags.length ~/ 2; i++) ...[
+                            _buildTag(tags[i]),
+                            const SizedBox(height: xs),
+                          ],
                         ],
-                      ],
+                      ),
                     ),
                     const SizedBox(width: xs),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        for (var i = tags.length ~/ 2;
-                            i < tags.length;
-                            i++) ...[
-                          _buildTag(tags[i]),
-                          const SizedBox(height: xs),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for (var i = tags.length ~/ 2;
+                              i < tags.length;
+                              i++) ...[
+                            _buildTag(tags[i]),
+                            const SizedBox(height: xs),
+                          ],
                         ],
-                      ],
+                      ),
                     ),
                   ],
                 )
@@ -95,6 +99,8 @@ class TagsWidget extends StatelessWidget {
           fontSize: xxsPlus,
           fontWeight: FontWeight.w500,
         ),
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1,
       ),
     );
   }

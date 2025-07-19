@@ -19,7 +19,7 @@ class SocialMediaLinksSection extends StatefulWidget {
 }
 
 class _SocialMediaLinksSectionState extends State<SocialMediaLinksSection> {
-  static const int _maxLinks = 8;
+  static const int _maxLinks = 7;
   final Map<int, String> _fieldValues = {};
 
   String _detectPlatform(String url) {
@@ -99,8 +99,6 @@ class _SocialMediaLinksSectionState extends State<SocialMediaLinksSection> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width * 0.25;
-
     return BlocBuilder<AddClientBloc, AddClientState>(
       builder: (context, state) {
         // Initialize field values from state if not already set
@@ -113,11 +111,10 @@ class _SocialMediaLinksSectionState extends State<SocialMediaLinksSection> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              width: width,
-              child: Row(
-                children: [
-                  Text(
+            Row(
+              children: [
+                Flexible(
+                  child: Text(
                     'Линкове към социални мрежи',
                     style: GoogleFonts.roboto(
                       textStyle: const TextStyle(
@@ -127,40 +124,47 @@ class _SocialMediaLinksSectionState extends State<SocialMediaLinksSection> {
                       ),
                     ),
                   ),
-                  if (state.socialLinks.length < _maxLinks)
-                    Padding(
-                      padding: const EdgeInsets.only(top: micro, left: xs),
-                      child: _HoverableIcon(
-                        icon: Icons.add,
-                        size: 18,
-                        defaultColor: Colors.green,
-                        hoverColor: Colors.green[700]!,
-                        onTap: () => _addNewField(context, state.socialLinks),
-                      ),
+                ),
+                if (state.socialLinks.length < _maxLinks)
+                  Padding(
+                    padding: const EdgeInsets.only(top: micro, left: xs),
+                    child: _HoverableIcon(
+                      icon: Icons.add,
+                      size: 18,
+                      defaultColor: Colors.green,
+                      hoverColor: Colors.green[700]!,
+                      onTap: () => _addNewField(context, state.socialLinks),
                     ),
-                ],
-              ),
+                  ),
+              ],
             ),
             const SizedBox(height: sm),
             // Social links list
             if (state.socialLinks.isNotEmpty)
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 450),
-                child: SizedBox(
-                  width: width,
-                  child: ListView.builder(
-                    padding: const EdgeInsets.only(top: micro),
-                    itemCount: state.socialLinks.length,
-                    itemBuilder: (context, index) {
-                      final link = state.socialLinks[index];
-                      final currentValue = _fieldValues[index] ?? link.url;
-                      final platform = _detectPlatform(currentValue);
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: sm),
-                        child: Row(
+              ...List.generate(
+                state.socialLinks.length,
+                (index) {
+                  final link = state.socialLinks[index];
+                  final currentValue = _fieldValues[index] ?? link.url;
+                  final platform = _detectPlatform(currentValue);
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: sm),
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        const preferredWidth = 350.0;
+                        const buttonWidth = 20.0; // Icon size
+                        const spacingWidth = 8.0; // xxs spacing
+                        final availableWidth =
+                            constraints.maxWidth - buttonWidth - spacingWidth;
+                        final fieldWidth = availableWidth > preferredWidth
+                            ? preferredWidth
+                            : availableWidth;
+
+                        return Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Expanded(
+                            SizedBox(
+                              width: fieldWidth,
                               child: CustomTextFormField(
                                 key: ValueKey('social_link_${link.url}_$index'),
                                 hintText: 'Въведете линк към социална мрежа',
@@ -199,7 +203,7 @@ class _SocialMediaLinksSectionState extends State<SocialMediaLinksSection> {
                                   FieldValidators.notEmpty(),
                                   FieldValidators.url(),
                                 ]),
-                                borderRadius: micro,
+                                borderRadius: xs,
                                 borderColor: AppColors.oliveGreen,
                               ),
                             ),
@@ -219,11 +223,11 @@ class _SocialMediaLinksSectionState extends State<SocialMediaLinksSection> {
                               ),
                             ),
                           ],
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
           ],
         );
