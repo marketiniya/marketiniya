@@ -18,7 +18,7 @@ class AuthenticationRepository {
   final userRepository = getIt<UserRepository>();
 
   Timer? _inactivityTimer;
-  static const Duration _inactivityDuration = Duration(minutes: 1);
+  static const Duration _inactivityDuration = Duration(minutes: 20);
 
   // Expose a stream of repository statuses.
   Stream<Authentication> get status => _controller.stream;
@@ -27,11 +27,9 @@ class AuthenticationRepository {
   void _authStateListener(User? user) {
     if (user != null) {
       _controller.add(Authentication.authenticated);
-      Log.info('User authenticated: ${user.email}');
       _startInactivityTimer(); // Start timer when user is authenticated
     } else {
       _controller.add(Authentication.unauthenticated);
-      Log.info('User unauthenticated');
       _cancelInactivityTimer(); // Cancel timer when user is unauthenticated
     }
   }
@@ -56,7 +54,6 @@ class AuthenticationRepository {
       _cancelInactivityTimer(); // Cancel timer before logging out
       await _firebaseAuth.signOut();
       _controller.add(Authentication.unauthenticated);
-      Log.info('User logged out successfully');
     } catch (error) {
       Log.error('Failed to log out: $error');
       throw Exception('Logout failed');
@@ -67,7 +64,6 @@ class AuthenticationRepository {
   void _startInactivityTimer() {
     _cancelInactivityTimer(); // Cancel any existing timer
     _inactivityTimer = Timer(_inactivityDuration, () {
-      Log.info('User inactive for ${_inactivityDuration.inMinutes} minutes, logging out automatically');
       logout();
     });
   }
