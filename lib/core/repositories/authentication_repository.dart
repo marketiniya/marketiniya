@@ -10,15 +10,12 @@ import 'package:marketinya/core/services/firebase_service.dart';
 class AuthenticationRepository {
   AuthenticationRepository() {
     // Listen to repository state changes and handle them with _authStateListener.
-    _authStateSubscription =
-        _firebaseAuth.idTokenChanges().listen(_authStateListener);
+    _firebaseAuth.idTokenChanges().listen(_authStateListener);
   }
 
   final FirebaseAuth _firebaseAuth = FirebaseService.auth;
   final StreamController<Authentication> _controller = StreamController<Authentication>.broadcast();
   final userRepository = getIt<UserRepository>();
-
-  late final StreamSubscription<User?> _authStateSubscription;
 
   Timer? _inactivityTimer;
   static const Duration _inactivityDuration = Duration(minutes: 1);
@@ -85,11 +82,5 @@ class AuthenticationRepository {
     if (_firebaseAuth.currentUser != null) {
       _startInactivityTimer();
     }
-  }
-
-  void dispose() {
-    _cancelInactivityTimer(); // Clean up timer
-    _authStateSubscription.cancel();
-    _controller.close();
   }
 }

@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:marketinya/core/config/environment_config.dart';
 import 'package:marketinya/core/config/firebase_options.dart';
 import 'package:marketinya/core/config/service_locator.dart';
+import 'package:marketinya/core/navigation/activity_listener.dart';
 import 'package:marketinya/core/navigation/router.dart';
 import 'package:marketinya/core/repositories/vault_repository.dart';
-import 'package:marketinya/core/widgets/activity_listener.dart';
 import 'package:marketinya/website/widgets/custom_theme.dart';
 import 'package:url_strategy/url_strategy.dart';
 
