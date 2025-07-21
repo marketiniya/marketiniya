@@ -5,8 +5,8 @@ import 'package:marketinya/core/config/environment_config.dart';
 import 'package:marketinya/core/config/firebase_options.dart';
 import 'package:marketinya/core/config/service_locator.dart';
 import 'package:marketinya/core/navigation/router.dart';
-import 'package:marketinya/core/repositories/authentication_repository.dart';
 import 'package:marketinya/core/repositories/vault_repository.dart';
+import 'package:marketinya/core/widgets/activity_listener.dart';
 import 'package:marketinya/website/widgets/custom_theme.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -43,16 +43,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get the authentication repository instance
-    final authRepository = getIt<AuthenticationRepository>();
-
-    return Listener(
-      // Listen to all pointer events (taps, scrolls, mouse moves, etc.)
-      onPointerDown: (_) => authRepository.resetInactivityTimer(),
-      onPointerMove: (_) => authRepository.resetInactivityTimer(),
-      onPointerUp: (_) => authRepository.resetInactivityTimer(),
-      // Ensure the listener covers the entire screen
-      behavior: HitTestBehavior.translucent,
+    return ActivityListener(
       child: MaterialApp.router(
         title: EnvironmentConfig.isProd ? 'Marketiniya' : 'Marketinya - WIP',
         theme: CustomTheme.customThemeData,
