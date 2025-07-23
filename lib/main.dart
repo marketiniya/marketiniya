@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:marketinya/core/config/environment_config.dart';
 import 'package:marketinya/core/config/firebase_options.dart';
 import 'package:marketinya/core/config/service_locator.dart';
+import 'package:marketinya/core/navigation/activity_listener.dart';
 import 'package:marketinya/core/navigation/router.dart';
 import 'package:marketinya/core/repositories/vault_repository.dart';
 import 'package:marketinya/website/widgets/custom_theme.dart';
@@ -42,11 +43,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: EnvironmentConfig.isProd ? 'Marketiniya' : 'Marketinya - WIP',
-      theme: CustomTheme.customThemeData,
-      debugShowCheckedModeBanner: EnvironmentConfig.isWip,
-      routerConfig: router,
+    return ActivityListener(
+      child: MaterialApp.router(
+        title: EnvironmentConfig.isProd ? 'Marketiniya' : 'Marketinya - WIP',
+        theme: CustomTheme.customThemeData,
+        debugShowCheckedModeBanner: EnvironmentConfig.isWip,
+        routerConfig: router,
+      ),
     );
   }
 }
