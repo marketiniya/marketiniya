@@ -31,6 +31,7 @@ mixin _$AddClientEvent {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -51,6 +52,7 @@ mixin _$AddClientEvent {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -71,6 +73,7 @@ mixin _$AddClientEvent {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -93,6 +96,7 @@ mixin _$AddClientEvent {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -113,6 +117,7 @@ mixin _$AddClientEvent {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -133,6 +138,7 @@ mixin _$AddClientEvent {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -215,6 +221,7 @@ class _$LoadImpl implements _Load {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -238,6 +245,7 @@ class _$LoadImpl implements _Load {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -261,6 +269,7 @@ class _$LoadImpl implements _Load {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -289,6 +298,7 @@ class _$LoadImpl implements _Load {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -312,6 +322,7 @@ class _$LoadImpl implements _Load {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -335,6 +346,7 @@ class _$LoadImpl implements _Load {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -433,6 +445,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -456,6 +469,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -479,6 +493,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -507,6 +522,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -530,6 +546,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -553,6 +570,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -659,6 +677,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -682,6 +701,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -705,6 +725,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -733,6 +754,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -756,6 +778,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -779,6 +802,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -885,6 +909,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -908,6 +933,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -931,6 +957,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -959,6 +986,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -982,6 +1010,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -1005,6 +1034,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -1112,6 +1142,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -1135,6 +1166,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -1158,6 +1190,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -1186,6 +1219,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -1209,6 +1243,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -1232,6 +1267,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -1340,6 +1376,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -1363,6 +1400,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -1386,6 +1424,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -1414,6 +1453,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -1437,6 +1477,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -1460,6 +1501,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -1567,6 +1609,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -1590,6 +1633,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -1613,6 +1657,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -1641,6 +1686,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -1664,6 +1710,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -1687,6 +1734,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -1793,6 +1841,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -1816,6 +1865,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -1839,6 +1889,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -1867,6 +1918,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -1890,6 +1942,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -1913,6 +1966,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -2019,6 +2073,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -2042,6 +2097,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -2065,6 +2121,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -2093,6 +2150,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -2116,6 +2174,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -2139,6 +2198,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -2245,6 +2305,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -2268,6 +2329,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -2291,6 +2353,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -2319,6 +2382,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -2342,6 +2406,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -2365,6 +2430,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -2473,6 +2539,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -2496,6 +2563,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -2519,6 +2587,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -2547,6 +2616,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -2570,6 +2640,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -2593,6 +2664,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -2700,6 +2772,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -2723,6 +2796,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -2746,6 +2820,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -2774,6 +2849,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -2797,6 +2873,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -2820,6 +2897,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -2934,6 +3012,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -2957,6 +3036,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -2980,6 +3060,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -3008,6 +3089,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -3031,6 +3113,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -3054,6 +3137,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -3077,6 +3161,240 @@ abstract class _SocialLinksChanged implements AddClientEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SocialLinksChangedImplCopyWith<_$SocialLinksChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$HasBeenCalledChangedImplCopyWith<$Res> {
+  factory _$$HasBeenCalledChangedImplCopyWith(_$HasBeenCalledChangedImpl value,
+          $Res Function(_$HasBeenCalledChangedImpl) then) =
+      __$$HasBeenCalledChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool value});
+}
+
+/// @nodoc
+class __$$HasBeenCalledChangedImplCopyWithImpl<$Res>
+    extends _$AddClientEventCopyWithImpl<$Res, _$HasBeenCalledChangedImpl>
+    implements _$$HasBeenCalledChangedImplCopyWith<$Res> {
+  __$$HasBeenCalledChangedImplCopyWithImpl(_$HasBeenCalledChangedImpl _value,
+      $Res Function(_$HasBeenCalledChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$HasBeenCalledChangedImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$HasBeenCalledChangedImpl implements _HasBeenCalledChanged {
+  const _$HasBeenCalledChangedImpl(this.value);
+
+  @override
+  final bool value;
+
+  @override
+  String toString() {
+    return 'AddClientEvent.hasBeenCalledChanged(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HasBeenCalledChangedImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HasBeenCalledChangedImplCopyWith<_$HasBeenCalledChangedImpl>
+      get copyWith =>
+          __$$HasBeenCalledChangedImplCopyWithImpl<_$HasBeenCalledChangedImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
+    required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
+    required TResult Function(BusinessSector value) businessSectorChanged,
+    required TResult Function(String value) companyIdChanged,
+    required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) phoneChanged,
+    required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
+    required TResult Function() save,
+    required TResult Function() update,
+    required TResult Function() delete,
+  }) {
+    return hasBeenCalledChanged(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
+    TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
+    TResult? Function(BusinessSector value)? businessSectorChanged,
+    TResult? Function(String value)? companyIdChanged,
+    TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? phoneChanged,
+    TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
+    TResult? Function(String value)? descriptionChanged,
+    TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
+    TResult? Function()? save,
+    TResult? Function()? update,
+    TResult? Function()? delete,
+  }) {
+    return hasBeenCalledChanged?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
+    TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
+    TResult Function(BusinessSector value)? businessSectorChanged,
+    TResult Function(String value)? companyIdChanged,
+    TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? phoneChanged,
+    TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
+    TResult Function()? save,
+    TResult Function()? update,
+    TResult Function()? delete,
+    required TResult orElse(),
+  }) {
+    if (hasBeenCalledChanged != null) {
+      return hasBeenCalledChanged(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
+    required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
+    required TResult Function(_BusinessSectorChanged value)
+        businessSectorChanged,
+    required TResult Function(_CompanyIdChanged value) companyIdChanged,
+    required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(PhoneChanged value) phoneChanged,
+    required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
+    required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
+    required TResult Function(_DeleteClient value) delete,
+  }) {
+    return hasBeenCalledChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
+    TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
+    TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
+    TResult? Function(_CompanyIdChanged value)? companyIdChanged,
+    TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(PhoneChanged value)? phoneChanged,
+    TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
+    TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
+    TResult? Function(_DeleteClient value)? delete,
+  }) {
+    return hasBeenCalledChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
+    TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
+    TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
+    TResult Function(_CompanyIdChanged value)? companyIdChanged,
+    TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(PhoneChanged value)? phoneChanged,
+    TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
+    TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
+    TResult Function(_DeleteClient value)? delete,
+    required TResult orElse(),
+  }) {
+    if (hasBeenCalledChanged != null) {
+      return hasBeenCalledChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HasBeenCalledChanged implements AddClientEvent {
+  const factory _HasBeenCalledChanged(final bool value) =
+      _$HasBeenCalledChangedImpl;
+
+  bool get value;
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$HasBeenCalledChangedImplCopyWith<_$HasBeenCalledChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3133,6 +3451,7 @@ class _$SaveClientImpl implements _SaveClient {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -3156,6 +3475,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -3179,6 +3499,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -3207,6 +3528,7 @@ class _$SaveClientImpl implements _SaveClient {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -3230,6 +3552,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -3253,6 +3576,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -3323,6 +3647,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -3346,6 +3671,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -3369,6 +3695,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -3397,6 +3724,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -3420,6 +3748,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -3443,6 +3772,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,
@@ -3513,6 +3843,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     required TResult Function(PriorityLevel value) priorityLevelChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function() delete,
@@ -3536,6 +3867,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
     TResult? Function(String value)? descriptionChanged,
     TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
     TResult? Function()? save,
     TResult? Function()? update,
     TResult? Function()? delete,
@@ -3559,6 +3891,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult Function(PriorityLevel value)? priorityLevelChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
     TResult Function()? save,
     TResult Function()? update,
     TResult Function()? delete,
@@ -3587,6 +3920,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
     required TResult Function(_SaveClient value) save,
     required TResult Function(_UpdateClient value) update,
     required TResult Function(_DeleteClient value) delete,
@@ -3610,6 +3944,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult? Function(_DescriptionChanged value)? descriptionChanged,
     TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult? Function(_SaveClient value)? save,
     TResult? Function(_UpdateClient value)? update,
     TResult? Function(_DeleteClient value)? delete,
@@ -3633,6 +3968,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
     TResult Function(_SaveClient value)? save,
     TResult Function(_UpdateClient value)? update,
     TResult Function(_DeleteClient value)? delete,

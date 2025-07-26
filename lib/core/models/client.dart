@@ -33,6 +33,7 @@ class Client with _$Client {
     @Default([]) List<String> tagIds,
     @Default([]) List<SocialMediaLink> socialLinks,
     @Default(false) bool isDeleted,
+    @Default(false) bool hasBeenCalled,
   }) = _Client;
 
   factory Client.fromJson(Map<String, dynamic> json) => _$ClientFromJson(json);
@@ -88,6 +89,7 @@ class Client with _$Client {
       assignedToId: assignedTo.id,
       tagIds: tags.map((tag) => tag.id).toList(),
       socialLinks: socialLinks,
+      hasBeenCalled: data['hasBeenCalled'] as bool? ?? false,
     );
   }
 }

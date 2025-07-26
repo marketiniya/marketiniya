@@ -37,6 +37,7 @@ _$ClientImpl _$$ClientImplFromJson(Map<String, dynamic> json) => _$ClientImpl(
               .toList() ??
           const [],
       isDeleted: json['isDeleted'] as bool? ?? false,
+      hasBeenCalled: json['hasBeenCalled'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
@@ -63,6 +64,7 @@ Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
       'tagIds': instance.tagIds,
       'socialLinks': instance.socialLinks,
       'isDeleted': instance.isDeleted,
+      'hasBeenCalled': instance.hasBeenCalled,
     };
 
 const _$DepartmentEnumMap = {

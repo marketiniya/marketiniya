@@ -31,6 +31,7 @@ mixin _$AddClientState {
   PriorityLevel get priorityLevel => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   List<SocialMediaLink> get socialLinks => throw _privateConstructorUsedError;
+  bool get hasBeenCalled => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   /// Create a copy of AddClientState
@@ -62,6 +63,7 @@ abstract class $AddClientStateCopyWith<$Res> {
       PriorityLevel priorityLevel,
       String description,
       List<SocialMediaLink> socialLinks,
+      bool hasBeenCalled,
       String? errorMessage});
 }
 
@@ -95,6 +97,7 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
     Object? priorityLevel = null,
     Object? description = null,
     Object? socialLinks = null,
+    Object? hasBeenCalled = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -158,6 +161,10 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
           ? _value.socialLinks
           : socialLinks // ignore: cast_nullable_to_non_nullable
               as List<SocialMediaLink>,
+      hasBeenCalled: null == hasBeenCalled
+          ? _value.hasBeenCalled
+          : hasBeenCalled // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -190,6 +197,7 @@ abstract class _$$AddClientStateImplCopyWith<$Res>
       PriorityLevel priorityLevel,
       String description,
       List<SocialMediaLink> socialLinks,
+      bool hasBeenCalled,
       String? errorMessage});
 }
 
@@ -221,6 +229,7 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
     Object? priorityLevel = null,
     Object? description = null,
     Object? socialLinks = null,
+    Object? hasBeenCalled = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$AddClientStateImpl(
@@ -284,6 +293,10 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
           ? _value._socialLinks
           : socialLinks // ignore: cast_nullable_to_non_nullable
               as List<SocialMediaLink>,
+      hasBeenCalled: null == hasBeenCalled
+          ? _value.hasBeenCalled
+          : hasBeenCalled // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -311,6 +324,7 @@ class _$AddClientStateImpl implements _AddClientState {
       this.priorityLevel = PriorityLevel.lowPriority,
       this.description = '',
       final List<SocialMediaLink> socialLinks = const [],
+      this.hasBeenCalled = false,
       this.errorMessage})
       : _socialLinks = socialLinks;
 
@@ -366,11 +380,14 @@ class _$AddClientStateImpl implements _AddClientState {
   }
 
   @override
+  @JsonKey()
+  final bool hasBeenCalled;
+  @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, shouldRedirectToHome: $shouldRedirectToHome, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, department: $department, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, clientStatus: $clientStatus, priorityLevel: $priorityLevel, description: $description, socialLinks: $socialLinks, errorMessage: $errorMessage)';
+    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, shouldRedirectToHome: $shouldRedirectToHome, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, department: $department, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, clientStatus: $clientStatus, priorityLevel: $priorityLevel, description: $description, socialLinks: $socialLinks, hasBeenCalled: $hasBeenCalled, errorMessage: $errorMessage)';
   }
 
   @override
@@ -405,6 +422,8 @@ class _$AddClientStateImpl implements _AddClientState {
                 other.description == description) &&
             const DeepCollectionEquality()
                 .equals(other._socialLinks, _socialLinks) &&
+            (identical(other.hasBeenCalled, hasBeenCalled) ||
+                other.hasBeenCalled == hasBeenCalled) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -427,6 +446,7 @@ class _$AddClientStateImpl implements _AddClientState {
       priorityLevel,
       description,
       const DeepCollectionEquality().hash(_socialLinks),
+      hasBeenCalled,
       errorMessage);
 
   /// Create a copy of AddClientState
@@ -456,6 +476,7 @@ abstract class _AddClientState implements AddClientState {
       final PriorityLevel priorityLevel,
       final String description,
       final List<SocialMediaLink> socialLinks,
+      final bool hasBeenCalled,
       final String? errorMessage}) = _$AddClientStateImpl;
 
   @override
@@ -488,6 +509,8 @@ abstract class _AddClientState implements AddClientState {
   String get description;
   @override
   List<SocialMediaLink> get socialLinks;
+  @override
+  bool get hasBeenCalled;
   @override
   String? get errorMessage;
 

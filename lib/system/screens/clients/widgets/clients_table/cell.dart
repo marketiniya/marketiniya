@@ -10,6 +10,7 @@ class Cell extends StatelessWidget {
     this.isHeaderCell = false,
     this.status,
     this.isCentered = false,
+    this.booleanValue,
   });
 
   final String label;
@@ -17,19 +18,33 @@ class Cell extends StatelessWidget {
   final bool isHeaderCell;
   final ClientStatus? status;
   final bool isCentered;
+  final bool? booleanValue;
 
   @override
   Widget build(BuildContext context) {
+    String displayText;
+    Color textColor;
+
+    if (booleanValue != null) {
+      // Handle boolean values (like hasBeenCalled)
+      displayText = booleanValue! ? 'Да' : 'Не';
+      textColor = booleanValue! ? Colors.green : Colors.red;
+    } else if (status != null) {
+      // Handle status values
+      displayText = status!.label;
+      textColor = status == ClientStatus.active ? Colors.green : Colors.red;
+    } else {
+      // Handle regular text
+      displayText = label;
+      textColor = Colors.black;
+    }
+
     final textWidget = Text(
-      status?.label ?? label,
+      displayText,
       style: TextStyle(
         fontSize: isHeaderCell ? xs : 14,
         fontWeight: FontWeight.w500,
-        color: status != null
-            ? status == ClientStatus.active
-            ? Colors.green
-            : Colors.red
-            : Colors.black,
+        color: textColor,
       ),
     );
 

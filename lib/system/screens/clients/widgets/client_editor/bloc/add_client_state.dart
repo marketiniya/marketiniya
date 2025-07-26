@@ -26,6 +26,7 @@ class AddClientState with _$AddClientState {
     @Default(PriorityLevel.lowPriority) PriorityLevel priorityLevel,
     @Default('') String description,
     @Default([]) List<SocialMediaLink> socialLinks,
+    @Default(false) bool hasBeenCalled,
     String? errorMessage,
   }) = _AddClientState;
 }

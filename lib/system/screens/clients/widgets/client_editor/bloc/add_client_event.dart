@@ -45,6 +45,9 @@ class AddClientEvent with _$AddClientEvent {
   const factory AddClientEvent.socialLinksChanged(List<SocialMediaLink> value) =
       _SocialLinksChanged;
 
+  const factory AddClientEvent.hasBeenCalledChanged(bool value) =
+      _HasBeenCalledChanged;
+
   const factory AddClientEvent.save() = _SaveClient;
 
   const factory AddClientEvent.update() = _UpdateClient;

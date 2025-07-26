@@ -44,6 +44,7 @@ mixin _$Client {
   List<String> get tagIds => throw _privateConstructorUsedError;
   List<SocialMediaLink> get socialLinks => throw _privateConstructorUsedError;
   bool get isDeleted => throw _privateConstructorUsedError;
+  bool get hasBeenCalled => throw _privateConstructorUsedError;
 
   /// Serializes this Client to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -79,7 +80,8 @@ abstract class $ClientCopyWith<$Res> {
       String assignedToId,
       List<String> tagIds,
       List<SocialMediaLink> socialLinks,
-      bool isDeleted});
+      bool isDeleted,
+      bool hasBeenCalled});
 }
 
 /// @nodoc
@@ -117,6 +119,7 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
     Object? tagIds = null,
     Object? socialLinks = null,
     Object? isDeleted = null,
+    Object? hasBeenCalled = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -199,6 +202,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasBeenCalled: null == hasBeenCalled
+          ? _value.hasBeenCalled
+          : hasBeenCalled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -230,7 +237,8 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       String assignedToId,
       List<String> tagIds,
       List<SocialMediaLink> socialLinks,
-      bool isDeleted});
+      bool isDeleted,
+      bool hasBeenCalled});
 }
 
 /// @nodoc
@@ -266,6 +274,7 @@ class __$$ClientImplCopyWithImpl<$Res>
     Object? tagIds = null,
     Object? socialLinks = null,
     Object? isDeleted = null,
+    Object? hasBeenCalled = null,
   }) {
     return _then(_$ClientImpl(
       id: null == id
@@ -348,6 +357,10 @@ class __$$ClientImplCopyWithImpl<$Res>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasBeenCalled: null == hasBeenCalled
+          ? _value.hasBeenCalled
+          : hasBeenCalled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -376,7 +389,8 @@ class _$ClientImpl implements _Client {
       this.assignedToId = '',
       final List<String> tagIds = const [],
       final List<SocialMediaLink> socialLinks = const [],
-      this.isDeleted = false})
+      this.isDeleted = false,
+      this.hasBeenCalled = false})
       : _tags = tags,
         _tagIds = tagIds,
         _socialLinks = socialLinks;
@@ -448,10 +462,13 @@ class _$ClientImpl implements _Client {
   @override
   @JsonKey()
   final bool isDeleted;
+  @override
+  @JsonKey()
+  final bool hasBeenCalled;
 
   @override
   String toString() {
-    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, department: $department, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds, socialLinks: $socialLinks, isDeleted: $isDeleted)';
+    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, department: $department, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds, socialLinks: $socialLinks, isDeleted: $isDeleted, hasBeenCalled: $hasBeenCalled)';
   }
 
   @override
@@ -492,7 +509,9 @@ class _$ClientImpl implements _Client {
             const DeepCollectionEquality()
                 .equals(other._socialLinks, _socialLinks) &&
             (identical(other.isDeleted, isDeleted) ||
-                other.isDeleted == isDeleted));
+                other.isDeleted == isDeleted) &&
+            (identical(other.hasBeenCalled, hasBeenCalled) ||
+                other.hasBeenCalled == hasBeenCalled));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -518,7 +537,8 @@ class _$ClientImpl implements _Client {
         assignedToId,
         const DeepCollectionEquality().hash(_tagIds),
         const DeepCollectionEquality().hash(_socialLinks),
-        isDeleted
+        isDeleted,
+        hasBeenCalled
       ]);
 
   /// Create a copy of Client
@@ -560,7 +580,8 @@ abstract class _Client implements Client {
       final String assignedToId,
       final List<String> tagIds,
       final List<SocialMediaLink> socialLinks,
-      final bool isDeleted}) = _$ClientImpl;
+      final bool isDeleted,
+      final bool hasBeenCalled}) = _$ClientImpl;
 
   factory _Client.fromJson(Map<String, dynamic> json) = _$ClientImpl.fromJson;
 
@@ -606,6 +627,8 @@ abstract class _Client implements Client {
   List<SocialMediaLink> get socialLinks;
   @override
   bool get isDeleted;
+  @override
+  bool get hasBeenCalled;
 
   /// Create a copy of Client
   /// with the given fields replaced by the non-null parameter values.

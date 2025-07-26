@@ -58,6 +58,7 @@ class ClientRepository {
     required PriorityLevel priorityLevel,
     required String description,
     List<SocialMediaLink> socialLinks = const [],
+    bool hasBeenCalled = false,
   }) async {
     final now = DateTime.now();
 
@@ -76,6 +77,7 @@ class ClientRepository {
       'priorityLevel': priorityLevel.label,
       'description': description,
       'socialLinks': socialLinks.map((link) => link.toJson()).toList(),
+      'hasBeenCalled': hasBeenCalled,
       'createdAt': Timestamp.fromDate(now),
       'updatedAt': Timestamp.fromDate(now),
     };
@@ -105,6 +107,7 @@ class ClientRepository {
       updatedAt: now,
       tagIds: tags.map((tag) => tag.id).toList(),
       socialLinks: socialLinks,
+      hasBeenCalled: hasBeenCalled,
     );
 
     return client;
@@ -126,6 +129,7 @@ class ClientRepository {
     required String description,
     required DateTime createdAt,
     List<SocialMediaLink> socialLinks = const [],
+    bool hasBeenCalled = false,
   }) async {
     final now = DateTime.now();
 
@@ -142,6 +146,7 @@ class ClientRepository {
       'priorityLevel': priorityLevel.label,
       'description': description,
       'socialLinks': socialLinks.map((link) => link.toJson()).toList(),
+      'hasBeenCalled': hasBeenCalled,
       'updatedAt': FieldValue.serverTimestamp(),
     };
 
@@ -171,6 +176,7 @@ class ClientRepository {
       updatedAt: now,
       assignedToId: assignedTo.id,
       socialLinks: socialLinks,
+      hasBeenCalled: hasBeenCalled,
     );
 
     return updatedClient;

@@ -32,6 +32,7 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
         priorityLevelChanged: (e) async => emit(state.copyWith(priorityLevel: e.value)),
         descriptionChanged: (e) async => emit(state.copyWith(description: e.value)),
         socialLinksChanged: (e) async => emit(state.copyWith(socialLinks: e.value)),
+        hasBeenCalledChanged: (e) async => emit(state.copyWith(hasBeenCalled: e.value)),
         save: (_) async => _onSave(emit),
         update: (_) async => _onUpdate(emit),
         delete: (_) async => _onDelete(emit),
@@ -68,6 +69,7 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
         priorityLevel: _client.priorityLevel,
         description: _client.description,
         socialLinks: _client.socialLinks,
+        hasBeenCalled: _client.hasBeenCalled,
       ),
     );
   }
@@ -92,6 +94,7 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
         assignedTo: userRef,
         tags: [],
         socialLinks: state.socialLinks,
+        hasBeenCalled: state.hasBeenCalled,
       );
 
       _onClientUpdated(client);
@@ -129,6 +132,7 @@ class AddClientBloc extends Bloc<AddClientEvent, AddClientState> {
         description: state.description,
         createdAt: _client.createdAt,
         socialLinks: state.socialLinks,
+        hasBeenCalled: state.hasBeenCalled,
       );
 
       _onClientUpdated(updatedClient);

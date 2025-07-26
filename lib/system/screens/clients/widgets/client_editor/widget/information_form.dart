@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
@@ -105,6 +106,52 @@ class InformationForm extends StatelessWidget {
           ]),
           borderRadius: xs,
           borderColor: AppColors.oliveGreen,
+        ),
+        const SizedBox(height: xs),
+        Container(
+          height: 50,
+          padding: dimen.horizontal.xs,
+          decoration: BoxDecoration(
+            border: Border.all(color: AppColors.oliveGreen, width: 1),
+            borderRadius: BorderRadius.circular(xs),
+            color: Colors.transparent,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  const Text(
+                    'Прозвънен:',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: xs,
+                    ),
+                  ),
+                  const SizedBox(width: xxs),
+                  Text(
+                    state.hasBeenCalled ? 'Да' : 'Не',
+                    style: TextStyle(
+                      color: state.hasBeenCalled ? Colors.green : Colors.red,
+                      fontSize: xs,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+              Switch(
+                value: state.hasBeenCalled,
+                onChanged: (value) {
+                  bloc.add(AddClientEvent.hasBeenCalledChanged(value));
+                },
+                activeColor: AppColors.oliveGreen,
+                inactiveTrackColor: Colors.grey.withValues(alpha: 0.3),
+                inactiveThumbColor: Colors.white,
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+            ],
+          ),
         ),
         const SizedBox(height: xs),
         CustomTextFormField(
