@@ -9,6 +9,7 @@ import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add
 import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_state.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/business_sector.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/department.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/priority_level.dart';
 
 class InformationForm extends StatelessWidget {
@@ -121,6 +122,26 @@ class InformationForm extends StatelessWidget {
           ]),
           borderRadius: xs,
           borderColor: AppColors.oliveGreen,
+        ),
+        const SizedBox(height: xs),
+        LayoutBuilder(
+          builder: (context, constraints) {
+            return CustomDropdownMenu<Department>(
+              width: constraints.maxWidth,
+              value: state.department,
+              items: Department.values,
+              labelText: 'Отдел',
+              labelBuilder: (department) => department.label,
+              isFilled: false,
+              borderRadius: xs,
+              borderColor: AppColors.oliveGreen,
+              onSelected: (value) {
+                if (value != null) {
+                  bloc.add(AddClientEvent.departmentChanged(value));
+                }
+              },
+            );
+          },
         ),
         const SizedBox(height: xs),
         LayoutBuilder(

@@ -22,6 +22,7 @@ mixin _$AddClientState {
   String get companyName => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get dateOfBirth => throw _privateConstructorUsedError;
+  Department get department => throw _privateConstructorUsedError;
   BusinessSector get businessSector => throw _privateConstructorUsedError;
   String get companyId => throw _privateConstructorUsedError;
   String get personalId => throw _privateConstructorUsedError;
@@ -52,6 +53,7 @@ abstract class $AddClientStateCopyWith<$Res> {
       String companyName,
       String name,
       String dateOfBirth,
+      Department department,
       BusinessSector businessSector,
       String companyId,
       String personalId,
@@ -84,6 +86,7 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
     Object? companyName = null,
     Object? name = null,
     Object? dateOfBirth = null,
+    Object? department = null,
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
@@ -119,6 +122,10 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as String,
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as Department,
       businessSector: null == businessSector
           ? _value.businessSector
           : businessSector // ignore: cast_nullable_to_non_nullable
@@ -174,6 +181,7 @@ abstract class _$$AddClientStateImplCopyWith<$Res>
       String companyName,
       String name,
       String dateOfBirth,
+      Department department,
       BusinessSector businessSector,
       String companyId,
       String personalId,
@@ -204,6 +212,7 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
     Object? companyName = null,
     Object? name = null,
     Object? dateOfBirth = null,
+    Object? department = null,
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
@@ -239,6 +248,10 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as String,
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as Department,
       businessSector: null == businessSector
           ? _value.businessSector
           : businessSector // ignore: cast_nullable_to_non_nullable
@@ -289,6 +302,7 @@ class _$AddClientStateImpl implements _AddClientState {
       this.companyName = '',
       this.name = '',
       this.dateOfBirth = '',
+      this.department = Department.unknown,
       this.businessSector = BusinessSector.unknown,
       this.companyId = '',
       this.personalId = '',
@@ -318,6 +332,9 @@ class _$AddClientStateImpl implements _AddClientState {
   @override
   @JsonKey()
   final String dateOfBirth;
+  @override
+  @JsonKey()
+  final Department department;
   @override
   @JsonKey()
   final BusinessSector businessSector;
@@ -353,7 +370,7 @@ class _$AddClientStateImpl implements _AddClientState {
 
   @override
   String toString() {
-    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, shouldRedirectToHome: $shouldRedirectToHome, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, clientStatus: $clientStatus, priorityLevel: $priorityLevel, description: $description, socialLinks: $socialLinks, errorMessage: $errorMessage)';
+    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, shouldRedirectToHome: $shouldRedirectToHome, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, department: $department, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, clientStatus: $clientStatus, priorityLevel: $priorityLevel, description: $description, socialLinks: $socialLinks, errorMessage: $errorMessage)';
   }
 
   @override
@@ -371,6 +388,8 @@ class _$AddClientStateImpl implements _AddClientState {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
                 other.dateOfBirth == dateOfBirth) &&
+            (identical(other.department, department) ||
+                other.department == department) &&
             (identical(other.businessSector, businessSector) ||
                 other.businessSector == businessSector) &&
             (identical(other.companyId, companyId) ||
@@ -399,6 +418,7 @@ class _$AddClientStateImpl implements _AddClientState {
       companyName,
       name,
       dateOfBirth,
+      department,
       businessSector,
       companyId,
       personalId,
@@ -427,6 +447,7 @@ abstract class _AddClientState implements AddClientState {
       final String companyName,
       final String name,
       final String dateOfBirth,
+      final Department department,
       final BusinessSector businessSector,
       final String companyId,
       final String personalId,
@@ -449,6 +470,8 @@ abstract class _AddClientState implements AddClientState {
   String get name;
   @override
   String get dateOfBirth;
+  @override
+  Department get department;
   @override
   BusinessSector get businessSector;
   @override

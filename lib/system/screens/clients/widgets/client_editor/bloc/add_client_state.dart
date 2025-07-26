@@ -3,6 +3,7 @@ import 'package:marketinya/core/enums/status.dart';
 import 'package:marketinya/core/models/social_media_link.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/business_sector.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/department.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/priority_level.dart';
 
 part 'add_client_state.freezed.dart';
@@ -16,6 +17,7 @@ class AddClientState with _$AddClientState {
     @Default('') String companyName,
     @Default('') String name,
     @Default('') String dateOfBirth,
+    @Default(Department.unknown) Department department,
     @Default(BusinessSector.unknown) BusinessSector businessSector,
     @Default('') String companyId,
     @Default('') String personalId,

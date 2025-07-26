@@ -7,6 +7,7 @@ import 'package:marketinya/core/services/firebase_storage_service.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/business_sector.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/department.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/priority_level.dart';
 
 @injectable
@@ -48,6 +49,7 @@ class ClientRepository {
     required String companyName,
     required String name,
     required DateTime dateOfBirth,
+    required Department department,
     required BusinessSector businessSector,
     required String companyId,
     required String personalId,
@@ -65,6 +67,7 @@ class ClientRepository {
       'companyName': companyName,
       'name': name,
       'dateOfBirth': Timestamp.fromDate(dateOfBirth),
+      'department': department.label,
       'businessSector': businessSector.label,
       'companyId': companyId,
       'personalId': personalId,
@@ -90,6 +93,7 @@ class ClientRepository {
       companyName: companyName,
       name: name,
       dateOfBirth: dateOfBirth,
+      department: department,
       businessSector: businessSector,
       companyId: companyId,
       personalId: personalId,
@@ -114,6 +118,7 @@ class ClientRepository {
     required String companyName,
     required String name,
     required DateTime dateOfBirth,
+    required Department department,
     required BusinessSector businessSector,
     required String phone,
     required ClientStatus status,
@@ -128,6 +133,7 @@ class ClientRepository {
       'companyName': companyName,
       'name': name,
       'dateOfBirth': Timestamp.fromDate(dateOfBirth),
+      'department': department.label,
       'businessSector': businessSector.label,
       'personalId': personalId,
       'companyId': companyId,
@@ -153,6 +159,7 @@ class ClientRepository {
       companyName: companyName,
       name: name,
       dateOfBirth: dateOfBirth,
+      department: department,
       businessSector: businessSector,
       personalId: personalId,
       companyId: companyId,

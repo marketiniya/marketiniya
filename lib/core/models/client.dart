@@ -4,6 +4,7 @@ import 'package:marketinya/core/converters/document_reference_converter.dart';
 import 'package:marketinya/core/models/social_media_link.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/business_sector.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/department.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/priority_level.dart';
 
 part 'client.freezed.dart';
@@ -16,6 +17,7 @@ class Client with _$Client {
     required String companyName,
     required String name,
     required DateTime dateOfBirth,
+    required Department department,
     required BusinessSector businessSector,
     required String companyId,
     required String personalId,
@@ -59,6 +61,12 @@ class Client with _$Client {
       companyName: data['companyName'] as String,
       name: data['name'] as String,
       dateOfBirth: (data['dateOfBirth'] as Timestamp).toDate(),
+      department: data['department'] != null
+        ? Department.values.firstWhere(
+            (e) => e.label == (data['department'] as String),
+            orElse: () => Department.unknown,
+          )
+        : Department.unknown,
       businessSector: BusinessSector.values.firstWhere(
         (e) => e.label == (data['businessSector'] as String),
         orElse: () => BusinessSector.other,

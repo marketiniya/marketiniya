@@ -11,6 +11,7 @@ _$ClientImpl _$$ClientImplFromJson(Map<String, dynamic> json) => _$ClientImpl(
       companyName: json['companyName'] as String,
       name: json['name'] as String,
       dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
+      department: $enumDecode(_$DepartmentEnumMap, json['department']),
       businessSector:
           $enumDecode(_$BusinessSectorEnumMap, json['businessSector']),
       companyId: json['companyId'] as String,
@@ -44,6 +45,7 @@ Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
       'companyName': instance.companyName,
       'name': instance.name,
       'dateOfBirth': instance.dateOfBirth.toIso8601String(),
+      'department': _$DepartmentEnumMap[instance.department]!,
       'businessSector': _$BusinessSectorEnumMap[instance.businessSector]!,
       'companyId': instance.companyId,
       'personalId': instance.personalId,
@@ -62,6 +64,12 @@ Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
       'socialLinks': instance.socialLinks,
       'isDeleted': instance.isDeleted,
     };
+
+const _$DepartmentEnumMap = {
+  Department.management: 'management',
+  Department.sales: 'sales',
+  Department.unknown: 'unknown',
+};
 
 const _$BusinessSectorEnumMap = {
   BusinessSector.onlineStores: 'onlineStores',

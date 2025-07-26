@@ -22,6 +22,7 @@ mixin _$AddClientEvent {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -41,6 +42,7 @@ mixin _$AddClientEvent {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -60,6 +62,7 @@ mixin _$AddClientEvent {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -80,6 +83,7 @@ mixin _$AddClientEvent {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -100,6 +104,7 @@ mixin _$AddClientEvent {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -119,6 +124,7 @@ mixin _$AddClientEvent {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -200,6 +206,7 @@ class _$LoadImpl implements _Load {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -222,6 +229,7 @@ class _$LoadImpl implements _Load {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -244,6 +252,7 @@ class _$LoadImpl implements _Load {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -270,6 +279,7 @@ class _$LoadImpl implements _Load {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -293,6 +303,7 @@ class _$LoadImpl implements _Load {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -315,6 +326,7 @@ class _$LoadImpl implements _Load {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -412,6 +424,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -434,6 +447,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -456,6 +470,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -482,6 +497,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -505,6 +521,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -527,6 +544,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -632,6 +650,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -654,6 +673,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -676,6 +696,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -702,6 +723,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -725,6 +747,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -747,6 +770,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -852,6 +876,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -874,6 +899,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -896,6 +922,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -922,6 +949,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -945,6 +973,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -967,6 +996,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -997,6 +1027,233 @@ abstract class _DateOfBirthChanged implements AddClientEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DateOfBirthChangedImplCopyWith<_$DateOfBirthChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DepartmentChangedImplCopyWith<$Res> {
+  factory _$$DepartmentChangedImplCopyWith(_$DepartmentChangedImpl value,
+          $Res Function(_$DepartmentChangedImpl) then) =
+      __$$DepartmentChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Department value});
+}
+
+/// @nodoc
+class __$$DepartmentChangedImplCopyWithImpl<$Res>
+    extends _$AddClientEventCopyWithImpl<$Res, _$DepartmentChangedImpl>
+    implements _$$DepartmentChangedImplCopyWith<$Res> {
+  __$$DepartmentChangedImplCopyWithImpl(_$DepartmentChangedImpl _value,
+      $Res Function(_$DepartmentChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$DepartmentChangedImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as Department,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DepartmentChangedImpl implements _DepartmentChanged {
+  const _$DepartmentChangedImpl(this.value);
+
+  @override
+  final Department value;
+
+  @override
+  String toString() {
+    return 'AddClientEvent.departmentChanged(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DepartmentChangedImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DepartmentChangedImplCopyWith<_$DepartmentChangedImpl> get copyWith =>
+      __$$DepartmentChangedImplCopyWithImpl<_$DepartmentChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
+    required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
+    required TResult Function(BusinessSector value) businessSectorChanged,
+    required TResult Function(String value) companyIdChanged,
+    required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) phoneChanged,
+    required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function() save,
+    required TResult Function() update,
+    required TResult Function() delete,
+  }) {
+    return departmentChanged(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
+    TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
+    TResult? Function(BusinessSector value)? businessSectorChanged,
+    TResult? Function(String value)? companyIdChanged,
+    TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? phoneChanged,
+    TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
+    TResult? Function(String value)? descriptionChanged,
+    TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function()? save,
+    TResult? Function()? update,
+    TResult? Function()? delete,
+  }) {
+    return departmentChanged?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
+    TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
+    TResult Function(BusinessSector value)? businessSectorChanged,
+    TResult Function(String value)? companyIdChanged,
+    TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? phoneChanged,
+    TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function()? save,
+    TResult Function()? update,
+    TResult Function()? delete,
+    required TResult orElse(),
+  }) {
+    if (departmentChanged != null) {
+      return departmentChanged(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
+    required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
+    required TResult Function(_BusinessSectorChanged value)
+        businessSectorChanged,
+    required TResult Function(_CompanyIdChanged value) companyIdChanged,
+    required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(PhoneChanged value) phoneChanged,
+    required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
+    required TResult Function(_DeleteClient value) delete,
+  }) {
+    return departmentChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
+    TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
+    TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
+    TResult? Function(_CompanyIdChanged value)? companyIdChanged,
+    TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(PhoneChanged value)? phoneChanged,
+    TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
+    TResult? Function(_DeleteClient value)? delete,
+  }) {
+    return departmentChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
+    TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
+    TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
+    TResult Function(_CompanyIdChanged value)? companyIdChanged,
+    TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(PhoneChanged value)? phoneChanged,
+    TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
+    TResult Function(_DeleteClient value)? delete,
+    required TResult orElse(),
+  }) {
+    if (departmentChanged != null) {
+      return departmentChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DepartmentChanged implements AddClientEvent {
+  const factory _DepartmentChanged(final Department value) =
+      _$DepartmentChangedImpl;
+
+  Department get value;
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DepartmentChangedImplCopyWith<_$DepartmentChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1074,6 +1331,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -1096,6 +1354,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -1118,6 +1377,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -1144,6 +1404,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -1167,6 +1428,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -1189,6 +1451,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -1295,6 +1558,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -1317,6 +1581,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -1339,6 +1604,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -1365,6 +1631,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -1388,6 +1655,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -1410,6 +1678,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -1515,6 +1784,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -1537,6 +1807,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -1559,6 +1830,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -1585,6 +1857,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -1608,6 +1881,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -1630,6 +1904,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -1735,6 +2010,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -1757,6 +2033,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -1779,6 +2056,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -1805,6 +2083,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -1828,6 +2107,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -1850,6 +2130,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -1955,6 +2236,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -1977,6 +2259,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -1999,6 +2282,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -2025,6 +2309,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -2048,6 +2333,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -2070,6 +2356,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -2177,6 +2464,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -2199,6 +2487,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -2221,6 +2510,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -2247,6 +2537,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -2270,6 +2561,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -2292,6 +2584,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -2398,6 +2691,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -2420,6 +2714,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -2442,6 +2737,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -2468,6 +2764,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -2491,6 +2788,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -2513,6 +2811,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -2626,6 +2925,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -2648,6 +2948,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -2670,6 +2971,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -2696,6 +2998,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -2719,6 +3022,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -2741,6 +3045,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -2819,6 +3124,7 @@ class _$SaveClientImpl implements _SaveClient {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -2841,6 +3147,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -2863,6 +3170,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -2889,6 +3197,7 @@ class _$SaveClientImpl implements _SaveClient {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -2912,6 +3221,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -2934,6 +3244,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -3003,6 +3314,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -3025,6 +3337,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -3047,6 +3360,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -3073,6 +3387,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -3096,6 +3411,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -3118,6 +3434,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
@@ -3187,6 +3504,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     required TResult Function(String value) companyNameChanged,
     required TResult Function(String value) nameChanged,
     required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
@@ -3209,6 +3527,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult? Function(String value)? companyNameChanged,
     TResult? Function(String value)? nameChanged,
     TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
@@ -3231,6 +3550,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult Function(String value)? companyNameChanged,
     TResult Function(String value)? nameChanged,
     TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
@@ -3257,6 +3577,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     required TResult Function(_CompanyNameChanged value) companyNameChanged,
     required TResult Function(_NameChanged value) nameChanged,
     required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
     required TResult Function(_BusinessSectorChanged value)
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
@@ -3280,6 +3601,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult? Function(_CompanyNameChanged value)? companyNameChanged,
     TResult? Function(_NameChanged value)? nameChanged,
     TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
@@ -3302,6 +3624,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult Function(_CompanyNameChanged value)? companyNameChanged,
     TResult Function(_NameChanged value)? nameChanged,
     TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,

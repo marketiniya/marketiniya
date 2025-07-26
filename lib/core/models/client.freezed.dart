@@ -24,6 +24,7 @@ mixin _$Client {
   String get companyName => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get dateOfBirth => throw _privateConstructorUsedError;
+  Department get department => throw _privateConstructorUsedError;
   BusinessSector get businessSector => throw _privateConstructorUsedError;
   String get companyId => throw _privateConstructorUsedError;
   String get personalId => throw _privateConstructorUsedError;
@@ -63,6 +64,7 @@ abstract class $ClientCopyWith<$Res> {
       String companyName,
       String name,
       DateTime dateOfBirth,
+      Department department,
       BusinessSector businessSector,
       String companyId,
       String personalId,
@@ -99,6 +101,7 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
     Object? companyName = null,
     Object? name = null,
     Object? dateOfBirth = null,
+    Object? department = null,
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
@@ -132,6 +135,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as Department,
       businessSector: null == businessSector
           ? _value.businessSector
           : businessSector // ignore: cast_nullable_to_non_nullable
@@ -208,6 +215,7 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       String companyName,
       String name,
       DateTime dateOfBirth,
+      Department department,
       BusinessSector businessSector,
       String companyId,
       String personalId,
@@ -242,6 +250,7 @@ class __$$ClientImplCopyWithImpl<$Res>
     Object? companyName = null,
     Object? name = null,
     Object? dateOfBirth = null,
+    Object? department = null,
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
@@ -275,6 +284,10 @@ class __$$ClientImplCopyWithImpl<$Res>
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as Department,
       businessSector: null == businessSector
           ? _value.businessSector
           : businessSector // ignore: cast_nullable_to_non_nullable
@@ -347,6 +360,7 @@ class _$ClientImpl implements _Client {
       required this.companyName,
       required this.name,
       required this.dateOfBirth,
+      required this.department,
       required this.businessSector,
       required this.companyId,
       required this.personalId,
@@ -378,6 +392,8 @@ class _$ClientImpl implements _Client {
   final String name;
   @override
   final DateTime dateOfBirth;
+  @override
+  final Department department;
   @override
   final BusinessSector businessSector;
   @override
@@ -435,7 +451,7 @@ class _$ClientImpl implements _Client {
 
   @override
   String toString() {
-    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds, socialLinks: $socialLinks, isDeleted: $isDeleted)';
+    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, department: $department, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds, socialLinks: $socialLinks, isDeleted: $isDeleted)';
   }
 
   @override
@@ -449,6 +465,8 @@ class _$ClientImpl implements _Client {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
                 other.dateOfBirth == dateOfBirth) &&
+            (identical(other.department, department) ||
+                other.department == department) &&
             (identical(other.businessSector, businessSector) ||
                 other.businessSector == businessSector) &&
             (identical(other.companyId, companyId) ||
@@ -485,6 +503,7 @@ class _$ClientImpl implements _Client {
         companyName,
         name,
         dateOfBirth,
+        department,
         businessSector,
         companyId,
         personalId,
@@ -524,6 +543,7 @@ abstract class _Client implements Client {
       required final String companyName,
       required final String name,
       required final DateTime dateOfBirth,
+      required final Department department,
       required final BusinessSector businessSector,
       required final String companyId,
       required final String personalId,
@@ -552,6 +572,8 @@ abstract class _Client implements Client {
   String get name;
   @override
   DateTime get dateOfBirth;
+  @override
+  Department get department;
   @override
   BusinessSector get businessSector;
   @override

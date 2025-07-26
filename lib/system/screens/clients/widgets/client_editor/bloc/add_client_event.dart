@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:marketinya/core/models/social_media_link.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/business_sector.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/department.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/priority_level.dart';
 
 part 'add_client_event.freezed.dart';
@@ -17,6 +18,9 @@ class AddClientEvent with _$AddClientEvent {
 
   const factory AddClientEvent.dateOfBirthChanged(String value) =
       _DateOfBirthChanged;
+
+  const factory AddClientEvent.departmentChanged(Department value) =
+      _DepartmentChanged;
 
   const factory AddClientEvent.businessSectorChanged(BusinessSector value) =
       _BusinessSectorChanged;

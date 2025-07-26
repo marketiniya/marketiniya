@@ -30,7 +30,7 @@ class ClientsTableRow extends StatelessWidget {
             Cell(label: client.name, flex: 1),
             Cell(label: client.companyName, flex: 1.6),
             Cell(label: client.priorityLevel.label, flex: 1, isCentered: true),
-            Cell(label: client.companyId, flex: 1),
+            Cell(label: client.department.label, flex: 1),
             Cell(label: client.phone, flex: 1),
             Cell(label: client.businessSector.label, flex: 1),
             Cell(label: '', flex: 1, status: client.status),
