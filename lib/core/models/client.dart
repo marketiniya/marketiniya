@@ -21,6 +21,7 @@ class Client with _$Client {
     required BusinessSector businessSector,
     required String companyId,
     required String personalId,
+    required String email,
     required String phone,
     required ClientStatus status,
     required PriorityLevel priorityLevel,
@@ -74,6 +75,7 @@ class Client with _$Client {
       ),
       personalId: data['personalId'] as String,
       companyId: data['companyId'] as String,
+      email: data['email'] as String? ?? '',
       phone: data['phone'] as String,
       status: ClientStatus.values.firstWhere(
         (e) => e.label == (data['status'] as String),

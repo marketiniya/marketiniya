@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/core/design_system/molecules/fields.dart';
 import 'package:marketinya/core/design_system/themes/app_colors.dart';
-import 'package:marketinya/core/utils/validators/field_validators.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_bloc.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_event.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_state.dart';
@@ -45,7 +44,10 @@ class ContentForm extends StatelessWidget {
                   SizedBox(width: spacing),
                   SizedBox(
                     width: tagsWidth,
-                    child: const TagsSection(),
+                    child: const Visibility( // TODO(Anybody): Remove Visibility when Tags are implemented
+                      visible: false,
+                      child: TagsSection(),
+                    ),
                   ),
                   SizedBox(width: spacing),
                   const Expanded(
@@ -67,9 +69,6 @@ class ContentForm extends StatelessWidget {
                   bloc.add(AddClientEvent.descriptionChanged(value));
                 }
               },
-              validator: FieldValidators.combine([
-                FieldValidators.notEmpty(),
-              ]),
               contentPadding: const EdgeInsets.all(sm),
               floatingLabelBehavior: FloatingLabelBehavior.auto,
               borderRadius: xs,

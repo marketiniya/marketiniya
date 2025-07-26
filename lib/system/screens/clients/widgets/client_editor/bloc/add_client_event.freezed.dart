@@ -26,6 +26,7 @@ mixin _$AddClientEvent {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -47,6 +48,7 @@ mixin _$AddClientEvent {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -68,6 +70,7 @@ mixin _$AddClientEvent {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -91,6 +94,7 @@ mixin _$AddClientEvent {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -112,6 +116,7 @@ mixin _$AddClientEvent {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -133,6 +138,7 @@ mixin _$AddClientEvent {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -216,6 +222,7 @@ class _$LoadImpl implements _Load {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -240,6 +247,7 @@ class _$LoadImpl implements _Load {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -264,6 +272,7 @@ class _$LoadImpl implements _Load {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -293,6 +302,7 @@ class _$LoadImpl implements _Load {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -317,6 +327,7 @@ class _$LoadImpl implements _Load {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -341,6 +352,7 @@ class _$LoadImpl implements _Load {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -440,6 +452,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -464,6 +477,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -488,6 +502,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -517,6 +532,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -541,6 +557,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -565,6 +582,7 @@ class _$CompanyNameChangedImpl implements _CompanyNameChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -672,6 +690,7 @@ class _$NameChangedImpl implements _NameChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -696,6 +715,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -720,6 +740,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -749,6 +770,7 @@ class _$NameChangedImpl implements _NameChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -773,6 +795,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -797,6 +820,7 @@ class _$NameChangedImpl implements _NameChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -904,6 +928,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -928,6 +953,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -952,6 +978,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -981,6 +1008,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -1005,6 +1033,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -1029,6 +1058,7 @@ class _$DateOfBirthChangedImpl implements _DateOfBirthChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -1137,6 +1167,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -1161,6 +1192,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -1185,6 +1217,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -1214,6 +1247,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -1238,6 +1272,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -1262,6 +1297,7 @@ class _$DepartmentChangedImpl implements _DepartmentChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -1371,6 +1407,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -1395,6 +1432,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -1419,6 +1457,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -1448,6 +1487,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -1472,6 +1512,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -1496,6 +1537,7 @@ class _$BusinessSectorChangedImpl implements _BusinessSectorChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -1604,6 +1646,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -1628,6 +1671,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -1652,6 +1696,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -1681,6 +1726,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -1705,6 +1751,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -1729,6 +1776,7 @@ class _$CompanyIdChangedImpl implements _CompanyIdChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -1836,6 +1884,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -1860,6 +1909,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -1884,6 +1934,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -1913,6 +1964,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -1937,6 +1989,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -1961,6 +2014,7 @@ class _$PersonalIdChangedImpl implements _PersonalIdChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -1989,6 +2043,243 @@ abstract class _PersonalIdChanged implements AddClientEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PersonalIdChangedImplCopyWith<_$PersonalIdChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EmailChangedImplCopyWith<$Res> {
+  factory _$$EmailChangedImplCopyWith(
+          _$EmailChangedImpl value, $Res Function(_$EmailChangedImpl) then) =
+      __$$EmailChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$EmailChangedImplCopyWithImpl<$Res>
+    extends _$AddClientEventCopyWithImpl<$Res, _$EmailChangedImpl>
+    implements _$$EmailChangedImplCopyWith<$Res> {
+  __$$EmailChangedImplCopyWithImpl(
+      _$EmailChangedImpl _value, $Res Function(_$EmailChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$EmailChangedImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EmailChangedImpl implements _EmailChanged {
+  const _$EmailChangedImpl(this.value);
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'AddClientEvent.emailChanged(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EmailChangedImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EmailChangedImplCopyWith<_$EmailChangedImpl> get copyWith =>
+      __$$EmailChangedImplCopyWithImpl<_$EmailChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(String value) companyNameChanged,
+    required TResult Function(String value) nameChanged,
+    required TResult Function(String value) dateOfBirthChanged,
+    required TResult Function(Department value) departmentChanged,
+    required TResult Function(BusinessSector value) businessSectorChanged,
+    required TResult Function(String value) companyIdChanged,
+    required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
+    required TResult Function(String value) phoneChanged,
+    required TResult Function(ClientStatus value) clientStatusChanged,
+    required TResult Function(PriorityLevel value) priorityLevelChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function(List<SocialMediaLink> value) socialLinksChanged,
+    required TResult Function(bool value) hasBeenCalledChanged,
+    required TResult Function() save,
+    required TResult Function() update,
+    required TResult Function() delete,
+  }) {
+    return emailChanged(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(String value)? companyNameChanged,
+    TResult? Function(String value)? nameChanged,
+    TResult? Function(String value)? dateOfBirthChanged,
+    TResult? Function(Department value)? departmentChanged,
+    TResult? Function(BusinessSector value)? businessSectorChanged,
+    TResult? Function(String value)? companyIdChanged,
+    TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
+    TResult? Function(String value)? phoneChanged,
+    TResult? Function(ClientStatus value)? clientStatusChanged,
+    TResult? Function(PriorityLevel value)? priorityLevelChanged,
+    TResult? Function(String value)? descriptionChanged,
+    TResult? Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult? Function(bool value)? hasBeenCalledChanged,
+    TResult? Function()? save,
+    TResult? Function()? update,
+    TResult? Function()? delete,
+  }) {
+    return emailChanged?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(String value)? companyNameChanged,
+    TResult Function(String value)? nameChanged,
+    TResult Function(String value)? dateOfBirthChanged,
+    TResult Function(Department value)? departmentChanged,
+    TResult Function(BusinessSector value)? businessSectorChanged,
+    TResult Function(String value)? companyIdChanged,
+    TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
+    TResult Function(String value)? phoneChanged,
+    TResult Function(ClientStatus value)? clientStatusChanged,
+    TResult Function(PriorityLevel value)? priorityLevelChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(List<SocialMediaLink> value)? socialLinksChanged,
+    TResult Function(bool value)? hasBeenCalledChanged,
+    TResult Function()? save,
+    TResult Function()? update,
+    TResult Function()? delete,
+    required TResult orElse(),
+  }) {
+    if (emailChanged != null) {
+      return emailChanged(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
+    required TResult Function(_CompanyNameChanged value) companyNameChanged,
+    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_DateOfBirthChanged value) dateOfBirthChanged,
+    required TResult Function(_DepartmentChanged value) departmentChanged,
+    required TResult Function(_BusinessSectorChanged value)
+        businessSectorChanged,
+    required TResult Function(_CompanyIdChanged value) companyIdChanged,
+    required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(PhoneChanged value) phoneChanged,
+    required TResult Function(_ClientStatusChanged value) clientStatusChanged,
+    required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_SocialLinksChanged value) socialLinksChanged,
+    required TResult Function(_HasBeenCalledChanged value) hasBeenCalledChanged,
+    required TResult Function(_SaveClient value) save,
+    required TResult Function(_UpdateClient value) update,
+    required TResult Function(_DeleteClient value) delete,
+  }) {
+    return emailChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
+    TResult? Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult? Function(_DepartmentChanged value)? departmentChanged,
+    TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
+    TResult? Function(_CompanyIdChanged value)? companyIdChanged,
+    TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(PhoneChanged value)? phoneChanged,
+    TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
+    TResult? Function(_DescriptionChanged value)? descriptionChanged,
+    TResult? Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult? Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
+    TResult? Function(_SaveClient value)? save,
+    TResult? Function(_UpdateClient value)? update,
+    TResult? Function(_DeleteClient value)? delete,
+  }) {
+    return emailChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
+    TResult Function(_CompanyNameChanged value)? companyNameChanged,
+    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_DateOfBirthChanged value)? dateOfBirthChanged,
+    TResult Function(_DepartmentChanged value)? departmentChanged,
+    TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
+    TResult Function(_CompanyIdChanged value)? companyIdChanged,
+    TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(PhoneChanged value)? phoneChanged,
+    TResult Function(_ClientStatusChanged value)? clientStatusChanged,
+    TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_SocialLinksChanged value)? socialLinksChanged,
+    TResult Function(_HasBeenCalledChanged value)? hasBeenCalledChanged,
+    TResult Function(_SaveClient value)? save,
+    TResult Function(_UpdateClient value)? update,
+    TResult Function(_DeleteClient value)? delete,
+    required TResult orElse(),
+  }) {
+    if (emailChanged != null) {
+      return emailChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EmailChanged implements AddClientEvent {
+  const factory _EmailChanged(final String value) = _$EmailChangedImpl;
+
+  String get value;
+
+  /// Create a copy of AddClientEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EmailChangedImplCopyWith<_$EmailChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2068,6 +2359,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -2092,6 +2384,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -2116,6 +2409,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -2145,6 +2439,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -2169,6 +2464,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -2193,6 +2489,7 @@ class _$PhoneChangedImpl implements PhoneChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -2300,6 +2597,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -2324,6 +2622,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -2348,6 +2647,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -2377,6 +2677,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -2401,6 +2702,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -2425,6 +2727,7 @@ class _$ClientStatusChangedImpl implements _ClientStatusChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -2534,6 +2837,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -2558,6 +2862,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -2582,6 +2887,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -2611,6 +2917,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -2635,6 +2942,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -2659,6 +2967,7 @@ class _$PriorityLevelChangedImpl implements _PriorityLevelChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -2767,6 +3076,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -2791,6 +3101,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -2815,6 +3126,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -2844,6 +3156,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -2868,6 +3181,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -2892,6 +3206,7 @@ class _$DescriptionChangedImpl implements _DescriptionChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -3007,6 +3322,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -3031,6 +3347,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -3055,6 +3372,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -3084,6 +3402,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -3108,6 +3427,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -3132,6 +3452,7 @@ class _$SocialLinksChangedImpl implements _SocialLinksChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -3241,6 +3562,7 @@ class _$HasBeenCalledChangedImpl implements _HasBeenCalledChanged {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -3265,6 +3587,7 @@ class _$HasBeenCalledChangedImpl implements _HasBeenCalledChanged {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -3289,6 +3612,7 @@ class _$HasBeenCalledChangedImpl implements _HasBeenCalledChanged {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -3318,6 +3642,7 @@ class _$HasBeenCalledChangedImpl implements _HasBeenCalledChanged {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -3342,6 +3667,7 @@ class _$HasBeenCalledChangedImpl implements _HasBeenCalledChanged {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -3366,6 +3692,7 @@ class _$HasBeenCalledChangedImpl implements _HasBeenCalledChanged {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -3446,6 +3773,7 @@ class _$SaveClientImpl implements _SaveClient {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -3470,6 +3798,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -3494,6 +3823,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -3523,6 +3853,7 @@ class _$SaveClientImpl implements _SaveClient {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -3547,6 +3878,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -3571,6 +3903,7 @@ class _$SaveClientImpl implements _SaveClient {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -3642,6 +3975,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -3666,6 +4000,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -3690,6 +4025,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -3719,6 +4055,7 @@ class _$UpdateClientImpl implements _UpdateClient {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -3743,6 +4080,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -3767,6 +4105,7 @@ class _$UpdateClientImpl implements _UpdateClient {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -3838,6 +4177,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     required TResult Function(BusinessSector value) businessSectorChanged,
     required TResult Function(String value) companyIdChanged,
     required TResult Function(String value) personalIdChanged,
+    required TResult Function(String value) emailChanged,
     required TResult Function(String value) phoneChanged,
     required TResult Function(ClientStatus value) clientStatusChanged,
     required TResult Function(PriorityLevel value) priorityLevelChanged,
@@ -3862,6 +4202,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult? Function(BusinessSector value)? businessSectorChanged,
     TResult? Function(String value)? companyIdChanged,
     TResult? Function(String value)? personalIdChanged,
+    TResult? Function(String value)? emailChanged,
     TResult? Function(String value)? phoneChanged,
     TResult? Function(ClientStatus value)? clientStatusChanged,
     TResult? Function(PriorityLevel value)? priorityLevelChanged,
@@ -3886,6 +4227,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult Function(BusinessSector value)? businessSectorChanged,
     TResult Function(String value)? companyIdChanged,
     TResult Function(String value)? personalIdChanged,
+    TResult Function(String value)? emailChanged,
     TResult Function(String value)? phoneChanged,
     TResult Function(ClientStatus value)? clientStatusChanged,
     TResult Function(PriorityLevel value)? priorityLevelChanged,
@@ -3915,6 +4257,7 @@ class _$DeleteClientImpl implements _DeleteClient {
         businessSectorChanged,
     required TResult Function(_CompanyIdChanged value) companyIdChanged,
     required TResult Function(_PersonalIdChanged value) personalIdChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(PhoneChanged value) phoneChanged,
     required TResult Function(_ClientStatusChanged value) clientStatusChanged,
     required TResult Function(_PriorityLevelChanged value) priorityLevelChanged,
@@ -3939,6 +4282,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult? Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult? Function(_CompanyIdChanged value)? companyIdChanged,
     TResult? Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(PhoneChanged value)? phoneChanged,
     TResult? Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult? Function(_PriorityLevelChanged value)? priorityLevelChanged,
@@ -3963,6 +4307,7 @@ class _$DeleteClientImpl implements _DeleteClient {
     TResult Function(_BusinessSectorChanged value)? businessSectorChanged,
     TResult Function(_CompanyIdChanged value)? companyIdChanged,
     TResult Function(_PersonalIdChanged value)? personalIdChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(PhoneChanged value)? phoneChanged,
     TResult Function(_ClientStatusChanged value)? clientStatusChanged,
     TResult Function(_PriorityLevelChanged value)? priorityLevelChanged,

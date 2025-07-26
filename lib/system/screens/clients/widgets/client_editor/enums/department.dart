@@ -1,7 +1,7 @@
 enum Department {
   management('Управление'),
   sales('Продажби'),
-  unknown('Неизвестен отдел');
+  unknown('Неизвестен');
 
   const Department(this.label);
 

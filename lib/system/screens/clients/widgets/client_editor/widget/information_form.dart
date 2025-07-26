@@ -52,9 +52,6 @@ class InformationForm extends StatelessWidget {
               bloc.add(AddClientEvent.companyIdChanged(value));
             }
           },
-          validator: FieldValidators.combine([
-            FieldValidators.notEmpty(),
-          ]),
           borderRadius: xs,
           borderColor: AppColors.oliveGreen,
         ),
@@ -68,9 +65,6 @@ class InformationForm extends StatelessWidget {
               bloc.add(AddClientEvent.nameChanged(value));
             }
           },
-          validator: FieldValidators.combine([
-            FieldValidators.notEmpty(),
-          ]),
           borderRadius: xs,
           borderColor: AppColors.oliveGreen,
         ),
@@ -84,8 +78,22 @@ class InformationForm extends StatelessWidget {
               bloc.add(AddClientEvent.personalIdChanged(value));
             }
           },
+          borderRadius: xs,
+          borderColor: AppColors.oliveGreen,
+        ),
+        const SizedBox(height: xs),
+        CustomTextFormField(
+          value: state.email,
+          labelText: 'Имейл',
+          keyboardType: TextInputType.emailAddress,
+          onSaved: (value) {
+            if (value != null) {
+              bloc.add(AddClientEvent.emailChanged(value));
+            }
+          },
           validator: FieldValidators.combine([
             FieldValidators.notEmpty(),
+            FieldValidators.email(),
           ]),
           borderRadius: xs,
           borderColor: AppColors.oliveGreen,
@@ -164,7 +172,6 @@ class InformationForm extends StatelessWidget {
             }
           },
           validator: FieldValidators.combine([
-            FieldValidators.notEmpty(),
             FieldValidators.validDate(),
           ]),
           borderRadius: xs,

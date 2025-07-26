@@ -21,6 +21,7 @@ class AddClientState with _$AddClientState {
     @Default(BusinessSector.unknown) BusinessSector businessSector,
     @Default('') String companyId,
     @Default('') String personalId,
+    @Default('') String email,
     @Default('') String phone,
     @Default(ClientStatus.inactive) ClientStatus clientStatus,
     @Default(PriorityLevel.lowPriority) PriorityLevel priorityLevel,

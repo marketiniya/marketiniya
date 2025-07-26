@@ -31,6 +31,8 @@ class AddClientEvent with _$AddClientEvent {
   const factory AddClientEvent.personalIdChanged(String value) =
       _PersonalIdChanged;
 
+  const factory AddClientEvent.emailChanged(String value) = _EmailChanged;
+
   const factory AddClientEvent.phoneChanged(String value) = PhoneChanged;
 
   const factory AddClientEvent.clientStatusChanged(ClientStatus value) =

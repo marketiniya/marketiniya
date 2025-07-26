@@ -28,6 +28,7 @@ mixin _$Client {
   BusinessSector get businessSector => throw _privateConstructorUsedError;
   String get companyId => throw _privateConstructorUsedError;
   String get personalId => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   ClientStatus get status => throw _privateConstructorUsedError;
   PriorityLevel get priorityLevel => throw _privateConstructorUsedError;
@@ -69,6 +70,7 @@ abstract class $ClientCopyWith<$Res> {
       BusinessSector businessSector,
       String companyId,
       String personalId,
+      String email,
       String phone,
       ClientStatus status,
       PriorityLevel priorityLevel,
@@ -107,6 +109,7 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
+    Object? email = null,
     Object? phone = null,
     Object? status = null,
     Object? priorityLevel = null,
@@ -153,6 +156,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
       personalId: null == personalId
           ? _value.personalId
           : personalId // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       phone: null == phone
           ? _value.phone
@@ -226,6 +233,7 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       BusinessSector businessSector,
       String companyId,
       String personalId,
+      String email,
       String phone,
       ClientStatus status,
       PriorityLevel priorityLevel,
@@ -262,6 +270,7 @@ class __$$ClientImplCopyWithImpl<$Res>
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
+    Object? email = null,
     Object? phone = null,
     Object? status = null,
     Object? priorityLevel = null,
@@ -308,6 +317,10 @@ class __$$ClientImplCopyWithImpl<$Res>
       personalId: null == personalId
           ? _value.personalId
           : personalId // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       phone: null == phone
           ? _value.phone
@@ -377,6 +390,7 @@ class _$ClientImpl implements _Client {
       required this.businessSector,
       required this.companyId,
       required this.personalId,
+      required this.email,
       required this.phone,
       required this.status,
       required this.priorityLevel,
@@ -414,6 +428,8 @@ class _$ClientImpl implements _Client {
   final String companyId;
   @override
   final String personalId;
+  @override
+  final String email;
   @override
   final String phone;
   @override
@@ -468,7 +484,7 @@ class _$ClientImpl implements _Client {
 
   @override
   String toString() {
-    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, department: $department, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds, socialLinks: $socialLinks, isDeleted: $isDeleted, hasBeenCalled: $hasBeenCalled)';
+    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, department: $department, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, email: $email, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds, socialLinks: $socialLinks, isDeleted: $isDeleted, hasBeenCalled: $hasBeenCalled)';
   }
 
   @override
@@ -490,6 +506,7 @@ class _$ClientImpl implements _Client {
                 other.companyId == companyId) &&
             (identical(other.personalId, personalId) ||
                 other.personalId == personalId) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.priorityLevel, priorityLevel) ||
@@ -526,6 +543,7 @@ class _$ClientImpl implements _Client {
         businessSector,
         companyId,
         personalId,
+        email,
         phone,
         status,
         priorityLevel,
@@ -567,6 +585,7 @@ abstract class _Client implements Client {
       required final BusinessSector businessSector,
       required final String companyId,
       required final String personalId,
+      required final String email,
       required final String phone,
       required final ClientStatus status,
       required final PriorityLevel priorityLevel,
@@ -601,6 +620,8 @@ abstract class _Client implements Client {
   String get companyId;
   @override
   String get personalId;
+  @override
+  String get email;
   @override
   String get phone;
   @override

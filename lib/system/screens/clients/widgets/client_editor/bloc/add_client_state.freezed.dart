@@ -26,6 +26,7 @@ mixin _$AddClientState {
   BusinessSector get businessSector => throw _privateConstructorUsedError;
   String get companyId => throw _privateConstructorUsedError;
   String get personalId => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   ClientStatus get clientStatus => throw _privateConstructorUsedError;
   PriorityLevel get priorityLevel => throw _privateConstructorUsedError;
@@ -58,6 +59,7 @@ abstract class $AddClientStateCopyWith<$Res> {
       BusinessSector businessSector,
       String companyId,
       String personalId,
+      String email,
       String phone,
       ClientStatus clientStatus,
       PriorityLevel priorityLevel,
@@ -92,6 +94,7 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
+    Object? email = null,
     Object? phone = null,
     Object? clientStatus = null,
     Object? priorityLevel = null,
@@ -140,6 +143,10 @@ class _$AddClientStateCopyWithImpl<$Res, $Val extends AddClientState>
       personalId: null == personalId
           ? _value.personalId
           : personalId // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       phone: null == phone
           ? _value.phone
@@ -192,6 +199,7 @@ abstract class _$$AddClientStateImplCopyWith<$Res>
       BusinessSector businessSector,
       String companyId,
       String personalId,
+      String email,
       String phone,
       ClientStatus clientStatus,
       PriorityLevel priorityLevel,
@@ -224,6 +232,7 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
+    Object? email = null,
     Object? phone = null,
     Object? clientStatus = null,
     Object? priorityLevel = null,
@@ -273,6 +282,10 @@ class __$$AddClientStateImplCopyWithImpl<$Res>
           ? _value.personalId
           : personalId // ignore: cast_nullable_to_non_nullable
               as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
       phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -319,6 +332,7 @@ class _$AddClientStateImpl implements _AddClientState {
       this.businessSector = BusinessSector.unknown,
       this.companyId = '',
       this.personalId = '',
+      this.email = '',
       this.phone = '',
       this.clientStatus = ClientStatus.inactive,
       this.priorityLevel = PriorityLevel.lowPriority,
@@ -360,6 +374,9 @@ class _$AddClientStateImpl implements _AddClientState {
   final String personalId;
   @override
   @JsonKey()
+  final String email;
+  @override
+  @JsonKey()
   final String phone;
   @override
   @JsonKey()
@@ -387,7 +404,7 @@ class _$AddClientStateImpl implements _AddClientState {
 
   @override
   String toString() {
-    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, shouldRedirectToHome: $shouldRedirectToHome, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, department: $department, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, clientStatus: $clientStatus, priorityLevel: $priorityLevel, description: $description, socialLinks: $socialLinks, hasBeenCalled: $hasBeenCalled, errorMessage: $errorMessage)';
+    return 'AddClientState(status: $status, isUpdateMode: $isUpdateMode, shouldRedirectToHome: $shouldRedirectToHome, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, department: $department, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, email: $email, phone: $phone, clientStatus: $clientStatus, priorityLevel: $priorityLevel, description: $description, socialLinks: $socialLinks, hasBeenCalled: $hasBeenCalled, errorMessage: $errorMessage)';
   }
 
   @override
@@ -413,6 +430,7 @@ class _$AddClientStateImpl implements _AddClientState {
                 other.companyId == companyId) &&
             (identical(other.personalId, personalId) ||
                 other.personalId == personalId) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.clientStatus, clientStatus) ||
                 other.clientStatus == clientStatus) &&
@@ -441,6 +459,7 @@ class _$AddClientStateImpl implements _AddClientState {
       businessSector,
       companyId,
       personalId,
+      email,
       phone,
       clientStatus,
       priorityLevel,
@@ -471,6 +490,7 @@ abstract class _AddClientState implements AddClientState {
       final BusinessSector businessSector,
       final String companyId,
       final String personalId,
+      final String email,
       final String phone,
       final ClientStatus clientStatus,
       final PriorityLevel priorityLevel,
@@ -499,6 +519,8 @@ abstract class _AddClientState implements AddClientState {
   String get companyId;
   @override
   String get personalId;
+  @override
+  String get email;
   @override
   String get phone;
   @override
