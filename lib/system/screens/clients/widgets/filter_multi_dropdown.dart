@@ -9,7 +9,7 @@ import 'package:marketinya/system/screens/clients/bloc/client_state.dart';
 import 'package:multi_dropdown/multi_dropdown.dart';
 
 enum Filter {
-  company('Фирма'),
+  company('Компания'),
   companyId('ЕИК'),
   name('Име'),
   phone('Телефон'),

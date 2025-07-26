@@ -27,9 +27,9 @@ class ClientsTableRow extends StatelessWidget {
         child: Row(
           children: [
             Cell(label: rowNumber.toString(), flex: 0.5),
+            Cell(label: client.name, flex: 1),
             Cell(label: client.companyName, flex: 2),
             Cell(label: client.companyId, flex: 1),
-            Cell(label: client.name, flex: 1),
             Cell(label: client.phone, flex: 1),
             Cell(label: client.businessSector.label, flex: 1),
             Cell(label: '', flex: 1, status: client.status),

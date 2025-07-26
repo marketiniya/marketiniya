@@ -27,7 +27,7 @@ class InformationForm extends StatelessWidget {
         CustomTextFormField(
           padding: EdgeInsets.zero,
           value: state.companyName,
-          labelText: 'Фирма',
+          labelText: 'Компания',
           keyboardType: TextInputType.name,
           onSaved: (value) {
             if (value != null) {
