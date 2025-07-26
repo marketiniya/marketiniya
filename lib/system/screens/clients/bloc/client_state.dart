@@ -27,13 +27,14 @@ extension ClientStateExtension on ClientState {
     final query = searchQuery.toLowerCase();
     return clients.where((client) {
       final filterChecks = {
-        Filter.company: () => client.companyName.toLowerCase().contains(query),
         Filter.name: () => client.name.toLowerCase().contains(query),
-        Filter.phone: () => client.phone.toLowerCase().contains(query),
-        Filter.companyId: () => client.companyId.toLowerCase().contains(query),
-        Filter.sector: () => client.businessSector.label.toLowerCase().contains(query),
-        Filter.status: () => client.status.label.toLowerCase().contains(query),
+        Filter.company: () => client.companyName.toLowerCase().contains(query),
         Filter.priority: () => client.priorityLevel.label.toLowerCase().contains(query),
+        Filter.department: () => client.department.label.toLowerCase().contains(query),
+        Filter.phone: () => client.phone.toLowerCase().contains(query),
+        Filter.hasBeenCalled: () => (client.hasBeenCalled ? 'да' : 'не').contains(query),
+        Filter.email: () => client.email.toLowerCase().contains(query),
+        Filter.status: () => client.status.label.toLowerCase().contains(query),
       };
 
       return selectedFilters.any(

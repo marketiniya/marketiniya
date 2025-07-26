@@ -19,15 +19,15 @@ class ClientsTableHeader extends StatelessWidget {
       ),
       child: const Row(
         children: [
-          Cell(label: '№', flex: 0.5, isHeaderCell: true),
+          Cell(label: '№', flex: 0.4, isHeaderCell: true, isCentered: true),
           Cell(label: 'Име', flex: 1, isHeaderCell: true),
-          Cell(label: 'Компания', flex: 1.6, isHeaderCell: true),
-          Cell(label: 'Приоритет', flex: 1, isHeaderCell: true, isCentered: true),
-          Cell(label: 'Отдел', flex: 0.7, isHeaderCell: true),
-          Cell(label: 'Телефон', flex: 0.6, isHeaderCell: true),
-          Cell(label: 'Прозвънен', flex: 1, isHeaderCell: true, isCentered: true),
-          Cell(label: 'Електронна поща', flex: 1.5, isHeaderCell: true),
-          Cell(label: 'Статус', flex: 1, isHeaderCell: true),
+          Cell(label: 'Компания', flex: 2.5, isHeaderCell: true),
+          Cell(label: 'Приоритет', flex: 1.0, isHeaderCell: true, isCentered: true),
+          Cell(label: 'Отдел', flex: 1.0, isHeaderCell: true, isCentered: true),
+          Cell(label: 'Телефон', flex: 1.0, isHeaderCell: true, isCentered: true),
+          Cell(label: 'Прозвънен', flex: 1.0, isHeaderCell: true, isCentered: true),
+          Cell(label: 'Имейл', flex: 1.5, isHeaderCell: true, isCentered: true),
+          Cell(label: 'Статус', flex: 1.0, isHeaderCell: true, isCentered: true),
         ],
       ),
     );

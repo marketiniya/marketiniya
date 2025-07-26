@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
 
@@ -39,20 +40,24 @@ class Cell extends StatelessWidget {
       textColor = Colors.black;
     }
 
-    final textWidget = Text(
+    final textWidget = SelectableText(
       displayText,
       style: TextStyle(
         fontSize: isHeaderCell ? xs : 14,
         fontWeight: FontWeight.w500,
         color: textColor,
       ),
+      maxLines: 1,
     );
 
     return Expanded(
       flex: (flex * 10).toInt(),
-      child: isCentered ? Center(child: textWidget) : Align(
-        alignment: Alignment.centerLeft,
-        child: textWidget,
+      child: Padding(
+        padding: dimen.horizontal.micro,
+        child: isCentered ? Center(child: textWidget) : Align(
+          alignment: Alignment.centerLeft,
+          child: textWidget,
+        ),
       ),
     );
   }
