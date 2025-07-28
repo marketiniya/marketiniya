@@ -10,12 +10,12 @@ import 'package:marketinya/core/models/client.dart';
 import 'package:marketinya/core/navigation/routes.dart';
 import 'package:marketinya/core/repositories/client_repository.dart';
 import 'package:marketinya/core/repositories/user_repository.dart';
-import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_bloc.dart';
-import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/add_client_state.dart';
-import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/client_files_page.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/client_editor_bloc.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/bloc/client_editor_state.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_editor_tab.dart';
-import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/client_form_page.dart';
-import 'package:marketinya/system/screens/clients/widgets/client_editor/widget/drawer/clients_drawer.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/shared/drawer/clients_drawer.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/tabs/attachments_tab/client_files_page.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/tabs/information_tab/client_form_page.dart';
 
 class ClientEditorScreen extends StatefulWidget {
   const ClientEditorScreen({
@@ -72,13 +72,13 @@ class _ClientEditorScreenState extends State<ClientEditorScreen>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddClientBloc(
+      create: (context) => ClientEditorBloc(
         getIt<UserRepository>(),
         getIt<ClientRepository>(),
         widget.client,
         widget.onClientUpdated,
       ),
-      child: BlocListener<AddClientBloc, AddClientState>(
+      child: BlocListener<ClientEditorBloc, ClientEditorState>(
         listener: (context, state) {
           if (state.status == Status.success && state.shouldRedirectToHome) {
             context.showSuccessSnackBar('Client deleted successfully');
