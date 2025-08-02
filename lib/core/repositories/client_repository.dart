@@ -7,6 +7,7 @@ import 'package:marketinya/core/services/firebase_storage_service.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/business_sector.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/department.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/priority_level.dart';
 
 @injectable
@@ -48,14 +49,17 @@ class ClientRepository {
     required String companyName,
     required String name,
     required DateTime dateOfBirth,
+    required Department department,
     required BusinessSector businessSector,
     required String companyId,
     required String personalId,
+    required String email,
     required String phone,
     required ClientStatus status,
     required PriorityLevel priorityLevel,
     required String description,
     List<SocialMediaLink> socialLinks = const [],
+    bool hasBeenCalled = false,
   }) async {
     final now = DateTime.now();
 
@@ -65,6 +69,7 @@ class ClientRepository {
       'companyName': companyName,
       'name': name,
       'dateOfBirth': Timestamp.fromDate(dateOfBirth),
+      'department': department.label,
       'businessSector': businessSector.label,
       'companyId': companyId,
       'personalId': personalId,
@@ -73,6 +78,7 @@ class ClientRepository {
       'priorityLevel': priorityLevel.label,
       'description': description,
       'socialLinks': socialLinks.map((link) => link.toJson()).toList(),
+      'hasBeenCalled': hasBeenCalled,
       'createdAt': Timestamp.fromDate(now),
       'updatedAt': Timestamp.fromDate(now),
     };
@@ -90,9 +96,11 @@ class ClientRepository {
       companyName: companyName,
       name: name,
       dateOfBirth: dateOfBirth,
+      department: department,
       businessSector: businessSector,
       companyId: companyId,
       personalId: personalId,
+      email: email,
       phone: phone,
       status: status,
       priorityLevel: priorityLevel,
@@ -101,6 +109,7 @@ class ClientRepository {
       updatedAt: now,
       tagIds: tags.map((tag) => tag.id).toList(),
       socialLinks: socialLinks,
+      hasBeenCalled: hasBeenCalled,
     );
 
     return client;
@@ -114,13 +123,16 @@ class ClientRepository {
     required String companyName,
     required String name,
     required DateTime dateOfBirth,
+    required Department department,
     required BusinessSector businessSector,
+    required String email,
     required String phone,
     required ClientStatus status,
     required PriorityLevel priorityLevel,
     required String description,
     required DateTime createdAt,
     List<SocialMediaLink> socialLinks = const [],
+    bool hasBeenCalled = false,
   }) async {
     final now = DateTime.now();
 
@@ -128,14 +140,17 @@ class ClientRepository {
       'companyName': companyName,
       'name': name,
       'dateOfBirth': Timestamp.fromDate(dateOfBirth),
+      'department': department.label,
       'businessSector': businessSector.label,
       'personalId': personalId,
       'companyId': companyId,
+      'email': email,
       'phone': phone,
       'status': status.label,
       'priorityLevel': priorityLevel.label,
       'description': description,
       'socialLinks': socialLinks.map((link) => link.toJson()).toList(),
+      'hasBeenCalled': hasBeenCalled,
       'updatedAt': FieldValue.serverTimestamp(),
     };
 
@@ -153,9 +168,11 @@ class ClientRepository {
       companyName: companyName,
       name: name,
       dateOfBirth: dateOfBirth,
+      department: department,
       businessSector: businessSector,
       personalId: personalId,
       companyId: companyId,
+      email: email,
       phone: phone,
       status: status,
       priorityLevel: priorityLevel,
@@ -164,6 +181,7 @@ class ClientRepository {
       updatedAt: now,
       assignedToId: assignedTo.id,
       socialLinks: socialLinks,
+      hasBeenCalled: hasBeenCalled,
     );
 
     return updatedClient;

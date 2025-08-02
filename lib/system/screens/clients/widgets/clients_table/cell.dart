@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marketinya/core/design_system/atoms/dimensions.dart';
 import 'package:marketinya/core/design_system/atoms/spaces.dart';
 import 'package:marketinya/system/screens/clients/widgets/client_editor/enums/client_status.dart';
 
@@ -10,6 +11,7 @@ class Cell extends StatelessWidget {
     this.isHeaderCell = false,
     this.status,
     this.isCentered = false,
+    this.booleanValue,
   });
 
   final String label;
@@ -17,27 +19,45 @@ class Cell extends StatelessWidget {
   final bool isHeaderCell;
   final ClientStatus? status;
   final bool isCentered;
+  final bool? booleanValue;
 
   @override
   Widget build(BuildContext context) {
-    final textWidget = Text(
-      status?.label ?? label,
+    String displayText;
+    Color textColor;
+
+    if (booleanValue != null) {
+      // Handle boolean values (like hasBeenCalled)
+      displayText = booleanValue! ? 'Да' : 'Не';
+      textColor = booleanValue! ? Colors.green : Colors.red;
+    } else if (status != null) {
+      // Handle status values
+      displayText = status!.label;
+      textColor = status == ClientStatus.active ? Colors.green : Colors.red;
+    } else {
+      // Handle regular text
+      displayText = label;
+      textColor = Colors.black;
+    }
+
+    final textWidget = SelectableText(
+      displayText,
       style: TextStyle(
         fontSize: isHeaderCell ? xs : 14,
         fontWeight: FontWeight.w500,
-        color: status != null
-            ? status == ClientStatus.active
-            ? Colors.green
-            : Colors.red
-            : Colors.black,
+        color: textColor,
       ),
+      maxLines: 1,
     );
 
     return Expanded(
       flex: (flex * 10).toInt(),
-      child: isCentered ? Center(child: textWidget) : Align(
-        alignment: Alignment.centerLeft,
-        child: textWidget,
+      child: Padding(
+        padding: dimen.horizontal.micro,
+        child: isCentered ? Center(child: textWidget) : Align(
+          alignment: Alignment.centerLeft,
+          child: textWidget,
+        ),
       ),
     );
   }

@@ -11,7 +11,7 @@ import 'package:marketinya/core/repositories/user_repository.dart';
 import 'package:marketinya/core/repositories/vault_repository.dart';
 import 'package:marketinya/core/services/firebase_storage_service.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
-import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/services/file_validation_service.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/tabs/attachments_tab/services/file_validation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final GetIt getIt = GetIt.instance;

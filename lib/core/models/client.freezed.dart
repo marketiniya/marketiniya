@@ -24,9 +24,11 @@ mixin _$Client {
   String get companyName => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get dateOfBirth => throw _privateConstructorUsedError;
+  Department get department => throw _privateConstructorUsedError;
   BusinessSector get businessSector => throw _privateConstructorUsedError;
   String get companyId => throw _privateConstructorUsedError;
   String get personalId => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   ClientStatus get status => throw _privateConstructorUsedError;
   PriorityLevel get priorityLevel => throw _privateConstructorUsedError;
@@ -43,6 +45,7 @@ mixin _$Client {
   List<String> get tagIds => throw _privateConstructorUsedError;
   List<SocialMediaLink> get socialLinks => throw _privateConstructorUsedError;
   bool get isDeleted => throw _privateConstructorUsedError;
+  bool get hasBeenCalled => throw _privateConstructorUsedError;
 
   /// Serializes this Client to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -63,9 +66,11 @@ abstract class $ClientCopyWith<$Res> {
       String companyName,
       String name,
       DateTime dateOfBirth,
+      Department department,
       BusinessSector businessSector,
       String companyId,
       String personalId,
+      String email,
       String phone,
       ClientStatus status,
       PriorityLevel priorityLevel,
@@ -77,7 +82,8 @@ abstract class $ClientCopyWith<$Res> {
       String assignedToId,
       List<String> tagIds,
       List<SocialMediaLink> socialLinks,
-      bool isDeleted});
+      bool isDeleted,
+      bool hasBeenCalled});
 }
 
 /// @nodoc
@@ -99,9 +105,11 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
     Object? companyName = null,
     Object? name = null,
     Object? dateOfBirth = null,
+    Object? department = null,
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
+    Object? email = null,
     Object? phone = null,
     Object? status = null,
     Object? priorityLevel = null,
@@ -114,6 +122,7 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
     Object? tagIds = null,
     Object? socialLinks = null,
     Object? isDeleted = null,
+    Object? hasBeenCalled = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -132,6 +141,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as Department,
       businessSector: null == businessSector
           ? _value.businessSector
           : businessSector // ignore: cast_nullable_to_non_nullable
@@ -143,6 +156,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
       personalId: null == personalId
           ? _value.personalId
           : personalId // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       phone: null == phone
           ? _value.phone
@@ -192,6 +209,10 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasBeenCalled: null == hasBeenCalled
+          ? _value.hasBeenCalled
+          : hasBeenCalled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -208,9 +229,11 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       String companyName,
       String name,
       DateTime dateOfBirth,
+      Department department,
       BusinessSector businessSector,
       String companyId,
       String personalId,
+      String email,
       String phone,
       ClientStatus status,
       PriorityLevel priorityLevel,
@@ -222,7 +245,8 @@ abstract class _$$ClientImplCopyWith<$Res> implements $ClientCopyWith<$Res> {
       String assignedToId,
       List<String> tagIds,
       List<SocialMediaLink> socialLinks,
-      bool isDeleted});
+      bool isDeleted,
+      bool hasBeenCalled});
 }
 
 /// @nodoc
@@ -242,9 +266,11 @@ class __$$ClientImplCopyWithImpl<$Res>
     Object? companyName = null,
     Object? name = null,
     Object? dateOfBirth = null,
+    Object? department = null,
     Object? businessSector = null,
     Object? companyId = null,
     Object? personalId = null,
+    Object? email = null,
     Object? phone = null,
     Object? status = null,
     Object? priorityLevel = null,
@@ -257,6 +283,7 @@ class __$$ClientImplCopyWithImpl<$Res>
     Object? tagIds = null,
     Object? socialLinks = null,
     Object? isDeleted = null,
+    Object? hasBeenCalled = null,
   }) {
     return _then(_$ClientImpl(
       id: null == id
@@ -275,6 +302,10 @@ class __$$ClientImplCopyWithImpl<$Res>
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      department: null == department
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as Department,
       businessSector: null == businessSector
           ? _value.businessSector
           : businessSector // ignore: cast_nullable_to_non_nullable
@@ -286,6 +317,10 @@ class __$$ClientImplCopyWithImpl<$Res>
       personalId: null == personalId
           ? _value.personalId
           : personalId // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
       phone: null == phone
           ? _value.phone
@@ -335,6 +370,10 @@ class __$$ClientImplCopyWithImpl<$Res>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasBeenCalled: null == hasBeenCalled
+          ? _value.hasBeenCalled
+          : hasBeenCalled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -347,9 +386,11 @@ class _$ClientImpl implements _Client {
       required this.companyName,
       required this.name,
       required this.dateOfBirth,
+      required this.department,
       required this.businessSector,
       required this.companyId,
       required this.personalId,
+      required this.email,
       required this.phone,
       required this.status,
       required this.priorityLevel,
@@ -362,7 +403,8 @@ class _$ClientImpl implements _Client {
       this.assignedToId = '',
       final List<String> tagIds = const [],
       final List<SocialMediaLink> socialLinks = const [],
-      this.isDeleted = false})
+      this.isDeleted = false,
+      this.hasBeenCalled = false})
       : _tags = tags,
         _tagIds = tagIds,
         _socialLinks = socialLinks;
@@ -379,11 +421,15 @@ class _$ClientImpl implements _Client {
   @override
   final DateTime dateOfBirth;
   @override
+  final Department department;
+  @override
   final BusinessSector businessSector;
   @override
   final String companyId;
   @override
   final String personalId;
+  @override
+  final String email;
   @override
   final String phone;
   @override
@@ -432,10 +478,13 @@ class _$ClientImpl implements _Client {
   @override
   @JsonKey()
   final bool isDeleted;
+  @override
+  @JsonKey()
+  final bool hasBeenCalled;
 
   @override
   String toString() {
-    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds, socialLinks: $socialLinks, isDeleted: $isDeleted)';
+    return 'Client(id: $id, companyName: $companyName, name: $name, dateOfBirth: $dateOfBirth, department: $department, businessSector: $businessSector, companyId: $companyId, personalId: $personalId, email: $email, phone: $phone, status: $status, priorityLevel: $priorityLevel, description: $description, createdAt: $createdAt, updatedAt: $updatedAt, assignedTo: $assignedTo, tags: $tags, assignedToId: $assignedToId, tagIds: $tagIds, socialLinks: $socialLinks, isDeleted: $isDeleted, hasBeenCalled: $hasBeenCalled)';
   }
 
   @override
@@ -449,12 +498,15 @@ class _$ClientImpl implements _Client {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
                 other.dateOfBirth == dateOfBirth) &&
+            (identical(other.department, department) ||
+                other.department == department) &&
             (identical(other.businessSector, businessSector) ||
                 other.businessSector == businessSector) &&
             (identical(other.companyId, companyId) ||
                 other.companyId == companyId) &&
             (identical(other.personalId, personalId) ||
                 other.personalId == personalId) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.priorityLevel, priorityLevel) ||
@@ -474,7 +526,9 @@ class _$ClientImpl implements _Client {
             const DeepCollectionEquality()
                 .equals(other._socialLinks, _socialLinks) &&
             (identical(other.isDeleted, isDeleted) ||
-                other.isDeleted == isDeleted));
+                other.isDeleted == isDeleted) &&
+            (identical(other.hasBeenCalled, hasBeenCalled) ||
+                other.hasBeenCalled == hasBeenCalled));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -485,9 +539,11 @@ class _$ClientImpl implements _Client {
         companyName,
         name,
         dateOfBirth,
+        department,
         businessSector,
         companyId,
         personalId,
+        email,
         phone,
         status,
         priorityLevel,
@@ -499,7 +555,8 @@ class _$ClientImpl implements _Client {
         assignedToId,
         const DeepCollectionEquality().hash(_tagIds),
         const DeepCollectionEquality().hash(_socialLinks),
-        isDeleted
+        isDeleted,
+        hasBeenCalled
       ]);
 
   /// Create a copy of Client
@@ -524,9 +581,11 @@ abstract class _Client implements Client {
       required final String companyName,
       required final String name,
       required final DateTime dateOfBirth,
+      required final Department department,
       required final BusinessSector businessSector,
       required final String companyId,
       required final String personalId,
+      required final String email,
       required final String phone,
       required final ClientStatus status,
       required final PriorityLevel priorityLevel,
@@ -540,7 +599,8 @@ abstract class _Client implements Client {
       final String assignedToId,
       final List<String> tagIds,
       final List<SocialMediaLink> socialLinks,
-      final bool isDeleted}) = _$ClientImpl;
+      final bool isDeleted,
+      final bool hasBeenCalled}) = _$ClientImpl;
 
   factory _Client.fromJson(Map<String, dynamic> json) = _$ClientImpl.fromJson;
 
@@ -553,11 +613,15 @@ abstract class _Client implements Client {
   @override
   DateTime get dateOfBirth;
   @override
+  Department get department;
+  @override
   BusinessSector get businessSector;
   @override
   String get companyId;
   @override
   String get personalId;
+  @override
+  String get email;
   @override
   String get phone;
   @override
@@ -584,6 +648,8 @@ abstract class _Client implements Client {
   List<SocialMediaLink> get socialLinks;
   @override
   bool get isDeleted;
+  @override
+  bool get hasBeenCalled;
 
   /// Create a copy of Client
   /// with the given fields replaced by the non-null parameter values.

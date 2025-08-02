@@ -4,8 +4,8 @@ import 'package:marketinya/core/config/log.dart';
 import 'package:marketinya/core/services/firebase_storage_service.dart';
 import 'package:marketinya/core/services/firestore_service.dart';
 import 'package:marketinya/core/utils/uuid_generator.dart';
-import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/enums/file_type.dart';
-import 'package:marketinya/system/screens/clients/widgets/client_editor/client_attachments_tab/models/uploaded_file.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/tabs/attachments_tab/enums/file_type.dart';
+import 'package:marketinya/system/screens/clients/widgets/client_editor/tabs/attachments_tab/models/uploaded_file.dart';
 
 class AttachmentRepository {
   AttachmentRepository(

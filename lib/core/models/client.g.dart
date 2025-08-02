@@ -11,10 +11,12 @@ _$ClientImpl _$$ClientImplFromJson(Map<String, dynamic> json) => _$ClientImpl(
       companyName: json['companyName'] as String,
       name: json['name'] as String,
       dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
+      department: $enumDecode(_$DepartmentEnumMap, json['department']),
       businessSector:
           $enumDecode(_$BusinessSectorEnumMap, json['businessSector']),
       companyId: json['companyId'] as String,
       personalId: json['personalId'] as String,
+      email: json['email'] as String,
       phone: json['phone'] as String,
       status: $enumDecode(_$ClientStatusEnumMap, json['status']),
       priorityLevel: $enumDecode(_$PriorityLevelEnumMap, json['priorityLevel']),
@@ -36,6 +38,7 @@ _$ClientImpl _$$ClientImplFromJson(Map<String, dynamic> json) => _$ClientImpl(
               .toList() ??
           const [],
       isDeleted: json['isDeleted'] as bool? ?? false,
+      hasBeenCalled: json['hasBeenCalled'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
@@ -44,9 +47,11 @@ Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
       'companyName': instance.companyName,
       'name': instance.name,
       'dateOfBirth': instance.dateOfBirth.toIso8601String(),
+      'department': _$DepartmentEnumMap[instance.department]!,
       'businessSector': _$BusinessSectorEnumMap[instance.businessSector]!,
       'companyId': instance.companyId,
       'personalId': instance.personalId,
+      'email': instance.email,
       'phone': instance.phone,
       'status': _$ClientStatusEnumMap[instance.status]!,
       'priorityLevel': _$PriorityLevelEnumMap[instance.priorityLevel]!,
@@ -61,7 +66,14 @@ Map<String, dynamic> _$$ClientImplToJson(_$ClientImpl instance) =>
       'tagIds': instance.tagIds,
       'socialLinks': instance.socialLinks,
       'isDeleted': instance.isDeleted,
+      'hasBeenCalled': instance.hasBeenCalled,
     };
+
+const _$DepartmentEnumMap = {
+  Department.management: 'management',
+  Department.sales: 'sales',
+  Department.unknown: 'unknown',
+};
 
 const _$BusinessSectorEnumMap = {
   BusinessSector.onlineStores: 'onlineStores',

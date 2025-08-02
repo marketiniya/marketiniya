@@ -11,7 +11,7 @@ enum BusinessSector {
   fastFood('Fast food'),
   tattoos('Татуси'),
   other('Други'),
-  unknown('Неизвестен сектор');
+  unknown('Неизвестен');
 
   const BusinessSector(this.label);
 
